@@ -6,7 +6,12 @@ const app = express();
 
 app.use(express.static('./dist'));
 
-app.use('/api', proxy('scrumboard-api.herokuapp.com/api'));
+app.use('/api', proxy('scrumboard-api.herokuapp.com', {
+	proxyReqPathResolver: function(req) {
+		return 'api/' + req;
+	}
+}));
+
 app.use('/admin', proxy('scrumboard-api.herokuapp.com/admin'));
 app.use('/users', proxy('scrumboard-api.herokuapp.com/users'));
 app.use('/assets', proxy('scrumboard-api.herokuapp.com/assets'));
