@@ -8,7 +8,7 @@ app.use(express.static('./dist'));
 
 app.use('/api', proxy('scrumboard-api.herokuapp.com', {
 	proxyReqPathResolver: function(req) {
-		return 'api/' + req;
+		return 'api/' + req.url;
 	}
 }));
 
