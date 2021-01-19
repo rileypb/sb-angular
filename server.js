@@ -12,9 +12,23 @@ app.use('/api', proxy('scrumboard-api.herokuapp.com', {
 	}
 }));
 
-app.use('/admin', proxy('scrumboard-api.herokuapp.com/admin'));
-app.use('/users', proxy('scrumboard-api.herokuapp.com/users'));
-app.use('/assets', proxy('scrumboard-api.herokuapp.com/assets'));
+app.use('/admin', proxy('scrumboard-api.herokuapp.com', {
+	proxyReqPathResolver: function(req) {
+		return '/admin' + req.url;
+	}
+}));
+
+app.use('/users', proxy('scrumboard-api.herokuapp.com', {
+	proxyReqPathResolver: function(req) {
+		return '/users' + req.url;
+	}
+}));
+
+app.use('/assets', proxy('scrumboard-api.herokuapp.com', {
+	proxyReqPathResolver: function(req) {
+		return '/assets' + req.url;
+	}
+}));
 
 app.get('/*', function (req, res) {
   res.sendFile('index.html', { root: '/' }
