@@ -6,10 +6,10 @@ const app = express();
 
 app.use(express.static('./dist'));
 
-app.use('/api', proxy('scrumboard-api.herokuapp.com/api'));
-app.use('/admin', proxy('scrumboard-api.herokuapp.com/admin'));
-app.use('/users', proxy('scrumboard-api.herokuapp.com/users'));
-app.use('/assets', proxy('scrumboard-api.herokuapp.com/assets'));
+app.use('/api', proxy('scrumboard-api.herokuapp.com'));
+app.use('/admin', proxy('scrumboard-api.herokuapp.com'));
+app.use('/users', proxy('scrumboard-api.herokuapp.com'));
+app.use('/assets', proxy('scrumboard-api.herokuapp.com'));
 
 app.get('/*', function (req, res) {
   res.sendFile('index.html', { root: '/' }
