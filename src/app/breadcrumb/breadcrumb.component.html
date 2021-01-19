@@ -1,0 +1,4 @@
+<span style="display: inline-flex; align-content: center; margin: 4px;" *ngFor="let path of locationService.breadcrumb.path; let i = index ">
+	<span *ngIf="i < locationService.breadcrumb.path.length - 1"><a style="margin-right: 4px;" class="breadcrumb-link" [routerLink]="[locationService.breadcrumb.links[i]]">{{path}}</a>  >  </span>
+	<span *ngIf="i == locationService.breadcrumb.path.length - 1" class="breadcrumb-head">{{path}}</span>
+</span>

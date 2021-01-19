@@ -1,0 +1,6 @@
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+<ng-template #noCurrentSprint>No Current Sprint</ng-template>
+
+<app-project-frame *ngIf="project; else progressSpinner" [project]="project">
+	<sb-sprint-execution-inner *ngIf="project.currentSprint; else noCurrentSprint" [sprint]="project.currentSprint"></sb-sprint-execution-inner>
+</app-project-frame>

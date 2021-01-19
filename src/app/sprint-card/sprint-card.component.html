@@ -1,0 +1,26 @@
+  <div class="px-3">
+    <div [ngClass]="{'sprint-card-expanded' : expanded, 'sprint-card-collapsed' : !expanded}" class="sprint-card text-truncate row">
+      <span class="col-10" (click)="toggleExpanded()">
+        <button *ngIf="!expanded" mat-icon-button><mat-icon>expand_more</mat-icon></button>
+        <button *ngIf="expanded" mat-icon-button><mat-icon>expand_less</mat-icon></button>
+      
+
+        <button mat-icon-button (click)="onViewSprint($event)" matTooltip="View Sprint">
+            <mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
+        </button>
+        {{ sprint.id }} - {{sprint.title}}
+      </span>
+      <span class="col-2">
+        <button mat-icon-button *ngIf="showStartButton" (click)="onStartSprint($event)" matTooltip="Start Sprint">
+            <mat-icon class="play-icon" fontSet="fas" fontIcon="fa-play-circle"></mat-icon>
+        </button>
+      </span>
+    </div>
+
+    <div class="sprint-card-content" style="margin: 0 auto;" *ngIf="expanded">
+    	<div style="margin-left: 30px;">
+        <sb-sprint-issue-list [sprint]="sprint" (transfer)="onTransfer($event)"></sb-sprint-issue-list>
+        <!-- <app-issues [project]="sprint.project" [sprint]="sprint"></app-issues> -->
+  	  </div>
+    </div> 
+  </div>

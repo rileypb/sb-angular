@@ -1,0 +1,28 @@
+.user_picture {
+	border-radius: 5px;
+	height: 2rem;
+}
+
+.username {
+	font-size: 2rem;
+}
+
+.connected {
+	color: green;
+}
+
+.disconnected {
+	color:red;
+}
+
+.topbar {
+	background: white;
+	/*border-radius: 5px;*/
+	border-width: 1px;
+	border-color: #CCC;
+	border-style: solid;
+	box-shadow: 4px 4px #ddd;
+	padding: 3px 12px;
+	display: flex;
+	justify-content: space-between;
+}

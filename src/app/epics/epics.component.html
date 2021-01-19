@@ -1,0 +1,49 @@
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+<div class="project-detail">
+
+	<app-project-frame *ngIf="project; else progressSpinner" [project]="project">
+		<div *ngIf="epics; else progressSpinner">
+			<div class="row" cdkDropListGroup>
+				<div class="col-md-6">
+					<mat-card class="inner-detail-card">
+						<mat-card-title>
+							<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-scroll"></mat-icon>
+							Epics
+							<button style="position: relative; top: -4px" *ngIf="permission(project, 'create-epic')" mat-icon-button color="primary" matTooltip="New Epic" (click)="createEpic()"><mat-icon>add_circle</mat-icon></button>
+						</mat-card-title>
+						<mat-card-content>
+							<app-epic-list [epics]="epics.epics.list" [project]="project" class="epic-list" #epicList (selectEpic)="showDetail($event)"
+										   (reorderEpics)="onReorderEpics($event)" (transferIssue)="onTransferIssue($event)" (updateEpic)="onUpdateEpic($event)"></app-epic-list>
+						</mat-card-content>
+					</mat-card>
+				</div>
+				<div class="col-md-6">
+					<mat-card class="inner-detail-card" *ngIf="selectedEpic != null">
+						<mat-card-title [ngSwitch]="mode">
+							<div *ngSwitchCase="'show'">
+								<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+								Detail
+								<button style="position: relative; top: -4px" *ngIf="permission(selectedEpic, 'update')" mat-icon-button color="primary" matTooltip="Edit Epic" (click)="editEpic()"><mat-icon>edit</mat-icon></button>
+							</div>
+							<div *ngSwitchCase="'edit'">
+								<mat-icon class="mr-1">edit</mat-icon>
+								Edit Epic
+							</div>
+							<div *ngSwitchCase="'create'">
+								<mat-icon class="mr-1">add_circle</mat-icon>
+								Create Epic
+							</div>
+						</mat-card-title>
+						<mat-card-content [ngSwitch]="mode">
+							<app-epic-detail *ngSwitchCase="'show'" [epic]="selectedEpic"></app-epic-detail>
+							<sb-epic-form mode="edit" [epic]="selectedEpic" *ngSwitchCase="'edit'" (confirmEdit)="confirmEdit($event)" (cancelEdit)="cancelEdit()" (deleteEpic)="delete($event)"></sb-epic-form>
+							<sb-epic-form mode="create" [epic]="selectedEpic" *ngSwitchCase="'create'" (confirmEdit)="saveNewEpic($event)" (cancelEdit)="cancelEdit()"></sb-epic-form>
+						</mat-card-content>
+					</mat-card>
+				</div>
+			</div>
+		</div>
+	</app-project-frame>
+
+
+</div>

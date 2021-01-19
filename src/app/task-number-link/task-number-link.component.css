@@ -1,0 +1,10 @@
+.task-number-link {
+	text-decoration: underline; 
+	text-decoration-style: dotted;
+}
+
+.task-number-link:hover {
+	text-decoration: underline; 
+	text-decoration-style: dotted;
+	color: #683ab7;
+}

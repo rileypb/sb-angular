@@ -1,0 +1,21 @@
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+
+<div class="list-container tasks" *ngIf="tasks | async; else progressSpinner">
+  <div class="task-container column-container">
+  	<div class="list tasks" 
+  	     cdkDropList 
+  	     #taskList="cdkDropList" 
+  	     [cdkDropListData]="{ tasks: (tasks | async), issue: issue }"
+  	     (cdkDropListDropped)="onDrop($event)">
+
+      <div>
+        <div class="task-card text-truncate" *ngFor="let task of (tasks | async).tasks.list; let i = index" cdkDrag>
+          
+          <div class="drag-placeholder" *cdkDragPlaceholder></div>
+          <sb-task-card [task]="task" [editCoordinator]="editCoordinator"></sb-task-card>
+        </div>
+      </div>
+
+  	</div>
+  </div>
+</div>

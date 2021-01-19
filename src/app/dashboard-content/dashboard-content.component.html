@@ -1,0 +1,44 @@
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+<app-project-frame *ngIf="project; else progressSpinner" [project]="project">
+	<div class="row">
+		<div class="col-md-6">
+			<mat-card class="project-info-card">
+				<mat-card-title><mat-icon class="mr-1" fontSet="fas" fontIcon="fa-info-circle"></mat-icon>Info</mat-card-title>
+				<mat-card-content>
+					<app-project-card [project]="project"></app-project-card>
+				</mat-card-content>
+			</mat-card>
+			<mat-card class="project-info-card">
+				<mat-card-title>
+					<mat-icon fontSet="fas" fontIcon="fa-heartbeat"></mat-icon>
+					Recent Activity
+				</mat-card-title>
+				<mat-card-content>
+					<app-activity-list [activities]="project.activities"></app-activity-list>
+				</mat-card-content>
+			</mat-card>
+		</div>
+
+		<div class="col-md-6">
+			<mat-card class="project-info-card">
+				<mat-card-title>
+					<mat-icon>directions_run</mat-icon>
+					Current Sprint
+				</mat-card-title>
+				<mat-card-content>
+					<div *ngIf="project.currentSprint"><a [routerLink]="['/','projects',project.id,'execution']">{{project.currentSprint.id}} - {{project.currentSprint.title}}</a></div> 
+					<h6 *ngIf="!project.currentSprint">None</h6>
+				</mat-card-content>
+			</mat-card>
+			<mat-card class="project-info-card">
+				<mat-card-title>
+					<mat-icon fontSet="fas" fontIcon="fa-burn"></mat-icon>
+					Burndown
+				</mat-card-title>
+				<mat-card-content>
+					<app-burndown [sprint]="project.currentSprint"></app-burndown>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</app-project-frame>

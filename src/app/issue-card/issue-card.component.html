@@ -1,0 +1,69 @@
+<div *ngIf="issue">
+	<h3><!-- <mat-icon class="mr-3 col-md-7" fontSet="fas" fontIcon="fa-expand"></mat-icon> --> {{issue.title}}
+					<button style="position: relative; top: -4px" mat-icon-button color="primary"><mat-icon>edit</mat-icon></button></h3>
+	<button mat-raised-button class="state-button" 
+			[ngClass]="{'state-open': issue.state === 'Open', 'state-progress': issue.state === 'In Progress', 'state-done': issue.state === 'Done'}">
+		<mat-select [(ngModel)]="issue.state" [ngClass]="{'select-progress': issue.state === 'In Progress'}" (valueChange)="updateState($event)">
+			<mat-option value="Open">
+				Open
+			</mat-option>
+
+			<mat-option value="In Progress">
+				In Progress
+			</mat-option>
+
+			<mat-option value="Done">
+				Done
+			</mat-option>
+		</mat-select>
+	</button>
+	<div class="row">
+		<div class="col-md-6 issue-card-column">
+			<mat-card class="inner-issue-card">
+				<mat-card-title>
+					<mat-icon fontSet="fas" fontIcon="fa-pen-fancy"></mat-icon>
+					Description 
+				</mat-card-title>
+				<mat-card-content>
+					<div #descriptionArea class="issue-description" [innerHtml]="issue.description"></div>
+				</mat-card-content>
+			</mat-card>
+			<mat-card class="inner-issue-card">
+				<mat-card-title>
+					<mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>
+					Tasks
+					<button style="position: relative; top: -4px" *ngIf="permission(issue, 'create-task')" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon>add_circle</mat-icon></button>
+				</mat-card-title>
+				<mat-card-content>
+					<app-tasks *ngIf="issue && issue.project; else elseBlock" [issue]="issue"></app-tasks>
+					<ng-template #elseBlock><mat-spinner></mat-spinner></ng-template>
+				</mat-card-content>
+			</mat-card>
+		</div>
+		<div class="col-md-6 issue-card-column">
+			<mat-card class="inner-issue-card">
+				<mat-card-title><mat-icon style="position: relative; top: 3px;" >info</mat-icon>Info</mat-card-title>
+				<mat-card-content>
+					<p>
+						Created by: 
+						<app-user-view placeholder="unknown" [user]="issue.created_by"></app-user-view>&nbsp;
+						<app-rich-date [date]="issue.created_at"></app-rich-date>
+					</p>
+					<p>
+						Last changed by: 
+						<app-user-view icon="true" placeholder="unknown" [user]="issue.last_changed_by"></app-user-view>&nbsp;
+						<app-rich-date [date]="issue.updated_at"></app-rich-date>
+					</p>
+
+				</mat-card-content>
+			</mat-card>
+			<mat-card class="inner-issue-card">
+				<mat-card-title>
+					<mat-icon fontSet="fas" fontIcon="fa-heartbeat"></mat-icon>
+				    Recent Activity
+				</mat-card-title>
+				<mat-card-content><app-activity-list [activities]="issue.activities"></app-activity-list></mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,6 @@
+
+<mat-list-item [ngClass]="{selectedMenuItem: locationService.menuItem==menuItem}" (click)="navigateTo()">
+	<mat-icon *ngIf="icon" mat-list-icon>{{icon}}</mat-icon>
+	<mat-icon  class="faMenuIcon" *ngIf="faIcon" mat-list-icon [fontSet]="fontSet" [fontIcon]="faIcon"></mat-icon>
+	<h6 mat-line class="listLabel" [@expandCollapse] *ngIf="expand"><ng-content></ng-content></h6>
+</mat-list-item>

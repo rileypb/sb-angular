@@ -1,0 +1,12 @@
+<ng-template #progressSpinner><mat-spinner style="min-height: 32px; position: relative; left: 16px" diameter="32"></mat-spinner></ng-template>
+
+          <div *ngIf="task; else progressSpinner" class="mt-2 ml-1 row">
+            <span class="col-8">
+            	<mat-icon fontIcon="fa-hammer" fontSet="fas"></mat-icon>
+            	<a class="task-link text-truncate" matTooltip="Edit Task" [class.disabled]="!permission(task, 'update') ? true : null" (click)="editTask(task, $event)">#{{task.id}} - {{task.title}}</a>
+            </span>
+            <span class="col-3">
+              <a class="task-link" matTooltip="Edit Estimate" [hidden]="isEditingEstimate()" [class.disabled]="!permission(task, 'update') ? true : null" (click)="startEditingEstimate()">{{task.estimate}} hours</a>
+              <input [hidden]="!isEditingEstimate()" type="text" #estimateEditor [(ngModel)]="estimate" (blur)="stopEditingEstimate(false)" (keydown)="processKeyPress($event)">
+            </span>
+          </div>

@@ -1,0 +1,22 @@
+<h2>{{issue.id}} - {{issue.title}}</h2>
+<p class="issue-description" [innerHtml]="issue.description"></p>
+<p><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon> Estimate: {{issue.estimate}}</p>
+<p><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon> State: {{issue.state}}</p>
+
+<h6>Epic</h6>
+<div *ngIf="issue.epic">
+    <div class="epic-card text-truncate" 
+       [ngStyle]="{'background-color': (issue.epic.color ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic.color)}"
+       [routerLink]="['/projects', issue.project.id, 'epics', issue.epic.id]">
+       {{issue.epic.title}}
+    </div>
+</div>
+<div *ngIf="!issue.epic">
+	No Epic
+</div>
+<h6 class="mt-4">Tasks <button style="position: relative; top: -4px" *ngIf="permission(issue, 'create-task')" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon>add_circle</mat-icon></button></h6>
+
+<ng-template #notasks>No Tasks</ng-template>
+<div *ngIf="issue.tasks && issue.tasks.length > 0; else notasks">
+	<app-tasks [issue]="issue"></app-tasks>
+</div>

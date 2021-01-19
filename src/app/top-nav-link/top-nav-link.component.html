@@ -1,0 +1,6 @@
+<a mat-tab-link [routerLink]="route" 
+         routerLinkActive
+         #RouterLinkActive="routerLinkActive"
+         [active]="RouterLinkActive.isActive">
+	<mat-icon class="mt-2" fontSet="fas" [fontIcon]="icon"></mat-icon>{{label}} -- {{RouterLinkActive.isActive}}
+</a>

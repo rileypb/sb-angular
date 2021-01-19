@@ -1,0 +1,26 @@
+{
+  "/api": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+
+  "/users": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+
+  "/admin": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+
+  "/assets": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+
+  "/cable": {
+    "target": "http://localhost:3000",
+    "secure": false
+  }
+}

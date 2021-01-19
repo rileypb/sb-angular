@@ -1,0 +1,41 @@
+<div class="sidemenu" [ngSwitch]="locationService.type">
+
+
+	<div *ngSwitchCase="'home'">
+		<mat-nav-list>
+			<mat-list-item (click)="toggleExpand()">
+				<mat-icon mat-list-icon>menu</mat-icon>
+			</mat-list-item>
+			<app-sidemenu-item faIcon="fa-shapes" fontSet="fas" menuItem="projects" [expand]="expand" (click)="expand = false" [nav]="locationService.projects()">Projects</app-sidemenu-item>
+			<app-sidemenu-item icon="account_box" menuItem="user_profile" [expand]="expand" (click)="expand = false" [nav]="locationService.profile()">User Profile</app-sidemenu-item>
+			<app-sidemenu-item icon="settings" menuItem="settings" [expand]="expand" (click)="expand = false" [nav]="locationService.settings()">Settings</app-sidemenu-item>
+		</mat-nav-list>
+	</div>
+	
+	<div *ngSwitchCase="'project'">
+		<mat-nav-list>
+			<mat-list-item (click)="toggleExpand()">
+				<mat-icon mat-list-icon>menu</mat-icon>
+			</mat-list-item>
+
+			<app-sidemenu-item faIcon="fa-tachometer-alt" fontSet="fas" menuItem="project_info" [expand]="expand" (click)="expand = false" [nav]="locationService.project_info()">Project Dashboard</app-sidemenu-item>
+			<app-sidemenu-item icon="people" menuItem="project_team" [expand]="expand" (click)="expand = false" [nav]="locationService.project_team()">Team</app-sidemenu-item>
+			<app-sidemenu-item faIcon="fa-scroll" fontSet="fas" menuItem="project_epics" [expand]="expand" (click)="expand = false" [nav]="locationService.project_epics()">Epics</app-sidemenu-item>
+			<app-sidemenu-item icon="list_alt" menuItem="project_issues" [expand]="expand" (click)="expand = false" [nav]="locationService.project_issues()">Product Backlog</app-sidemenu-item>
+			<app-sidemenu-item icon="directions_run" menuItem="project_sprints" [expand]="expand" (click)="expand = false" [nav]="locationService.project_sprints()">Sprints</app-sidemenu-item>
+			<app-sidemenu-item faIcon="fa-expand" fontSet="fas" menuItem="issue_detail" [expand]="expand" (click)="expand = false" [nav]="locationService.issue_detail()">Issue Detail</app-sidemenu-item>
+		</mat-nav-list>
+	</div>
+	
+	<div *ngSwitchCase="'sprint'">
+		<mat-nav-list>
+			<mat-list-item (click)="toggleExpand()">
+				<mat-icon mat-list-icon>menu</mat-icon>
+			</mat-list-item>
+			<app-sidemenu-item icon="directions_run" menuItem="sprint_info" [expand]="expand" (click)="expand = false" [nav]="locationService.sprint_info()">Sprint Info</app-sidemenu-item>
+			<app-sidemenu-item icon="list_alt" menuItem="sprint_issues" [expand]="expand" (click)="expand = false" [nav]="locationService.sprint_issues()">Sprint Backlog</app-sidemenu-item>
+			<app-sidemenu-item icon="show_chart" menuItem="sprint_analytics" [expand]="expand" (click)="expand = false" [nav]="locationService.sprint_analytics()">Analytics</app-sidemenu-item>
+		</mat-nav-list>
+	</div>
+
+</div>

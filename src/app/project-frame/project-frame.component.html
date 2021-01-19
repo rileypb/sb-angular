@@ -1,0 +1,15 @@
+<div class="project-detail">
+
+	<div>
+
+		<mat-card class="project-frame-card">
+			<mat-card-title>
+				<mat-icon fontSet="fas" fontIcon="fa-shapes"></mat-icon>
+				{{project.name}}
+				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(project, 'update')" mat-icon-button color="primary" matTooltip="Edit Project" (click)="editProject()"><mat-icon>edit</mat-icon></button>
+			</mat-card-title>
+			<ng-content></ng-content>
+		</mat-card>
+		
+	</div>
+</div>

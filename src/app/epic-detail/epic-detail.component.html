@@ -1,0 +1,29 @@
+<h2>{{epic.title}}</h2>
+<p class="epic-description" [innerHtml]="epic.description"></p>
+<p><mat-icon fontSet="fas" fontIcon="fa-tshirt"></mat-icon> Size: <sb-tshirt-size [size]="epic.size"></sb-tshirt-size></p>
+<p><mat-icon fontSet="fas" fontIcon="fa-palette"></mat-icon> Color: <mat-icon *ngIf="epic.color" fontSet="fas" fontIcon="fa-circle" [ngStyle]="{'color':epic.color}" [matTooltip]="epic.color"></mat-icon>
+<mat-icon *ngIf="!epic.color" fontSet="far" fontIcon="fa-circle" matTooltip="No Color Set"></mat-icon></p>
+
+<mat-card>
+	<mat-card-title>
+		Issues
+	</mat-card-title>
+	<mat-card-content>
+		<sb-issue-list [issues]="((epicIssues | async) || {issues: { list: []}}).issues.list" fixed="true" (issueSelected)="onIssueSelected($event)"></sb-issue-list>
+		<form style="display: inline; width:100%">
+			<mat-form-field style="width:100%" #searchField>
+				<input type="text"
+					   placeholder="Add an Issue"
+					   aria-label="issue"
+					   matInput
+					   [formControl]="issueControl"
+					   [matAutocomplete]="auto">
+				<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="issueLabel">
+					<mat-option *ngFor="let option of filteredIssues | async" [value]="option">
+						{{option.title}}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
+		</form>
+	</mat-card-content>
+</mat-card>

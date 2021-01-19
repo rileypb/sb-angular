@@ -1,0 +1,47 @@
+
+.sprint-link {
+	margin: 10px;
+
+	color: #444;
+}
+
+.sprint-link:hover {
+	text-decoration: none;
+	color: blue;
+}
+
+.sprint-card {
+	font-size: small;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: #AAA;
+	border-style: solid;
+	box-shadow: 2px 2px #ddd;
+	padding: 3px;
+	padding-left: 6px;
+	cursor: default;
+}
+
+.sprint-card-expanded { 
+	background: #CCC;
+}
+
+.sprint-card-expanded:hover { 
+	background: #BBB;
+}
+
+.sprint-card-collapsed {
+	background: #EEE;
+}
+
+.sprint-card-collapsed:hover {
+	background: #DDD;
+}
+
+.sprint-card-content {
+}
+
+.play-icon {
+	color: #00AA00;
+	font-size: x-large;
+}

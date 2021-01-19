@@ -1,0 +1,64 @@
+.tasks {
+	min-height: 30px;
+}
+
+.task-card {
+	font-size: small;
+	background: white;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: #CCC;
+	border-style: solid;
+	box-shadow: 2px 2px #ddd;
+	padding: 3px;
+	padding-left: 6px;
+}
+
+.task-card:hover {
+	background: #EEE;
+	cursor: default;
+}
+
+.task-card-body {
+	font-size: x-small;
+}
+
+.task-id {
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.task-link {
+	color: #444;
+}
+
+.task-link:hover {
+	text-decoration: none;
+	color: blue;
+}
+
+.task-title {
+	font-family: sans-serif;
+	font-style: italic;
+}
+
+.drag-placeholder {
+  background: #eeeeee;
+  border: dotted 1px #999;
+  min-height: 40px;
+}
+
+.small-button {
+	font-size: x-small;
+}
+
+.task-description {
+	font-family: sans-serif;
+	background: #ddd;
+}
+
+.drag-icon {
+	color: #aaa;
+}
+
+

@@ -1,0 +1,22 @@
+
+
+.epic-card {
+	font-size: small;
+	background: white;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: #CCC;
+	border-style: solid;
+	box-shadow: 2px 2px #ddd;
+	padding: 3px;
+	padding-left: 6px;
+}
+
+.epic-card:hover {
+	cursor: default;
+	border: 2px solid #666;
+}
+
+.epic-card:active {
+	background-color: #999 !important;
+}

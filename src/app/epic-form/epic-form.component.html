@@ -1,0 +1,38 @@
+<form class="epic-form" [formGroup]="epicForm" (ngSubmit)="submit()">
+	<div class="row">
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Epic Title</mat-label>
+			<input matInput formControlName="title">
+			<mat-error>Title can't be blank</mat-error>
+		</mat-form-field>
+	</div>
+	 <div class="row">
+	   <mat-form-field class="col-12">
+	     <mat-label>Description</mat-label>
+	     <app-ckeditor formControlName="description" matInput></app-ckeditor>
+	   </mat-form-field>
+	 </div>
+	 <div class="row">
+	 	<mat-form-field class="col-6">
+	 		<mat-label>Size</mat-label>
+	 		<mat-select formControlName="size" matInput>
+	 			<mat-option value=4>XL</mat-option>
+	 			<mat-option value=3>L</mat-option>
+	 			<mat-option value=2>M</mat-option>
+	 			<mat-option value=1>S</mat-option>
+	 		</mat-select>
+	 	</mat-form-field>
+	 	<mat-form-field appearance="outline">
+	 		<mat-label>Color</mat-label>
+	 		
+			<sb-color-picker formControlName="color" matInput></sb-color-picker>
+	 	</mat-form-field>
+	 </div>
+
+	 <div mat-dialog-actions class="mb-2">
+	  <button mat-button type="button" *ngIf="mode == 'edit' && permission(epic.project, 'delete-epic')" color="warn" (click)="confirmDelete()">Delete</button>
+	  <button mat-button type="button" (click)="cancelEdit.emit()">Cancel</button>
+	  <button mat-button type="submit" [disabled]="!epicForm.valid">Save</button>
+	</div>
+</form>
+

@@ -1,0 +1,10 @@
+
+
+.listLabel {
+	width: 140px;
+}
+
+.selectedMenuItem {
+	background-color: #EEE;
+	pointer-events: none;
+}

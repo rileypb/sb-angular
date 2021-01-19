@@ -1,0 +1,8 @@
+		  <nav mat-tab-nav-bar>
+		  	<a mat-tab-link *ngFor="let link of locationService.navLinks" [routerLink]="link.link" 
+		  			routerLinkActive #rla="routerLinkActive"
+		  			[routerLinkActiveOptions]="{exact:true}" [active]="rla.isActive"
+		  			[disabled]="link.disabled">
+			  <mat-icon class="mt-2" fontSet="fas" [fontIcon]="link.icon"></mat-icon>{{link.label}}
+			</a>
+		  </nav>

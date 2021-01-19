@@ -1,0 +1,3 @@
+<app-epics [project]="project | async" [epics]="epics | async" 
+		   (epicChanged)="saveEpic($event)" (deleteEpic)="deleteEpic($event)" (newEpic)="createNewEpic($event)"
+		   (updateProject)="updateProject($event)" (transferIssue)="onTransferIssue($event)"></app-epics>

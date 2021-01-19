@@ -1,0 +1,24 @@
+
+<form [formGroup]="editSprintForm">
+  <h3 *ngIf="newSprintMode">New Sprint</h3>
+  <h3 *ngIf="!newSprintMode">Edit Sprint</h3>
+  <div fxLayout="row">
+  	<mat-form-field style="width:50%" appearance="fill">
+  		<mat-label>Issue Title</mat-label>
+  		<input matInput formControlName="title">
+      <mat-error>Title can't be blank</mat-error>
+  	</mat-form-field>
+  </div>
+  <div fxLayout="row">
+    <mat-form-field style="min-width: 100%;">
+      <mat-label>Description</mat-label>
+      <app-ckeditor formControlName="description" matInput></app-ckeditor>
+    </mat-form-field>
+  </div>
+
+<div mat-dialog-actions>
+  <button mat-button *ngIf="!newSprintMode && permission(sprint, 'delete')" color="warn" (click)="confirmDelete()">Delete</button>
+  <button mat-button (click)="cancelEdit()">Cancel</button>
+  <button mat-button [disabled]="!editSprintForm.valid" (click)="confirmEdit()">Save</button>
+</div>
+

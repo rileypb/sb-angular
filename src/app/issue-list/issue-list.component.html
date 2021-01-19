@@ -1,0 +1,57 @@
+<ng-template #progressSpinner><div class="d-flex justify-content-center"><mat-spinner></mat-spinner></div></ng-template>
+
+<div class="list-container issues">
+  <div class="issue-container column-container">
+  	<div class="list issues" 
+  		 *ngIf="!fixed"
+  	     cdkDropList 
+  	     #issueList="cdkDropList" 
+  	     [cdkDropListData]="{ issues: (filteredIssues | async), container: container }"
+  	     (cdkDropListDropped)="onDrop($event)">
+
+      <div *ngIf="issues; else progressSpinner">
+        <div class="issue-card text-truncate pl-2" 
+             (click)="clickIssue(issue)"
+             [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index" cdkDrag>
+          
+          <div class="drag-placeholder" *cdkDragPlaceholder></div>
+          <div class="row align-items-center">
+            <button style="position: relative; left: 8px" mat-icon-button *ngIf="showViewIcon" (click)="onViewIssue(issue)">
+              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+            </button>
+            <div class="col-10 text-truncate">
+              #{{issue.id}} - {{issue.title}}
+            </div>
+            <button mat-icon-button *ngIf="allowRemove" (click)="removeIssue(issue)">
+              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-times-circle"></mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+
+  	<div class="list issues" 
+  	     *ngIf="fixed">
+
+      <div *ngIf="issues; else progressSpinner">
+        <div class="fixed-issue-card text-truncate pl-2" 
+             (click)="clickIssue(issue)"
+             [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index">
+          <div class="row align-items-center">
+            <div class="col-10 text-truncate" (click)="clickIssue(issue)">
+              #{{issue.id}} - {{issue.title}}
+            </div>
+            <button mat-icon-button *ngIf="allowRemove" (click)="removeIssue(issue)">
+              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-times-circle"></mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+  </div>
+</div>
+
+
+

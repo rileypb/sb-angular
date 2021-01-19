@@ -1,0 +1,18 @@
+<strong class="mr-2" [matTooltip]="activity.user.first_name + ' ' + activity.user.last_name">{{activity.user.displayName || (activity.user.first_name + ' ' + activity.user.last_name)}}</strong>
+<span [ngSwitch]="activity.action">
+	<span *ngSwitchCase="'added_task'">added <app-task-number-link [task]="activity.task"></app-task-number-link> to 
+		<app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
+	<span *ngSwitchCase="'set_state'">changed the state of <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to <strong>{{activity.modifier}}</strong></span>
+	<span *ngSwitchCase="'created_task'">created <app-task-number-link [task]="activity.task"></app-task-number-link></span>
+	<span *ngSwitchCase="'updated_issue'">updated <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
+	<span *ngSwitchCase="'updated_task'">updated <app-task-number-link [task]="activity.task"></app-task-number-link></span>
+	<span *ngSwitchCase="'updated_epic'">updated <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
+	<span *ngSwitchCase="'moved_issue_to_product_backlog'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> 
+		to the <a class="product-backlog-link" (click)="navigateToBacklog()">product backlog</a> 
+		from <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+	<span *ngSwitchCase="'assigned_issue_to_sprint'">assigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to 
+		<app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+	<span *ngSwitchCase="'moved_issue_between_sprints'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> from 
+		<app-sprint-number-link [sprint]="activity.sprint2"></app-sprint-number-link> to <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+	<span *ngSwitchDefault>{{activity.action}}</span>
+</span> 

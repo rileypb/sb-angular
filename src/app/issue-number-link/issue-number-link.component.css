@@ -1,0 +1,10 @@
+.issue-number-link {
+	text-decoration: underline; 
+	text-decoration-style: dotted;
+}
+
+.issue-number-link:hover {
+	text-decoration: underline; 
+	text-decoration-style: solid;
+	color: #683ab7;
+}

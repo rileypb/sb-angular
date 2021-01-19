@@ -1,0 +1,20 @@
+<div class="topbar"> 
+
+  <div>
+      <div *ngIf="loginService.status == 'logged_in' && loginService.user">
+        <span class="mr-3">{{ loginService.user.first_name }}</span><a [routerLink]="'profile'"><img class="user_picture mr-3" [src]="loginService.user.picture"/></a>
+        <button mat-flat-button color="primary" (click)="logout()">log out</button>
+      </div>
+      <div *ngIf="loginService.status == 'logged_out'">
+        logged out.
+        <button mat-button (click)="login()">log in with Google</button>
+      </div>
+      <div *ngIf="loginService.status == 'error'">
+        Error while logging in: {{ loginService.error }}
+      </div>
+  </div>
+
+  <div style="position: relative; top: '4px'"><mat-icon fontSet="fas" fontIcon="fa-chalkboard-teacher"></mat-icon> <h6 style="display: inline;">Scrumboard</h6></div>
+
+  <div class="pt-1">{{syncServiceStatus}} <fa-icon [ngClass]="syncServiceStatus" [icon]="circle"></fa-icon></div>
+</div>

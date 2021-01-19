@@ -1,0 +1,33 @@
+mat-card {
+	margin: 4px;
+}
+
+.inner-issue-card {
+	background-color: #ddd;
+}
+
+.issue-card-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.state-open {
+	background-color: green;
+}
+
+.state-progress {
+	background-color: blue;
+}
+
+.state-done {
+	background-color: red;
+}
+
+.state-button {
+	min-width: 200px;
+	text-align: left;
+	margin: 4px;
+}
+
+
+

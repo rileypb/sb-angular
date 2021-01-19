@@ -1,0 +1,16 @@
+.projects {
+	padding: 10px;
+}
+
+mat-card {
+	margin: 4px;
+	background-color: #ddd;
+}
+
+mat-list-item {
+}
+
+vertical-list {
+	display: flex; 
+	flex-direction: column;
+}

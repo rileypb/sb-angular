@@ -1,0 +1,89 @@
+.issues {
+	min-height: 30px;
+}
+
+.issue-card {
+	font-size: small;
+	background: white;
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: #CCC;
+	border-style: solid;
+	box-shadow: 2px 2px #ddd;
+	padding: 3px;
+	padding-left: 6px;
+}
+
+.issue-card:hover {
+	cursor: move;
+	border: 2px solid #666;
+}
+
+.issue-card:active {
+	background-color: #999 !important;
+}
+
+.fixed-issue-card {
+	font-size: small;
+	background: white;
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: #CCC;
+	border-style: solid;
+	box-shadow: 2px 2px #ddd;
+	padding: 3px;
+	padding-left: 6px;
+}
+
+.fixed-issue-card:hover {
+	cursor: default;
+	border: 2px solid #666;
+}
+
+.fixed-issue-card:active {
+	background-color: #999 !important;
+}
+
+.issue-card-body {
+	font-size: x-small;
+}
+
+.issue-id {
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.issue-link {
+	color: #444;
+}
+
+.issue-link:hover {
+	text-decoration: none;
+	color: blue;
+}
+
+.issue-title {
+	font-family: sans-serif;
+	font-style: italic;
+}
+
+.drag-placeholder {
+  background: #eeeeee;
+  border: dotted 1px #999;
+  min-height: 40px;
+}
+
+.small-button {
+	font-size: x-small;
+}
+
+.issue-description {
+	font-family: sans-serif;
+	background: #ddd;
+}
+
+.drag-icon {
+	color: #aaa;
+}
+
+

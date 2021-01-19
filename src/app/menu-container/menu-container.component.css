@@ -1,0 +1,14 @@
+.sidemenu {
+	margin: 5px auto;
+	overflow: visible;
+	z-index: 100;
+}
+
+.listLabel {
+	width: 140px;
+}
+
+.selectedMenuItem {
+	background-color: #EEE;
+	pointer-events: none;
+}

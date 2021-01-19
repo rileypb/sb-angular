@@ -1,0 +1,46 @@
+
+<form class="edit-issue-form" [formGroup]="editIssueForm">
+  <h3 *ngIf="newIssueMode">New Issue</h3>
+  <h3 *ngIf="!newIssueMode">Edit Issue</h3>
+  <div fxLayout="row">
+  	<mat-form-field style="width:50%" appearance="fill">
+  		<mat-label>Issue Title</mat-label>
+  		<input matInput formControlName="title">
+      <mat-error>Title can't be blank</mat-error>
+  	</mat-form-field>
+  </div>
+  <div fxLayout="row">
+    <mat-form-field style="min-width: 100%;">
+      <mat-label>Description</mat-label>
+      <app-ckeditor formControlName="description" matInput></app-ckeditor>
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="fill">
+  	<mat-label>Estimate</mat-label>
+  	<mat-select formControlName="estimate">
+  		<mat-option [value]=0>0 Points</mat-option>
+  		<mat-option [value]=1>1 Points</mat-option>
+  		<mat-option [value]=2>2 Points</mat-option>
+  		<mat-option [value]=3>3 Points</mat-option>
+  		<mat-option [value]=5>5 Points</mat-option>
+  		<mat-option [value]=8>8 Points</mat-option>
+  		<mat-option [value]=13>13 Points</mat-option>
+  		<mat-option [value]=21>21 Points</mat-option>
+  	</mat-select>
+   
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+  	<mat-label>State</mat-label>
+  	<mat-select formControlName="state">
+  		<mat-option value="Open">Open</mat-option>
+  		<mat-option value="In Progress">In Progress</mat-option>
+  		<mat-option value="Closed">Closed</mat-option>
+  	</mat-select>
+  </mat-form-field>
+
+<div mat-dialog-actions>
+  <button mat-button *ngIf="!newIssueMode && permission(data.issue.project && allowDelete, 'delete-issue')" color="warn" (click)="confirmDelete()">Delete</button>
+  <button mat-button (click)="cancelEdit()">Cancel</button>
+  <button mat-button [disabled]="!editIssueForm.valid" (click)="confirmEdit()">Save</button>
+</div>
+

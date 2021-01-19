@@ -1,0 +1,9 @@
+
+.task-link {
+	color: #444;
+}
+
+.task-link:hover {
+	text-decoration: none;
+	color: blue;
+}

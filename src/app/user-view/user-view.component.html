@@ -1,0 +1,5 @@
+<span *ngIf="user; else elseBlock">
+	<img class="user-icon" *ngIf="icon" [src]="user.picture">
+	{{user.first_name}} {{user.last_name}}
+</span>
+<ng-template #elseBlock>{{placeholder}}</ng-template>
