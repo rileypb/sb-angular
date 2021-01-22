@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription, Subject, ReplaySubject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Channel } from 'angular2-actioncable';
 import { CableService } from './cable.service';
 import { filter, mapTo, map, startWith, first } from 'rxjs/operators';
 import { merge, interval } from 'rxjs';
+import { Api } from './api';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class DataService {
 
   private syncers:SyncerRegistry;
 
-  constructor(public cableService:CableService, public http: HttpClient) { }  
+  constructor(public cableService:CableService, public api:Api) { }  
 
   init() : void {
   	this.channel = this.cableService.channel('SyncChannel');
@@ -71,7 +71,7 @@ export class DataService {
   load(address:string, selectors:string[]):void {
   	let hold:Hold = this.holds[address];
   	if (!hold) {
-  		this.holds[address] = new Hold(address, this.channel, this.http, this.syncers);
+  		this.holds[address] = new Hold(address, this.channel, this.api, this.syncers);
   		hold = this.holds[address];
   		hold.refresh();
   	}
@@ -118,14 +118,14 @@ class Hold {
 	readonly value:ReplaySubject<any> = new ReplaySubject<any>();
 
 
-	constructor(address:string, private syncChannel:Channel, private http:HttpClient, private syncers:SyncerRegistry) {
+	constructor(address:string, private syncChannel:Channel, private api:Api, private syncers:SyncerRegistry) {
 		this.address = address;
 		this.value.next(null);
 	}
 
 	refresh() {
 		console.log(`load ${this.address}`);
-		this.http.get('api/' + this.address).subscribe(
+		this.api.get('api/' + this.address).subscribe(
 			success => {
 				this.value.next(success);
 			},

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Api } from './api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private api:Api) { }
 
   save(user) {
-  	return this.http.patch(`api/users/${user.id}`, { user: user });
+  	return this.api.patch(`api/users/${user.id}`, { user: user });
   }
 }

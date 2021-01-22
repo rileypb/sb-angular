@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from './task';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Api } from './api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private api:Api) { }
 
   save(task: Task) : Observable<any> {
-  	return this.http.patch(`api/tasks/${task.id}`, { task: task });
+  	return this.api.patch(`api/tasks/${task.id}`, { task: task });
   }
 
   createTask(task: Task) : Observable<any> {
-    return this.http.post(`api/issues/${task.issue.id}/tasks`, { task: task });
+    return this.api.post(`api/issues/${task.issue.id}/tasks`, { task: task });
   }
 
   deleteTask(taskId: number) : Observable<any> {
-    return this.http.delete(`api/tasks/${taskId}`);
+    return this.api.delete(`api/tasks/${taskId}`);
   }
 
   updateState(task: Task, value:string): void {
-    this.http.patch(`api/tasks/${task.id}`, { task: { id: task.id, state: value } }).subscribe();
+    this.api.patch(`api/tasks/${task.id}`, { task: { id: task.id, state: value } }).subscribe();
   }
 
   setComplete(taskId:number, complete:boolean) {
-    return this.http.patch(`api/tasks/${taskId}/set_complete`, { complete: complete });
+    return this.api.patch(`api/tasks/${taskId}/set_complete`, { complete: complete });
   }
 }

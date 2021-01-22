@@ -5,6 +5,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { MatIconRegistry } from "@angular/material/icon";
 import { LocationService } from './location.service';
 import { DataService } from './data.service';
+import { environment } from '../environments/environment';
 
 import { trigger, state, style, animate, transition } from '@angular/animations';
 

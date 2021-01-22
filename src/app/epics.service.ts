@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Api } from './api';
 import { Project } from './project';
 import { Epic } from './epic';
 import { Observable } from 'rxjs';
@@ -10,16 +10,16 @@ import { Issue } from './issue';
 })
 export class EpicsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private api:Api) { }
 
 
   reorder(projectId: number, order: string) : void {
-  	this.http.patch('api/projects/' + projectId , { project: { epic_order: order }}).subscribe();
+  	this.api.patch('api/projects/' + projectId , { project: { epic_order: order }}).subscribe();
   }
 
 
   save(epic: Epic) : Observable<any> {
-  	return this.http.patch(`api/epics/${epic.id}`, { epic: {
+  	return this.api.patch(`api/epics/${epic.id}`, { epic: {
       id: epic.id,
       project_id: epic.project.id,
       title: epic.title,
@@ -30,22 +30,22 @@ export class EpicsService {
   }
 
   createEpic(epic: Epic) : Observable<any> {
-    return this.http.post(`api/projects/${epic.project.id}/epics`, { epic: epic });
+    return this.api.post(`api/projects/${epic.project.id}/epics`, { epic: epic });
   }
 
   deleteEpic(epicId: number) : Observable<any> {
-    return this.http.delete(`api/epics/${epicId}`);
+    return this.api.delete(`api/epics/${epicId}`);
   }
 
   removeIssue(epic:Epic, issue:Issue):Observable<any> {
-    return this.http.patch(`api/epics/${epic.id}/remove_issue`, { issue: { id: issue.id }})
+    return this.api.patch(`api/epics/${epic.id}/remove_issue`, { issue: { id: issue.id }})
   }
 
   reorderIssues(epic:Epic, fromIndex:number, toIndex:number):Observable<any> {
-    return this.http.patch(`api/epics/${epic.id}/reorder_issues`, { data: { fromIndex: fromIndex, toIndex: toIndex }})
+    return this.api.patch(`api/epics/${epic.id}/reorder_issues`, { data: { fromIndex: fromIndex, toIndex: toIndex }})
   }
 
   addIssue(epic:Epic, issue:Issue, index:number = -1) {
-    return this.http.patch(`api/epics/${epic.id}/add_issue`, { data: { issue_id: issue.id, index: index } });
+    return this.api.patch(`api/epics/${epic.id}/add_issue`, { data: { issue_id: issue.id, index: index } });
   }
 }

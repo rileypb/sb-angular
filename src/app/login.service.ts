@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Api } from './api';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
 import { CableService } from './cable.service';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class LoginService {
@@ -13,7 +14,7 @@ export class LoginService {
   status: string = 'pending';
   error: string;
 
-  constructor(private http: HttpClient, private router: Router, private cableService: CableService) { }
+  constructor(private api: Api, private router: Router, private cableService: CableService) { }
 
 
   // init() : void {
@@ -28,7 +29,7 @@ export class LoginService {
   checkLoginStatus() : Observable<string> {
     this.error = null;
     return new Observable(subscriber => {
-      this.http.get("api/me").subscribe(
+      this.api.get("api/me").subscribe(
         succ => {
           this.user = succ;
           if (!this.user) {
@@ -50,11 +51,11 @@ export class LoginService {
   }
 
   login(): void {
-    window.location.href = '/users/sign_in';
+    window.location.href = `${environment.apiBaseUrl}/users/sign_in`;
   }
 
   logout(): void {
-    window.location.href = '/users/sign_out';
+    window.location.href = `${environment.apiBaseUrl}/users/sign_out`;
   }
 
 }

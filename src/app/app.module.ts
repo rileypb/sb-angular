@@ -97,6 +97,7 @@ import { CheckableTaskListComponent } from './checkable-task-list/checkable-task
 import { CheckableTaskEntryComponent } from './checkable-task-entry/checkable-task-entry.component';
 import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import { UserProfileFormComponent } from './user-profile-form/user-profile-form.component';
+import { Api } from './api';
 
 
 @NgModule({
@@ -201,6 +202,7 @@ import { UserProfileFormComponent } from './user-profile-form/user-profile-form.
     UiStateService,
     FocusMonitor,
     DataService,
+    Api,
   ],
   bootstrap: [AppComponent],
   exports: [MaterialModule,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Api } from './api';
 import { Observable, Subject, ReplaySubject } from 'rxjs';
 
 import { Project } from './project';
@@ -8,31 +8,31 @@ import { Project } from './project';
 export class ProjectService {
 
 
-  constructor(private http: HttpClient) { 
+  constructor(private api:Api) { 
   }
 
   refresh() {
-  	return this.http.get('api/projects');
+  	return this.api.get('api/projects');
   }
 
   getProject(id: number) {
-  	return this.http.get('api/projects/' + id);
+  	return this.api.get('api/projects/' + id);
   }
 
   getProjectIssues(id: number) {
-  	return this.http.get('api/projects/' + id + '/issues');
+  	return this.api.get('api/projects/' + id + '/issues');
   }
 
   updateProject(project:Project) {
     console.log("updateProject");
-    return this.http.patch(`api/projects/${project.id}`, {project: project});
+    return this.api.patch(`api/projects/${project.id}`, {project: project});
   }
 
   reorderEpics(project:Project, fromIndex:number, toIndex:number) {
-    return this.http.patch(`api/projects/${project.id}/reorder_epics`, { data: { fromIndex: fromIndex, toIndex: toIndex }});
+    return this.api.patch(`api/projects/${project.id}/reorder_epics`, { data: { fromIndex: fromIndex, toIndex: toIndex }});
   }
 
   reorderIssues(project:Project, fromIndex:number, toIndex:number) {
-    return this.http.patch(`api/projects/${project.id}/reorder_issues`, { data: { fromIndex: fromIndex, toIndex: toIndex }});
+    return this.api.patch(`api/projects/${project.id}/reorder_issues`, { data: { fromIndex: fromIndex, toIndex: toIndex }});
   } 
 }

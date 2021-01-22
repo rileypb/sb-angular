@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Api } from './api';
 import { Project } from './project';
 import { Sprint } from './sprint';
 import { Issue } from './issue';
@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class IssuesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private api:Api) { }
 
   reorder(projectId: number, sprintId: number | null, order: string) : void {
     if (!sprintId) {
-  	  this.http.patch('api/projects/' + projectId , { project: { order: order }}).subscribe();
+  	  this.api.patch('api/projects/' + projectId , { project: { order: order }}).subscribe();
   	} else {
-  	  this.http.patch('api/projects/' + projectId + '/sprints/' + sprintId, { sprint: { order: order }}).subscribe();
+  	  this.api.patch('api/projects/' + projectId + '/sprints/' + sprintId, { sprint: { order: order }}).subscribe();
   	}
   }
 
@@ -27,26 +27,26 @@ export class IssuesService {
   // }
 
   transfer(transfer_data) {
-    return this.http.patch('api/transfer_issues', { transfer: transfer_data })
+    return this.api.patch('api/transfer_issues', { transfer: transfer_data })
   }
 
   save(issue: Issue) : Observable<any> {
-  	return this.http.patch(`api/issues/${issue.id}`, { issue: issue });
+  	return this.api.patch(`api/issues/${issue.id}`, { issue: issue });
   }
 
   createIssue(issue: Issue) : Observable<any> {
-    return this.http.post(`api/projects/${issue.project.id}/issues`, { issue: issue });
+    return this.api.post(`api/projects/${issue.project.id}/issues`, { issue: issue });
   }
 
   deleteIssue(issueId: number) : Observable<any> {
-    return this.http.delete(`api/issues/${issueId}`);
+    return this.api.delete(`api/issues/${issueId}`);
   }
 
   updateState(issue: Issue, value:string): Observable<any> {
-    return this.http.patch(`api/issues/${issue.id}`, { issue: { id: issue.id, state: value } });
+    return this.api.patch(`api/issues/${issue.id}`, { issue: { id: issue.id, state: value } });
   }
 
   reorderTasks(issue:Issue, fromIndex:number, toIndex:number): Observable<any> {
-    return this.http.patch(`api/issues/${issue.id}/reorder_tasks`, { data: { fromIndex: fromIndex, toIndex: toIndex }});
+    return this.api.patch(`api/issues/${issue.id}/reorder_tasks`, { data: { fromIndex: fromIndex, toIndex: toIndex }});
   }
 }
