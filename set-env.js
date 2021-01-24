@@ -7,8 +7,17 @@ require('dotenv').load();
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
    apiBaseUrl: '${process.env.API_BASE_URL || "http://localhost:3000"}',
-   cableUrl: '${process.env.CABLE_URL || "localhost:3000/cable"}',
-   production: '${process.env.PRODUCTION || false}'
+   cableUrl: '${process.env.CABLE_URL || "ws://localhost:3000/cable"}',
+   production: '${process.env.PRODUCTION || false}',
+   auth: {
+   	domain: '${process.env.domain}',
+   	clientId: '${process.env.clientId}',
+   	audience: '${process.env.audience}',
+   	redirectUri: window.location.origin,
+   },
+   httpInterceptor: {
+   	allowedList: [\`${process.env.apiUri}/*\`],
+   },
 };
 `;
 console.log(colors.magenta('The file `environment.ts` will be written with the following content: \n'));

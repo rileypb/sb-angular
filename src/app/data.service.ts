@@ -5,6 +5,8 @@ import { CableService } from './cable.service';
 import { filter, mapTo, map, startWith, first } from 'rxjs/operators';
 import { merge, interval } from 'rxjs';
 import { Api } from './api';
+import { AuthService } from '@auth0/auth0-angular';
+import { UserInfoService } from './user-info.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,7 @@ export class DataService {
 
   private syncers:SyncerRegistry;
 
-  constructor(public cableService:CableService, public api:Api) { }  
+  constructor(public cableService:CableService, public api:Api, private auth:AuthService, private userInfo:UserInfoService) { }  
 
   init() : void {
   	this.channel = this.cableService.channel('SyncChannel');
@@ -42,19 +44,32 @@ export class DataService {
     this.channel.disconnected().subscribe();
 
     this.status = merge(
-      this.channel.connected().pipe(mapTo("connected")),
+      this.channel.connected().pipe(mapTo("connected")), 
       this.channel.disconnected().pipe(mapTo("disconnected")),
       this.channel.rejected().pipe(mapTo("rejected"))
     ).pipe(startWith('uninitialized'));
 
     this.status.subscribe((x) => console.log(x));
 
+    this.api.get("api/me").subscribe();
+    
+    console.log("monitoring status...");
+    this.status.subscribe((x) => {
+    	if (x == 'connected') {
+    console.log("connected");
+			this.auth.getAccessTokenSilently().subscribe((t) => {
+				console.log("retrieved access token");
+				this.channel.perform("auth", { token: t });
+			});
+    	}
+    })
+
     this.syncLoop = interval(1000).subscribe(val => this.doSync());
     this.isConnected = this.status.pipe(map(val => val == 'connected'));
     this.isDisconnected = this.status.pipe(map(val => val == 'disconnected'));
   }
 
-
+  stop() {}
 
   private doSync():void {
   	for (let key in this.holds) {

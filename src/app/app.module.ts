@@ -4,7 +4,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ActionCableService, Channel } from 'angular2-actioncable';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -98,6 +98,11 @@ import { CheckableTaskEntryComponent } from './checkable-task-entry/checkable-ta
 import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import { UserProfileFormComponent } from './user-profile-form/user-profile-form.component';
 import { Api } from './api';
+import { UserInfoService } from './user-info.service';
+
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -191,8 +196,19 @@ import { Api } from './api';
       echarts: () => import('echarts')
     }),
     ColorPickerModule,
+    AuthModule.forRoot({
+      ...environment.auth,
+      httpInterceptor: {
+        ...environment.httpInterceptor,
+      },
+    }),
   ],
   providers: [ 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    },
   	ActionCableService,
   	ProjectService,
   	LoginService,
@@ -203,6 +219,7 @@ import { Api } from './api';
     FocusMonitor,
     DataService,
     Api,
+    UserInfoService,
   ],
   bootstrap: [AppComponent],
   exports: [MaterialModule,

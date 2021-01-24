@@ -4,6 +4,8 @@ import { LoginService } from '../login.service';
 
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
+import { UserInfoService } from '../user-info.service';
+
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
@@ -15,7 +17,7 @@ export class TopBarComponent implements OnInit {
   @Input() syncServiceStatus: string;
   @Output() toggleSidenav = new EventEmitter<string>();
 
-  constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginService, public userInfo:UserInfoService) { }
 
   ngOnInit() {
   }

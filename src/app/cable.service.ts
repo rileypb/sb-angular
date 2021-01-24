@@ -13,7 +13,7 @@ export class CableService {
   private channels: Channel[] = [];
 
   constructor(public actionCableService: ActionCableService) { 
-    this.cable = this.actionCableService.cable(`ws://${environment.cableUrl}`); 
+    this.cable = this.actionCableService.cable(`${environment.cableUrl}`); 
   }
 
   channel(channelName:string) : Channel {

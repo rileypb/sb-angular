@@ -1,61 +1,41 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Api } from './api';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
 import { CableService } from './cable.service';
 import { environment } from '../environments/environment';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Injectable()
 export class LoginService {
   user: any;
-  status: string = 'pending';
+  status:ReplaySubject<any> = new ReplaySubject<any>(1);
   error: string;
+  lastValue:string = null;
 
-  constructor(private api: Api, private router: Router, private cableService: CableService) { }
-
-
-  // init() : void {
-  //  this.redirectForLogin(null);
-  // }
-
-  init() : Observable<string> {
-   return this.checkLoginStatus();
-    
-  }
-
-  checkLoginStatus() : Observable<string> {
-    this.error = null;
-    return new Observable(subscriber => {
-      this.api.get("api/me").subscribe(
-        succ => {
-          this.user = succ;
-          if (!this.user) {
-              this.status = 'logged_out';
-          } else {
-              this.status = 'logged_in';
-          }
-          subscriber.next(this.status);
-          subscriber.complete();
-        },
-        err => {
-          this.error = err.message;
-          this.status = 'error';
-          subscriber.next(this.status);
-          subscriber.complete();
-        }
-      );
-    });
+  constructor(private api: Api, private router: Router, private cableService: CableService, private auth:AuthService) {
+    this.status.next('pending');
+    this.auth.user$.subscribe(value => {
+      if (value == this.lastValue) return;
+      if (value) {
+        this.status.next('logged_in');
+      } else {
+        this.status.next('logged_out');
+      }
+      this.lastValue = value;
+    })
   }
 
   login(): void {
-    window.location.href = `${environment.apiBaseUrl}/users/sign_in`;
+    // window.location.href = `${environment.apiBaseUrl}/users/sign_in`;
+    this.auth.loginWithRedirect();
   }
 
   logout(): void {
-    window.location.href = `${environment.apiBaseUrl}/users/sign_out`;
+    this.auth.logout();
   }
 
 }

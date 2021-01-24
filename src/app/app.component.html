@@ -8,7 +8,7 @@
 	</mat-drawer>
 
 	<mat-drawer-content class="main-content-drawer"> -->
-		<div class="main-content-container container" *ngIf="loginService.status == 'logged_in' && loginService.user">
+		<div class="main-content-container container" *ngIf="(loginService.status | async) == 'logged_in' && loginService.user">
 		  <div>
 			  <app-topnav></app-topnav>
 
@@ -24,6 +24,7 @@
 		<!-- <div [@fadeInOut] class="blocker" id="blocker" *ngIf="appmenu.expand"></div>
 	</mat-drawer-content>
 </mat-drawer-container> -->
+
 
 </div>
 

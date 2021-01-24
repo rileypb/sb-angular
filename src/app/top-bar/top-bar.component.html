@@ -1,17 +1,23 @@
 <div class="topbar"> 
 
   <div>
-      <div *ngIf="loginService.status == 'logged_in' && loginService.user">
-        <span class="mr-3">{{ loginService.user.first_name }}</span><a [routerLink]="'profile'"><img class="user_picture mr-3" [src]="loginService.user.picture"/></a>
-        <button mat-flat-button color="primary" (click)="logout()">log out</button>
+      <div *ngIf="userInfo.user | async">
+        <span class="mr-3">{{(userInfo.user | async).name }}</span><a [routerLink]="'profile'">
+         <img
+                [src]="(userInfo.user | async).picture"
+                alt="Profile picture"
+                class="nav-user-profile rounded-circle"
+                style="width: 32px;"
+              /></a>
+        <button class="ml-3" mat-flat-button color="primary" (click)="logout()">log out</button>
       </div>
-      <div *ngIf="loginService.status == 'logged_out'">
+      <div *ngIf="!(userInfo.user | async)">
         logged out.
-        <button mat-button (click)="login()">log in with Google</button>
+        <button mat-button (click)="login()">log in</button>
       </div>
-      <div *ngIf="loginService.status == 'error'">
+     <!--  <div *ngIf="loginService.status == 'error'">
         Error while logging in: {{ loginService.error }}
-      </div>
+      </div> -->
   </div>
 
   <div style="position: relative; top: '4px'"><mat-icon fontSet="fas" fontIcon="fa-chalkboard-teacher"></mat-icon> <h6 style="display: inline;">Scrumboard</h6></div>

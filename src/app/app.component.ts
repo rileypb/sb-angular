@@ -6,6 +6,7 @@ import { MatIconRegistry } from "@angular/material/icon";
 import { LocationService } from './location.service';
 import { DataService } from './data.service';
 import { environment } from '../environments/environment';
+import { UserInfoService } from './user-info.service';
 
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -43,7 +44,8 @@ export class AppComponent implements OnInit {
   private _mobileQueryListener: () => void;
 
   constructor(public loginService: LoginService, public dataService:DataService,
-      changeDetectorRef:ChangeDetectorRef, media:MediaMatcher, public matIconRegistry: MatIconRegistry) {
+      changeDetectorRef:ChangeDetectorRef, media:MediaMatcher, public matIconRegistry: MatIconRegistry,
+      public userInfo:UserInfoService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -52,11 +54,24 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log("init loginService");
-    this.loginService.init().subscribe(x => {console.log(x); this.initSync();});
+    // this.loginService.init().subscribe(x => {console.log(x); this.initSync();});
+    this.loginService.status.subscribe(
+      value => {
+        if (value == 'logged_in') {
+          this.initSync();
+        } else if (value == 'logged_out') {
+          this.stopSync();
+        }
+      }
+    );
   }
 
   initSync() : void {
     this.dataService.init();
+  }
+
+  stopSync() : void {
+    this.dataService.stop();
   }
 
   ngOnDestroy() {
