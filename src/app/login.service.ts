@@ -35,7 +35,7 @@ export class LoginService {
   }
 
   logout(): void {
-    this.auth.logout();
+    this.auth.logout({ returnTo: document.location.origin });
   }
 
 }
