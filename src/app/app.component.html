@@ -2,12 +2,9 @@
 <app-top-bar error="{{error}}" syncServiceStatus="{{dataService.status | async}}"></app-top-bar>
 
 <div class="app-container">
-<!-- <mat-drawer-container class="app-container">
-	<mat-drawer class="app-drawer" [ngClass]="{'shadow': !appmenu.expand}" mode="side" opened="true" disableClose="true">
-		<app-menu-container #appmenu></app-menu-container>
-	</mat-drawer>
 
-	<mat-drawer-content class="main-content-drawer"> -->
+<<{{ (loginService.status | async) }}>>
+
 		<div class="main-content-container container" *ngIf="(loginService.status | async) == 'logged_in'">
 		  <div>
 			  <app-topnav></app-topnav>
@@ -20,10 +17,6 @@
 		</div>
 
 
-		<!-- <div [hidden]="!(syncService.isDisconnected | async)"><h2>You are temporarily disconnected from the server. Try refreshing the browser, or wait a while.</h2></div> -->
-		<!-- <div [@fadeInOut] class="blocker" id="blocker" *ngIf="appmenu.expand"></div>
-	</mat-drawer-content>
-</mat-drawer-container> -->
 
 
 </div>
