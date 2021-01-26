@@ -13,6 +13,7 @@ export class CableService {
   private channels: Channel[] = [];
 
   constructor(public actionCableService: ActionCableService) { 
+    console.log(`Creating cable ${environment.cableUrl}`);
     this.cable = this.actionCableService.cable(`${environment.cableUrl}`); 
   }
 
