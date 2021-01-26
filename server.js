@@ -1,4 +1,3 @@
-const proxy = require('express-http-proxy');
 
 const express = require('express');
 
