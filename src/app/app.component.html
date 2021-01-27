@@ -3,8 +3,6 @@
 
 <div class="app-container">
 
-<<{{ (loginService.status | async) }}>>
-
 		<div class="main-content-container container" *ngIf="(loginService.status | async) == 'logged_in'">
 		  <div>
 			  <app-topnav></app-topnav>
