@@ -6,4 +6,5 @@ export interface Sprint {
 	description:string;
 	project: Project;
 	burndownData?: any;
+	goal?: string;
 }

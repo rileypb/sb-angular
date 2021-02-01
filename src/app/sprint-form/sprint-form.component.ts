@@ -31,15 +31,17 @@ export class SprintFormComponent extends Base implements OnInit {
   }
 
   ngOnInit(): void {
-  	this.sprint = this.sprint || {id: -1, title: '', description: '', project: {id: 0, name: "foo"}};
+  	this.sprint = this.sprint || {id: -1, title: '', goal: '', description: '', project: {id: 0, name: "foo"}};
   	this.editSprintForm = this.fb.group({
       title: new FormControl(this.sprint.title, Validators.compose([Validators.pattern(".*[^\\s]+.*"), Validators.required])),
+      goal: new FormControl(this.sprint.goal),
       description: new FormControl(this.sprint.description),
   	});
   }
 
   confirmEdit() {
   	this.sprint.title = this.editSprintForm.controls['title'].value;
+    this.sprint.goal = this.editSprintForm.controls['goal'].value;
   	this.sprint.description = this.editSprintForm.controls['description'].value;
   	this.confirm.emit(this.sprint);
   }

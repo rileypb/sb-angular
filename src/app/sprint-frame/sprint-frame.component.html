@@ -8,6 +8,7 @@
 				{{sprint.id}} - {{sprint.title}}
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(sprint, 'update')" mat-icon-button color="primary" matTooltip="Edit Sprint" (click)="editSprint()"><mat-icon>edit</mat-icon></button>
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showSuspendButton && permission(sprint, 'update')" mat-icon-button color="warn" matTooltip="Suspend Sprint" (click)="suspendSprint()"><mat-icon>pause_circle</mat-icon></button>
+				<span class="ml-3">Goal: {{ sprint.goal }}</span>
 			</mat-card-title>
 			<ng-content></ng-content>
 		</mat-card>

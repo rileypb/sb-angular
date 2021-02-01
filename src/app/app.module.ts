@@ -103,6 +103,7 @@ import { UserInfoService } from './user-info.service';
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 
 import { environment } from '../environments/environment';
+import { ProjectActivityListComponent } from './project-activity-list/project-activity-list.component';
 
 
 @NgModule({
@@ -177,6 +178,7 @@ import { environment } from '../environments/environment';
     CheckableTaskEntryComponent,
     SprintFormComponent,
     UserProfileFormComponent,
+    ProjectActivityListComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

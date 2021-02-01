@@ -1,8 +1,9 @@
-
-<div class="row" *ngFor="let activity of activities">
-	<div class="col-8 mb-2">
-		<mat-icon style="display: inline; margin-right: 2px;" fontSet="fas" fontIcon="fa-ellipsis-h"></mat-icon>
-		<app-activity-entry [activity]="activity"></app-activity-entry>
+<div *ngIf="activities">
+	<div class="row" *ngFor="let activity of activities">
+		<div class="col-8 mb-2">
+			<mat-icon style="display: inline; margin-right: 2px;" fontSet="fas" fontIcon="fa-ellipsis-h"></mat-icon>
+			<app-activity-entry [activity]="activity"></app-activity-entry>
+		</div>
+		<app-rich-date [date]="activity.created_at"></app-rich-date>
 	</div>
-	<app-rich-date [date]="activity.created_at"></app-rich-date>
 </div>

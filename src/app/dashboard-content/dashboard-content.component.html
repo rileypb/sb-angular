@@ -14,7 +14,7 @@
 					Recent Activity
 				</mat-card-title>
 				<mat-card-content>
-					<app-activity-list [activities]="project.activities"></app-activity-list>
+					<sb-project-activity-list [project]="project"></sb-project-activity-list>
 				</mat-card-content>
 			</mat-card>
 		</div>
@@ -26,7 +26,10 @@
 					Current Sprint
 				</mat-card-title>
 				<mat-card-content>
-					<div *ngIf="project.currentSprint"><a [routerLink]="['/','projects',project.id,'execution']">{{project.currentSprint.id}} - {{project.currentSprint.title}}</a></div> 
+					<div *ngIf="project.currentSprint">
+						<a [routerLink]="['/','projects',project.id,'execution']">{{project.currentSprint.id}} - {{project.currentSprint.title}}</a>
+						<div>Goal: {{ project.currentSprint.goal }}</div>
+					</div> 
 					<h6 *ngIf="!project.currentSprint">None</h6>
 				</mat-card-content>
 			</mat-card>
