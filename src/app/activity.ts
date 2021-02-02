@@ -12,9 +12,10 @@ export interface Activity {
   issue?:Issue;
   task?:Task;
   epic?:Epic;
+  epic2?:Epic;
   action:string;
   modifier?:string;
-  sprint:Sprint;
-  sprint2:Sprint;
+  sprint?:Sprint;
+  sprint2?:Sprint;
   project_context:Project;
 }

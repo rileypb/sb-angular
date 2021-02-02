@@ -14,5 +14,11 @@
 		<app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
 	<span *ngSwitchCase="'moved_issue_between_sprints'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> from 
 		<app-sprint-number-link [sprint]="activity.sprint2"></app-sprint-number-link> to <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+	<span *ngSwitchCase="'moved_issue_between_epics'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> from 
+		<sb-epic-number-link [epic]="activity.epic2"></sb-epic-number-link> to <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
+	<span *ngSwitchCase="'started_sprint'">started <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+	<span *ngSwitchCase="'suspended_sprint'">suspended <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+	<span *ngSwitchCase="'reordered_issues'">reordered the product backlog</span>
+
 	<span *ngSwitchDefault>{{activity.action}}</span>
 </span> 
