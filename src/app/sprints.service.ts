@@ -31,8 +31,8 @@ export class SprintsService {
     return this.api.patch(`api/sprints/${sprint.id}/remove_issue`, { issue: { id: issue.id }})
   }
 
-  startSprint(sprint:Sprint):Observable<any> {
-    return this.api.post(`api/sprints/${sprint.id}/start`, {});
+  startSprint(startData:any):Observable<any> {
+    return this.api.post(`api/sprints/${startData.sprint.id}/start`, { data: { startDate: startData.sprint.startDate, endDate: startData.sprint.endDate, reset: startData.reset }});
   }
 
   suspendSprint(sprint:Sprint):Observable<any> {

@@ -1,0 +1,35 @@
+<mat-card fxLayoutGap>
+	<p mat-dialog-title>Start Sprint</p>
+	
+	<form [formGroup]="startSprintForm">
+		<div fxLayout="row">
+			<mat-form-field appearance="fill">
+				<mat-label>Start Date</mat-label>
+				<input matInput [matDatepicker]="startpicker" formControlName="startDate">
+				<mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+				<mat-datepicker #startpicker></mat-datepicker>
+				<mat-error>Start Date is required</mat-error>
+			</mat-form-field>
+
+			<mat-form-field appearance="fill">
+				<mat-label>End Date</mat-label>
+				<input matInput [matDatepicker]="endpicker" formControlName="endDate">
+				<mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+				<mat-datepicker #endpicker></mat-datepicker>
+				<mat-error>End Date is required</mat-error>
+			</mat-form-field>
+		</div>
+
+
+		<div *ngIf="startSprintForm.errors?.range && startSprintForm.get('startDate').value && startSprintForm.get('endDate').value && startSprintForm.touched"><span class="errorMessage">End Date must be after Start Date</span></div>
+
+		<div [hidden]="!hasBurndownData(data.sprint) || !data.sprint.started">
+			<mat-checkbox formControlName="reset">Reset Burndown</mat-checkbox><mat-icon (click)="showResetHelp()">help</mat-icon>
+		</div>
+	</form>
+
+	<div mat-dialog-actions>
+        <button mat-button (click)="onDismiss()">Cancel</button>
+        <button mat-raised-button color="warn" [disabled]="!startSprintForm.valid" (click)="onConfirm()">Start</button>
+    </div>
+</mat-card>

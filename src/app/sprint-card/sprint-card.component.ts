@@ -4,6 +4,8 @@ import { UiStateService } from '../ui-state.service';
 import { Base } from '../base';
 import { Sprint } from '../sprint';
 import { Project } from '../project';
+import { StartSprintComponent } from '../start-sprint/start-sprint.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sprint-card',
@@ -16,10 +18,10 @@ export class SprintCardComponent extends Base implements OnInit {
   @Input() showStartButton: boolean;
   @Output() transfer:EventEmitter<any> = new EventEmitter<any>();
   @Output() selected:EventEmitter<Sprint> = new EventEmitter<Sprint>();
-  @Output() start:EventEmitter<Sprint> = new EventEmitter<Sprint>();
+  @Output() start:EventEmitter<any> = new EventEmitter<any>();
   expanded: boolean = false;
 
-  constructor(public uiState:UiStateService) {
+  constructor(public uiState:UiStateService, public dialog:MatDialog) {
     super();
   }
 
@@ -42,7 +44,24 @@ export class SprintCardComponent extends Base implements OnInit {
   }
 
   onStartSprint(event) {
-    this.start.emit(this.sprint);
+    let data = {
+      sprint: this.sprint,
+      reset: false
+    }
+
+    const dialogRef = this.dialog.open(StartSprintComponent, {
+      maxWidth: "600px",
+      data: data
+    });
+
+    // listen to response
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this.start.emit(data);
+      }    
+    });
+
+    // this.start.emit(this.sprint);
   }
 
 }

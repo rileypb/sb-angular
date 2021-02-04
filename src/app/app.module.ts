@@ -104,6 +104,8 @@ import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 
 import { environment } from '../environments/environment';
 import { ProjectActivityListComponent } from './project-activity-list/project-activity-list.component';
+import { StartSprintComponent } from './start-sprint/start-sprint.component';
+import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 
 
 @NgModule({
@@ -179,6 +181,8 @@ import { ProjectActivityListComponent } from './project-activity-list/project-ac
     SprintFormComponent,
     UserProfileFormComponent,
     ProjectActivityListComponent,
+    StartSprintComponent,
+    InfoDialogComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

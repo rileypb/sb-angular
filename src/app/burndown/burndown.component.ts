@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sprint } from '../sprint';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-burndown',
@@ -8,10 +9,13 @@ import { Sprint } from '../sprint';
 })
 export class BurndownComponent implements OnInit {
   options: any;
-  constructor() {}
+  constructor(private dataService:DataService) {}
 
   ngOnInit(): void {
-
+    this.dataService.load(`sprints/${this.sprint.id}`, [`sprints/${this.sprint.id}`]);
+    this.dataService.values[`sprints/${this.sprint.id}`].subscribe (
+      x => this.sprint = x
+    );
   }
 
   setBurndownData(sprint:Sprint) {    

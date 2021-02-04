@@ -20,13 +20,16 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
  
 const MATERIALMODULES = [MatTableModule, MatCardModule, MatExpansionModule, MatIconModule, 
 						 MatButtonModule, MatFormFieldModule, MatInputModule, MatDialogModule,
 						 MatTooltipModule, MatGridListModule, MatSelectModule, ScrollingModule,
 						 MatSnackBarModule, MatSidenavModule, MatListModule, MatProgressSpinnerModule,
-						 MatTabsModule, MatAutocompleteModule, MatCheckboxModule, MatSlideToggleModule];
+						 MatTabsModule, MatAutocompleteModule, MatCheckboxModule, MatSlideToggleModule,
+						 MatDatepickerModule, MatNativeDateModule];
 
 @NgModule({
      imports: [...MATERIALMODULES],

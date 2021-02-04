@@ -14,6 +14,7 @@
         <button mat-icon-button *ngIf="showStartButton" (click)="onStartSprint($event)" matTooltip="Start Sprint">
             <mat-icon class="play-icon" fontSet="fas" fontIcon="fa-play-circle"></mat-icon>
         </button>
+        <mat-icon *ngIf="sprint.id == sprint.project.current_sprint_id" class="mt-2" matTooltip="Current Sprint">directions_run</mat-icon>
       </span>
     </div>
 
