@@ -52,7 +52,7 @@ export class IssueFormComponent extends Base implements OnInit {
   	let editedIssue:Issue = { id: this.issue.id, 
   							title: this.issueForm.value['title'], 
   							description: this.issueForm.value['description'], 
-  							estimate: this.issueForm.value['size'],
+  							estimate: this.issueForm.value['estimate'],
   							project: this.issue.project
   						  };
   	this.confirmEdit.emit(editedIssue);
