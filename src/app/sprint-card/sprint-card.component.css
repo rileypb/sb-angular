@@ -39,9 +39,21 @@
 }
 
 .sprint-card-content {
+	background-color: #DDD;
+
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AAA;
+
+	margin-bottom: 6px;
+
 }
 
 .play-icon {
 	color: #00AA00;
 	font-size: x-large;
+}
+
+.sprint-info {
+	padding: 5px;
 }

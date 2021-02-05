@@ -18,7 +18,22 @@
       </span>
     </div>
 
-    <div class="sprint-card-content" style="margin: 0 auto;" *ngIf="expanded">
+    <div class="sprint-card-content" *ngIf="expanded">
+      <div class="sprint-info row">
+        <div class="col-12">Goal: {{ sprint.goal }}</div>
+      </div>
+      <div class="sprint-info row">
+        <div class="col-6">
+          State: {{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? "Suspended" : "Pending") }}
+        </div>
+        <div class="col-6">
+          Total Estimate: {{ sprint.total_estimate }}
+        </div>
+      </div>
+      <div class="sprint-info row">
+        <div class="col-12" [innerHtml]="sprint.description"></div>
+      </div>
+
     	<div style="margin-left: 30px;">
         <sb-sprint-issue-list [sprint]="sprint" (transfer)="onTransfer($event)"></sb-sprint-issue-list>
         <!-- <app-issues [project]="sprint.project" [sprint]="sprint"></app-issues> -->
