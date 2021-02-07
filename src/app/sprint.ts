@@ -7,7 +7,7 @@ export interface Sprint {
 	project: Project;
 	burndownData?: any;
 	goal?: string;
-	startDate?:Date;
-	endDate?:Date;
+	start_date?:Date;
+	end_date?:Date;
 	started?:boolean;
 }

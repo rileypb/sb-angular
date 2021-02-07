@@ -31,8 +31,8 @@ export class StartSprintComponent implements OnInit {
 
   ngOnInit(): void {
   	this.startSprintForm = this.fb.group({
-  		startDate: new FormControl(this.data.sprint.startDate, Validators.required),
-  		endDate: new FormControl(this.data.sprint.endDate, Validators.required),
+  		startDate: new FormControl(this.data.sprint.start_date, Validators.required),
+  		endDate: new FormControl(this.data.sprint.end_date, Validators.required),
   		reset: new FormControl(false),
   	}, { validator: dateValidator });
   }

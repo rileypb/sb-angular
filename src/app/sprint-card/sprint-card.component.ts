@@ -6,6 +6,9 @@ import { Sprint } from '../sprint';
 import { Project } from '../project';
 import { StartSprintComponent } from '../start-sprint/start-sprint.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { callWithSnackBar } from '../util';
+import { SprintsService } from '../sprints.service';
 
 @Component({
   selector: 'app-sprint-card',
@@ -21,7 +24,7 @@ export class SprintCardComponent extends Base implements OnInit {
   @Output() start:EventEmitter<any> = new EventEmitter<any>();
   expanded: boolean = false;
 
-  constructor(public uiState:UiStateService, public dialog:MatDialog) {
+  constructor(public uiState:UiStateService, public dialog:MatDialog, private snackBar:MatSnackBar, private sprintsService:SprintsService) {
     super();
   }
 
@@ -62,6 +65,10 @@ export class SprintCardComponent extends Base implements OnInit {
     });
 
     // this.start.emit(this.sprint);
+  }
+
+  suspendSprint() {
+    callWithSnackBar(this.snackBar, this.sprintsService.suspendSprint(this.sprint), ['Suspending sprint...', 'Sprint suspended', 'Error suspending sprint']);
   }
 
 }

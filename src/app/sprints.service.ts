@@ -32,7 +32,7 @@ export class SprintsService {
   }
 
   startSprint(startData:any):Observable<any> {
-    return this.api.post(`api/sprints/${startData.sprint.id}/start`, { data: { startDate: startData.sprint.startDate, endDate: startData.sprint.endDate, reset: startData.reset }});
+    return this.api.post(`api/sprints/${startData.sprint.id}/start`, { data: { startDate: startData.sprint.start_date, endDate: startData.sprint.end_date, reset: startData.reset }});
   }
 
   suspendSprint(sprint:Sprint):Observable<any> {
