@@ -42,8 +42,8 @@ export class StartSprintComponent implements OnInit {
   }
 
   onConfirm() {
-  	this.data.sprint.startDate = this.startSprintForm.get('startDate').value;
-  	this.data.sprint.endDate = this.startSprintForm.get('endDate').value;
+  	this.data.sprint.start_date = this.startSprintForm.get('startDate').value;
+  	this.data.sprint.end_date = this.startSprintForm.get('endDate').value;
   	this.data.reset = this.startSprintForm.get('reset').value;
   	console.log(`this.data.reset = ${this.data.reset}`);
   	this.dialogRef.close(true);
