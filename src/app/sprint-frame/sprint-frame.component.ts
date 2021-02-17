@@ -11,7 +11,9 @@ export class SprintFrameComponent extends Base implements OnInit {
   @Input() sprint:Sprint;
   @Input() showEditButton:boolean;
   @Input() showSuspendButton:boolean;
+  @Input() showFinishButton:boolean;
   @Output() suspend:EventEmitter<Sprint> = new EventEmitter<Sprint>();
+  @Output() finish:EventEmitter<Sprint> = new EventEmitter<Sprint>();
 
   constructor() { 
   	super();
@@ -22,6 +24,10 @@ export class SprintFrameComponent extends Base implements OnInit {
 
   suspendSprint() {
     this.suspend.emit(this.sprint);
+  }
+
+  finishSprint() {
+    this.finish.emit(this.sprint);
   }
 
 }

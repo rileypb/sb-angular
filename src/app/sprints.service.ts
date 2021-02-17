@@ -38,4 +38,8 @@ export class SprintsService {
   suspendSprint(sprint:Sprint):Observable<any> {
     return this.api.post(`api/sprints/${sprint.id}/suspend`, {});
   }
+
+  finishSprint(sprint:Sprint):Observable<any> {
+    return this.api.post(`api/sprints/${sprint.id}/finish`, {});
+  }
 }

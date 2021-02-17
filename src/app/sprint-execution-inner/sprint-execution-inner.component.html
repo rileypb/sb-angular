@@ -1,6 +1,6 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<sb-sprint-frame *ngIf="sprint; else progressSpinner" [sprint]="sprint" [showSuspendButton]="true" (suspend)="onSuspendSprint($event)">
+<sb-sprint-frame *ngIf="sprint; else progressSpinner" [sprint]="sprint" [showSuspendButton]="true" [showFinishButton]="true" (suspend)="onSuspendSprint($event)" (finish)="onFinishSprint($event)">
 	<div  class="row" cdkDropListGroup>
 		<div class="col-4">
 			<h4>Open</h4>

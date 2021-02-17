@@ -10,4 +10,5 @@ export interface Sprint {
 	start_date?:Date;
 	end_date?:Date;
 	started?:boolean;
+	completed?:boolean;
 }

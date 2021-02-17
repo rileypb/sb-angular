@@ -82,4 +82,8 @@ export class SprintExecutionInnerComponent implements OnInit {
   onSuspendSprint(sprint:Sprint) {
     callWithSnackBar(this.snackBar, this.sprintsService.suspendSprint(sprint), ['Suspending sprint...', 'Sprint suspended', 'Error suspending sprint']);
   }
+
+  onFinishSprint(sprint:Sprint) {
+    callWithSnackBar(this.snackBar, this.sprintsService.finishSprint(sprint), ['Finishing sprint...', 'Sprint finished', 'Error finishing sprint']);
+  }
 }

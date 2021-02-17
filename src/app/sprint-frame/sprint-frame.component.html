@@ -6,9 +6,10 @@
 			<mat-card-title>
 				<mat-icon fontSet="fas" fontIcon="fa-shapes"></mat-icon>
 				{{sprint.id}} - {{sprint.title}}
+				<span class="ml-3">Goal: {{ sprint.goal }}</span>
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(sprint, 'update')" mat-icon-button color="primary" matTooltip="Edit Sprint" (click)="editSprint()"><mat-icon>edit</mat-icon></button>
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showSuspendButton && permission(sprint, 'update')" mat-icon-button color="warn" matTooltip="Suspend Sprint" (click)="suspendSprint()"><mat-icon>pause_circle</mat-icon></button>
-				<span class="ml-3">Goal: {{ sprint.goal }}</span>
+				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showFinishButton && permission(sprint, 'update')" mat-icon-button color="primary" matTooltip="Finish Sprint" (click)="finishSprint()"><mat-icon>check_circle</mat-icon></button>
 			</mat-card-title>
 			<ng-content></ng-content>
 		</mat-card>
