@@ -10,11 +10,18 @@ import { Base } from '../base';
 export class SprintRetrospectiveComponent extends Base implements OnInit {
   @Input() project:Project;
 
+  selectedSprint:any;
+
   constructor() {
     super();
   }
 
   ngOnInit(): void {
+  }
+
+  selectSprint(sprint) {
+  	console.log("select sprint")
+  	this.selectedSprint = sprint;
   }
  
 }

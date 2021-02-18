@@ -21,7 +21,7 @@ export class BurndownComponent implements OnInit {
   setBurndownData(sprint:Sprint) {    
     this.options = {
       legend: {
-        data: ['ideal', 'projected', 'actual'],
+        data: ['ideal', 'actual'],
         align: 'left',
       },
       tooltip: {},

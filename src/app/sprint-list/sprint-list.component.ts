@@ -3,6 +3,7 @@ import { Project } from '../project';
 import { Sprint } from '../sprint';
 import { DataService } from '../data.service';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sb-sprint-list',
@@ -16,10 +17,12 @@ export class SprintListComponent implements OnInit {
   @Output() transfer:EventEmitter<any> = new EventEmitter<any>();
   @Output() selected:EventEmitter<Sprint> = new EventEmitter<Sprint>();
   @Output() start:EventEmitter<Sprint> = new EventEmitter<Sprint>();
+  @Output() loaded:EventEmitter<Sprint> = new EventEmitter<Sprint>();
 
-  sprints:any;
+  sprints:Observable<any>;
 
   private lastDataPath:string;
+  private isLoaded:boolean = false;
 
   constructor(private dataService:DataService) { }
 
@@ -61,6 +64,14 @@ export class SprintListComponent implements OnInit {
     }
     this.dataService.load(newDataPath, [`projects/${this.project.id}/sprints`, `projects/${this.project.id}/sprints/*`]);
     this.sprints = this.dataService.values[newDataPath];
+    this.sprints.subscribe((x) => {
+      if (!this.isLoaded && x != null) {
+        console.log(x);
+        let lastSprint = x.sprints.list[0];
+        this.isLoaded = true;
+        this.loaded.emit(lastSprint);
+      }
+    });
     this.lastDataPath = newDataPath;
   }
 

@@ -11,4 +11,5 @@ export interface Sprint {
 	end_date?:Date;
 	started?:boolean;
 	completed?:boolean;
+	retrospective?:string;
 }
