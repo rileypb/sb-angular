@@ -1,7 +1,7 @@
 
 <app-top-bar error="{{error}}" syncServiceStatus="{{dataService.status | async}}"></app-top-bar>
 
-<div class="app-container">
+<div class="app-container mat-app-background">
 
 		<div class="main-content-container container" *ngIf="(loginService.status | async) == 'logged_in'">
 		  <div>

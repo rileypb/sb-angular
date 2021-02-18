@@ -28,7 +28,7 @@
       </div>
       <div class="sprint-info row">
         <div class="col-6">
-          State: {{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? "Suspended" : "Pending") }}
+          State: {{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }} 
         </div>
         <div class="col-6">
           Total Estimate: {{ sprint.total_estimate }}
@@ -39,7 +39,7 @@
       </div>
 
     	<div style="margin-left: 30px;">
-        <sb-sprint-issue-list [sprint]="sprint" (transfer)="onTransfer($event)"></sb-sprint-issue-list>
+        <sb-sprint-issue-list [sprint]="sprint" (transfer)="onTransfer($event)" [editable]="editable"></sb-sprint-issue-list>
         <!-- <app-issues [project]="sprint.project" [sprint]="sprint"></app-issues> -->
   	  </div>
     </div> 

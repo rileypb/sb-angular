@@ -12,25 +12,56 @@ import { map } from 'rxjs/operators';
 export class SprintListComponent implements OnInit {
   @Input() project:Project;
   @Input() showStartButton:boolean;
-  @Input() currentOnly:boolean;
+  @Input() editable:boolean;
   @Output() transfer:EventEmitter<any> = new EventEmitter<any>();
   @Output() selected:EventEmitter<Sprint> = new EventEmitter<Sprint>();
   @Output() start:EventEmitter<Sprint> = new EventEmitter<Sprint>();
 
   sprints:any;
 
+  private lastDataPath:string;
+
   constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
-  	this.dataService.load(`projects/${this.project.id}/sprints?current=true`, [`projects/${this.project.id}/sprints`, `projects/${this.project.id}/sprints/*`]);
-    this.sprints = this.dataService.values[`projects/${this.project.id}/sprints?current=true`];
-  	// this.sprints = this.dataService.values[`projects/${this.project.id}/sprints`].asObservable().pipe(map((val, index) =>  {
-   //    return val && val.filter((x) => { return !x.completed; });
-   //  }));
+    this.updateData();
   }
 
   ngOnDestroy():void {
-  	this.dataService.unload(`projects/${this.project.id}/sprints?current=true`, [`projects/${this.project.id}/sprints`, `projects/${this.project.id}/sprints/*`]);
+  	this.dataService.unload(this.lastDataPath, [`projects/${this.project.id}/sprints`, `projects/${this.project.id}/sprints/*`]);
+  }
+
+  @Input() set currentOnly(value:boolean) {
+    this._currentOnly = value;
+    this.updateData();
+  }
+  get currentOnly():boolean {
+    return this._currentOnly;
+  }
+  private _currentOnly:boolean;
+
+  @Input() set completedOnly(value:boolean) {
+    this._completedOnly = value;
+    this.updateData();
+  }
+  get completedOnly():boolean {
+    return this._completedOnly;
+  }
+  private _completedOnly:boolean;
+
+  updateData():void {
+    if (this.lastDataPath) {
+      this.dataService.unload(this.lastDataPath, [`projects/${this.project.id}/sprints`, `projects/${this.project.id}/sprints/*`]);
+    }
+    var newDataPath:string = `projects/${this.project.id}/sprints`;
+    if (this.currentOnly) {
+      newDataPath += '?current=true';
+    } else {
+      newDataPath += '?completed=true';
+    }
+    this.dataService.load(newDataPath, [`projects/${this.project.id}/sprints`, `projects/${this.project.id}/sprints/*`]);
+    this.sprints = this.dataService.values[newDataPath];
+    this.lastDataPath = newDataPath;
   }
 
   onTransfer(transferData) {

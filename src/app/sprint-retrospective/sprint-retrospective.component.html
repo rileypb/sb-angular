@@ -1,1 +1,40 @@
-<p>sprint-retrospective works!</p>
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+
+<app-project-frame *ngIf="project; else progressSpinner" [project]="project"> 
+
+			<div class="row" cdkDropListGroup>
+				<div class="col-md-6">
+					<mat-card class="inner-detail-card">
+						<div style="height:100%;">
+					  		<h6>Completed Sprints</h6>
+		 			    	<sb-sprint-list [project]="project" [completedOnly]="true" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="false" [editable]="false" (start)="onStart($event)"></sb-sprint-list>
+							<!-- <app-sprints style="height:100%; display: flex; flex-direction: column;" [project]="project"></app-sprints> -->
+						</div>
+					</mat-card>
+				</div>
+				<div class="col-md-6">
+					<mat-card class="inner-detail-card">
+						<mat-card-title [ngSwitch]="mode">
+							<div *ngSwitchCase="'backlog'">
+								<mat-icon fontSet="fas" fontIcon="fa-list-alt"></mat-icon>
+								Product Backlog
+							</div>
+							<div *ngSwitchCase="'edit'">
+								<mat-icon class="mr-1">edit</mat-icon>
+								Edit Sprint
+							</div>
+							<div *ngSwitchCase="'create'">
+								<mat-icon class="mr-1">add_circle</mat-icon>
+								Create Sprint
+							</div>
+						</mat-card-title>
+
+						<mat-card-content [ngSwitch]="mode">
+							<sb-project-issue-list *ngSwitchCase="'backlog'" [project]="project" (transfer)="onTransfer($event)"></sb-project-issue-list>
+							<sb-sprint-form *ngSwitchCase="'edit'" [sprint]="sprintUnderEdit" mode="edit" (confirm)="onConfirmEdit($event)" (cancel)="mode='backlog'" (delete)="onDeleteSprint($event)"></sb-sprint-form>
+							<sb-sprint-form *ngSwitchCase="'create'" mode="create" (confirm)="onConfirmCreate($event)" (cancel)="mode='backlog'"></sb-sprint-form>
+						</mat-card-content>
+					</mat-card>
+				</div>
+			</div>
+</app-project-frame>

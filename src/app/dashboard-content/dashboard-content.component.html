@@ -39,7 +39,9 @@
 					Burndown
 				</mat-card-title>
 				<mat-card-content>
-					<app-burndown [sprint]="project.currentSprint"></app-burndown>
+					<div *ngIf="project.currentSprint">
+						<app-burndown [sprint]="project.currentSprint"></app-burndown>
+					</div>
 				</mat-card-content>
 			</mat-card>
 		</div>

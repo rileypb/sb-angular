@@ -19,6 +19,7 @@ export class SprintCardComponent extends Base implements OnInit {
   @Input() sprint: Sprint;
   @Input() project: Project;
   @Input() showStartButton: boolean;
+  @Input() editable:boolean;
   @Output() transfer:EventEmitter<any> = new EventEmitter<any>();
   @Output() selected:EventEmitter<Sprint> = new EventEmitter<Sprint>();
   @Output() start:EventEmitter<any> = new EventEmitter<any>();

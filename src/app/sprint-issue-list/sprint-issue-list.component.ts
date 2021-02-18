@@ -17,6 +17,7 @@ import { moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 export class SprintIssueListComponent implements OnInit {
 
   @Input() sprint:Sprint;
+  @Input() editable:boolean;
   @Output() transfer:EventEmitter<any> = new EventEmitter<any>();
 
   issues:BehaviorSubject<any> = new BehaviorSubject<any>(null);
