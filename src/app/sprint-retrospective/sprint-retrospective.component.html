@@ -7,7 +7,7 @@
 					<mat-card class="inner-detail-card">
 						<div style="height:100%;">
 					  		<h6>Completed Sprints</h6>
-		 			    	<sb-sprint-list [project]="project" [completedOnly]="true" (selected)="onSprintSelected($event)" (loaded)="selectSprint($event)" [showStartButton]="false" [editable]="false"></sb-sprint-list>
+		 			    	<sb-sprint-list [project]="project" [completedOnly]="true" (selected)="selectSprint($event)" (loaded)="selectSprint($event)" [showStartButton]="false" [editable]="false"></sb-sprint-list>
 						</div>
 					</mat-card>
 				</div>
@@ -22,7 +22,14 @@
 								<div>Burndown</div>
 								<app-burndown [sprint]="selectedSprint"></app-burndown>
 								<div>Retrospective</div>
-								<div>{{selectedSprint.retrospective}}</div>
+								<div style="font-size: 12pt; font-weight: normal;" *ngIf="!editingRetrospective">
+									<div [innerHtml]="selectedSprint.retrospective"></div>
+									<div><button mat-icon-button (click)="editingRetrospective = true"><mat-icon color="primary">edit</mat-icon></button></div>
+								</div>
+								<div style="font-size: 12pt; font-weight: normal;" *ngIf="editingRetrospective">
+									<ckeditor class="issue-editor mt-6" name="issueDescription" [editor]="Editor" [data]="" [(ngModel)]="selectedSprint.retrospective"></ckeditor>
+									<div><button mat-button (click)="editingRetrospective = false">Cancel</button><button mat-button (click)="saveRetrospective()">Save</button></div>
+								</div>
 							</div>
 						</mat-card-title>
 
