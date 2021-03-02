@@ -36,4 +36,7 @@ export class SprintRetrospectiveComponent extends Base implements OnInit {
   	this.editingRetrospective = false;
   }
  
+  printSprintReport(sprint) {
+  	
+  }
 }

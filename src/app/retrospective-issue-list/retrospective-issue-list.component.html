@@ -1,0 +1,12 @@
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+
+<div *ngIf="(issues | async); else progressSpinner">
+	<div *ngFor="let issue of (issues | async).issues.list">
+		<div class="issue-list-entry">
+			<div class="issue-title">{{ issue.title }}</div> 
+			<div>Estimate: {{ issue.estimate || 0 }}</div>
+			<div>Completed: <span [ngClass]="{'closed-yes': issue.state == 'Closed', 'closed-no': issue.state != 'Closed'}">{{ issue.state == "Closed" ? "Yes" : "No" }}</span></div>
+			<div class="description" *ngIf="issue.description" [innerHtml]="issue.description"></div>
+		</div>
+	</div>
+</div>

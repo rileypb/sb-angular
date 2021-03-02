@@ -1,0 +1,22 @@
+.issue-title {
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+.description {
+	border-style: solid;
+	border-color: #CCC;
+}
+
+.issue-list-entry {
+	border-bottom-style: solid;
+	border-bottom-color: #000;
+}
+
+.closed-yes {
+
+}
+
+.closed-no {
+	font-style: italic;
+}

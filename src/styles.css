@@ -32,3 +32,15 @@ a.disabled {
 .main-body {
 	background-color: #CCC;
 }
+
+.print-frame {}
+
+@media print {
+	.no-print { display: none; }
+	.print-expand { display: block; width: 100%; min-width: 100%;}
+	.print-frame { display: block; width: 100%; min-width: 100%;}
+}
+
+@media screen {
+	.print-frame { display: none; }
+}

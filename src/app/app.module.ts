@@ -106,6 +106,7 @@ import { environment } from '../environments/environment';
 import { ProjectActivityListComponent } from './project-activity-list/project-activity-list.component';
 import { StartSprintComponent } from './start-sprint/start-sprint.component';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
+import { RetrospectiveIssueListComponent } from './retrospective-issue-list/retrospective-issue-list.component';
 
 
 @NgModule({
@@ -183,6 +184,7 @@ import { InfoDialogComponent } from './info-dialog/info-dialog.component';
     ProjectActivityListComponent,
     StartSprintComponent,
     InfoDialogComponent,
+    RetrospectiveIssueListComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

@@ -1,11 +1,11 @@
 
-<app-top-bar error="{{error}}" syncServiceStatus="{{dataService.status | async}}"></app-top-bar>
+<app-top-bar class="no-print" error="{{error}}" syncServiceStatus="{{dataService.status | async}}"></app-top-bar>
 
 <div class="app-container mat-app-background">
 
 		<div class="main-content-container container" *ngIf="(loginService.status | async) == 'logged_in'">
 		  <div>
-			  <app-topnav></app-topnav>
+			  <app-topnav class="no-print"></app-topnav>
 
 			  <!-- <app-breadcrumb class="mt-2"></app-breadcrumb> -->
 			  <div *ngIf="(dataService.isConnected | async)">
