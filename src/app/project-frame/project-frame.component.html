@@ -4,11 +4,26 @@
 
 		<mat-card class="project-frame-card">
 			<mat-card-title>
-				<mat-icon fontSet="fas" fontIcon="fa-shapes"></mat-icon>
+				<mat-icon fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
 				{{project.name}}
-				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(project, 'update')" mat-icon-button color="primary" matTooltip="Edit Project" (click)="editProject()"><mat-icon>edit</mat-icon></button>
+				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Edit Project" (click)="editProject()"><mat-icon>edit</mat-icon></button>
+				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showTeamButton && permission(project, 'read')" mat-icon-button color="primary" matTooltip="Show Team" (click)="showTeam()"><mat-icon>people</mat-icon></button>
 			</mat-card-title>
-			<ng-content></ng-content>
+			<div [ngSwitch]="mode">
+				<ng-content *ngSwitchCase="'showingContent'"></ng-content>
+				<div *ngSwitchCase="'editingProject'">EDITING</div>
+				
+				<div *ngSwitchCase="'showingTeam'">
+					<button mat-icon-button color="primary" matTooltip="Back" (click)="showContent()"><mat-icon>arrow_back</mat-icon></button>Back
+					<div style="position: relative; left: 10px;">
+						<h4>Development Team</h4>
+						<div *ngFor="let user of project.team">
+							<img *ngIf="user.picture" style="width: 32px;" [src]="user.picture"> {{ user.displayName || (user.first_name + " " + user.last_name) }}
+						</div>
+					</div>
+				</div>
+			
+			</div>
 		</mat-card>
 		
 	</div>

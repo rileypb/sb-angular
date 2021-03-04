@@ -9,7 +9,9 @@ import { Base } from '../base';
 })
 export class ProjectFrameComponent extends Base implements OnInit {
   @Input() project:Project;
-  @Input() showEditButton:boolean;
+  @Input() showEditButton:boolean = true;
+  @Input() showTeamButton:boolean = true;
+  public mode:string = "showingContent";
 
   constructor() {
   	super();
@@ -17,6 +19,18 @@ export class ProjectFrameComponent extends Base implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  editProject() {
+    this.mode = "editingProject";
+  }
+
+  showTeam() {
+    this.mode = "showingTeam";
+  }
+
+  showContent() {
+    this.mode = "showingContent";
   }
 
 }
