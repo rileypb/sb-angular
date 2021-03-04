@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Base } from '../base';
 import { Project } from '../project';
 import { Issue } from '../issue';
@@ -9,6 +9,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { TasksService } from '../tasks.service';
+import { DataService } from '../data.service';
+import { Observable } from 'rxjs';
+import { User } from '../user';
+import { IssuesService } from '../issues.service';
 
 @Component({
   selector: 'app-issue-detail',
@@ -16,22 +20,41 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./issue-detail.component.css']
 })
 export class IssueDetailComponent extends Base implements OnInit {
-  @Input() issue:Issue;
+  public team:Observable<any>;
+  public assignee:any;
 
-  constructor(public dialog: MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService) { 
+  constructor(public dialog: MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService, private dataService:DataService, private issuesService:IssuesService) { 
     super(); 
   }
 
 
   ngOnInit(): void {
+    this.dataService.load(`projects/${this.issue.project.id}/team`, []);
+    this.team = this.dataService.values[`projects/${this.issue.project.id}/team`];
   }
 
 
   ngOnDestroy() {
+    this.dataService.unload(`projects/${this.issue.project.id}/team`, []);
   }
+
+  @Input() set issue(value:Issue) {
+    this._issue = value;
+    this.assignee = this.issue.assignee || "-1";
+  }
+  get issue():Issue {
+    return this._issue;
+  }
+  private _issue:Issue;
 
   fontColor(bgColor:string):string {  
     return Color.fontColor(bgColor);
+  }
+
+  assignIssue(user:User) {
+    callWithSnackBar(this.snackBar,
+                     this.issuesService.assignIssue(this.issue.id, user?.id),
+                     ["Assigning issue...", "Assigned issue", "Error assigning issue"]);
   }
 
   createTask() {

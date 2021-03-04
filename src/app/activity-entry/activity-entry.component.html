@@ -20,5 +20,10 @@
 	<span *ngSwitchCase="'suspended_sprint'">suspended <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
 	<span *ngSwitchCase="'reordered_issues'">reordered the product backlog</span>
 
+	<span *ngSwitchCase="'assigned_issue'">assigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to 
+		{{activity.user2?.displayName || (activity.user2?.first_name + ' ' + activity.user2?.last_name)}}</span>
+	<span *ngSwitchCase="'unassigned_issue'">unassigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
+
+
 	<span *ngSwitchDefault>{{activity.action}}</span>
 </span> 

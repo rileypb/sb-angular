@@ -107,6 +107,7 @@ import { ProjectActivityListComponent } from './project-activity-list/project-ac
 import { StartSprintComponent } from './start-sprint/start-sprint.component';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 import { RetrospectiveIssueListComponent } from './retrospective-issue-list/retrospective-issue-list.component';
+import { UserSelectorComponent } from './user-selector/user-selector.component';
 
 
 @NgModule({
@@ -185,6 +186,7 @@ import { RetrospectiveIssueListComponent } from './retrospective-issue-list/retr
     StartSprintComponent,
     InfoDialogComponent,
     RetrospectiveIssueListComponent,
+    UserSelectorComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

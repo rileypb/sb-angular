@@ -27,6 +27,7 @@ export class IssueFormComponent extends Base implements OnInit {
   ngOnInit(): void {
   	this.issueForm = this.fb.group({
   		title: new FormControl(this.issue.title, Validators.compose([Validators.pattern(".*[^\\s]+.*"), Validators.required])),
+      // assignee: new FormControl("foo"),
   		description: new FormControl(this.issue.description),
   		estimate: new FormControl(this.issue.estimate),
   	});

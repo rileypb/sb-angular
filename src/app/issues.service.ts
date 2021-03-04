@@ -49,4 +49,8 @@ export class IssuesService {
   reorderTasks(issue:Issue, fromIndex:number, toIndex:number): Observable<any> {
     return this.api.patch(`api/issues/${issue.id}/reorder_tasks`, { data: { fromIndex: fromIndex, toIndex: toIndex }});
   }
+
+  assignIssue(issueId, userId):Observable<any> {
+    return this.api.patch(`api/issues/${issueId}/assign_issue`, { data: { userId: userId || -1 }});
+  }
 }

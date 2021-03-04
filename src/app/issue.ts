@@ -1,6 +1,7 @@
 import { Project } from './project';
 import { Sprint } from './sprint';
 import { Epic } from './epic';
+import { User } from './user';
 
 export interface Issue {
 	id: number;
@@ -12,4 +13,5 @@ export interface Issue {
 	sprint?: Sprint;
 	epic?: Epic;
 	tasks?: any;
+	assignee?:User
 }
