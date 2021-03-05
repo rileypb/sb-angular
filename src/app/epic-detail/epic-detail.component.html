@@ -17,10 +17,10 @@
 					   aria-label="issue"
 					   matInput
 					   [formControl]="issueControl"
-					   [matAutocomplete]="auto">
-				<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="issueLabel">
-					<mat-option *ngFor="let option of filteredIssues | async" [value]="option">
-						{{option.title}}
+					   [matAutocomplete]="auto" #issueInput>
+				<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="issueLabel" #issueSelector>
+					<mat-option *ngFor="let option of filteredIssues | async" [value]="option" [ngStyle]="{'background-color':option.epic?.color}">
+						<span [ngStyle]="{'color':textColor(option.epic?.color)}">{{option.title}} <span class="current-option" *ngIf="option.epic">[Current: {{option.epic.title}}]</span></span>
 					</mat-option>
 				</mat-autocomplete>
 			</mat-form-field>

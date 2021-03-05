@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Epic } from '../epic';
 import { Base } from '../base';
 import { DataService } from '../data.service';
@@ -11,6 +11,7 @@ import { EpicsService } from '../epics.service';
 import { callWithSnackBar } from '../util';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Color } from '../color';
 
 @Component({
   selector: 'app-epic-detail',
@@ -18,6 +19,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./epic-detail.component.css']
 })
 export class EpicDetailComponent extends Base implements OnInit {
+  @ViewChild('issueInput') issueInput:ElementRef;
+
   issueControl:FormControl = new FormControl();
 
   filteredIssues:Observable<any>;
@@ -77,6 +80,7 @@ export class EpicDetailComponent extends Base implements OnInit {
     value.epic = this.epic;
     let toSave = { id: value.id, epic_id: this.epic.id};
     callWithSnackBar(this.snackBar, this.epicsService.addIssue(this.epic, value), ['Adding Issue...', 'Issue Added', 'Error Adding Issue']);
+    this.issueInput.nativeElement.value = "";
   }
 
 
@@ -88,4 +92,7 @@ export class EpicDetailComponent extends Base implements OnInit {
     this.router.navigate(['/projects', issue.project.id, 'backlog', issue.id]);
   }
 
+  textColor(color) {
+    return Color.fontColor(color);
+  }
 }

@@ -56,7 +56,7 @@ export class EpicsComponent extends Base implements OnInit {
       selectedEpicId = this.requestedEpicId;
     }
     if (selectedEpicId) {
-      for (let epic of this._epics.epics.list) {
+      for (let epic of this._epics?.epics.list || []) {
         if (epic.id == selectedEpicId) {
           this.selectedEpic = epic;
           return;
