@@ -33,18 +33,27 @@ export class EpicsComponent extends Base implements OnInit {
 
   ngOnInit(): void {
     this.requestedEpicId = +this.route.snapshot.paramMap.get('epic_id');
+    this.updateSelectedEpic();
   }
 
   @Input()
   set epics(val:any) {
     this._epics = val;
 
+    this.updateSelectedEpic();
+  }
+  get epics():any {
+    return this._epics;
+  }
+  private _epics:any;
+
+  updateSelectedEpic() {
+    console.log("stop here");
     let selectedEpicId:number = null;
     if (this.selectedEpic) {
       selectedEpicId = this.selectedEpic.id;
-    } else if (this.requestedEpicId) {
+    } else if (this.requestedEpicId && this.requestedEpicId != this.selectedEpic?.id) {
       selectedEpicId = this.requestedEpicId;
-      this.requestedEpicId = null;
     }
     if (selectedEpicId) {
       for (let epic of this._epics.epics.list) {
@@ -56,15 +65,15 @@ export class EpicsComponent extends Base implements OnInit {
     }
     this.selectedEpic = null;
   }
-  get epics():any {
-    return this._epics;
-  }
-  private _epics:any;
 
   showDetail(epic:Epic) {
     if (this.mode == "show") {
+      this.router.navigate(['/projects', epic.project.id, 'epics', epic.id]);
       this.selectedEpic = epic;
     }
+    // if (this.mode == "show") {
+    //   this.selectedEpic = epic;
+    // }
   }
 
   editEpic() {

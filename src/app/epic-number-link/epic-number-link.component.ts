@@ -16,7 +16,7 @@ export class EpicNumberLinkComponent implements OnInit {
   }
 
   navigateToEpic():void {
-    this.router.navigate([`/projects/${this.epic.project.id}/epics/${this.epic.id}`]);
+    this.router.navigate(['/projects', this.epic.project.id, 'epics', this.epic.id]);
   }
 
 }

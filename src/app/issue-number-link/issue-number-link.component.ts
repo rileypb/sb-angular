@@ -18,7 +18,7 @@ export class IssueNumberLinkComponent implements OnInit {
 
   navigateToIssue():void {
   	this.uiStateService.selectedIssue = this.issue;
-  	this.router.navigate([`/projects/${this.issue.project.id}/issues`]);
+  	this.router.navigate([`/projects/${this.issue.project.id}/backlog/${this.issue.id}`]);
   }
 
 }
