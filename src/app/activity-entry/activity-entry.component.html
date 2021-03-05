@@ -1,29 +1,77 @@
 <strong class="mr-2" [matTooltip]="activity.user.first_name + ' ' + activity.user.last_name">{{activity.user.displayName || (activity.user.first_name + ' ' + activity.user.last_name)}}</strong>
 <span [ngSwitch]="activity.action">
+	<span *ngSwitchCase="'added_issue_to_epic'">added <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to 
+		<sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
+
 	<span *ngSwitchCase="'added_task'">added <app-task-number-link [task]="activity.task"></app-task-number-link> to 
 		<app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
-	<span *ngSwitchCase="'set_state'">changed the state of <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to <strong>{{activity.modifier}}</strong></span>
-	<span *ngSwitchCase="'created_task'">created <app-task-number-link [task]="activity.task"></app-task-number-link></span>
-	<span *ngSwitchCase="'updated_issue'">updated <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
-	<span *ngSwitchCase="'updated_task'">updated <app-task-number-link [task]="activity.task"></app-task-number-link></span>
-	<span *ngSwitchCase="'updated_epic'">updated <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
-	<span *ngSwitchCase="'moved_issue_to_product_backlog'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> 
-		to the <a class="product-backlog-link" (click)="navigateToBacklog()">product backlog</a> 
-		from <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
-	<span *ngSwitchCase="'assigned_issue_to_sprint'">assigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to 
-		<app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
-	<span *ngSwitchCase="'moved_issue_between_sprints'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> from 
-		<app-sprint-number-link [sprint]="activity.sprint2"></app-sprint-number-link> to <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
-	<span *ngSwitchCase="'moved_issue_between_epics'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> from 
-		<sb-epic-number-link [epic]="activity.epic2"></sb-epic-number-link> to <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
-	<span *ngSwitchCase="'started_sprint'">started <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
-	<span *ngSwitchCase="'suspended_sprint'">suspended <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
-	<span *ngSwitchCase="'reordered_issues'">reordered the product backlog</span>
 
 	<span *ngSwitchCase="'assigned_issue'">assigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to 
 		{{activity.user2?.displayName || (activity.user2?.first_name + ' ' + activity.user2?.last_name)}}</span>
+
+	<span *ngSwitchCase="'assigned_issue_to_sprint'">assigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to 
+		<app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+
+	<span *ngSwitchCase="'created'">created ???</span>
+
+	<span *ngSwitchCase="'created_epic'">created <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
+
+	<span *ngSwitchCase="'created_issue'">created <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
+
+	<span *ngSwitchCase="'created_sprint'">created <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+
+	<span *ngSwitchCase="'created_task'">created <app-task-number-link [task]="activity.task"></app-task-number-link></span>
+
+	<span *ngSwitchCase="'deleted_epic'">deleted epic</span>
+
+	<span *ngSwitchCase="'deleted_issue'">deleted issue</span>
+
+	<span *ngSwitchCase="'deleted_sprint'">deleted sprint</span>
+
+	<span *ngSwitchCase="'deleted_task'">deleted task</span>
+
+	<span *ngSwitchCase="'finished_sprint'">finished <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+
+	<span *ngSwitchCase="'moved_issue_between_epics'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> from 
+		<sb-epic-number-link [epic]="activity.epic2"></sb-epic-number-link> to <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
+
+	<span *ngSwitchCase="'moved_issue_between_sprints'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> from 
+		<app-sprint-number-link [sprint]="activity.sprint2"></app-sprint-number-link> to <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+
+	<span *ngSwitchCase="'moved_issue_to_product_backlog'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> 
+		to the <a class="product-backlog-link" (click)="navigateToBacklog()">product backlog</a> 
+		from <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+
+	<span *ngSwitchCase="'removed_issue_from_epic'">removed <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> 
+		from <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
+
+	<span *ngSwitchCase="'reordered_epics'">reordered epic priorities</span>
+
+	<span *ngSwitchCase="'reordered_issues'">reordered the product backlog</span>
+
+	<span *ngSwitchCase="'reordered_issues_within_epic'">reordered issues within <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
+
+	<span *ngSwitchCase="'reordered_tasks'">reordered tasks within <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
+
+	<span *ngSwitchCase="'set_state'">changed the state of <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to <strong>{{activity.modifier}}</strong></span>
+
+	<span *ngSwitchCase="'set_task_complete'">marked <app-task-number-link [task]="activity.task"></app-task-number-link> complete</span>
+
+	<span *ngSwitchCase="'set_task_incomplete'">marked <app-task-number-link [task]="activity.task"></app-task-number-link> incomplete</span>
+
+	<span *ngSwitchCase="'started_sprint'">started <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+
+	<span *ngSwitchCase="'suspended_sprint'">suspended <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+
 	<span *ngSwitchCase="'unassigned_issue'">unassigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
 
+	<span *ngSwitchCase="'updated_epic'">updated <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
+
+	<span *ngSwitchCase="'updated_issue'">updated <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
+
+	<span *ngSwitchCase="'updated_sprint'">updated <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
+
+	<span *ngSwitchCase="'updated_task'">updated <app-task-number-link [task]="activity.task"></app-task-number-link></span>
 
 	<span *ngSwitchDefault>{{activity.action}}</span>
 </span> 
