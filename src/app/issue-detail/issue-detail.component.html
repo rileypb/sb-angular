@@ -1,11 +1,11 @@
 <h2>{{issue.id}} - {{issue.title}}</h2>
-<mat-card *ngIf="issue.assignee || (team | async)">
-	<h4 *ngIf="issue.assignee && !(team | async)">Assignee: {{issue.assignee.first_name}} {{issue.assignee.last_name}}</h4>
-	<div *ngIf="team | async">
-		<sb-user-selector [team]="(team | async)?.team" [assignee]="issue.assignee" (userSelected)="assignIssue($event)"></sb-user-selector>
-	</div>
+<h4 *ngIf="issue.assignee && !(team | async)">Assignee: {{issue.assignee.first_name}} {{issue.assignee.last_name}}</h4>
+<div *ngIf="team | async">
+	<sb-user-selector [team]="(team | async)?.team" [assignee]="issue.assignee" (userSelected)="assignIssue($event)"></sb-user-selector>
+</div>
+<mat-card class="mb-3" *ngIf="issue.assignee || (team | async)">
+	<span class="issue-description" [innerHtml]="issue.description"></span>
 </mat-card>
-<p class="issue-description" [innerHtml]="issue.description"></p>
 <p><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon> Estimate: {{issue.estimate}}</p>
 <p><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon> State: {{issue.state}}</p>
 
