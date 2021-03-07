@@ -9,6 +9,9 @@
 	<span *ngSwitchCase="'assigned_issue'">assigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to 
 		{{activity.user2?.displayName || (activity.user2?.first_name + ' ' + activity.user2?.last_name)}}</span>
 
+	<span *ngSwitchCase="'assigned_task'">assigned <app-task-number-link [task]="activity.task"></app-task-number-link> to 
+		{{activity.user2?.displayName || (activity.user2?.first_name + ' ' + activity.user2?.last_name)}}</span>
+
 	<span *ngSwitchCase="'assigned_issue_to_sprint'">assigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> to 
 		<app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
 
@@ -64,6 +67,8 @@
 	<span *ngSwitchCase="'suspended_sprint'">suspended <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
 
 	<span *ngSwitchCase="'unassigned_issue'">unassigned <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
+
+	<span *ngSwitchCase="'unassigned_task'">unassigned <app-task-number-link [task]="activity.task"></app-task-number-link></span>
 
 	<span *ngSwitchCase="'updated_epic'">updated <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
 

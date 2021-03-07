@@ -1,8 +1,8 @@
 <h2>{{issue.id}} - {{issue.title}}</h2>
-<h4 *ngIf="issue.assignee && !(team | async)">Assignee: {{issue.assignee.first_name}} {{issue.assignee.last_name}}</h4>
+<!-- <h4 *ngIf="issue.assignee && !(team | async)">Assignee: {{issue.assignee.first_name}} {{issue.assignee.last_name}}</h4>
 <div *ngIf="team | async">
 	<sb-user-selector [team]="(team | async)?.team" [assignee]="issue.assignee" (userSelected)="assignIssue($event)"></sb-user-selector>
-</div>
+</div> -->
 <mat-card class="mb-3" *ngIf="issue.assignee || (team | async)">
 	<span class="issue-description" [innerHtml]="issue.description"></span>
 </mat-card>

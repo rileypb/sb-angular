@@ -29,4 +29,8 @@ export class TasksService {
   setComplete(taskId:number, complete:boolean) {
     return this.api.patch(`api/tasks/${taskId}/set_complete`, { complete: complete });
   }
+
+  assignTask(taskId:number, userId:number):Observable<any> {
+    return this.api.patch(`api/tasks/${taskId}/assign_task`, { data: { userId: userId || -1 }});
+  }
 }

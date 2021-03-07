@@ -7,6 +7,9 @@ import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.co
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { TasksService } from '../tasks.service';
+import { DataService } from '../data.service';
+import { Observable } from 'rxjs';
+import { User } from '../user';
 
 @Component({
   selector: 'sb-task-card',
@@ -19,16 +22,30 @@ export class TaskCardComponent extends Base implements OnInit {
   @Input() task:Task;
   @Input() editCoordinator:EditCoordinator;
 
+  public team:Observable<any>;
+
   private taskUnderEdit:Task;
 
   estimate:any;
   private originalEstimate:number;
 
-  constructor(private dialog: MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService) {
+  constructor(private dialog: MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService, private dataService:DataService) {
   	super();
   }
 
   ngOnInit(): void {
+    this.dataService.load(`projects/${this.task.issue.project.id}/team`, []);
+    this.team = this.dataService.values[`projects/${this.task.issue.project.id}/team`];
+  }
+
+  ngOnDestroy() {
+    this.dataService.unload(`projects/${this.task.issue.project.id}/team`, []);
+  }
+
+  assignTask(user:User) {
+    callWithSnackBar(this.snackBar,
+                     this.tasksService.assignTask(this.task.id, user?.id),
+                     ["Assigning task...", "Assigned task", "Error assigning task"]);
   }
 
   editTask(task:Task, event:any):void {
