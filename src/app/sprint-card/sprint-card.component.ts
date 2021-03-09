@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { SprintsService } from '../sprints.service';
+import { TeamSummaryComponent } from '../team-summary/team-summary.component';
+
 
 @Component({
   selector: 'app-sprint-card',
@@ -70,6 +72,26 @@ export class SprintCardComponent extends Base implements OnInit {
 
   suspendSprint() {
     callWithSnackBar(this.snackBar, this.sprintsService.suspendSprint(this.sprint), ['Suspending sprint...', 'Sprint suspended', 'Error suspending sprint']);
+  }
+
+  showSummary() {
+    let data = {
+      sprint: this.sprint,
+      project: this.project,
+    }
+
+    const dialogRef = this.dialog.open(TeamSummaryComponent, {
+      width: "90%",
+      maxWidth: "800px",
+      data: data
+    });
+
+    // listen to response
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this.start.emit(data);
+      }    
+    });
   }
 
 }

@@ -1,5 +1,5 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
-<app-project-frame *ngIf="project; else progressSpinner" [project]="project">
+<app-project-frame *ngIf="project; else progressSpinner" [project]="project" [showTeamButton]="false">
 	<div class="row">
 		<div class="col-md-6">
 			<mat-card class="project-info-card">
@@ -8,6 +8,7 @@
 					<app-project-card [project]="project"></app-project-card>
 				</mat-card-content>
 			</mat-card>
+
 			<mat-card class="project-info-card">
 				<mat-card-title>
 					<mat-icon fontSet="fas" fontIcon="fa-heartbeat"></mat-icon>
@@ -15,6 +16,18 @@
 				</mat-card-title>
 				<mat-card-content>
 					<sb-project-activity-list [project]="project"></sb-project-activity-list>
+				</mat-card-content>
+			</mat-card>
+
+			<mat-card class="project-info-card">
+				<mat-card-title>
+					<mat-icon style="position: relative; top: 3px;">people</mat-icon>
+					Team
+				</mat-card-title>
+				<mat-card-content>
+					<div *ngFor="let user of project.team">
+						<img *ngIf="user.picture" style="width: 32px;" [src]="user.picture"> {{ user.displayName || (user.first_name + " " + user.last_name) }}
+					</div>
 				</mat-card-content>
 			</mat-card>
 		</div>

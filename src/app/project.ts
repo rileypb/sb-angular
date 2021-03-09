@@ -7,4 +7,5 @@ export interface Project {
 	activities?: any[];
 	epic_order?: string;
 	current_sprint_id?: number;
+	team?:any;
 }

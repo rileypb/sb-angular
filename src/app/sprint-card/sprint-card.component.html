@@ -35,6 +35,14 @@
         </div>
       </div>
       <div class="sprint-info row">
+        <div class="col-12">Total Work: {{ sprint.total_work }}</div>
+      </div>
+      <div class="sprint-info row">
+        <div class="col-12">
+          <a class="sb-link" (click)="showSummary()"><mat-icon style="position: relative; top: 4px;">people</mat-icon> Team Summary</a>
+        </div>
+      </div>
+      <div class="sprint-info row">
         <div class="col-12" [innerHtml]="sprint.description"></div>
       </div>
 

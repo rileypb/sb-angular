@@ -5,6 +5,10 @@
 :root {
 	--accent-color: #9999BB;
 
+	--link-color: #673ab7;
+	--link-color-hover: #a63ab7;
+	--link-color-active: #b73a89;
+	
 	--mdc-theme-primary: #000044;
 	--mdc-theme-accent: #0F0;
 }
@@ -53,6 +57,18 @@ a.disabled {
 	color: var(--accent-color);
 }
 
+.sb-link {
+	color: var(--link-color) !important;
+}
+
+.sb-link:hover {
+	color: var(--link-color-hover) !important;
+}
+
+.sb-link:active {
+	color: var(--link-color-active) !important;
+}
+
 .print-frame {}
 
 @media print {
@@ -64,3 +80,4 @@ a.disabled {
 @media screen {
 	.print-frame { display: none; }
 }
+

@@ -9,8 +9,8 @@ import { Base } from '../base';
 })
 export class ProjectFrameComponent extends Base implements OnInit {
   @Input() project:Project;
-  @Input() showEditButton:boolean = true;
-  @Input() showTeamButton:boolean = true;
+  @Input() showEditButton:boolean = false;
+  @Input() showTeamButton:boolean = false;
   public mode:string = "showingContent";
 
   constructor() {
