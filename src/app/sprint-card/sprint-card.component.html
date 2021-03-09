@@ -31,11 +31,11 @@
           State: {{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }} 
         </div>
         <div class="col-6">
-          Total Estimate: {{ sprint.total_estimate }}
+          Total Estimate: {{ sprint.total_estimate }} points
         </div>
       </div>
       <div class="sprint-info row">
-        <div class="col-12">Total Work: {{ sprint.total_work }}</div>
+        <div class="col-12">Total Work: {{ sprint.total_work }} hours</div>
       </div>
       <div class="sprint-info row">
         <div class="col-12">
