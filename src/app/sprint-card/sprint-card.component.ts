@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { SprintsService } from '../sprints.service';
 import { TeamSummaryComponent } from '../team-summary/team-summary.component';
+import { Issue } from '../issue';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class SprintCardComponent extends Base implements OnInit {
   @Output() transfer:EventEmitter<any> = new EventEmitter<any>();
   @Output() selected:EventEmitter<Sprint> = new EventEmitter<Sprint>();
   @Output() start:EventEmitter<any> = new EventEmitter<any>();
+  @Output() issueSelected:EventEmitter<Issue> = new EventEmitter<Issue>();
   expanded: boolean = false;
 
   constructor(public uiState:UiStateService, public dialog:MatDialog, private snackBar:MatSnackBar, private sprintsService:SprintsService) {
@@ -72,6 +74,11 @@ export class SprintCardComponent extends Base implements OnInit {
 
   suspendSprint() {
     callWithSnackBar(this.snackBar, this.sprintsService.suspendSprint(this.sprint), ['Suspending sprint...', 'Sprint suspended', 'Error suspending sprint']);
+  }
+
+  onIssueSelected(issue:Issue) {
+    console.log("FOOOOO");
+    this.issueSelected.emit(issue);
   }
 
   showSummary() {

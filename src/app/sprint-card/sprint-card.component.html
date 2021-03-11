@@ -47,7 +47,7 @@
       </div>
 
     	<div style="margin: 0px 3px 3px 30px;">
-        <sb-sprint-issue-list [sprint]="sprint" (transfer)="onTransfer($event)" [editable]="editable"></sb-sprint-issue-list>
+        <sb-sprint-issue-list [sprint]="sprint" (transfer)="onTransfer($event)" [editable]="editable" (issueSelected)="onIssueSelected($event)"></sb-sprint-issue-list>
         <!-- <app-issues [project]="sprint.project" [sprint]="sprint"></app-issues> -->
   	  </div>
     </div> 

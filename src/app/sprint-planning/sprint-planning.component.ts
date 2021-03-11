@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { DataService } from '../data.service';
 import { SprintsService } from '../sprints.service';
+import { Issue } from '../issue';
 
 function isSprint(obj: Project | Sprint): obj is Sprint {
 	return 'title' in obj;
@@ -23,6 +24,7 @@ export class SprintPlanningComponent extends Base implements OnInit {
   @Input() project:Project;
 
   mode:String = "backlog";
+  selectedIssue:Issue;
 
   private sprintUnderEdit:Sprint = null;
 
@@ -55,14 +57,14 @@ export class SprintPlanningComponent extends Base implements OnInit {
   }
 
   onSprintSelected(sprint:Sprint) {
-    if (this.mode == 'backlog') {
+    if (this.mode == 'backlog' || this.mode == 'viewIssue') {
       this.mode = "edit";
       this.sprintUnderEdit = sprint;
     }
   }
 
   newSprint() {
-    if (this.mode == 'backlog') {
+    if (this.mode == 'backlog' || this.mode == 'viewIssue') {
       this.mode = "create";
     }
   }
@@ -89,5 +91,12 @@ export class SprintPlanningComponent extends Base implements OnInit {
   onStart(sprint:Sprint) {
     callWithSnackBar(this.snackBar, this.sprintsService.startSprint(sprint),
                      ['Starting sprint...', 'Sprint started', 'Error starting sprint']);
+  }
+
+  onIssueSelected(issue:Issue) {
+    if (this.mode == 'backlog' || this.mode == 'viewIssue') {
+      this.mode = 'viewIssue';
+      this.selectedIssue = issue;
+    }
   }
 }

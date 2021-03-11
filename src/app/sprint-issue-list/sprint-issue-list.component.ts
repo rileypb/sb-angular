@@ -8,6 +8,7 @@ import { callWithSnackBar } from '../util';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
+import { Issue } from '../issue';
 
 @Component({
   selector: 'sb-sprint-issue-list',
@@ -19,6 +20,7 @@ export class SprintIssueListComponent implements OnInit {
   @Input() sprint:Sprint;
   @Input() editable:boolean;
   @Output() transfer:EventEmitter<any> = new EventEmitter<any>();
+  @Output() issueSelected:EventEmitter<Issue> = new EventEmitter<Issue>();
 
   issues:BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private lastValue:any = null;
@@ -62,6 +64,10 @@ export class SprintIssueListComponent implements OnInit {
 
   onTransfer(transferData) {
   	this.transfer.emit(transferData);
+  }
+
+  onIssueSelected(issue:Issue) {
+    this.issueSelected.emit(issue);
   }
 
 }

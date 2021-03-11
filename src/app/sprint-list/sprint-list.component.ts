@@ -4,6 +4,7 @@ import { Sprint } from '../sprint';
 import { DataService } from '../data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Issue } from '../issue';
 
 @Component({
   selector: 'sb-sprint-list',
@@ -18,6 +19,7 @@ export class SprintListComponent implements OnInit {
   @Output() selected:EventEmitter<Sprint> = new EventEmitter<Sprint>();
   @Output() start:EventEmitter<Sprint> = new EventEmitter<Sprint>();
   @Output() loaded:EventEmitter<Sprint> = new EventEmitter<Sprint>();
+  @Output() issueSelected:EventEmitter<Issue> = new EventEmitter<Issue>();
 
   sprints:Observable<any>;
 
@@ -85,5 +87,9 @@ export class SprintListComponent implements OnInit {
 
   onStart(sprint) {
     this.start.emit(sprint);
+  }
+
+  onIssueSelected(issue:Issue) {
+    this.issueSelected.emit(issue);
   }
 }

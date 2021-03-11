@@ -7,7 +7,7 @@
 						<div style="height:100%;">
 					  		<h6>Open and Pending Sprints
 			 			    <button *ngIf="permission(project, 'create-sprint')" mat-icon-button matTooltip="New Sprint" (click)="newSprint()"><mat-icon color="primary">add_circle</mat-icon></button></h6>
-		 			    	<sb-sprint-list [project]="project" [currentOnly]="true" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="!project.currentSprint" (start)="onStart($event)" [editable]="true"></sb-sprint-list>
+		 			    	<sb-sprint-list [project]="project" [currentOnly]="true" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="!project.currentSprint" (start)="onStart($event)" [editable]="true" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
 							<!-- <app-sprints style="height:100%; display: flex; flex-direction: column;" [project]="project"></app-sprints> -->
 						</div>
 					</mat-card>
@@ -27,12 +27,17 @@
 								<mat-icon class="mr-1">add_circle</mat-icon>
 								Create Sprint
 							</div>
+							<div *ngSwitchCase="'viewIssue'">
+								<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+								View Issue
+							</div>
 						</mat-card-title>
 
 						<mat-card-content [ngSwitch]="mode">
 							<sb-project-issue-list *ngSwitchCase="'backlog'" [project]="project" (transfer)="onTransfer($event)"></sb-project-issue-list>
 							<sb-sprint-form *ngSwitchCase="'edit'" [sprint]="sprintUnderEdit" mode="edit" (confirm)="onConfirmEdit($event)" (cancel)="mode='backlog'" (delete)="onDeleteSprint($event)"></sb-sprint-form>
 							<sb-sprint-form *ngSwitchCase="'create'" mode="create" (confirm)="onConfirmCreate($event)" (cancel)="mode='backlog'"></sb-sprint-form>
+							<app-issue-detail *ngSwitchCase="'viewIssue'" [issue]="selectedIssue"></app-issue-detail>
 						</mat-card-content>
 					</mat-card>
 				</div>
