@@ -13,7 +13,7 @@
 							<ul class="row" *ngFor="let task of issue.assigned_tasks">
 								<li>
 									Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours
-									<button mat-icon-button color="primary" (click)="unassignTask(task)">
+									<button *ngIf="editable" mat-icon-button color="primary" (click)="unassignTask(task)">
 										<mat-icon fontSet="fas" fontIcon="fa-times-circle" matTooltip="Unassign"></mat-icon>
 									</button>
 								</li>
@@ -30,7 +30,7 @@
 						<ul>
 							<li *ngFor="let task of issue.unassigned_tasks" class="row">
 								<span class="col-4">Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours</span>
-								<sb-user-selector class="col-8" [team]="(teamSummary | async)?.team.members" [assignee]="task.assignee" (userSelected)="assignTask(task, $event)"></sb-user-selector> 
+								<sb-user-selector *ngIf="editable" class="col-8" [team]="(teamSummary | async)?.team.members" [assignee]="task.assignee" (userSelected)="assignTask(task, $event)"></sb-user-selector> 
 								<!-- <button mat-icon-button color="primary" (click)="assign_task(task)">
 									<mat-icon style="font-size: 16px;" matTooltip="Assign">add_circle</mat-icon>
 								</button> -->

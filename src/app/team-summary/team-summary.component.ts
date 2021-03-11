@@ -12,6 +12,7 @@ import { User } from '../user';
 export interface DialogData {
 	sprint:Sprint;
 	project:Project;
+  editable:boolean;
 }
 
 @Component({
@@ -22,12 +23,14 @@ export interface DialogData {
 export class TeamSummaryComponent implements OnInit {
   sprint:Sprint;
   project:Project;
+  editable:boolean;  
 
   teamSummary:Observable<any>;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, private dataService:DataService, public dialog:MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService) {
   	this.project = data.project;
   	this.sprint = data.sprint;
+    this.editable = data.editable;
   }
 
   ngOnInit(): void {

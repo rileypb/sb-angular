@@ -78,6 +78,7 @@ export class SprintCardComponent extends Base implements OnInit {
     let data = {
       sprint: this.sprint,
       project: this.project,
+      editable: this.editable
     }
 
     const dialogRef = this.dialog.open(TeamSummaryComponent, {
