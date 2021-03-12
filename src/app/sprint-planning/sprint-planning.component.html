@@ -14,6 +14,7 @@
 				</div>
 				<div class="col-md-6">
 					<mat-card class="inner-detail-card">
+						<a class="product-backlog-link" *ngIf="mode == 'viewIssue'" (click)="mode = 'backlog'">Show Product Backlog</a>
 						<mat-card-title [ngSwitch]="mode">
 							<div *ngSwitchCase="'backlog'">
 								<mat-icon fontSet="fas" fontIcon="fa-list-alt"></mat-icon>

@@ -1,0 +1,14 @@
+.product-backlog-link {
+	text-decoration: underline; 
+	text-decoration-style: dotted;
+}
+
+.product-backlog-link:hover {
+	text-decoration: underline; 
+	text-decoration-style: dotted;
+	color: #683ab7;
+}
+
+.product-backlog.link:active {
+	color: #888;
+}
