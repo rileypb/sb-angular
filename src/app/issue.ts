@@ -13,5 +13,6 @@ export interface Issue {
 	sprint?: Sprint;
 	epic?: Epic;
 	tasks?: any;
-	assignee?:User
+	assignee?:User;
+	add_to_epic?: any;
 }

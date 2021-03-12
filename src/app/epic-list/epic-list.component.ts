@@ -4,6 +4,12 @@ import { Base } from '../base';
 import { Color } from '../color';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { UiStateService } from '../ui-state.service';
+import { MatDialog } from '@angular/material/dialog';
+import { IssueFormDialogComponent } from '../issue-form-dialog/issue-form-dialog.component';
+import { IssuesService } from '../issues.service';
+import { callWithSnackBar } from '../util';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-epic-list',
@@ -19,7 +25,7 @@ export class EpicListComponent extends Base implements OnInit {
   @Output() updateEpic:EventEmitter<Epic> = new EventEmitter<Epic>();
   @Output() reorderEpics:EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private uiStateService:UiStateService) { 
+  constructor(private uiStateService:UiStateService, private dialog:MatDialog, private issuesService:IssuesService, private snackBar:MatSnackBar) { 
   	super();
   }
 
@@ -57,6 +63,26 @@ export class EpicListComponent extends Base implements OnInit {
 
   onUpdateEpic(epic) {
     this.updateEpic.emit(epic);
+  }
+
+  createIssue(epic) {
+    let data = {
+      epic: epic
+    };
+
+    const dialogRef = this.dialog.open(IssueFormDialogComponent, {
+      maxWidth: "800px",
+      minWidth: "80%",
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        console.log("stop here");
+        callWithSnackBar(this.snackBar, this.issuesService.createIssue(dialogResult),
+          ['Creating issue...', 'Created issue', 'Error creating issue']);
+      }
+    });
   }
 
 }

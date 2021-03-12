@@ -54,7 +54,8 @@ export class IssueFormComponent extends Base implements OnInit {
   							title: this.issueForm.value['title'], 
   							description: this.issueForm.value['description'], 
   							estimate: this.issueForm.value['estimate'],
-  							project: this.issue.project
+  							project: this.issue.project,
+                add_to_epic: this.issue.add_to_epic,
   						  };
   	this.confirmEdit.emit(editedIssue);
   }

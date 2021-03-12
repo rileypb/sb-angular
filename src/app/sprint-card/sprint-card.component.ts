@@ -96,9 +96,6 @@ export class SprintCardComponent extends Base implements OnInit {
 
     // listen to response
     dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult) {
-        this.start.emit(data);
-      }    
     });
   }
 
