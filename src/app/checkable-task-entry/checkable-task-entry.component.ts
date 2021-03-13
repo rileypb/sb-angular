@@ -4,16 +4,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { Task } from '../task';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Base } from '../base';
 
 @Component({
   selector: 'sb-checkable-task-entry',
   templateUrl: './checkable-task-entry.component.html',
   styleUrls: ['./checkable-task-entry.component.css']
 })
-export class CheckableTaskEntryComponent implements OnInit {
+export class CheckableTaskEntryComponent extends Base implements OnInit {
   @Input() task:Task;
 
-  constructor(private tasksService:TasksService, private snackBar:MatSnackBar) { }
+  constructor(private tasksService:TasksService, private snackBar:MatSnackBar) { super(); }
 
   ngOnInit(): void {
   }

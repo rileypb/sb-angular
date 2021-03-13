@@ -7,6 +7,6 @@
    	  ({{task.estimate}} hours)
   </span>
   <span class="col-2 mt-2">
-   	<mat-checkbox color="primary" (change)="onCheckboxChange($event)" [checked]="task.state == 'complete'" #checkbox></mat-checkbox>
+   	<mat-checkbox [disabled]="!permission(task, 'update')" color="primary" (change)="onCheckboxChange($event)" [checked]="task.state == 'complete'" #checkbox></mat-checkbox>
   </span>
 </div>
