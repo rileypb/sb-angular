@@ -10,7 +10,7 @@
 	</mat-card-title>
 	<mat-card-content>
 		<sb-issue-list [issues]="((epicIssues | async) || {issues: { list: []}}).issues.list" fixed="true" (issueSelected)="onIssueSelected($event)"></sb-issue-list>
-		<form style="display: inline; width:100%">
+		<form style="display: inline; width:100%" [hidden]="!permission(epic, 'update')">
 			<mat-form-field style="width:100%" #searchField>
 				<input type="text"
 					   placeholder="Add an Issue"
