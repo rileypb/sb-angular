@@ -18,6 +18,8 @@ import { moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 export class EpicIssueListComponent implements OnInit {
 
   @Input() epic:Epic;
+  @Input() fixed:boolean;
+  @Input() allowRemove:boolean;
 
   issues:BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private dataSubscription:Subscription;

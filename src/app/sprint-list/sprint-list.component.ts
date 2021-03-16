@@ -5,13 +5,14 @@ import { DataService } from '../data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Issue } from '../issue';
+import { Base } from '../base';
 
 @Component({
   selector: 'sb-sprint-list',
   templateUrl: './sprint-list.component.html',
   styleUrls: ['./sprint-list.component.css']
 })
-export class SprintListComponent implements OnInit {
+export class SprintListComponent extends Base implements OnInit {
   @Input() project:Project;
   @Input() showStartButton:boolean;
   @Input() editable:boolean;
@@ -26,7 +27,7 @@ export class SprintListComponent implements OnInit {
   private lastDataPath:string;
   private isLoaded:boolean = false;
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService) { super(); }
 
   ngOnInit(): void {
     this.updateData();

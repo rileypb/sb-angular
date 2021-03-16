@@ -12,8 +12,8 @@
 							<button style="position: relative; top: -4px" *ngIf="permission(project, 'create-epic')" mat-icon-button color="primary" matTooltip="New Epic" (click)="createEpic()"><mat-icon>add_circle</mat-icon></button>
 						</mat-card-title>
 						<mat-card-content>
-							<app-epic-list [epics]="epics.epics.list" [project]="project" class="epic-list" #epicList (selectEpic)="showDetail($event)"
-										   (reorderEpics)="onReorderEpics($event)" (transferIssue)="onTransferIssue($event)" (updateEpic)="onUpdateEpic($event)"></app-epic-list>
+							<app-epic-list [epics]="epics.epics.list" [project]="project" class="epic-list" #epicList (selectEpic)="showDetail($event)" [fixed]="!permission(project, 'update')"
+										   [allowCreateIssue]="permission(project, 'create-issue')" (reorderEpics)="onReorderEpics($event)" (transferIssue)="onTransferIssue($event)" (updateEpic)="onUpdateEpic($event)"></app-epic-list>
 						</mat-card-content>
 					</mat-card>
 				</div>

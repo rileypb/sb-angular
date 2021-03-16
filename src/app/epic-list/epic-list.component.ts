@@ -17,6 +17,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./epic-list.component.css']
 })
 export class EpicListComponent extends Base implements OnInit {
+  @Input() fixed:boolean;
+  @Input() allowCreateIssue:boolean;
   @Input() epics: Epic[];
 
   @Output() selectEpic:EventEmitter<Epic> = new EventEmitter<Epic>();

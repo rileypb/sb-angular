@@ -1,5 +1,5 @@
 
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 <div class="scroller" *ngIf="sprints | async; else progressSpinner">
-  <app-sprint-card *ngFor="let sprint of (sprints | async).sprints.list; index as i" [sprint]="sprint" [project]="project" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="showStartButton" (start)="onStart($event)" [editable]="editable" (issueSelected)="onIssueSelected($event)"></app-sprint-card>
+  <app-sprint-card *ngFor="let sprint of (sprints | async).sprints.list; index as i" [sprint]="sprint" [project]="project" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="showStartButton && permission(sprint, 'start')" (start)="onStart($event)" [editable]="editable" (issueSelected)="onIssueSelected($event)"></app-sprint-card>
 </div>

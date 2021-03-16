@@ -19,6 +19,7 @@ import { moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 export class ProjectIssueListComponent implements OnInit {
 
   @Input() allIssuesAllowed:boolean = false;
+  @Input() fixed:boolean = false;
 
   @Input() project:Project;
 

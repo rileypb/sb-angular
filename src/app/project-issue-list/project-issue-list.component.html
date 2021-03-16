@@ -8,7 +8,7 @@
 	<h3 *ngIf="!allIssuesAllowed || !checkbox.checked">Backlog Issues</h3>
 	<sb-issue-list [issues]="issues | async" 
 	               *ngIf="(issues | async); else progressSpinner"
-				   [container]="project" (reorder)="onReorder($event)" [fixed]="checkbox.checked"
+				   [container]="project" (reorder)="onReorder($event)" [fixed]="checkbox.checked || fixed"
 				   (transfer)="onTransfer($event)"
 				   [filter]="checkbox.checked ? null : filterBacklogIssues"
 				   (issueSelected)="onIssueSelected($event)"></sb-issue-list>

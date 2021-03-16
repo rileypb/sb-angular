@@ -7,15 +7,18 @@
               	<a class="task-link text-truncate" matTooltip="Edit Task" [class.disabled]="!permission(task, 'update') ? true : null" (click)="editTask(task, $event)">#{{task.id}} - {{task.title}}</a>
               </span>
               <span class="col-3">
-                <a class="task-link" matTooltip="Edit Estimate" [hidden]="isEditingEstimate()" [class.disabled]="!permission(task, 'update') ? true : null" (click)="startEditingEstimate()">{{task.estimate}} hours</a>
+                <a *ngIf="permission(task, 'update')" class="task-link estimate-link" matTooltip="Edit Estimate" [hidden]="isEditingEstimate()" [disabled]="!permission(task, 'update') ? true : null" (click)="startEditingEstimate()">{{task.estimate}} hours</a>
+                <span *ngIf="!permission(task, 'update')">{{task.estimate}} hours</span>
                 <input [hidden]="!isEditingEstimate()" type="text" #estimateEditor [(ngModel)]="estimate" (blur)="stopEditingEstimate(false)" (keydown)="processKeyPress($event)">
               </span>
             </div>
 
+            <div class="ml-3" [innerHtml]="task.description"></div>
+
             <div class="mt-2 ml-1 row">
               <span class="col-11">
                 <div *ngIf="team | async">
-                  <sb-user-selector [team]="(team | async)?.team" [assignee]="task.assignee" (userSelected)="assignTask($event)"></sb-user-selector>
+                  <sb-user-selector [team]="(team | async)?.team" [assignee]="task.assignee" (userSelected)="assignTask($event)" [disabled]="!permission(task, 'update')"></sb-user-selector>
                 </div>
               </span>
             </div>

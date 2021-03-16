@@ -1,8 +1,40 @@
 <ng-template #progressSpinner><div class="d-flex justify-content-center"><mat-spinner></mat-spinner></div></ng-template>
+<ng-template #fixedList>
+  <div class="list epics">
+      <div *ngIf="epics; else progressSpinner">
+        <div *ngFor="let epic of epics; let i = index">
+          <div class="fixed-epic-card text-truncate" 
+               [ngStyle]="{'background-color': (epic.color ? epic.color : '#FFFFFF'), 'color': fontColor(epic.color)}">
+            
+            <div class="drag-placeholder" *cdkDragPlaceholder></div>
+            <div class="ml-3 row align-items-center" (click)="clickEpic(epic)">
+              <button class="col-1" *ngIf="!expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_more</mat-icon></button>
+              <button class="col-1" *ngIf="expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_less</mat-icon></button>
+              <span class="col-9 text-truncate">
+                #{{epic.id}} - {{epic.title}}
+              </span>
+              <button *ngIf="allowCreateIssue && permission(epic, 'update')" style="position: relative; left: 2px;" mat-icon-button (click)="createIssue(epic)">
+                <mat-icon [ngStyle]="{'color': fontColor(epic ? epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-plus-circle"></mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="expanded(epic)">
+            <div class="col-1">
+            </div>
+            <div class="col-11">
+              <sb-epic-issue-list [epic]="epic" [fixed]="!permission(epic, 'update')" [allowRemove]="permission(epic, 'update')" (updateEpic)="onUpdateEpic($event)" (onTransfer)="onTransferIssue($event)"></sb-epic-issue-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</ng-template>
 
 <div class="list-container epics">
   <div class="epic-container column-container">
-  	<div class="list epics" 
+  	<div *ngIf="!fixed; else fixedList"
+         class="list epics" 
   	     cdkDropList 
   	     #epicList="cdkDropList" 
   	     [cdkDropListData]="{ epics: epics }"
@@ -20,7 +52,7 @@
               <span class="col-9 text-truncate">
                 #{{epic.id}} - {{epic.title}}
               </span>
-              <button style="position: relative; left: 2px;" mat-icon-button (click)="createIssue(epic)">
+              <button *ngIf="allowCreateIssue && permission(epic, 'update')" style="position: relative; left: 2px;" mat-icon-button (click)="createIssue(epic)">
                 <mat-icon [ngStyle]="{'color': fontColor(epic ? epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-plus-circle"></mat-icon>
               </button>
             </div>
@@ -30,7 +62,7 @@
             <div class="col-1">
             </div>
             <div class="col-11">
-              <sb-epic-issue-list [epic]="epic" (updateEpic)="onUpdateEpic($event)" (onTransfer)="onTransferIssue($event)"></sb-epic-issue-list>
+              <sb-epic-issue-list [epic]="epic" [fixed]="!permission(epic, 'update')" [allowRemove]="permission(epic, 'update')" (updateEpic)="onUpdateEpic($event)" (onTransfer)="onTransferIssue($event)"></sb-epic-issue-list>
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { User } from '../user';
   styleUrls: ['./user-selector.component.css']
 })
 export class UserSelectorComponent implements OnInit {
+  @Input() disabled:boolean;
   @Input() team:any;
   @Output() userSelected:EventEmitter<User> = new EventEmitter<User>();
 

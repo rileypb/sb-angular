@@ -13,7 +13,7 @@
 
 					<mat-card-content>
 						<sb-project-issue-list [project]="project" class="product-backlog" allIssuesAllowed="true" #productBacklog (selectIssue)="showDetail($event)"
-											   [requestedIssueId]="requestedIssueId"></sb-project-issue-list>
+											   [fixed]="!permission(project, 'update')" [requestedIssueId]="requestedIssueId"></sb-project-issue-list>
 					</mat-card-content>
 				</mat-card>
 			</div>
