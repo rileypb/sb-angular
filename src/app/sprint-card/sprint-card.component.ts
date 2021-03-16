@@ -11,6 +11,8 @@ import { callWithSnackBar } from '../util';
 import { SprintsService } from '../sprints.service';
 import { TeamSummaryComponent } from '../team-summary/team-summary.component';
 import { Issue } from '../issue';
+import { Observable, never } from 'rxjs';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -19,7 +21,6 @@ import { Issue } from '../issue';
   styleUrls: ['./sprint-card.component.css']
 })
 export class SprintCardComponent extends Base implements OnInit {
-  @Input() sprint: Sprint;
   @Input() project: Project;
   @Input() showStartButton: boolean;
   @Input() editable:boolean;
@@ -29,12 +30,53 @@ export class SprintCardComponent extends Base implements OnInit {
   @Output() issueSelected:EventEmitter<Issue> = new EventEmitter<Issue>();
   expanded: boolean = false;
 
-  constructor(public uiState:UiStateService, public dialog:MatDialog, private snackBar:MatSnackBar, private sprintsService:SprintsService) {
+  private unloader:()=>void;
+
+  public sprint$:Observable<Sprint>;
+
+  constructor(public uiState:UiStateService, public dialog:MatDialog, private snackBar:MatSnackBar, private sprintsService:SprintsService, private dataService:DataService) {
     super();
   }
 
   ngOnInit(): void {
     this.expanded = this.uiState.isExpanded("sprint/" + this.sprint.id);
+  }
+
+  @Input() set sprint(value:Sprint) {
+    this._sprint = value;
+    if (value) {
+      this.updateSprintAsync();
+    } else {
+      this.clearSprintAsync();
+    }
+  }
+  get sprint():Sprint {
+    return this._sprint;
+  }
+  private _sprint:Sprint
+
+  private updateSprintAsync() {
+    if (this.unloader) {
+      this.unloader();
+    }
+    this.dataService.load(`sprints/${this.sprint.id}`, [`sprints/${this.sprint.id}`]);
+    this.sprint$ = this.dataService.values[`sprints/${this.sprint.id}`];
+    this.unloader = () => {
+      this.dataService.unload(`sprints/${this.sprint.id}`, [`sprints/${this.sprint.id}`]);
+    }
+  }
+
+  private clearSprintAsync() {
+    if (this.unloader) {
+      this.unloader();
+    }
+    this.sprint$ = never(); // if no sprint set, the Observable should never complete.
+  }
+
+  ngDestroy() {
+    if (this.unloader) {
+      this.unloader();
+    }
   }
 
   toggleExpanded(): void {

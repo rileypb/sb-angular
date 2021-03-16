@@ -8,7 +8,7 @@
         <button mat-icon-button (click)="onViewSprint($event)" matTooltip="View Sprint">
             <mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
         </button>
-        {{ sprint.id }} - {{sprint.title}}
+        {{ (sprint$ | async)?.id }} - {{(sprint$ | async)?.title}}
       </span>
       <span class="col-2">
         <button mat-icon-button *ngIf="showStartButton" (click)="onStartSprint($event)" matTooltip="Start Sprint">
@@ -24,18 +24,18 @@
 
     <div class="sprint-card-content" *ngIf="expanded">
       <div class="sprint-info row">
-        <div class="col-12">Goal: {{ sprint.goal }}</div>
+        <div class="col-12">Goal: {{ (sprint$ | async)?.goal }}</div>
       </div>
       <div class="sprint-info row">
         <div class="col-6">
           State: {{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }} 
         </div>
         <div class="col-6">
-          Total Estimate: {{ sprint.total_estimate }} points
+          Total Estimate: {{ (sprint$ | async)?.total_estimate }} points
         </div>
       </div>
       <div class="sprint-info row">
-        <div class="col-12">Total Work: {{ sprint.total_work }} hours</div>
+        <div class="col-12">Total Work: {{ (sprint$ | async)?.total_work }} hours</div>
       </div>
       <div class="sprint-info row">
         <div class="col-12">
