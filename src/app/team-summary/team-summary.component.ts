@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { TasksService } from '../tasks.service';
 import { User } from '../user';
+import { Base } from '../base';
 
 export interface DialogData {
 	sprint:Sprint;
@@ -20,7 +21,7 @@ export interface DialogData {
   templateUrl: './team-summary.component.html',
   styleUrls: ['./team-summary.component.css']
 })
-export class TeamSummaryComponent implements OnInit {
+export class TeamSummaryComponent extends Base implements OnInit {
   sprint:Sprint;
   project:Project;
   editable:boolean;  
@@ -28,7 +29,8 @@ export class TeamSummaryComponent implements OnInit {
   teamSummary:Observable<any>;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, private dataService:DataService, public dialog:MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService) {
-  	this.project = data.project;
+  	super();
+    this.project = data.project;
   	this.sprint = data.sprint;
     this.editable = data.editable;
   }
