@@ -38,7 +38,7 @@
 							<sb-project-issue-list *ngSwitchCase="'backlog'" [project]="project" (transfer)="onTransfer($event)" [fixed]="!permission(project, 'update')"></sb-project-issue-list>
 							<sb-sprint-form *ngSwitchCase="'edit'" [sprint]="sprintUnderEdit" mode="edit" (confirm)="onConfirmEdit($event)" (cancel)="mode='backlog'" (delete)="onDeleteSprint($event)"></sb-sprint-form>
 							<sb-sprint-form *ngSwitchCase="'create'" mode="create" (confirm)="onConfirmCreate($event)" (cancel)="mode='backlog'"></sb-sprint-form>
-							<app-issue-detail *ngSwitchCase="'viewIssue'" [issue]="selectedIssue"></app-issue-detail>
+							<sb-issue-loader *ngSwitchCase="'viewIssue'" [issueId]="selectedIssue?.id"><app-issue-detail #issueView></app-issue-detail></sb-issue-loader>
 						</mat-card-content>
 					</mat-card>
 				</div>

@@ -110,6 +110,7 @@ import { RetrospectiveIssueListComponent } from './retrospective-issue-list/retr
 import { UserSelectorComponent } from './user-selector/user-selector.component';
 import { TeamSummaryComponent } from './team-summary/team-summary.component';
 import { IssueFormDialogComponent } from './issue-form-dialog/issue-form-dialog.component';
+import { IssueLoaderComponent } from './issue-loader/issue-loader.component';
 
 
 @NgModule({
@@ -191,6 +192,7 @@ import { IssueFormDialogComponent } from './issue-form-dialog/issue-form-dialog.
     UserSelectorComponent,
     TeamSummaryComponent,
     IssueFormDialogComponent,
+    IssueLoaderComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

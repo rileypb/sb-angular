@@ -5,7 +5,7 @@ import { Issue } from '../issue';
 import { Color } from '../color';
 import { Task } from '../task';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { TasksService } from '../tasks.service';
@@ -29,6 +29,11 @@ export class IssueDetailComponent extends Base implements OnInit {
 
 
   ngOnInit(): void {
+    //this.dataService.load(`projects/${this.issue.project.id}/team`, []);
+    //this.team = this.dataService.values[`projects/${this.issue.project.id}/team`];
+  }
+  
+  updateTeam() {
     this.dataService.load(`projects/${this.issue.project.id}/team`, []);
     this.team = this.dataService.values[`projects/${this.issue.project.id}/team`];
   }
@@ -41,6 +46,11 @@ export class IssueDetailComponent extends Base implements OnInit {
   @Input() set issue(value:Issue) {
     this._issue = value;
     this.assignee = this.issue.assignee || "-1";
+    if (value != null) {
+      this.updateTeam();
+    } else {
+      this.team = null;
+    }
   }
   get issue():Issue {
     return this._issue;
