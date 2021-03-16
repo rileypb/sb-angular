@@ -65,9 +65,7 @@ export class TaskCardComponent extends Base implements OnInit {
   }
 
   private save(t) {
-  	callWithSnackBar(this.snackBar, this.tasksService.save(t), ['Saving task...', 'Task saved', 'Error saving task']).subscribe(
-  		msg => this.task = this.taskUnderEdit
-  	);
+  	callWithSnackBar(this.snackBar, this.tasksService.save(t), ['Saving task...', 'Task saved', 'Error saving task']);
   }
 
   // isEditingEstimate(task) {

@@ -30,7 +30,7 @@ export class IssueLoaderComponent implements OnInit {
   	});
   }
 
-  ngDestroy():void {
+  ngOnDestroy():void {
   	this.dataService.unload(`issues/${this.issueId}`, [`issues/${this.issueId}`]);
   	this.sub.unsubscribe();
   }

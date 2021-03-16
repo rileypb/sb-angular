@@ -73,7 +73,7 @@ export class SprintCardComponent extends Base implements OnInit {
     this.sprint$ = never(); // if no sprint set, the Observable should never complete.
   }
 
-  ngDestroy() {
+  ngOnDestroy() {
     if (this.unloader) {
       this.unloader();
     }
