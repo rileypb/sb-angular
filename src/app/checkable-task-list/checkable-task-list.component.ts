@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Issue } from '../issue';
 import { Base } from '../base';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 
 @Component({
@@ -11,6 +11,9 @@ import { DataService } from '../data.service';
 })
 export class CheckableTaskListComponent extends Base implements OnInit {
   @ViewChild("checkbox") checkbox:ElementRef;
+
+  public percentComplete:number = 0;
+  private sub:Subscription;
 
   checked:boolean;
 
@@ -28,9 +31,15 @@ export class CheckableTaskListComponent extends Base implements OnInit {
   ngAfterViewInit() {
     this.dataService.load(`issues/${this.issue.id}/tasks`, [`issues/${this.issue.id}/tasks`]);
     this.tasks$ = this.dataService.values[`issues/${this.issue.id}/tasks`];
+    this.sub = this.tasks$.subscribe((x) => {
+      if (x) {
+        this.percentComplete = x.percentComplete;
+      }
+    })
   }
 
   ngOnDestroy() {
     this.dataService.unload(`issues/${this.issue.id}/tasks`, [`issues/${this.issue.id}/tasks`]);
+    this.sub.unsubscribe();
   }
 }

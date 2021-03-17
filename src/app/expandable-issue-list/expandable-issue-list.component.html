@@ -20,10 +20,10 @@
 	              <button mat-icon-button *ngIf="showViewIcon" (click)="onViewIssue($event, issue)">
 	                  <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
 	              </button>
-	           	  #{{issue.id}} - {{issue.title}}
+	           	  #{{issue.id}} - {{issue.title}} - {{(taskList.percentComplete | percent)}} complete
 	           	</mat-expansion-panel-title>
 	          </mat-expansion-panel-header>
-	          <sb-checkable-task-list [issue]="issue"></sb-checkable-task-list>
+	          <sb-checkable-task-list [issue]="issue" #taskList></sb-checkable-task-list>
 	        </mat-expansion-panel>
     	</mat-accordion>
       </div>
