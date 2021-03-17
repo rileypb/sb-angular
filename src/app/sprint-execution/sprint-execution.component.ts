@@ -34,6 +34,6 @@ export class SprintExecutionComponent implements OnInit {
 	  	} else {
 	  		this.currentSprint = null;
 	  	}
-	}
+	  }
   }
 }

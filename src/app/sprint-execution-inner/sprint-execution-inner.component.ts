@@ -9,6 +9,7 @@ import { callWithSnackBar } from '../util';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EditIssueDialogComponent } from '../edit-issue-dialog/edit-issue-dialog.component';
 import { SprintsService } from '../sprints.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'sb-sprint-execution-inner',
@@ -83,7 +84,19 @@ export class SprintExecutionInnerComponent implements OnInit {
     callWithSnackBar(this.snackBar, this.sprintsService.suspendSprint(sprint), ['Suspending sprint...', 'Sprint suspended', 'Error suspending sprint']);
   }
 
-  onFinishSprint(sprint:Sprint) {
-    callWithSnackBar(this.snackBar, this.sprintsService.finishSprint(sprint), ['Finishing sprint...', 'Sprint finished', 'Error finishing sprint']);
+  onFinishSprint(sprint:Sprint) {    
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: {
+          title: "Are you sure?",
+          message: `You are about to mark this Sprint complete. This step is irreversible. If there is any work that is incomplete, you may wish to first move it to a future sprint.`
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+     if (result) {
+       callWithSnackBar(this.snackBar, this.sprintsService.finishSprint(sprint), ['Finishing sprint...', 'Sprint finished', 'Error finishing sprint']);
+     }
+    });
   }
 }
