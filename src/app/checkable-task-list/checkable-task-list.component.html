@@ -1,7 +1,7 @@
 <ng-template #noTasks>No Tasks</ng-template>
 
-<div *ngIf="issue.tasks.length > 0; else noTasks">
-	<div *ngFor="let task of issue.tasks">
+<div *ngIf="(tasks$ | async)?.tasks.list.length > 0; else noTasks">
+	<div *ngFor="let task of (tasks$ | async)?.tasks.list">
 		<sb-checkable-task-entry [task]="task"></sb-checkable-task-entry>
 	</div>
 </div>

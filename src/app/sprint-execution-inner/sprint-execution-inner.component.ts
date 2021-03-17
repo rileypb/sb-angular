@@ -38,7 +38,7 @@ export class SprintExecutionInnerComponent implements OnInit {
   	if (this._sprint) {
 	  	this.dataService.load(`sprints/${this._sprint.id}/issues`, [`sprints/${this._sprint.id}/issues`, `sprints/${this._sprint.id}/issues/*`]);
 	  	this.issues = this.dataService.values[`sprints/${this._sprint.id}/issues`];
-	}
+	  }
   }
 
   private unloadOldIssues() {
