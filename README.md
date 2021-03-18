@@ -2,6 +2,8 @@
 
 This is the front end for Scrumboard. Good to see you!
 
+<img src="https://user-images.githubusercontent.com/311305/111650396-a1f97580-87db-11eb-9dad-bc284b2120b8.png" height="300px">
+
 ## Development server
 
 Before running, you'll need to set up some environment variables (shown here with default values):
