@@ -13,7 +13,7 @@ Before running, you'll need to set up some environment variables (shown here wit
    domain
    clientId
    audience
-   apiUri=http://localhosr:3000/api
+   apiUri=http://localhost:3000/api
 ```
 
 The value 'domain', 'clientId', and 'audience' relate to Auth0 authentication. You'll need to set up an account there to use authentication as-is.
