@@ -22,6 +22,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
  
 const MATERIALMODULES = [MatTableModule, MatCardModule, MatExpansionModule, MatIconModule, 
@@ -29,7 +30,7 @@ const MATERIALMODULES = [MatTableModule, MatCardModule, MatExpansionModule, MatI
 						 MatTooltipModule, MatGridListModule, MatSelectModule, ScrollingModule,
 						 MatSnackBarModule, MatSidenavModule, MatListModule, MatProgressSpinnerModule,
 						 MatTabsModule, MatAutocompleteModule, MatCheckboxModule, MatSlideToggleModule,
-						 MatDatepickerModule, MatNativeDateModule];
+						 MatDatepickerModule, MatNativeDateModule, MatProgressBarModule];
 
 @NgModule({
      imports: [...MATERIALMODULES],

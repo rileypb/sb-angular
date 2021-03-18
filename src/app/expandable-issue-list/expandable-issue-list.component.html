@@ -16,12 +16,13 @@
 	             [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index" cdkDrag>
 	          <div class="drag-placeholder" *cdkDragPlaceholder></div>
 	          <mat-expansion-panel-header>
-	          	<mat-expansion-panel-title class="text-truncate">
+	          	<mat-expansion-panel-title class="text-truncate issue-panel">
 	              <button mat-icon-button *ngIf="showViewIcon" (click)="onViewIssue($event, issue)">
 	                  <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
 	              </button>
-	           	  #{{issue.id}} - {{issue.title}} - {{(taskList.percentComplete | percent)}} complete
+	           	  #{{issue.id}} - {{issue.title}} - {{(taskList.percentComplete | percent)}}
 	           	</mat-expansion-panel-title>
+            <mat-progress-bar class="issue-progress-bar" mode="determinate" [value]="100*taskList.percentComplete"></mat-progress-bar>
 	          </mat-expansion-panel-header>
 	          <sb-checkable-task-list [issue]="issue" #taskList></sb-checkable-task-list>
 	        </mat-expansion-panel>
