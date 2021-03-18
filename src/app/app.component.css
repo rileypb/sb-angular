@@ -28,6 +28,10 @@ mat-card {
 
 .main-content-drawer {
 }
-
+*/
 .main-content-container {
-}*/
+}
+
+.container {
+	max-width: 80%;
+}
