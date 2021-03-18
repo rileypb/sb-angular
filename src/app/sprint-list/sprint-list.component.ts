@@ -83,6 +83,7 @@ export class SprintListComponent extends Base implements OnInit {
   }
 
   onSprintSelected(sprint) {
+    console.log(`sprintSelected: ${sprint.id}`);
     this.selected.emit(sprint);
   }
 

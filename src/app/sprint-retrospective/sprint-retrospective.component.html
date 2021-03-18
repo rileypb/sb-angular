@@ -27,7 +27,7 @@
 								<div [innerHtml]="selectedSprint.description"></div>
 
 								<h4>Burndown</h4>
-								<app-burndown [sprint]="selectedSprint"></app-burndown>
+								<app-burndown [sprintId]="selectedSprint.id"></app-burndown>
 								<h4>Retrospective<span *ngIf="!editingRetrospective" class="no-print"><button mat-icon-button (click)="editingRetrospective = true"><mat-icon color="primary">edit</mat-icon></button></span></h4>
 								<div style="font-size: 12pt; font-weight: normal;" *ngIf="!editingRetrospective">
 									<div [innerHtml]="selectedSprint.retrospective"></div>

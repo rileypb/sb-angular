@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sprint } from '../sprint';
 import { DataService } from '../data.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-burndown',
@@ -11,14 +12,38 @@ export class BurndownComponent implements OnInit {
   options: any;
   constructor(private dataService:DataService) {}
 
+  public sprint$:Observable<Sprint>;
+  private sub:Subscription;
+
   ngOnInit(): void {
-    this.dataService.load(`sprints/${this.sprint.id}`, [`sprints/${this.sprint.id}`]);
-    this.dataService.values[`sprints/${this.sprint.id}`].subscribe (
-      x => this.sprint = x
-    );
+    this.updateSprint();
   }
 
-  setBurndownData(sprint:Sprint) {    
+  private updateSprint() {
+    if (this.sprintId) {
+      this.dataService.load(`sprints/${this.sprintId}`, [`sprints/${this.sprintId}`]);
+      this.sprint$ = this.dataService.values[`sprints/${this.sprintId}`];
+      this.sub = this.sprint$.subscribe(
+        x => this.setBurndownData(x)
+      );
+    }
+  }
+
+  ngOnDestroy() {
+    this.disposeSprint();
+  }
+
+  private disposeSprint() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+      this.dataService.unload(`sprints/${this.sprintId}`, [`sprints/${this.sprintId}`]);
+    }
+  }
+
+  setBurndownData(sprint:Sprint) { 
+    if (!sprint) {
+      return;
+    }  
     this.options = {
       legend: {
         data: ['ideal', 'actual'],
@@ -61,14 +86,14 @@ export class BurndownComponent implements OnInit {
   }
 
   @Input()
-  set sprint(value:Sprint) {
-    this._sprint = value;
-    if (value) {
-      this.setBurndownData(value);
-    }
+  set sprintId(value:number) {
+    this.disposeSprint();
+    this._sprintId = value;
+    this.updateSprint();
+
   }
-  get sprint():Sprint {
-    return this._sprint;
+  get sprintId():number {
+    return this._sprintId;
   }
-  private _sprint:Sprint;
+  private _sprintId:number;
 }

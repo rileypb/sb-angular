@@ -53,7 +53,7 @@
 				</mat-card-title>
 				<mat-card-content>
 					<div *ngIf="project.currentSprint">
-						<app-burndown [sprint]="project.currentSprint"></app-burndown>
+						<app-burndown [sprintId]="project.currentSprint.id"></app-burndown>
 					</div>
 				</mat-card-content>
 			</mat-card>
