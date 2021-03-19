@@ -18,6 +18,7 @@
           <!-- <mat-icon *ngIf="sprint.id == sprint.project.current_sprint_id" class="mt-2" matTooltip="Current Sprint">directions_run</mat-icon> -->
           <button *ngIf="permission(sprint, 'suspend') && (sprint.id == sprint.project.current_sprint_id)" mat-icon-button color="warn" 
               matTooltip="Suspend Sprint" (click)="suspendSprint()"><mat-icon>pause_circle</mat-icon></button>
+          <mat-icon style="position: relative; top: 6px;" *ngIf="!permission(sprint, 'suspend') && (sprint.id == sprint.project.current_sprint_id)">directions_run</mat-icon>
         </span>
       </span>
     </div>
