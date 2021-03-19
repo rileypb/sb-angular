@@ -19,7 +19,7 @@ Before running, you'll need to set up some environment variables (shown here wit
    domain
    clientId
    audience
-   apiUri=http://localhost:3000/api
+   apiUri=http://localhost:3000
 ```
 
 The value 'domain', 'clientId', and 'audience' relate to Auth0 authentication. You'll need to set up an account there to use authentication as-is.
@@ -30,6 +30,20 @@ Run `npm run config && ng s` for a dev server. Navigate to `http://localhost:420
 
 API authentication to the backend (project sb-rails) is JWT-based. Currently the only auth option is through Auth0. It's easy to set up a free account with them, but you can substitute other options if you like. Feel free to contribute your auth alternatives!
 
+## Setting up Authentication
+
+See the README at [sb-rails](https://github.com/rileypb/sb-rails) for most of the instructions. After setting up the application in Auth0, you can create a .env file in the sb-angular root folder to hold your application information.
+
+For example:
+```
+domain=my-domain-id.us.auth0.com 
+clientId=######################## from the application you set up on Auth0
+audience=<The API Audience you set up on Auth0>
+apiUri=http://localhost:3000
+```
+
+**NOTE:** You should add .env to .gitignore if it's not there already. Your environment variables should not be committed to version control.
+
 ## API
 
-For this project to be useful, you'll also need to clone and run [sb-rails](https://github.com/rileypb/sb-rails). More information about setting up Scrumboard can be found in the README there.
+For this project to be useful, you'll also need to clone and run [sb-rails](https://github.com/rileypb/sb-rails). More information about setting up Scrumboard can be found in the README there. 
