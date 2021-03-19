@@ -4,6 +4,16 @@ This is the front end for Scrumboard. Good to see you!
 
 <img src="https://user-images.githubusercontent.com/311305/111650396-a1f97580-87db-11eb-9dad-bc284b2120b8.png" height="300px">
 
+## About Scrumboard
+
+Scrumboard is a software project management system aimed at teaching Scrum. It aims to be a useful tool for educational institutions, non-profit or otherwise, teaching software engineering classes.
+
+The intent of Scrumboard is to implement a reasonably pure version of Scrum. That said, every instance of Scrum entails choices of how work is recorded, estimated, organized, and so on, so we've had to make some decisions about how implement some dimensions of Scrum.
+
+### What Scrumboard is Not 
+
+Scrumboard is not intended for commercial use. In it present state it doesn't have the power and flexibility to accommodate the many work styles encountered in enterprise software engineering.
+
 ## Setting Up
 
 After cloning the repository, install the dependencies with `npm install`.
