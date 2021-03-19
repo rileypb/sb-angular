@@ -57,3 +57,9 @@ apiUri=http://localhost:3000
 ## API
 
 For this project to be useful, you'll also need to clone and run [sb-rails](https://github.com/rileypb/sb-rails). More information about setting up Scrumboard can be found in the README there. 
+
+## Licensing
+
+Scrumboard is licensed under GPLv3. This means that you can use this software for any purpose you want, and you can create derivative works, but you must license those derivative works under GPLv3 as well, and share the source code.
+
+We've chosen this license because we want Scrumboard to be a tool for educators, and not the kernel of a proprietary project management product.
