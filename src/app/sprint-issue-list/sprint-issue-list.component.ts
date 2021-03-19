@@ -9,13 +9,14 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Issue } from '../issue';
+import { Base } from '../base';
 
 @Component({
   selector: 'sb-sprint-issue-list',
   templateUrl: './sprint-issue-list.component.html',
   styleUrls: ['./sprint-issue-list.component.css']
 })
-export class SprintIssueListComponent implements OnInit {
+export class SprintIssueListComponent extends Base implements OnInit {
 
   @Input() sprint:Sprint;
   @Input() editable:boolean;
@@ -26,7 +27,7 @@ export class SprintIssueListComponent implements OnInit {
   private lastValue:any = null;
   private dataSubscription:Subscription;
 
-  constructor(private dataService:DataService, private snackBar:MatSnackBar, private sprintsService:SprintsService) { }
+  constructor(private dataService:DataService, private snackBar:MatSnackBar, private sprintsService:SprintsService) { super(); }
 
   ngOnInit(): void {
   	this.dataService.load(`sprints/${this.sprint.id}/issues`, [`sprints/${this.sprint.id}`, `sprints/${this.sprint.id}/issues`, `sprints/${this.sprint.id}/issues/*`]);

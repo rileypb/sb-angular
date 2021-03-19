@@ -12,4 +12,5 @@ export interface Sprint {
 	started?:boolean;
 	completed?:boolean;
 	retrospective?:string;
+	permissions?:any;
 }
