@@ -8,7 +8,7 @@ This is the front end for Scrumboard. Good to see you!
 
 Scrumboard is a software project management system aimed at teaching Scrum. It aims to be a useful tool for educational institutions, non-profit or otherwise, teaching software engineering classes.
 
-The intent of Scrumboard is to implement a reasonably pure version of Scrum. That said, every instance of Scrum entails choices of how work is recorded, estimated, organized, and so on, so we've had to make some decisions about how implement some dimensions of Scrum.
+The intent of Scrumboard is to implement a reasonably pure version of Scrum. That said, every instance of Scrum entails choices of how work is recorded, estimated, organized, and so on, so we've had to make some decisions about how to implement some dimensions of Scrum. More on this below.
 
 ### What Scrumboard is Not 
 
