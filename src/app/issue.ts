@@ -15,4 +15,5 @@ export interface Issue {
 	tasks?: any;
 	assignee?:User;
 	add_to_epic?: any;
+	completed?:boolean;
 }

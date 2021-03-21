@@ -86,4 +86,9 @@
 	color: #aaa;
 }
 
+.checkmark {
+}
 
+.completed-title {
+	text-decoration: line-through;
+}
