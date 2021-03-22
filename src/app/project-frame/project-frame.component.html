@@ -4,10 +4,12 @@
 
 		<mat-card class="project-frame-card">
 			<mat-card-title>
-				<mat-icon fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
+				<mat-icon *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
+				<img class="project-picture" *ngIf="project.picture" [src]="project.picture">
 				{{project.name}}
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Edit Project" (click)="editProject()"><mat-icon>edit</mat-icon></button>
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showTeamButton && permission(project, 'read')" mat-icon-button color="primary" matTooltip="Show Team" (click)="showTeam()"><mat-icon>people</mat-icon></button>
+				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showSettingsButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Show Team" (click)="editSettings()"><mat-icon>settings</mat-icon></button>
 			</mat-card-title>
 			<div [ngSwitch]="mode">
 				<ng-content *ngSwitchCase="'showingContent'"></ng-content>
@@ -21,6 +23,12 @@
 							<img *ngIf="user.picture" style="width: 32px;" [src]="user.picture"> {{ user.displayName || (user.first_name + " " + user.last_name) }}
 						</div>
 					</div>
+				</div>
+
+				<div *ngSwitchCase="'editingSettings'">
+					<p>Picture URL: <input class="picture-input" [(ngModel)]="project.picture"></p>
+					<p>Auto-close Issues: <input type="checkbox" [(ngModel)]="project.setting_auto_close_issues"></p>
+					<button (click)="saveSettings()">Save</button>
 				</div>
 			
 			</div>

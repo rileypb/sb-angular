@@ -1,3 +1,11 @@
 .project-frame-card {
 	background-color: #FFF !important;
 }
+
+.picture-input {
+	width: 80%;
+}
+
+.project-picture {
+	width: 32px;
+}
