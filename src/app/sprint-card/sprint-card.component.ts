@@ -59,10 +59,10 @@ export class SprintCardComponent extends Base implements OnInit {
     if (this.unloader) {
       this.unloader();
     }
-    this.dataService.load(`sprints/${this.sprint.id}`, [`sprints/${this.sprint.id}`]);
+    this.dataService.load(`sprints/${this.sprint.id}`, [`sprints/${this.sprint.id}`, `sprints/${this.sprint.id}/issues`]);
     this.sprint$ = this.dataService.values[`sprints/${this.sprint.id}`];
     this.unloader = () => {
-      this.dataService.unload(`sprints/${this.sprint.id}`, [`sprints/${this.sprint.id}`]);
+      this.dataService.unload(`sprints/${this.sprint.id}`, [`sprints/${this.sprint.id}`, `sprints/${this.sprint.id}/issues`]);
     }
   }
 
