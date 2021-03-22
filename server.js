@@ -1,8 +1,11 @@
 
+var sslRedirect = require(‘heroku-ssl-redirect’);
+
 const express = require('express');
 
 const app = express();
 
+app.use(sslRedirect());
 app.use(express.static('./dist'));
 
 app.get('/*', function (req, res) {
