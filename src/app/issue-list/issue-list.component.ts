@@ -4,6 +4,9 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/dr
 import { Color } from '../color';
 import { Observable, Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IssuesService } from '../issues.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { callWithSnackBar } from '../util';
 
 @Component({
   selector: 'sb-issue-list',
@@ -34,7 +37,7 @@ export class IssueListComponent implements OnInit {
   @Output() issueRemoved:EventEmitter<Issue> = new EventEmitter<Issue>();
   @Output() viewIssue:EventEmitter<Issue> = new EventEmitter<Issue>();
 
-  constructor() { }
+  constructor(private issuesService:IssuesService, private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -58,54 +61,6 @@ export class IssueListComponent implements OnInit {
       let issue = event.previousContainer.data.issues[event.previousIndex];
       this.transfer.emit({ from: event.previousContainer, to: event.container, issue: issue, fromIndex: event.previousIndex, toIndex: event.currentIndex });
     }
-    // if (event.previousContainer == event.container) {
-    //   // just move stuff around
-    //   moveItemInArray(event.container.data.issues, event.previousIndex, event.currentIndex);
-    //   let order = "";    
-    //   for (let i of event.container.data.issues) {
-    //     if (order.length > 0) {
-    //       order += ",";
-    //     }
-    //     order += i.id;
-    //   }
-    //   this.epic.issue_order = order;
-    //   console.log("HERE");
-    //   this.updateEpic.emit(this.epic);
-    // } else {
-    // 	console.log("HERE")
-    //   // need to move between containers
-    //   let issue = event.previousContainer.data.issues[event.previousIndex];
-    //   transferArrayItem(event.previousContainer.data.issues, event.container.data.issues, event.previousIndex, event.currentIndex);
-    //   let order1 = "";    
-    //   for (let i of event.previousContainer.data.issues) {
-    //     if (order1.length > 0) {
-    //       order1 += ",";
-    //     }
-    //     order1 += i.id;
-    //   }
-    //   let order2 = "";    
-    //   for (let i of event.container.data.issues) {
-    //     if (order2.length > 0) {
-    //       order2 += ",";
-    //     }
-    //     order2 += i.id;
-    //   }
-
-    //   let project1 = event.previousContainer.data.project;
-    //   let sprint1 = event.previousContainer.data.sprint;
-    //   let epic1 = event.previousContainer.data.epic;
-    //   let project2 = event.container.data.project;
-    //   let sprint2 = event.container.data.sprint;
-    //   let epic2 = event.container.data.epic;
-
-    //   if (epic1) {
-    //   	issue.epic = epic2;
-    //   	this.onTransfer.emit({epicId1: epic1.id, order1: order1, epicId2: epic2.id, order2: order2});
-    //   } else {
-    //   	this.onTransfer.emit({projectId1: project1.id, sprintId1: sprint1.id, order1: order1, 
-	   //      projectId2: project2.id, sprintId2: sprint2.id, order2: order2});
-    //   }
-    // }
   }
 
   fontColor(bgColor:string):string {
@@ -128,4 +83,19 @@ export class IssueListComponent implements OnInit {
     
   }
 
+  markCompleted(issue:Issue) {
+    callWithSnackBar(
+      this.snackBar,
+      this.issuesService.markCompleted(issue.id),
+      ["Marking issue complete...", "Marked issue complete", "Error marking issue complete"]
+    );
+  }
+
+  moveToBacklog(issue:Issue) {
+    callWithSnackBar(
+      this.snackBar,
+      this.issuesService.moveToBacklog(issue.id),
+      ["Moving to backlog...", "Moved to backlog", "Error moving to backlog"]
+    );
+  }
 }

@@ -92,3 +92,8 @@
 .completed-title {
 	text-decoration: line-through;
 }
+
+.menu-option {
+	user-select: none;
+	outline: none;
+}

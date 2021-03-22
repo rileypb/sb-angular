@@ -35,6 +35,8 @@
 
 	<span *ngSwitchCase="'finished_sprint'">finished <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
 
+	<span *ngSwitchCase="'marked_issue_complete'">marked <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> complete</span>
+
 	<span *ngSwitchCase="'moved_issue_between_epics'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> from 
 		<sb-epic-number-link [epic]="activity.epic2"></sb-epic-number-link> to <sb-epic-number-link [epic]="activity.epic"></sb-epic-number-link></span>
 

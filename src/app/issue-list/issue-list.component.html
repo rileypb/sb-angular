@@ -1,5 +1,7 @@
 <ng-template #progressSpinner><div class="d-flex justify-content-center"><mat-spinner></mat-spinner></div></ng-template>
 
+
+
 <div class="list-container issues">
   <div class="issue-container column-container">
   	<div class="list issues" 
@@ -45,6 +47,13 @@
             <button mat-icon-button *ngIf="allowRemove" (click)="removeIssue(issue)">
               <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-times-circle"></mat-icon>
             </button>
+            <button mat-icon-button *ngIf="!issue.completed && issue?.sprint?.completed">
+              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" [matMenuTriggerFor]="issueMenu">more_horiz</mat-icon>
+            </button>
+            <mat-menu #issueMenu="matMenu">
+              <button class="menu-option" mat-menu-item (click)="markCompleted(issue)">Mark Completed</button>
+              <button class="menu-option" mat-menu-item (click)="moveToBacklog(issue)">Move to Product Backlog</button>
+            </mat-menu>
           </div>
         </div>
       </div>
@@ -52,6 +61,8 @@
   	</div>
   </div>
 </div>
+
+
 
 
 

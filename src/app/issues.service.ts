@@ -53,4 +53,12 @@ export class IssuesService {
   assignIssue(issueId, userId):Observable<any> {
     return this.api.patch(`api/issues/${issueId}/assign_issue`, { data: { userId: userId || -1 }});
   }
+
+  markCompleted(issueId:number):Observable<any> {
+    return this.api.patch(`api/issues/${issueId}/mark_complete`);
+  }
+
+  moveToBacklog(issueId:number):Observable<any> {
+    return this.api.patch(`api/issues/${issueId}/move_to_backlog`);
+  }
 }
