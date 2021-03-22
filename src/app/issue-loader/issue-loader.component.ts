@@ -9,7 +9,7 @@ import { DataService } from '../data.service';
 })
 export class IssueLoaderComponent implements OnInit {
   @ContentChildren("issueView") components: QueryList<Component>;
-  @Input() issueId:number;
+  //@Input() issueId:number;
 
   private sub:Subscription;
 
@@ -18,10 +18,9 @@ export class IssueLoaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit() {
-  	console.log("ngAfterViewInit");
-  	this.dataService.load(`issues/${this.issueId}`, [`issues/${this.issueId}`]);
-  	this.sub = this.dataService.values[`issues/${this.issueId}`].subscribe((x) => {
+  updateData(id:number) {
+  	this.dataService.load(`issues/${id}`, [`issues/${id}`]);
+  	this.sub = this.dataService.values[`issues/${id}`].subscribe((x) => {
   		console.log(`loaded issue: ${x}`);
   		if (x == null) return;
   		this.components.toArray().forEach(component => {
@@ -30,9 +29,27 @@ export class IssueLoaderComponent implements OnInit {
   	});
   }
 
+  unloadData(id:number) {
+    this.dataService.unload(`issues/${id}`, [`issues/${id}`]);
+    this.sub.unsubscribe();
+  }
+
+  @Input() set issueId(value:number) {
+    if (this._issueId) {
+      this.unloadData(this._issueId);
+    }
+    this._issueId = value;
+    if (this._issueId) {
+      this.updateData(this._issueId);
+    }
+  }
+  get issueId():number {
+    return this._issueId;
+  }
+  private _issueId:number;
+
   ngOnDestroy():void {
-  	this.dataService.unload(`issues/${this.issueId}`, [`issues/${this.issueId}`]);
-  	this.sub.unsubscribe();
+    this.unloadData(this._issueId);
   }
 
 }
