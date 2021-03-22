@@ -1,5 +1,6 @@
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<div class="projects">
+<div class="projects" *ngIf="projects | async; else progressSpinner">
 <!--   
   <div class="row">
     <div class="col-sm-6 vertical-list"> -->
