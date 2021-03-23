@@ -39,7 +39,11 @@ export class ProjectFrameComponent extends Base implements OnInit {
   }
 
   editSettings() {
-    this.mode = "editingSettings";
+    if (this.mode != "editingSettings") {
+      this.mode = "editingSettings";
+    } else {
+      this.showContent();
+    }
   }
 
   saveSettings() {
