@@ -20,6 +20,19 @@
   	<input type="number" formControlName="estimate" matInput>
   </mat-form-field>
 
+</form>
+
+<div *ngIf="infoMode">
+  <div class="row">
+    <div class="col-3">
+      State: {{ task.state || "incomplete" }}
+    </div>
+    <div class="col-3">
+      <div *ngIf="task.state == 'complete'">Completed at: {{ task.completed_at | date:'short' }}</div>
+    </div>
+  </div>
+</div>
+
 <div mat-dialog-actions>
   <button mat-button *ngIf="!newTaskMode && permission(task.issue, 'delete-task')" color="warn" (click)="confirmDelete()">Delete</button>
   <button mat-button (click)="cancelEdit()">Cancel</button>

@@ -15,6 +15,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class EditTaskDialogComponent extends Base implements OnInit {
   public newTaskMode: boolean;
+  public infoMode:boolean;
   public Editor = ClassicEditor;
   private fb:FormBuilder = new FormBuilder();
   public editTaskForm:FormGroup;

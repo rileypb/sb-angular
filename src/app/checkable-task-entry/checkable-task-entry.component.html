@@ -1,12 +1,12 @@
 <ng-template #progressSpinner><mat-spinner style="min-height: 32px; position: relative; left: 16px" diameter="32"></mat-spinner></ng-template>
 
 <div *ngIf="task; else progressSpinner" class="ml-1 row text-truncate task-card">
-  <span class="col-10 text-truncate mt-2" [matTooltip]="task.title + ' (' + task.estimate + ' hours)'">
-  	<mat-icon fontIcon="fa-hammer" fontSet="fas"></mat-icon>
+  <span class="col-10 text-truncate" [matTooltip]="task.title + ' (' + task.estimate + ' hours)'">
+  	<button mat-icon-button (click)="showTaskDetails()"><mat-icon fontIcon="fa-eye" fontSet="fas"></mat-icon></button>
    	<a class="text-truncate">#{{task.id}} - {{task.title}}</a>
    	  ({{task.estimate}} hours)
   </span>
-  <span class="col-2 mt-2">
+  <span class="col-2 mt-3">
    	<mat-checkbox [disabled]="!permission(task, 'update')" color="primary" (change)="onCheckboxChange($event)" [checked]="task.state == 'complete'" #checkbox></mat-checkbox>
   </span>
 </div>

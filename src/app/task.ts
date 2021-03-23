@@ -7,4 +7,5 @@ export interface Task {
   estimate?:number;
   issue?:Issue;
   state?:string;
+  completed_at?:string
 }
