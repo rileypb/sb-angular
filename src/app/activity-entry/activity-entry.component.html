@@ -76,6 +76,8 @@
 
 	<span *ngSwitchCase="'updated_issue'">updated <app-issue-number-link [issue]="activity.issue"></app-issue-number-link></span>
 
+	<span *ngSwitchCase="'updated_project'">updated project settings</span>
+
 	<span *ngSwitchCase="'updated_sprint'">updated <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
 
 	<span *ngSwitchCase="'updated_task'">updated <app-task-number-link [task]="activity.task"></app-task-number-link></span>
