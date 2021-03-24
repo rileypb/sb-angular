@@ -37,7 +37,11 @@
 					</mat-card-title>
 					<mat-card-content [ngSwitch]="mode">
 						<sb-issue-loading-wrapper [issueId]="selectedIssue.id" *ngSwitchCase="'show'"></sb-issue-loading-wrapper>
-						<sb-issue-form mode="edit" [issue]="selectedIssue" *ngSwitchCase="'edit'" (confirmEdit)="confirmEdit($event)" (cancelEdit)="cancelEdit()" (deleteIssue)="delete($event)"></sb-issue-form>
+						<div *ngSwitchCase="'edit'">
+							<sb-issue-loader [issueId]="selectedIssue.id">
+								<sb-issue-form mode="edit" (confirmEdit)="confirmEdit($event)" (cancelEdit)="cancelEdit()" (deleteIssue)="delete($event)" #issueView></sb-issue-form>
+							</sb-issue-loader>
+					    </div>
 						<sb-issue-form mode="create" [issue]="selectedIssue" *ngSwitchCase="'create'" (confirmEdit)="saveNewIssue($event)" (cancelEdit)="cancelEdit()"></sb-issue-form>
 					</mat-card-content>
 				</mat-card>

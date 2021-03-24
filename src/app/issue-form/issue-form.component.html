@@ -1,4 +1,4 @@
-<form class="issue-form" [formGroup]="issueForm" (ngSubmit)="submit()">
+<form *ngIf="issue" class="issue-form" [formGroup]="issueForm" (ngSubmit)="submit()">
 	<div class="row">
 		<mat-form-field class="col-6" appearance="fill">
 			<mat-label>Issue Title</mat-label>

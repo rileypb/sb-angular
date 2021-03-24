@@ -12,7 +12,6 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 })
 export class IssueFormComponent extends Base implements OnInit {
   @Input() mode:string;
-  @Input() issue:Issue;
   public issueForm:FormGroup;
   private fb:FormBuilder = new FormBuilder();
 
@@ -23,8 +22,10 @@ export class IssueFormComponent extends Base implements OnInit {
   constructor(public dialog: MatDialog) {
   	super();
   }
-
-  ngOnInit(): void {
+  
+  ngOnInit() {}
+  
+  load(): void {
   	this.issueForm = this.fb.group({
   		title: new FormControl(this.issue.title, Validators.compose([Validators.pattern(".*[^\\s]+.*"), Validators.required])),
       // assignee: new FormControl("foo"),
@@ -32,6 +33,22 @@ export class IssueFormComponent extends Base implements OnInit {
   		estimate: new FormControl(this.issue.estimate),
   	});
   }
+
+  unload() {}
+
+  @Input() set issue(value:Issue) {
+    if (this._issue) {
+      this.unload();
+    }
+    this._issue = value;
+    if (this._issue) {
+      this.load();
+    }
+  }
+  get issue():Issue {
+    return this._issue;
+  }
+  private _issue:Issue;
 
   confirmDelete() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {

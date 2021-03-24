@@ -18,14 +18,20 @@ export class IssueLoaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.updateData(this.issueId);
+  }
+
   updateData(id:number) {
   	this.dataService.load(`issues/${id}`, [`issues/${id}`]);
   	this.sub = this.dataService.values[`issues/${id}`].subscribe((x) => {
   		console.log(`loaded issue: ${x}`);
   		if (x == null) return;
-  		this.components.toArray().forEach(component => {
-  			component["issue"] = x;
-  		});
+      if (this.components) {
+    		this.components.toArray().forEach(component => {
+    			component["issue"] = x;
+    		});
+      }
   	});
   }
 
