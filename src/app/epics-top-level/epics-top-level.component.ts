@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LocationService } from '../location.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../project.service';
 import { EpicsService } from '../epics.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IssuesService } from '../issues.service';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
+import { EpicsComponent } from '../epics/epics.component';
 
 @Component({
   selector: 'sb-epics-top-level',
@@ -14,10 +15,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./epics-top-level.component.css']
 })
 export class EpicsTopLevelComponent implements OnInit {
+  @ViewChild("epicChild") epicChild:EpicsComponent;
   project:Observable<any>;
   epics:Observable<any>;
 
-  constructor(private locationService:LocationService, private route:ActivatedRoute, public projectService:ProjectService, 
+  constructor(private locationService:LocationService, private route:ActivatedRoute, private router:Router, public projectService:ProjectService, 
     private epicsService:EpicsService, private _snackBar : MatSnackBar, private issuesService:IssuesService, public dataService:DataService) { }
 
   ngOnInit(): void {
@@ -77,6 +79,8 @@ export class EpicsTopLevelComponent implements OnInit {
         this._snackBar.open("Epic Created", null, {
           duration: 2000,
         });
+        this.router.navigate(['projects', this.locationService.projectId, 'epics', success.id]);
+        this.epicChild.selectedEpic = success;
       },
       error => {
         this._snackBar.open("Error Creating Epic", null, {

@@ -104,6 +104,7 @@ export class EpicsComponent extends Base implements OnInit {
   }
 
   saveNewEpic(epic) {
+    this.selectedEpic = null;
     this.mode = "show";
     this.newEpic.emit(epic);
   }
