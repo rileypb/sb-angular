@@ -46,7 +46,7 @@ export class EpicDetailComponent extends Base implements OnInit {
       this.issueControl.valueChanges.pipe(startWith(''))
     );
     this.filteredIssues = combined.pipe(map(values => {
-      let epicIssuesIds = this.epic.issues.map(v => v.id);
+      let epicIssuesIds = (this.epic.issues?.map(v => v.id) || []);
       const filterValue = values[1].hasOwnProperty('title') ? values[1].title.toLowerCase() : values[1].toString().toLowerCase();
       return values[0].filter(option => {
         console.log("filter");
