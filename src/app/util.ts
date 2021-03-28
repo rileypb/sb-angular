@@ -25,6 +25,7 @@ export function callWithSnackBar(snackBar:MatSnackBar, httpCall:Observable<any>,
         console.log(error);
         snackBar.open(messages[2], null, {
           duration: 4000,
+          panelClass: ['snack-bar-error']
         });
       }
     );

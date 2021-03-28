@@ -69,6 +69,10 @@ a.disabled {
 	color: var(--link-color-active) !important;
 }
 
+.snack-bar-error {
+	color: red;
+}
+
 .print-frame {}
 
 @media print {
