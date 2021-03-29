@@ -69,6 +69,11 @@ a.disabled {
 	color: var(--link-color-active) !important;
 }
 
+.user-picture {
+	border-radius: 5px;
+	height: 2rem;
+}
+
 .snack-bar-error {
 	color: red;
 }

@@ -4,7 +4,7 @@
 	<mat-dialog-content style="margin: 8px;">
 		<div *ngIf="project && project.team && (teamSummary | async); else progressSpinner">
 			<mat-card class="user-summary-card" *ngFor="let user of (teamSummary | async).team.members">
-				<div><img *ngIf="user.picture" style="width: 32px;" [src]="user.picture"> {{ user.displayName || (user.first_name + " " + user.last_name) }} </div>
+				<div><img *ngIf="user.picture" class="user-picture" [src]="user.picture"> {{ user.displayName || (user.first_name + " " + user.last_name) }} </div>
 				<div class="work-estimate">Total estimated work: {{user.work.work}} hours</div>
 				<div *ngIf="user.work.assigned_issues.length > 0">
 					<div>Assigned Work:</div>
