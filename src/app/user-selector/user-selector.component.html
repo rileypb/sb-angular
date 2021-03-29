@@ -9,7 +9,7 @@ Assignee:
 	<mat-form-field>
 		<mat-select class="assignee-select" [(value)]="assigneeId" (selectionChange)="onChangeSelection()">
 			<mat-option [value]="-1">Unassigned</mat-option>
-			<mat-option *ngFor="let user of team" [value]="user.id"><img class="select-picture" [src]="user.picture">{{user.first_name}} {{user.last_name}}</mat-option>
+			<mat-option *ngFor="let user of team" [value]="user.id"><img class="user-picture" [src]="user.picture">{{user.first_name}} {{user.last_name}}</mat-option>
 		</mat-select>
 	</mat-form-field>
 </span>
