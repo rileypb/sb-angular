@@ -1,12 +1,21 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<div *ngIf="(issues | async); else progressSpinner">
-	<div *ngFor="let issue of (issues | async).issues.list">
+<div>
+	<div *ngFor="let issue of issues">
 		<div class="issue-list-entry">
-			<div class="issue-title">{{ issue.title }}</div> 
+			<div class="issue-title">#{{issue.id}} - {{ issue.title }}</div> 
 			<div>Estimate: {{ issue.estimate || 0 }}</div>
-			<div>Completed: <span [ngClass]="{'closed-yes': issue.state == 'Closed', 'closed-no': issue.state != 'Closed'}">{{ issue.state == "Closed" ? "Yes" : "No" }}</span></div>
+			<div>Completed: <span [ngClass]="{'closed-yes': issue.completed, 'closed-no': !issue.completed}">{{ issue.completed ? "Yes" : "No" }}</span></div>
 			<div class="description" *ngIf="issue.description" [innerHtml]="issue.description"></div>
+			<div class="ml-3">
+				<strong>Tasks</strong>
+				<div *ngFor="let task of issue.tasks">
+					#{{task.id}} - {{task.title}} ({{task.estimate}} hrs), assigned to {{task.assignee_name}}, 
+					<span *ngIf="task.state == 'complete'">Completed at {{task.completed_at | date:'short'}}</span>
+					<span *ngIf="task.state != 'complete'">Incomplete</span>
+					<div class="description" *ngIf="task.description" [innerHtml]="task.description"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

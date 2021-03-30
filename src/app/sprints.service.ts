@@ -16,7 +16,7 @@ export class SprintsService {
   }
 
   save(sprint:Sprint):Observable<any> {
-  	return this.api.patch(`api/projects/${sprint.project.id}/sprints/${sprint.id}`, { sprint: sprint });
+  	return this.api.patch(`api/sprints/${sprint.id}`, { sprint: sprint });
   }
 
   createSprint(sprint:Sprint):Observable<any> {

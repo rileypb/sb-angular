@@ -111,6 +111,8 @@ import { UserSelectorComponent } from './user-selector/user-selector.component';
 import { TeamSummaryComponent } from './team-summary/team-summary.component';
 import { IssueFormDialogComponent } from './issue-form-dialog/issue-form-dialog.component';
 import { IssueLoaderComponent } from './issue-loader/issue-loader.component';
+import { SprintRetrospectiveReportComponent } from './sprint-retrospective-report/sprint-retrospective-report.component';
+import { SprintRetrospectiveReportInnerComponent } from './sprint-retrospective-report-inner/sprint-retrospective-report-inner.component';
 
 
 @NgModule({
@@ -193,6 +195,8 @@ import { IssueLoaderComponent } from './issue-loader/issue-loader.component';
     TeamSummaryComponent,
     IssueFormDialogComponent,
     IssueLoaderComponent,
+    SprintRetrospectiveReportComponent,
+    SprintRetrospectiveReportInnerComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

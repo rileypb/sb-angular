@@ -12,38 +12,7 @@
 					</mat-card>
 				</div>
 				<div class="col-md-6 print-expand">
-					<mat-card class="inner-detail-card">
-						<mat-card-title>
-							<div *ngIf="selectedSprint">
-								{{selectedSprint.id}} - {{selectedSprint.title}}
-							</div>
-						</mat-card-title>
-
-						<mat-card-content>
-							<div *ngIf="selectedSprint">
-								<div class="pb-3"><strong>Start:</strong> {{ selectedSprint.start_date }} <strong>End:</strong> {{ selectedSprint.end_date }}</div>
-								<div class="mb-3">Total estimate: {{ selectedSprint.total_estimate }}</div>
-								<h4>Goal: {{selectedSprint.goal}}</h4>
-								<div [innerHtml]="selectedSprint.description"></div>
-
-								<h4>Burndown</h4>
-								<app-burndown [sprintId]="selectedSprint.id"></app-burndown>
-								<h4>Retrospective<span *ngIf="!editingRetrospective" class="no-print"><button mat-icon-button (click)="editingRetrospective = true"><mat-icon color="primary">edit</mat-icon></button></span></h4>
-								<div style="font-size: 12pt; font-weight: normal;" *ngIf="!editingRetrospective">
-									<div [innerHtml]="selectedSprint.retrospective"></div>
-									
-								</div>
-								<div class="no-print mb-3" style="font-size: 12pt; font-weight: normal;" *ngIf="editingRetrospective">
-									<ckeditor class="issue-editor mt-6" name="issueDescription" [editor]="Editor" [data]="" [(ngModel)]="selectedSprint.retrospective"></ckeditor>
-									<div><button mat-button (click)="editingRetrospective = false">Cancel</button><button mat-button (click)="saveRetrospective()">Save</button></div>
-								</div>
-
-								<h4>Issues:</h4>
-								<sb-retrospective-issue-list [sprint]="selectedSprint"></sb-retrospective-issue-list>
-							</div>
-						</mat-card-content>
-
-					</mat-card>
+					<sb-sprint-retrospective-report *ngIf="selectedSprint" [sprintId]="selectedSprint.id"></sb-sprint-retrospective-report>
 				</div>
 			</div>
 </app-project-frame>
