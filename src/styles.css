@@ -85,6 +85,7 @@ a.disabled {
 	border-radius: 2px;
 	box-shadow: 2px 2px #ddd;
 	background-color: #fff;
+	padding: 3px;
 }
 
 .print-frame {}
