@@ -35,7 +35,7 @@
 							</div>
 						</mat-card-title>
 						<mat-card-content [ngSwitch]="mode">
-							<app-epic-detail *ngSwitchCase="'show'" [epic]="selectedEpic"></app-epic-detail>
+							<sb-epic-loader *ngSwitchCase="'show'" [epicId]="selectedEpic.id"><app-epic-detail #epicView></app-epic-detail></sb-epic-loader>
 							<sb-epic-form mode="edit" [epic]="selectedEpic" *ngSwitchCase="'edit'" (confirmEdit)="confirmEdit($event)" (cancelEdit)="cancelEdit()" (deleteEpic)="delete($event)"></sb-epic-form>
 							<sb-epic-form mode="create" [epic]="selectedEpic" *ngSwitchCase="'create'" (confirmEdit)="saveNewEpic($event)" (cancelEdit)="cancelEdit()"></sb-epic-form>
 						</mat-card-content>

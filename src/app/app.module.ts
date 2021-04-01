@@ -115,6 +115,7 @@ import { SprintRetrospectiveReportComponent } from './sprint-retrospective-repor
 import { SprintRetrospectiveReportInnerComponent } from './sprint-retrospective-report-inner/sprint-retrospective-report-inner.component';
 import { CommentDisplayComponent } from './comment-display/comment-display.component';
 import { CommentEntryComponent } from './comment-entry/comment-entry.component';
+import { EpicLoaderComponent } from './epic-loader/epic-loader.component';
 
 
 @NgModule({
@@ -201,6 +202,7 @@ import { CommentEntryComponent } from './comment-entry/comment-entry.component';
     SprintRetrospectiveReportInnerComponent,
     CommentDisplayComponent,
     CommentEntryComponent,
+    EpicLoaderComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

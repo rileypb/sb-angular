@@ -1,4 +1,7 @@
-<h2>{{epic.title}}</h2>
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+
+<div *ngIf="epic; else progressSpinner">
+	<h2>{{epic.title}}</h2>
 <p class="epic-description" [innerHtml]="epic.description"></p>
 <p><mat-icon fontSet="fas" fontIcon="fa-tshirt"></mat-icon> Size: <sb-tshirt-size [size]="epic.size"></sb-tshirt-size></p>
 <p><mat-icon fontSet="fas" fontIcon="fa-palette"></mat-icon> Color: <mat-icon *ngIf="epic.color" fontSet="fas" fontIcon="fa-circle" [ngStyle]="{'color':epic.color}" [matTooltip]="epic.color"></mat-icon>
@@ -25,5 +28,12 @@
 				</mat-autocomplete>
 			</mat-form-field>
 		</form>
+
+		<div class="mt-3">
+		<h6>Comments</h6>
+		<sb-comment-display *ngFor="let comment of epic.comments" [comment]="comment"></sb-comment-display>
+		<sb-comment-entry [epicId]="epic.id"></sb-comment-entry>
+	</div>
 	</mat-card-content>
 </mat-card>
+</div>
