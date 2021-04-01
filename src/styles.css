@@ -78,6 +78,15 @@ a.disabled {
 	color: red;
 }
 
+.comments-display-box {
+	height: 50vh;
+	overflow-y: scroll;
+	border: solid 1px;
+	border-radius: 2px;
+	box-shadow: 2px 2px #ddd;
+	background-color: #fff;
+}
+
 .print-frame {}
 
 @media print {
