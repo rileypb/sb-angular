@@ -1,4 +1,6 @@
-  <div class="px-3">
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+
+  <div *ngIf="sprint; else progressSpinner" class="px-3">
     <div [ngClass]="{'sprint-card-expanded' : expanded, 'sprint-card-collapsed' : !expanded}" class="sprint-card text-truncate row">
       <span class="col-10" (click)="toggleExpanded()">
         <button *ngIf="!expanded" mat-icon-button><mat-icon>expand_more</mat-icon></button>
@@ -51,5 +53,11 @@
         <sb-sprint-issue-list [sprint]="sprint" (transfer)="onTransfer($event)" [editable]="editable && permission(sprint, 'update')" (issueSelected)="onIssueSelected($event)"></sb-sprint-issue-list>
         <!-- <app-issues [project]="sprint.project" [sprint]="sprint"></app-issues> -->
   	  </div>
+
+      <div class="mt-3">
+      <h6>Comments</h6>
+      <sb-comment-display *ngFor="let comment of sprint.comments" [comment]="comment"></sb-comment-display>
+      <sb-comment-entry [sprintId]="sprint.id"></sb-comment-entry>
+  </div>
     </div> 
   </div>

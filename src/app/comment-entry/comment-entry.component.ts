@@ -12,6 +12,7 @@ export class CommentEntryComponent implements OnInit {
   @Input() issueId:number;
   @Input() epicId:number;
   @Input() projectId:number;
+  @Input() sprintId:number;
 
   public text:String;
 
@@ -21,7 +22,7 @@ export class CommentEntryComponent implements OnInit {
   }
 
   submitComment():void {
-  	callWithSnackBar(this.snackBar, this.commentsService.newComment({issueId: this.issueId, epicId: this.epicId, projectId: this.projectId, text: this.text}),
+  	callWithSnackBar(this.snackBar, this.commentsService.newComment({issueId: this.issueId, epicId: this.epicId, sprintId: this.sprintId, projectId: this.projectId, text: this.text}),
   		['Saving comment', 'Saved comment', 'Error saving comment']).subscribe(success => this.text = "");
   }
 

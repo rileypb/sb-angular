@@ -39,12 +39,12 @@ export class SprintCardComponent extends Base implements OnInit {
   }
 
   ngOnInit(): void {
-    this.expanded = this.uiState.isExpanded("sprint/" + this.sprint.id);
   }
 
   @Input() set sprint(value:Sprint) {
     this._sprint = value;
     if (value) {
+      this.expanded = this.uiState.isExpanded("sprint/" + this.sprint.id);
       this.updateSprintAsync();
     } else {
       this.clearSprintAsync();

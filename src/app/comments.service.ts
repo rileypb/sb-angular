@@ -17,7 +17,9 @@ export class CommentsService {
   		return this.api.post(`api/epics/${args.epicId}/comments`, { comment: { text: args.text }});
   	} else if (args.issueId) {
   		return this.api.post(`api/issues/${args.issueId}/comments`, { comment: { text: args.text }});
-  	}
+  	} else if (args.sprintId) {
+      return this.api.post(`api/sprints/${args.sprintId}/comments`, { comment: { text: args.text }});
+    } 
   	return null;
   }
 }
