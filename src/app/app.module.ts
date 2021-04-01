@@ -113,6 +113,8 @@ import { IssueFormDialogComponent } from './issue-form-dialog/issue-form-dialog.
 import { IssueLoaderComponent } from './issue-loader/issue-loader.component';
 import { SprintRetrospectiveReportComponent } from './sprint-retrospective-report/sprint-retrospective-report.component';
 import { SprintRetrospectiveReportInnerComponent } from './sprint-retrospective-report-inner/sprint-retrospective-report-inner.component';
+import { CommentDisplayComponent } from './comment-display/comment-display.component';
+import { CommentEntryComponent } from './comment-entry/comment-entry.component';
 
 
 @NgModule({
@@ -197,6 +199,8 @@ import { SprintRetrospectiveReportInnerComponent } from './sprint-retrospective-
     IssueLoaderComponent,
     SprintRetrospectiveReportComponent,
     SprintRetrospectiveReportInnerComponent,
+    CommentDisplayComponent,
+    CommentEntryComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
