@@ -1,3 +1,4 @@
+<div *ngIf="epic">
 <form class="epic-form" [formGroup]="epicForm" (ngSubmit)="submit()">
 	<div class="row">
 		<mat-form-field class="col-6" appearance="fill">
@@ -35,4 +36,5 @@
 	  <button mat-button type="submit" [disabled]="!epicForm.valid">Save</button>
 	</div>
 </form>
+</div>
 

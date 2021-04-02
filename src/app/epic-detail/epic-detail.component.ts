@@ -76,8 +76,10 @@ export class EpicDetailComponent extends Base implements OnInit {
 
 
   ngOnDestroy() {
-    this.dataService.unload(`projects/${this.epic.project.id}/issues`, 
-                         [`projects/${this.epic.project.id}/issues`, `projects/${this.epic.project.id}/issues/*`]);
+    if (this.epic) {
+      this.dataService.unload(`projects/${this.epic.project.id}/issues`, 
+                           [`projects/${this.epic.project.id}/issues`, `projects/${this.epic.project.id}/issues/*`]);
+    }
   }
 
   onOptionSelected(event) {

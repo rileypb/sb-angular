@@ -13,7 +13,6 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 })
 export class EpicFormComponent extends Base implements OnInit {
   @Input() mode:string;
-  @Input() epic:Epic;
   public epicForm:FormGroup;
   private fb:FormBuilder = new FormBuilder();
 
@@ -26,13 +25,27 @@ export class EpicFormComponent extends Base implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  init():void {
   	this.epicForm = this.fb.group({
   		title: new FormControl(this.epic.title, Validators.compose([Validators.pattern(".*[^\\s]+.*"), Validators.required])),
   		description: new FormControl(this.epic.description),
-  		size: new FormControl(this.epic.size),
+  		size: new FormControl(String(this.epic.size)),
   		color: new FormControl(this.epic.color),
   	});
   }
+
+  @Input() set epic(value:Epic) {
+    this._epic = value;
+    if (value) {
+      this.init();
+    }
+  }
+  get epic():Epic {
+    return this._epic;
+  }
+  private _epic:Epic;
 
   confirmDelete() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {

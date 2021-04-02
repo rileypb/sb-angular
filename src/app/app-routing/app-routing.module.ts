@@ -12,6 +12,7 @@ import { ProductBacklogTopLevelComponent } from '../product-backlog-top-level/pr
 import { SprintExecutionTopLevelComponent } from '../sprint-execution-top-level/sprint-execution-top-level.component';
 import { SprintRetrospectiveTopLevelComponent } from '../sprint-retrospective-top-level/sprint-retrospective-top-level.component';
 import { DashboardTopLevelComponent } from '../dashboard-top-level/dashboard-top-level.component';
+import { EpicsViewComponent } from '../epics-view/epics-view.component';
 
 const routes: Routes = [
 	{ path: 'projects', component: ProjectsComponent },
@@ -22,8 +23,8 @@ const routes: Routes = [
 	{ path: 'projects/:id/backlog', component: ProductBacklogTopLevelComponent },
 	{ path: 'projects/:id/backlog/:issue_id', component: ProductBacklogTopLevelComponent },
 	{ path: 'projects/:id/team', component: ProjectTeamComponent },
-	{ path: 'projects/:id/epics', component: EpicsTopLevelComponent },
-	{ path: 'projects/:id/epics/:epic_id', component: EpicsTopLevelComponent },
+	{ path: 'projects/:id/epics', component: EpicsViewComponent },
+	{ path: 'projects/:id/epics/:epic_id', component: EpicsViewComponent },
 	{ path: 'projects/:id/execution', component: SprintExecutionTopLevelComponent },
 	{ path: 'projects/:id/retrospective', component: SprintRetrospectiveTopLevelComponent },
 	{ path: '', redirectTo: 'projects', pathMatch: 'full' },

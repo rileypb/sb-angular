@@ -118,6 +118,8 @@ import { CommentEntryComponent } from './comment-entry/comment-entry.component';
 import { EpicLoaderComponent } from './epic-loader/epic-loader.component';
 import { SprintLoaderComponent } from './sprint-loader/sprint-loader.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
+import { EpicsViewComponent } from './epics-view/epics-view.component';
+import { EpicsViewInnerComponent } from './epics-view-inner/epics-view-inner.component';
 
 
 @NgModule({
@@ -207,6 +209,8 @@ import { NewsFeedComponent } from './news-feed/news-feed.component';
     EpicLoaderComponent,
     SprintLoaderComponent,
     NewsFeedComponent,
+    EpicsViewComponent,
+    EpicsViewInnerComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
