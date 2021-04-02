@@ -5,7 +5,12 @@
 
 		<div class="main-content-container container" *ngIf="(loginService.status | async) == 'logged_in'">
 		  <div>
-			  <app-topnav class="no-print"></app-topnav>
+		  	<div class="row align-items-center">
+			  <span class="news-button" #newsTrigger (click)="showNewsFeed()" [matBadge]="(news$ | async)?.unseen_count" [matBadgeHidden]="(news$ | async)?.unseen_count == 0">
+				<mat-icon class="material-icons-outlined">feed</mat-icon>
+			  </span> 
+			  <app-topnav class="col-11 no-print"></app-topnav>
+			</div>
 
 			  <!-- <app-breadcrumb class="mt-2"></app-breadcrumb> -->
 			  <div *ngIf="(dataService.isConnected | async)">
@@ -19,3 +24,8 @@
 
 </div>
 
+ 
+
+<ng-template #newsFeed>
+  <sb-news-feed [news]="(news$ | async)?.news_items"></sb-news-feed>
+</ng-template>

@@ -1,1 +1,1 @@
-<a class="issue-number-link" (click)="navigateToIssue()" [matTooltip]="issue ? issue.title : ''">issue #{{issue ? issue.id : '&lt;N/A&gt;'}}</a>
+<a class="issue-number-link" (click)="navigateToIssue()" [matTooltip]="issue ? issue.title : ''">issue #{{issue ? issue.id : '&lt;N/A&gt;'}}</a><ng-content></ng-content>

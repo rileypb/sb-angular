@@ -1,0 +1,9 @@
+.news-feed-container {
+	max-height: 75vh;
+	overflow-y: scroll;
+	max-width: 40vw;
+}
+
+sb-comment-display {
+	font-style: italic;
+}

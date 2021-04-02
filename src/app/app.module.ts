@@ -117,6 +117,7 @@ import { CommentDisplayComponent } from './comment-display/comment-display.compo
 import { CommentEntryComponent } from './comment-entry/comment-entry.component';
 import { EpicLoaderComponent } from './epic-loader/epic-loader.component';
 import { SprintLoaderComponent } from './sprint-loader/sprint-loader.component';
+import { NewsFeedComponent } from './news-feed/news-feed.component';
 
 
 @NgModule({
@@ -205,6 +206,7 @@ import { SprintLoaderComponent } from './sprint-loader/sprint-loader.component';
     CommentEntryComponent,
     EpicLoaderComponent,
     SprintLoaderComponent,
+    NewsFeedComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
