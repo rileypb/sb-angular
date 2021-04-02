@@ -27,5 +27,5 @@
  
 
 <ng-template #newsFeed>
-  <sb-news-feed [news]="(news$ | async)?.news_items"></sb-news-feed>
+  <sb-news-feed [news]="(news$ | async)?.news_items" (shouldClose)="closeNewsFeed()"></sb-news-feed>
 </ng-template>

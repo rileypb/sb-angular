@@ -99,4 +99,8 @@ export class AppComponent implements OnInit {
     this.dialog.open(this.newsFeed, { position: { top: `${this.newsTrigger.nativeElement.offsetTop + 32}px`, left: `${this.newsTrigger.nativeElement.offsetLeft}px` }});
     this.newsService.readAll();
   }
+
+  closeNewsFeed():void {
+    this.dialog.closeAll();
+  }
 }

@@ -120,6 +120,8 @@ import { SprintLoaderComponent } from './sprint-loader/sprint-loader.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { EpicsViewComponent } from './epics-view/epics-view.component';
 import { EpicsViewInnerComponent } from './epics-view-inner/epics-view-inner.component';
+import { IssuesViewComponent } from './issues-view/issues-view.component';
+import { IssuesViewInnerComponent } from './issues-view-inner/issues-view-inner.component';
 
 
 @NgModule({
@@ -211,6 +213,8 @@ import { EpicsViewInnerComponent } from './epics-view-inner/epics-view-inner.com
     NewsFeedComponent,
     EpicsViewComponent,
     EpicsViewInnerComponent,
+    IssuesViewComponent,
+    IssuesViewInnerComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

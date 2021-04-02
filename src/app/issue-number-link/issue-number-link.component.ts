@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Issue } from '../issue';
 import { Router } from '@angular/router';
 import { UiStateService } from '../ui-state.service';
@@ -10,6 +10,7 @@ import { UiStateService } from '../ui-state.service';
 })
 export class IssueNumberLinkComponent implements OnInit {
   @Input() issue:Issue;
+  @Output() navigate:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private router:Router, private uiStateService:UiStateService) { }
 
@@ -17,7 +18,7 @@ export class IssueNumberLinkComponent implements OnInit {
   }
 
   navigateToIssue():void {
-  	this.uiStateService.selectedIssue = this.issue;
+    this.navigate.emit();
   	this.router.navigate([`/projects/${this.issue.project.id}/backlog/${this.issue.id}`]);
   }
 

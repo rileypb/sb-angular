@@ -1,0 +1,64 @@
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+<div class="project-detail">
+	<app-project-frame *ngIf="project; else progressSpinner" [project]="project">
+		<div *ngIf="issues; else progressSpinner">
+			<div class="row" cdkDropListGroup>
+				<div class="col-md-6">
+					<mat-card class="inner-detail-card">
+						<mat-card-title>
+							<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-scroll"></mat-icon>
+							Issues
+							<button style="position: relative; top: -4px" *ngIf="permission(project, 'create-issue')" mat-icon-button color="primary" matTooltip="New Issue" (click)="createIssue()"><mat-icon>add_circle</mat-icon></button>
+						</mat-card-title>
+						<mat-card-content>
+							<sb-project-issue-list [project]="project" class="product-backlog" allIssuesAllowed="true" #productBacklog (selectIssue)="showDetail($event)"
+												   [fixed]="!permission(project, 'update')" [requestedIssueId]="requestedIssueId"></sb-project-issue-list>
+						</mat-card-content>
+					</mat-card>
+				</div>
+				<div class="col-md-6">
+<!-- 					<mat-card class="inner-detail-card" *ngIf="mode == 'show' && issueId > 0">
+						<mat-card-title>
+							<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+							Detail
+							<button style="position: relative; top: -4px" *ngIf="permission(selectedIssue, 'update')" mat-icon-button color="primary" matTooltip="Edit Issue" (click)="editIssue()"><mat-icon>edit</mat-icon></button>
+						</mat-card-title>
+						<mat-card-content>
+							<sb-issue-loader [issueId]="issueId"><app-issue-detail #issueView></app-issue-detail></sb-issue-loader>
+						</mat-card-content>
+					</mat-card> -->
+					<mat-card class="inner-detail-card">
+						<mat-card-title [ngSwitch]="mode">
+							<div *ngSwitchCase="'show'">
+								<div *ngIf="issueId > 0">
+									<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+									Detail
+									<button style="position: relative; top: -4px" *ngIf="permission(selectedIssue, 'update')" mat-icon-button color="primary" matTooltip="Edit Issue" (click)="editIssue()"><mat-icon>edit</mat-icon></button>
+								</div>
+							</div>
+							<div *ngSwitchCase="'edit'">
+								<mat-icon class="mr-1">edit</mat-icon>
+								Edit Issue
+							</div>
+							<div *ngSwitchCase="'create'">
+								<mat-icon class="mr-1">add_circle</mat-icon>
+								Create Issue
+							</div>
+						</mat-card-title>
+						<mat-card-content [ngSwitch]="mode">
+							<div *ngSwitchCase="'show'">
+								<sb-issue-loader *ngIf="issueId > 0" [issueId]="issueId"><app-issue-detail #issueView></app-issue-detail></sb-issue-loader>
+						    </div>
+							<sb-issue-loader *ngSwitchCase="'edit'" [issueId]="issueId">
+								<sb-issue-form mode="edit" *ngSwitchCase="'edit'" (confirmEdit)="confirmEdit($event)" (cancelEdit)="cancelEdit()" (deleteIssue)="delete($event)" #issueView></sb-issue-form>
+							</sb-issue-loader>
+							<div *ngSwitchCase="'create'">
+								<sb-issue-form mode="create" #createIssue  (confirmEdit)="saveNewIssue($event)" (cancelEdit)="cancelEdit()"></sb-issue-form>
+							</div>
+						</mat-card-content>
+					</mat-card>
+				</div>
+			</div>
+		</div>
+	</app-project-frame>
+</div>

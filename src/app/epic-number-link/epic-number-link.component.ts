@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Epic } from '../epic';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class EpicNumberLinkComponent implements OnInit {
   @Input() epic:Epic;
+  @Output() navigate:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private router:Router) { }
 
@@ -16,6 +17,7 @@ export class EpicNumberLinkComponent implements OnInit {
   }
 
   navigateToEpic():void {
+    this.navigate.emit();
     this.router.navigate(['/projects', this.epic.project.id, 'epics', this.epic.id]);
   }
 

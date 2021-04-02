@@ -13,6 +13,7 @@ import { SprintExecutionTopLevelComponent } from '../sprint-execution-top-level/
 import { SprintRetrospectiveTopLevelComponent } from '../sprint-retrospective-top-level/sprint-retrospective-top-level.component';
 import { DashboardTopLevelComponent } from '../dashboard-top-level/dashboard-top-level.component';
 import { EpicsViewComponent } from '../epics-view/epics-view.component';
+import { IssuesViewComponent } from '../issues-view/issues-view.component';
 
 const routes: Routes = [
 	{ path: 'projects', component: ProjectsComponent },
@@ -20,8 +21,8 @@ const routes: Routes = [
 	{ path: 'projects/settings', component: SettingsComponent },
 	{ path: 'projects/:id/dashboard', component: DashboardTopLevelComponent },
 	{ path: 'projects/:id/planning', component: SprintPlanningTopLevelComponent },
-	{ path: 'projects/:id/backlog', component: ProductBacklogTopLevelComponent },
-	{ path: 'projects/:id/backlog/:issue_id', component: ProductBacklogTopLevelComponent },
+	{ path: 'projects/:id/backlog', component: IssuesViewComponent },
+	{ path: 'projects/:id/backlog/:issue_id', component: IssuesViewComponent },
 	{ path: 'projects/:id/team', component: ProjectTeamComponent },
 	{ path: 'projects/:id/epics', component: EpicsViewComponent },
 	{ path: 'projects/:id/epics/:epic_id', component: EpicsViewComponent },
