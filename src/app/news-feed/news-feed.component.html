@@ -6,7 +6,7 @@
 		Comment on 
 		<app-issue-number-link *ngIf="newsItem.comment.issue" [issue]="newsItem.comment.issue" (navigate)="close()"> - {{newsItem.comment.issue.title}}</app-issue-number-link> 
 		<sb-epic-number-link *ngIf="newsItem.comment.epic" [epic]="newsItem.comment.epic" (navigate)="close()"> - {{newsItem.comment.epic.title}}</sb-epic-number-link>
-		<app-sprint-number-link *ngIf="newsItem.comment.sprint" [sprint]="newsItem.comment.sprint"> - {{newsItem.comment.sprint.title}}</app-sprint-number-link>
+		<app-sprint-number-link *ngIf="newsItem.comment.sprint" [sprint]="newsItem.comment.sprint" (navigate)="close()"> - {{newsItem.comment.sprint.title}}</app-sprint-number-link>
 		<span *ngIf="newsItem.comment.project">Project # {{newsItem.comment.project.id}}</span>
 		<sb-comment-display [comment]="newsItem.comment"></sb-comment-display>
 	</div>

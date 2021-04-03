@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Sprint } from '../sprint';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SprintNumberLinkComponent implements OnInit {
   @Input() sprint:Sprint;
+  @Output() navigate:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private router:Router) { }
 
@@ -16,6 +17,7 @@ export class SprintNumberLinkComponent implements OnInit {
   }
 
   navigateToSprint():void {
+    this.navigate.emit();
     if (!this.sprint.completed) {
       this.router.navigate([`/projects/${this.sprint.project.id}/planning`]);
     } else {
