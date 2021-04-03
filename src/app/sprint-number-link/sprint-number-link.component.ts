@@ -16,6 +16,10 @@ export class SprintNumberLinkComponent implements OnInit {
   }
 
   navigateToSprint():void {
-    this.router.navigate([`/projects/${this.sprint.project.id}/sprints/${this.sprint.id}`])
+    if (!this.sprint.completed) {
+      this.router.navigate([`/projects/${this.sprint.project.id}/planning`]);
+    } else {
+      this.router.navigate([`/projects/${this.sprint.project.id}/retrospective`]);
+    }
   }
 }
