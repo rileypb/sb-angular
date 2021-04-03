@@ -30,6 +30,7 @@ export class IssueListComponent implements OnInit {
   @Input() container:any;
   @Input() allowRemove:boolean;
   @Input() showViewIcon:boolean;
+  @Input() showEmptyListSpace:boolean;
 
   @Output() issueSelected:EventEmitter<Issue> = new EventEmitter<Issue>();
   @Output() transfer:EventEmitter<any> = new EventEmitter<any>();

@@ -1,3 +1,3 @@
-<sb-issue-list [issues]="issues | async" [container]="sprint" (reorder)="onReorder($event)" (transfer)="onTransfer($event)" [allowRemove]="editable && permission(sprint, 'update')" [fixed]="!editable" (issueRemoved)="removeIssue($event)" (issueSelected)="onIssueSelected($event)">
+<sb-issue-list [issues]="issues | async" [container]="sprint" (reorder)="onReorder($event)" (transfer)="onTransfer($event)" [allowRemove]="editable && permission(sprint, 'update')" [fixed]="!editable" (issueRemoved)="removeIssue($event)" (issueSelected)="onIssueSelected($event)" showEmptyListSpace="true">
 	
 </sb-issue-list>

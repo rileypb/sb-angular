@@ -8,8 +8,9 @@
   	     #issueList="cdkDropList" 
   	     [cdkDropListData]="{ issues: (filteredIssues | async), container: container }"
   	     (cdkDropListDropped)="onDrop($event)">
-
+      
       <div *ngIf="issues; else progressSpinner">
+        <div class="drag-placeholder" *ngIf="showEmptyListSpace && (filteredIssues | async)?.length == 0">Drag and drop issues here</div>
         <div class="issue-card text-truncate pl-2" 
              (click)="clickIssue(issue)"
              [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index" cdkDrag>

@@ -1,3 +1,3 @@
-<sb-issue-list [issues]="issues | async" [container]="epic" (reorder)="onReorder($event)" (transfer)="onTransfer($event)" [allowRemove]="allowRemove" [fixed]="fixed" (issueRemoved)="removeIssue($event)">
+<sb-issue-list [issues]="issues | async" [container]="epic" (reorder)="onReorder($event)" (transfer)="onTransfer($event)" [allowRemove]="allowRemove" [fixed]="fixed" (issueRemoved)="removeIssue($event)" showEmptyListSpace="true">
 	
 </sb-issue-list>
