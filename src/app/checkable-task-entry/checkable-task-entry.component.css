@@ -54,12 +54,15 @@
 }
 
 .task-description {
-	font-family: sans-serif;
-	background: #ddd;
+	background: #eee;
+	width: 100%;
+	padding: 3px;
 }
 
 .drag-icon {
 	color: #aaa;
 }
+
+
 
 
