@@ -46,3 +46,5 @@ Thumbs.db
 report.*.json
 
 .env
+
+src/environments/*.ts
