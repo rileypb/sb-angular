@@ -8,8 +8,10 @@ app.use(express.static('./dist'));
 app.use((req, res, next) => {
     // if (req.headers.host === 'your-app.herokuapp.com')
     //     return res.redirect(301, 'https://www.your-custom-domain.com');
-    if (req.headers['x-forwarded-proto'] !== 'https')
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+    	console.log(`upgrading to https req.headers.host`);
         return res.redirect('https://' + req.headers.host + req.url);
+    }
     else
         return next();
 });
