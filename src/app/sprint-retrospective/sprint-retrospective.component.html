@@ -7,12 +7,17 @@
 					<mat-card class="inner-detail-card">
 						<div style="height:100%;">
 					  		<h6>Completed Sprints</h6>
-		 			    	<sb-sprint-list [project]="project" [completedOnly]="true" (selected)="selectSprint($event)" (loaded)="selectSprint($event)" [showStartButton]="false" [editable]="false"></sb-sprint-list>
+		 			    	<sb-sprint-list [project]="project" [completedOnly]="true" (selected)="selectSprint($event)" (loaded)="selectSprint($event)" [showStartButton]="false" [editable]="false" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
 						</div>
 					</mat-card>
 				</div>
-				<div class="col-md-6 print-expand">
+				<div class="col-md-6 print-expand" *ngIf="!selectedIssueId">
 					<sb-sprint-retrospective-report *ngIf="selectedSprint" [sprintId]="selectedSprint.id"></sb-sprint-retrospective-report>
+				</div>
+				<div class="col-md-6" *ngIf="selectedIssueId">
+					<sb-issue-loader [issueId]="selectedIssueId">
+						<app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="true" [editable]="false" #issueView></app-issue-detail>
+					</sb-issue-loader>
 				</div>
 			</div>
 </app-project-frame>

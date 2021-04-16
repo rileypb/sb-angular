@@ -15,6 +15,7 @@ export class AcceptanceCriterionEntryComponent extends Base implements OnInit {
   @Input() criterion;
   @Input() issue;
   @Input() showCompletionCheckboxes:boolean;
+  @Input() editable:boolean = true;
 
   @Output() deleteAC:EventEmitter<any> = new EventEmitter<any>();
 

@@ -24,6 +24,7 @@ export class IssueDetailComponent extends Base implements OnInit {
 
   @Input() showAcceptanceCriteria:boolean;
   @Input() showCompletionCheckboxes:boolean;
+  @Input() editable:boolean = true;
 
   public team:Observable<any>;
   public assignee:any;

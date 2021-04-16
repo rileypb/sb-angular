@@ -12,6 +12,7 @@ export class SprintRetrospectiveComponent extends Base implements OnInit {
 
   selectedSprint:any;
   editingRetrospective:boolean = false;
+  selectedIssueId:number = null;
 
   constructor() {
     super();
@@ -22,10 +23,15 @@ export class SprintRetrospectiveComponent extends Base implements OnInit {
 
   selectSprint(sprint) {
   	console.log("select sprint")
+    this.selectedIssueId = null;
   	this.selectedSprint = sprint;
   }
  
   printSprintReport(sprint) {
   	
+  }
+
+  onIssueSelected(issue) {
+    this.selectedIssueId = issue.id;
   }
 }
