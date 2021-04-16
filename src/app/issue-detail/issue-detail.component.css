@@ -21,6 +21,14 @@
 	background-color: #999 !important;
 }
 
+.add-ac {
+	font-size: 13pt;
+}
+
+.add-ac-wrapper {
+	align-items: center;
+}
+
 /*.assignee-select {
 	background-color: var(--accent-color);
 	min-height: 3em;

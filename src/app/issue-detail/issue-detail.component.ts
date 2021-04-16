@@ -20,6 +20,11 @@ import { IssuesService } from '../issues.service';
   styleUrls: ['./issue-detail.component.css']
 })
 export class IssueDetailComponent extends Base implements OnInit {
+  @ViewChild('newCriterion') newCriterion:ElementRef;
+
+  @Input() showAcceptanceCriteria:boolean;
+  @Input() showCompletionCheckboxes:boolean;
+
   public team:Observable<any>;
   public assignee:any;
 
@@ -82,6 +87,23 @@ export class IssueDetailComponent extends Base implements OnInit {
        this.create(data);
      }
     });
+  }
+
+  createAC(criterion:string) {
+    console.log("create criterion" + criterion);
+
+    callWithSnackBar(this.snackBar, 
+                     this.issuesService.createAcceptanceCriterion(this.issue.id, criterion),
+                     ['Creating acceptance criterion...', 'Acceptance criterion created', 'Error creating acceptance criterion']);
+
+    this.newCriterion.nativeElement.value = '';
+    this.newCriterion.nativeElement.blur();
+  }
+
+  deleteAC(criterion) {
+    callWithSnackBar(this.snackBar, 
+                     this.issuesService.deleteAcceptanceCriterion(this.issue.id, criterion.id),
+                     ['Deleting acceptance criterion...', 'Acceptance criterion deleted', 'Error deleting acceptance criterion']);
   }
 
   private create(task) {

@@ -47,7 +47,7 @@
 						</mat-card-title>
 						<mat-card-content [ngSwitch]="mode">
 							<div *ngSwitchCase="'show'">
-								<sb-issue-loader *ngIf="issueId > 0" [issueId]="issueId"><app-issue-detail #issueView></app-issue-detail></sb-issue-loader>
+								<sb-issue-loader *ngIf="issueId > 0" [issueId]="issueId"><app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="false" #issueView></app-issue-detail></sb-issue-loader>
 						    </div>
 							<sb-issue-loader *ngSwitchCase="'edit'" [issueId]="issueId">
 								<sb-issue-form mode="edit" *ngSwitchCase="'edit'" (confirmEdit)="confirmEdit($event)" (cancelEdit)="cancelEdit()" (deleteIssue)="delete($event)" #issueView></sb-issue-form>

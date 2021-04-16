@@ -16,4 +16,5 @@ export interface Issue {
 	assignee?:User;
 	add_to_epic?: any;
 	completed?:boolean;
+	acceptance_criteria?:any;
 }

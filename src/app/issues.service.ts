@@ -61,4 +61,20 @@ export class IssuesService {
   moveToBacklog(issueId:number):Observable<any> {
     return this.api.patch(`api/issues/${issueId}/move_to_backlog`);
   }
+
+  setACCompleted(issueId:number, acId:number, completed: boolean):Observable<any> {
+    return this.api.patch(`api/issues/${issueId}/set_ac_completed/${acId}`, { acceptance_criterion: { completed: completed }});
+  }
+
+  updateAcceptanceCriterion(issueId:number, acId:number, criterion:string):Observable<any> {
+    return this.api.patch(`api/issues/${issueId}/acceptance_criterion/${acId}`, { acceptance_criterion: { criterion: criterion }});
+  }
+
+  createAcceptanceCriterion(issueId:number, criterion:string):Observable<any> {
+    return this.api.post(`api/issues/${issueId}/add_acceptance_criterion`, { acceptance_criterion: { criterion: criterion }});
+  }   
+
+  deleteAcceptanceCriterion(issueId:number, acId:number):Observable<any> {
+    return this.api.delete(`api/issues/${issueId}/remove_acceptance_criterion/${acId}`);
+  }
 }

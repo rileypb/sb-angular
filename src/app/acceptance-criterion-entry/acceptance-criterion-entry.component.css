@@ -1,0 +1,9 @@
+
+
+.acceptance-criteria-row {
+	align-items: center
+}
+
+.acceptance-criteria-row:hover {
+	background-color: #eee;
+}

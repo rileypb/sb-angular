@@ -21,6 +21,24 @@
 	<div *ngIf="!issue.epic">
 		No Epic
 	</div>
+
+	<mat-card class="mt-4" *ngIf="showAcceptanceCriteria"> 
+		<h6>Acceptance Criteria</h6>
+		<mat-list>
+			<mat-item *ngFor="let criterion of issue.acceptance_criteria">
+				<div class="mb-2">
+					<sb-acceptance-criterion-entry [criterion]="criterion" [issue]="issue" [showCompletionCheckboxes]="showCompletionCheckboxes" (deleteAC)="deleteAC($event)"></sb-acceptance-criterion-entry>
+				</div>
+			</mat-item>
+			<mat-item>
+				<div class="row add-ac-wrapper">
+					<button *ngIf="permission(issue, 'update')" mat-icon-button color="primary" matTooltip="New Acceptance Criterion" (click)="createAC(newCriterion.value)" [disabled]="newCriterion.value.trim() == ''"><mat-icon class="add-ac">add_circle</mat-icon></button>
+					<textarea class="col-11" #newCriterion></textarea>
+				</div>
+			</mat-item>
+		</mat-list>
+	</mat-card>
+	
 	<h6 class="mt-4">Tasks <button style="position: relative; top: -4px" *ngIf="permission(issue, 'create-task')" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon>add_circle</mat-icon></button></h6>
 
 	<ng-template #notasks>No Tasks</ng-template>

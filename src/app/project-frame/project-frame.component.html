@@ -28,6 +28,7 @@
 				<div *ngSwitchCase="'editingSettings'">
 					<p>Picture URL: <input class="picture-input" [(ngModel)]="project.picture"></p>
 					<p>Auto-close Issues: <input type="checkbox" [(ngModel)]="project.setting_auto_close_issues"></p>
+					<p>Use Acceptance Criteria: <input type="checkbox" [(ngModel)]="project.setting_use_acceptance_criteria"></p>
 					<button (click)="saveSettings()">Save</button>
 				</div>
 			

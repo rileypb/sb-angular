@@ -122,6 +122,7 @@ import { EpicsViewComponent } from './epics-view/epics-view.component';
 import { EpicsViewInnerComponent } from './epics-view-inner/epics-view-inner.component';
 import { IssuesViewComponent } from './issues-view/issues-view.component';
 import { IssuesViewInnerComponent } from './issues-view-inner/issues-view-inner.component';
+import { AcceptanceCriterionEntryComponent } from './acceptance-criterion-entry/acceptance-criterion-entry.component';
 
 
 @NgModule({
@@ -215,6 +216,7 @@ import { IssuesViewInnerComponent } from './issues-view-inner/issues-view-inner.
     EpicsViewInnerComponent,
     IssuesViewComponent,
     IssuesViewInnerComponent,
+    AcceptanceCriterionEntryComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
