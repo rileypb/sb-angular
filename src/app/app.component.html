@@ -7,8 +7,9 @@
   	Active users:
     <div *ngFor="let user of dataService.users">
        	<img [src]="user.picture"
-             alt="Profile picture"
-             class="nav-user-profile user-picture"
+             [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
+             [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
+             class="nav-user-profile user-picture mb-1"
              style="width: 32px;"/>
     </div>
   </div>
