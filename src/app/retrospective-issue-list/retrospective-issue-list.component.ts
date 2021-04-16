@@ -15,6 +15,16 @@ export class RetrospectiveIssueListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  isAccepted(issue):boolean {
+  	if (!issue.acceptance_criteria) {
+  		return true;
+  	}
+  	for (let ac of issue.acceptance_criteria) {
+  		if (!ac.completed) {
+  			return false;
+  		}
+  	}
+  	return true;
+  }
 
 }

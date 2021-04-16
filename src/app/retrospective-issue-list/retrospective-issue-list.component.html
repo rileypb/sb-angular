@@ -3,10 +3,14 @@
 <div>
 	<div *ngFor="let issue of issues">
 		<div class="issue-list-entry">
-			<div class="issue-title">#{{issue.id}} - {{ issue.title }}</div> 
+			<div class="issue-title" [ngClass]="{ 'not-accepted': !isAccepted(issue) }">#{{issue.id}} - {{ issue.title }}</div> 
 			<div>Estimate: {{ issue.estimate || 0 }}</div>
 			<div>Completed: <span [ngClass]="{'closed-yes': issue.completed, 'closed-no': !issue.completed}">{{ issue.completed ? "Yes" : "No" }}</span></div>
 			<div class="description" *ngIf="issue.description" [innerHtml]="issue.description"></div>
+
+			<ng-template #asdf><span>ACCEPTED</span></ng-template>
+			<span *ngIf="!isAccepted(issue); else asdf" class="not-accepted">NOT ACCEPTED</span>
+
 			<div class="ml-3">
 				<strong>Tasks</strong>
 				<div *ngFor="let task of issue.tasks">

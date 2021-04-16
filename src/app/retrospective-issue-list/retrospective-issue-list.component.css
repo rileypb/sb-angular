@@ -20,3 +20,8 @@
 .closed-no {
 	font-style: italic;
 }
+
+.not-accepted {
+	color: red;
+	font-weight: bold;
+}
