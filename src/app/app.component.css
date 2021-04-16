@@ -50,3 +50,12 @@ mat-card {
 	padding-right: 15px;
 	padding-top: 2px;
 }
+
+.active-users {
+	position: fixed; 
+	top: 100px; 
+	left: 0;
+	background-color: #DDD;
+	box-shadow: 2px 2px #BBB;
+	padding: 6px;
+}

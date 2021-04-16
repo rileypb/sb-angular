@@ -16,6 +16,7 @@ export class DataService {
   private channel:Channel;
   public isConnected:Observable<boolean>;
   public isDisconnected:Observable<boolean>;
+  public users:any;
 
   private received:Subject<any> = new Subject<any>();
 
@@ -60,9 +61,15 @@ export class DataService {
 			this.auth.getAccessTokenSilently().subscribe((t) => {
 				console.log("retrieved access token");
 				this.channel.perform("auth", { token: t });
+				this.channel.received().subscribe(msg => {
+					if (msg.action == 'sync' && msg.selector == 'users') {
+						this.users = msg.data;
+					}
+				});
 			});
     	}
     })
+
 
     this.syncLoop = interval(1000).subscribe(val => this.doSync());
     this.isConnected = this.status.pipe(map(val => val == 'connected'));

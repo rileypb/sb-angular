@@ -3,6 +3,15 @@
 
 <div class="app-container mat-app-background">
 
+  <div *ngIf="dataService.users" class="active-users">
+  	Active users:
+    <div *ngFor="let user of dataService.users">
+       	<img [src]="user.picture"
+             alt="Profile picture"
+             class="nav-user-profile user-picture"
+             style="width: 32px;"/>
+    </div>
+  </div>
 		<div class="main-content-container container" *ngIf="(loginService.status | async) == 'logged_in'">
 		  <div>
 		  	<div class="row align-items-center">
@@ -20,9 +29,8 @@
 		</div>
 
 
-
-
 </div>
+
 
  
 

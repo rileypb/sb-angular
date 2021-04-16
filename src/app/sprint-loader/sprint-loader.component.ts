@@ -25,7 +25,6 @@ export class SprintLoaderComponent implements OnInit {
   updateData(id:number) {
   	this.dataService.load(`sprints/${id}`, [`sprints/${id}`]);
   	this.sub = this.dataService.values[`sprints/${id}`].subscribe((x) => {
-  		console.log(`loaded sprint: ${x}`);
   		if (x == null) return;
       if (this.components) {
     		this.components.toArray().forEach(component => {
