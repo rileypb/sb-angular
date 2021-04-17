@@ -19,6 +19,8 @@ export class DataService {
   public isDisconnected:Observable<boolean>;
   public users:any;
 
+  public users_by_team:any = {};
+
   private received:Subject<any> = new Subject<any>();
 
   private holds:{ [key:string]:Hold } = {}; 
@@ -65,6 +67,19 @@ export class DataService {
 				this.channel.received().subscribe(msg => {
 					if (msg.action == 'sync' && msg.selector == 'users') {
 						this.users = msg.data;
+					}
+					if (msg.selector.startsWith('users_')) {
+						this.users_by_team[msg.selector] = msg.data;
+						this.users = [];
+						let ids = [];
+						for (const key in this.users_by_team) {
+							for (const user of this.users_by_team[key]) { 
+								if (!ids.includes(user.id)) {
+									this.users.push(user);
+									ids.push(user.id);
+								}
+							}
+						}
 					}
 				});
 			});
