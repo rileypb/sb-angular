@@ -4,6 +4,7 @@ import { Channel } from 'angular2-actioncable';
 import { CableService } from './cable.service';
 import { filter, mapTo, map, startWith, first } from 'rxjs/operators';
 import { merge, interval } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 import { Api } from './api';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserInfoService } from './user-info.service';
@@ -48,9 +49,9 @@ export class DataService {
       this.channel.connected().pipe(mapTo("connected")), 
       this.channel.disconnected().pipe(mapTo("disconnected")),
       this.channel.rejected().pipe(mapTo("rejected"))
-    ).pipe(startWith('uninitialized'));
+    ).pipe(startWith('uninitialized'), distinctUntilChanged());
 
-    this.status.subscribe((x) => console.log(x));
+    this.status.subscribe((x) => console.log(`status: ${x}`));
 
     this.api.get("api/me").subscribe();
     
