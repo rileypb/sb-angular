@@ -1,4 +1,6 @@
-<sb-issues-view-inner [project]="project$ | async" [issues]="(issues$ | async)?.issues.list" [issueId]="issueId">
-</sb-issues-view-inner>
+<sb-issue-loader [issueId]="issueId">
+	<sb-issues-view-inner [project]="project$ | async" [issues]="(issues$ | async)?.issues.list" #issueView>
+	</sb-issues-view-inner>
+</sb-issue-loader>
 
 

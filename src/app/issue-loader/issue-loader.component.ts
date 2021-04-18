@@ -23,6 +23,9 @@ export class IssueLoaderComponent implements OnInit {
   }
 
   updateData(id:number) {
+    if (id == 0) {
+      return;
+    }
   	this.dataService.load(`issues/${id}`, [`issues/${id}`]);
   	this.sub = this.dataService.values[`issues/${id}`].subscribe((x) => {
   		console.log(`loaded issue: ${x}`);
@@ -37,7 +40,9 @@ export class IssueLoaderComponent implements OnInit {
 
   unloadData(id:number) {
     this.dataService.unload(`issues/${id}`, [`issues/${id}`]);
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   @Input() set issueId(value:number) {

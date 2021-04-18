@@ -31,14 +31,14 @@ export class IssuesViewInnerComponent extends Base implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() set issueId(value:number) {
-  	this._issueId = value;
+  @Input() set issue(value:Issue) {
+  	this._issue = value;
   	this.mode = 'show';
   }
-  get issueId():number {
-  	return this._issueId;
+  get issue():Issue {
+  	return this._issue;
   }
-  private _issueId:number;
+  private _issue:Issue;
 
 
   editIssue():void {
@@ -47,8 +47,8 @@ export class IssuesViewInnerComponent extends Base implements OnInit {
 
   showDetail(issue:Issue):void {
   	if (this.mode == 'show') {
-	  this.router.navigate(['projects',this.project.id,'backlog',issue.id]);
-	}
+  	  this.router.navigate(['projects',this.project.id,'backlog',issue.id]);
+  	}
   }
 
   cancelEdit():void {
