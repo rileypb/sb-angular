@@ -31,14 +31,14 @@ export class EpicsViewInnerComponent extends Base implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() set epicId(value:number) {
-  	this._epicId = value;
+  @Input() set epic(value:Epic) {
+  	this._epic = value;
   	this.mode = 'show';
   }
-  get epicId():number {
-  	return this._epicId;
+  get epic():Epic {
+  	return this._epic;
   }
-  private _epicId:number;
+  private _epic:Epic;
 
   editEpic():void {
   	this.mode = 'edit';
@@ -46,8 +46,8 @@ export class EpicsViewInnerComponent extends Base implements OnInit {
 
   showDetail(epic:Epic):void {
   	if (this.mode == 'show') {
-	  this.router.navigate(['projects',this.project.id,'epics',epic.id]);
-	}
+  	  this.router.navigate(['projects',this.project.id,'epics',epic.id]);
+  	}
   }
 
   cancelEdit():void {

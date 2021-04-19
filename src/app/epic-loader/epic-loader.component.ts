@@ -23,6 +23,9 @@ export class EpicLoaderComponent implements OnInit {
   }
 
   updateData(id:number) {
+    if (id == 0) {
+      return;
+    }
   	this.dataService.load(`epics/${id}`, [`epics/${id}`]);
   	this.sub = this.dataService.values[`epics/${id}`].subscribe((x) => {
   		console.log(`loaded epic: ${x}`);
@@ -37,7 +40,7 @@ export class EpicLoaderComponent implements OnInit {
 
   unloadData(id:number) {
     this.dataService.unload(`epics/${id}`, [`epics/${id}`]);
-    this.sub.unsubscribe();
+    this.sub?.unsubscribe();
   }
 
   @Input() set epicId(value:number) {
