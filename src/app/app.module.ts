@@ -123,6 +123,13 @@ import { EpicsViewInnerComponent } from './epics-view-inner/epics-view-inner.com
 import { IssuesViewComponent } from './issues-view/issues-view.component';
 import { IssuesViewInnerComponent } from './issues-view-inner/issues-view-inner.component';
 import { AcceptanceCriterionEntryComponent } from './acceptance-criterion-entry/acceptance-criterion-entry.component';
+import { RootComponent } from './root/root.component';
+import { HeaderComponent } from './header/header.component';
+import { LogoComponent } from './logo/logo.component';
+import { UserComponent } from './user/user.component';
+import { StatusComponent } from './status/status.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -217,6 +224,13 @@ import { AcceptanceCriterionEntryComponent } from './acceptance-criterion-entry/
     IssuesViewComponent,
     IssuesViewInnerComponent,
     AcceptanceCriterionEntryComponent,
+    RootComponent,
+    HeaderComponent,
+    LogoComponent,
+    UserComponent,
+    StatusComponent,
+    NavMenuComponent,
+    FooterComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
@@ -261,7 +275,7 @@ import { AcceptanceCriterionEntryComponent } from './acceptance-criterion-entry/
     Api,
     UserInfoService,
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [RootComponent],
   exports: [MaterialModule,
     MatFormFieldModule,
     MatInputModule],

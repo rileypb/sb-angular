@@ -1,0 +1,72 @@
+.header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+.main-content {
+	position:fixed;
+	top: 2rem;
+	left: 0px;
+	right: 0px;
+	bottom: 2rem;
+	width: 100%;
+	overflow-y: scroll;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+.nav-menu {
+	width: 100%;
+}
+
+.nav {
+	background-color: #CBB677;
+	height: 1.85rem;
+}
+
+.nav-item {
+	background-color: #0000;
+	border: 0;
+	margin: 0 4px 0 4px;
+}
+
+.nav-item:hover {
+	background-color: #AD9C65;
+}
+
+.nav-item-selected {
+	background-color: #F4EFE1;
+}
+
+.nav-wrapper {
+	margin: 0 auto;
+}
+
+.login-overlay {
+	position: fixed;
+	top: 2rem;
+	bottom: 2rem;
+	left: 0px;
+	right: 0px;
+	background-color: #FFF;
+}
+
+
+@media screen and (min-width: 780px) {
+	.nav-menu {
+
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.nav-menu {
+		display: none;
+	}
+}

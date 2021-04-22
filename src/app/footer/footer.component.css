@@ -1,0 +1,19 @@
+.footer {
+	height: 2rem;
+	padding: 4px;
+
+	background-color: #dddddd;
+
+	border-width: 1px;
+	border-style: groove;
+}
+
+
+.logout-button {
+	background-color: #00000000;
+	border-style: none;
+}
+
+.logout-label {
+	vertical-align: top;
+}

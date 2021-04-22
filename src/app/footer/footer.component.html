@@ -1,0 +1,5 @@
+<footer class="footer row">
+	<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button ml-2" (click)="logout()"><mat-icon class="logout">logout</mat-icon>
+		<span class="logout-label">Logout</span>
+	</button>
+</footer>

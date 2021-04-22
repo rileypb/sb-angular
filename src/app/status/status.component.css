@@ -1,0 +1,13 @@
+.connected {
+	color: green;
+}
+
+.disconnected {
+	color:red;
+}
+
+@media screen and (max-width: 499px) {
+	.status-text {
+		display: none;
+	}
+}

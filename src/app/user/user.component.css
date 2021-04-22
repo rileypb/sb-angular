@@ -1,0 +1,68 @@
+@media screen and (max-width: 499px) {
+	.username {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.username {
+		font-weight: bold;
+		vertical-align: top;
+	}
+}
+
+
+@media screen and (min-width: 780px) {
+	.cheeseburger {
+		display: none;
+	}
+
+	.cheeseburger-button {
+		display: none;
+	}
+}
+
+.cheeseburger-button {
+	background-color: #00000000;
+	color: white;
+	border-style: none;
+}
+
+.login-button {
+	background-color: #00000000;
+	color: white;
+	border-style: none;
+}
+
+
+.user {
+	vertical-align: baseline;
+}
+
+.nav {
+	background-color: #CBB677;
+	width: 100%;
+}
+
+.nav-item {
+	background-color: #0000;
+	border: 0;
+	margin: 0 4px 0 4px;
+}
+
+.nav-item:hover {
+	background-color: #AD9C65;
+}
+
+.nav-item-selected {
+	background-color: #F4EFE1;
+}
+
+.nav-wrapper {
+	margin: 0 auto;
+}
+
+.logout-label {
+	vertical-align: top;
+}
+
