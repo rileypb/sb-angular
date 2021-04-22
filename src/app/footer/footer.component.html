@@ -1,5 +1,40 @@
 <footer class="footer row">
-	<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button ml-2" (click)="logout()"><mat-icon class="logout">logout</mat-icon>
-		<span class="logout-label">Logout</span>
-	</button>
+
+	<div class="col-2 text-left">	
+		<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button ml-2" (click)="logout()">
+			<mat-icon>logout</mat-icon>
+		</button>
+	</div>
+
+	<div class="col-2 text-left">	
+	</div>
+
+	<div class="col-2 text-center">	
+	</div>
+
+	<div class="col-2 text-center">	
+	</div>
+
+	<div class="col-2 text-right">	
+	</div>
+
+	<div class="col-2 text-right">		
+		<button *ngIf="dataService.users" class="active-users-button ml-2" [matMenuTriggerFor]="activeUsersMenu">
+			<mat-icon class="logout button-icon">people</mat-icon>
+			<span class="button-icon">{{dataService.users.length}}</span>
+		</button>
+		<mat-menu #activeUsersMenu backdropClass="active-users-color">
+			<div *ngIf="dataService.users" class="active-users text-truncate">
+				Active users:
+				<div *ngFor="let user of dataService.users" class="text-truncate">
+				   	<img [src]="user.picture"
+				         [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
+				         [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
+				         class="nav-user-profile user-picture mb-1"
+				         style="width: 32px;"/>
+				         {{user.displayName || (user.first_name + ' ' + user.last_name)}}
+				</div>
+			</div>
+		</mat-menu>
+	</div>
 </footer>

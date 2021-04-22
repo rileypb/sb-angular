@@ -11,8 +11,44 @@
 	left: 0px;
 	right: 0px;
 	bottom: 2rem;
-	width: 100%;
 	overflow-y: scroll;
+	margin: 0 auto;
+	z-index: 10;
+}
+
+@media screen and (max-width: 799px) {
+	.main-content {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.main-content {
+		width: 800px;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.main-content {
+		width: 80%;
+	}
+}
+
+
+.active-users {
+	position: fixed; 
+	top: 4rem; 
+	left: 0;
+	background-color: #CBB677;
+	box-shadow: 2px 2px #BBB;
+	padding: 6px;
+	width: 10%;
+}
+
+@media screen and (max-width: 1051px) {
+	.active-users {
+		display: none;
+	}
 }
 
 .footer {
@@ -28,7 +64,7 @@
 
 .nav {
 	background-color: #CBB677;
-	height: 1.85rem;
+	height: 2rem;
 	position: fixed;
 	top: 2rem;
 }
@@ -70,5 +106,9 @@
 @media screen and (max-width: 779px) {
 	.nav-menu {
 		display: none;
+	}
+
+	.main-content {
+		top: 2rem;
 	}
 }

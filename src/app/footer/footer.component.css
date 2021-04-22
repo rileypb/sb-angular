@@ -14,6 +14,33 @@
 	border-style: none;
 }
 
-.logout-label {
-	vertical-align: top;
+.button-icon {
+	vertical-align: middle;
+}
+
+@media screen and (max-width: 980px) {
+	.b-label {
+		display: none;
+	}
+}
+
+.active-users-button {
+	background-color: #00000000;
+	border-style: none;
+}
+
+.active-users-button > div > span {
+	vertical-align: middle;
+}
+
+@media screen and (min-width: 1052px) {
+	.active-users-button {
+		display: none;
+	}
+}
+
+.active-users {
+	background-color: #CBB677;
+	padding: 6px;
+	width: 100%;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'sb-footer',
@@ -8,7 +9,7 @@ import { LoginService } from '../login.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public login:LoginService) { }
+  constructor(public login:LoginService, public dataService:DataService) { }
 
   ngOnInit(): void {
   }

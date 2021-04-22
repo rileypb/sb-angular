@@ -80,3 +80,7 @@
 	background-color: #CBB677;
 }
 
+.active-users-color+* .mat-menu-panel {
+	background-color: #CBB677;
+}
+
