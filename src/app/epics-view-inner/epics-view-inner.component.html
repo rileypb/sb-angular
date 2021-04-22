@@ -52,7 +52,7 @@
 							    </div>
 							</div>
 							<div *ngSwitchCase="'edit'">
-								<sb-epic-form mode="edit" *ngSwitchCase="'edit'" (confirmEdit)="confirmEdit($event)" (cancelEdit)="cancelEdit()" (deleteEpic)="delete($event)" #epicView></sb-epic-form>
+								<sb-epic-form mode="edit" *ngSwitchCase="'edit'" (confirmEdit)="confirmEdit($event)" (cancelEdit)="cancelEdit()" (deleteEpic)="delete($event)" [epic]="epic"></sb-epic-form>
 							</div>
 							<div *ngSwitchCase="'create'">
 								<sb-epic-form mode="create" #createEpic  (confirmEdit)="saveNewEpic($event)" (cancelEdit)="cancelEdit()"></sb-epic-form>
