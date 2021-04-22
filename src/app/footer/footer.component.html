@@ -1,28 +1,25 @@
 <footer class="footer row">
 
-	<div class="col-2 text-left">	
-		<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button ml-2" (click)="logout()">
+	<div class="col-3 text-left">	
+		<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button" (click)="logout()">
 			<mat-icon>logout</mat-icon>
 		</button>
 	</div>
 
-	<div class="col-2 text-left">	
+	<div class="col-3 text-center">	
 	</div>
 
-	<div class="col-2 text-center">	
+	<div class="col-3 text-center">	
 	</div>
 
-	<div class="col-2 text-center">	
-	</div>
-
-	<div class="col-2 text-right">	
-	</div>
-
-	<div class="col-2 text-right">		
-		<button *ngIf="dataService.users" class="active-users-button ml-2" [matMenuTriggerFor]="activeUsersMenu">
+	<div class="col-3 text-right">		
+		<button *ngIf="dataService.users" class="active-users-button" [matMenuTriggerFor]="activeUsersMenu">
 			<mat-icon class="logout button-icon">people</mat-icon>
 			<span class="button-icon">{{dataService.users.length}}</span>
 		</button>
+	</div>
+</footer>
+
 		<mat-menu #activeUsersMenu backdropClass="active-users-color">
 			<div *ngIf="dataService.users" class="active-users text-truncate">
 				Active users:
@@ -36,5 +33,3 @@
 				</div>
 			</div>
 		</mat-menu>
-	</div>
-</footer>

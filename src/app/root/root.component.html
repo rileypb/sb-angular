@@ -1,38 +1,42 @@
-<div class="no-print">
+<div class="no-print sbroot">
 	<sb-header class="header"></sb-header>
-		<nav class="nav nav-menu">
-			<div class="nav-wrapper">
-				<sb-nav-menu></sb-nav-menu>
-			</div>
-		</nav>
+	
+	<nav class="nav nav-menu">
+		<div class="nav-wrapper">
+			<sb-nav-menu></sb-nav-menu>
+		</div>
+	</nav>
+	
 	<div *ngIf="(dataService.isConnected | async); else connecting" class="main-content">
-
 		<router-outlet ></router-outlet>
-
 	</div>
+
 	<sb-footer class="footer"></sb-footer>
-</div>
 
-<ng-template #connecting>
-	<div style="position: fixed; top: 2rem;">Connecting...</div>
-</ng-template>
 
-<div *ngIf="(loginService.status | async) != 'logged_in'" class="login-overlay">
-	<div class="col-12 text-center">
-		<div>Please log in.</div>
-		<button (click)="login()">Log in</button>
+	<ng-template #connecting>
+		<div style="position: fixed; top: 2rem;">Connecting...</div>
+	</ng-template>
+
+	<div *ngIf="(loginService.status | async) != 'logged_in'" class="login-overlay">
+		<div class="col-12 text-center">
+			<div>Please log in.</div>
+			<button (click)="login()">Log in</button>
+		</div>
 	</div>
-</div>
 
-<div *ngIf="dataService.users" class="active-users text-truncate">
-	Active users:
-	<div *ngFor="let user of dataService.users" class="text-truncate">
-	   	<img [src]="user.picture"
-	         [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
-	         [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
-	         class="nav-user-profile user-picture mb-1"
-	         style="width: 32px;"/>
-	         {{user.displayName || (user.first_name + ' ' + user.last_name)}}
+	<div *ngIf="dataService.users" class="active-users text-truncate">
+		Active users:
+		<div *ngFor="let user of dataService.users" class="text-truncate">
+		   	<img [src]="user.picture"
+		         [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
+		         [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
+		         class="nav-user-profile user-picture mb-1"
+		         style="width: 32px;"/>
+		         {{user.displayName || (user.first_name + ' ' + user.last_name)}}
+		</div>
 	</div>
+
+	<div class="backdrop"></div>
 </div>
  

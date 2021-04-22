@@ -7,14 +7,15 @@
 	background-color: #0000;
 	border: 0;
 	margin: 0 2px 0 2px;
+	height: 2rem;
 }
 
 .nav-item:hover {
-	background-color: #AD9C65;
+	background-color: #B599CE;
 }
 
 .nav-item-selected {
-	background-color: #F4EFE1;
+	background-color: #DACCE6;
 }
 
 .nav-wrapper {

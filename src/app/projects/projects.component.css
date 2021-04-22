@@ -1,16 +1,57 @@
 .projects {
-	padding: 10px;
+	width: 90%;
+	max-width: 800px;
+	margin: 0 auto;
+	margin-top: 1rem;
+	min-height: 90%;
+	border: 1px solid #ddd;
+	box-shadow: 2px 2px 2px #bbb;
+	background-color: #fff;
+/*	background: rgb(2,0,36);
+	background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(235,238,238,1) 100%);*/
 }
 
-mat-card {
-	margin: 4px;
-	background-color: #ddd;
+@media screen and (max-width: 779px) {
+	.projects {
+		width: 100%;
+		margin-top: 0;
+		height: 100%;
+	}
 }
 
-mat-list-item {
+.card-title {
+	/*background: linear-gradient(90deg, rgba(244,239,225,1) 0%, rgba(203,182,119,1) 100%);*/
+	/*background-color: rgba(203,182,119,1);*/
+	background-color: #F4EFE1;
+	padding: 20px;
+	/*border-bottom: 2px groove #DACCE6;*/
+	box-shadow: 0 2px 2px #bbb;
 }
 
-vertical-list {
-	display: flex; 
-	flex-direction: column;
+.project-container {
+	padding: 20px;
+	font-size: large;
+}
+
+.project-list {
+}
+
+.project-entry {
+	font-family: serif;
+}
+
+.select-link {
+	color: #5498B6;
+}
+
+.select-link:hover {
+	color: #B599CE;
+}
+
+.select-link:active {
+	color: #DACCE6;
+}
+
+.select-link:visited {
+	color: #A4232B;
 }
