@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ThemeModule } from './theme/theme.module';
+import { lightTheme } from './theme/light-theme';
+import { jmuTheme } from './theme/jmu-theme';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -255,6 +258,10 @@ import { FooterComponent } from './footer/footer.component';
       httpInterceptor: {
         ...environment.httpInterceptor,
       },
+    }),
+    ThemeModule.forRoot({
+        themes: [lightTheme, jmuTheme],
+        active: 'jmu'
     }),
   ],
   providers: [ 

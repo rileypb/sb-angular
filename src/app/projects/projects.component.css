@@ -4,11 +4,8 @@
 	margin: 0 auto;
 	margin-top: 1rem;
 	min-height: 90%;
-	border: 1px solid #ddd;
+	border: 1px solid var(--gray);
 	box-shadow: 2px 2px 2px #bbb;
-	background-color: #fff;
-/*	background: rgb(2,0,36);
-	background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(235,238,238,1) 100%);*/
 }
 
 @media screen and (max-width: 779px) {
@@ -20,12 +17,11 @@
 }
 
 .card-title {
-	/*background: linear-gradient(90deg, rgba(244,239,225,1) 0%, rgba(203,182,119,1) 100%);*/
-	/*background-color: rgba(203,182,119,1);*/
-	background-color: #F4EFE1;
+	background-color: var(--secondary-light);
 	padding: 20px;
 	/*border-bottom: 2px groove #DACCE6;*/
-	box-shadow: 0 2px 2px #bbb;
+	box-shadow: 0 2px 2px var(--gray);
+	font-family: var(--banner-font);
 }
 
 .project-container {
@@ -37,21 +33,21 @@
 }
 
 .project-entry {
-	font-family: serif;
+	font-family: var(--text-font);
 }
 
 .select-link {
-	color: #5498B6;
+	color: var(--accent-2-dark);
 }
 
 .select-link:hover {
-	color: #B599CE;
+	color: var(--accent-2);
 }
 
 .select-link:active {
-	color: #DACCE6;
+	color: var(--accent-2-light);
 }
 
 .select-link:visited {
-	color: #A4232B;
+	color: var(--primary);
 }

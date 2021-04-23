@@ -14,7 +14,7 @@ import { NewsService } from '../news.service';
 @Component({
   selector: 'sb-root',
   templateUrl: './root.component.html',
-  styleUrls: ['./root.component.css']
+  styleUrls: ['./root.component.css'],
 })
 export class RootComponent implements OnInit {
   @ViewChild("newsFeed") newsFeed:TemplateRef<any>;

@@ -2,7 +2,7 @@
 	height: 2rem;
 	padding: 4px;
 
-	background-color: #dddddd;
+	background-color: var(--light-gray);
 
 	border-width: 1px;
 	border-style: groove;
@@ -40,7 +40,8 @@
 }
 
 .active-users {
-	background-color: #CBB677;
+	background-color: var(--secondary);
+	color: var(--on-secondary);
 	padding: 6px;
 	width: 100%;
 }
