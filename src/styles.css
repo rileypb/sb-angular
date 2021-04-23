@@ -77,10 +77,22 @@
 
 
 .nav-color+* .mat-menu-panel {
-	background-color: #CBB677;
+	background-color: var(--background);
 }
 
 .active-users-color+* .mat-menu-panel {
-	background-color: #CBB677;
+	background-color: var(--secondary);
+}
+
+.base-icon {
+	color: var(--primary-dark);
+}
+
+.banner-text {
+	font-family: var(--banner-font);
+}
+
+.base-text {
+	font-family: var(--text-font);
 }
 

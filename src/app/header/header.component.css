@@ -2,7 +2,7 @@
 	height: 2rem;
 	padding: 4px;
 
-	background-color: #450084;
-	color: #DDDDDD;
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
 }
 

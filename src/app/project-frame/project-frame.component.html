@@ -3,13 +3,13 @@
 	<div>
 
 		<mat-card class="project-frame-card">
-			<mat-card-title>
+			<mat-card-title class="banner-text">
 				<mat-icon *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
 				<img class="project-picture" *ngIf="project.picture" [src]="project.picture" (click)="showContent()">
 				{{project.name}}
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Edit Project" (click)="editProject()"><mat-icon>edit</mat-icon></button>
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showTeamButton && permission(project, 'read')" mat-icon-button color="primary" matTooltip="Show Team" (click)="showTeam()"><mat-icon>people</mat-icon></button>
-				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showSettingsButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Show Team" (click)="editSettings()"><mat-icon>settings</mat-icon></button>
+				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showSettingsButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Edit Settings" (click)="editSettings()"><mat-icon class="base-icon">settings</mat-icon></button>
 			</mat-card-title>
 			<div [ngSwitch]="mode">
 				<ng-content *ngSwitchCase="'showingContent'"></ng-content>

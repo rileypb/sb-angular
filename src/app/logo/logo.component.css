@@ -8,6 +8,11 @@
 	}
 }
 
-.app-icon {
+.app-name {
+	font-family: var(--banner-font);
+	color: var(--on-primary-dark);
+}
 
+.app-icon {
+	color: var(--on-primary-dark);
 }

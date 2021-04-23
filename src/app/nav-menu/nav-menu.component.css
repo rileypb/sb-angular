@@ -8,6 +8,7 @@
 	border: 0;
 	margin: 0 2px 0 2px;
 	height: 2rem;
+	color: var(--on-background);
 }
 
 .nav-item:hover {
@@ -15,7 +16,8 @@
 }
 
 .nav-item-selected {
-	background-color: #DACCE6;
+	background-color: var(--primary-light);
+	color: var(--on-primary-light);
 }
 
 .nav-wrapper {

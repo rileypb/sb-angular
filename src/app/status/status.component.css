@@ -1,13 +1,18 @@
 .connected {
-	color: green;
+	color: var(--okay);
 }
 
 .disconnected {
-	color:red;
+	color: var(--error);
 }
 
 @media screen and (max-width: 499px) {
 	.status-text {
 		display: none;
 	}
+}
+
+.status-text {
+	font-family: var(--banner-font);
+	color: var(--on-primary-dark);
 }

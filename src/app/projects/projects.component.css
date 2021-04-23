@@ -18,6 +18,7 @@
 
 .card-title {
 	background-color: var(--secondary-light);
+	color: var(--on-secondary-light);
 	padding: 20px;
 	/*border-bottom: 2px groove #DACCE6;*/
 	box-shadow: 0 2px 2px var(--gray);

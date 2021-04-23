@@ -4,6 +4,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ThemeModule } from './theme/theme.module';
 import { lightTheme } from './theme/light-theme';
 import { jmuTheme } from './theme/jmu-theme';
+import { darkBWTheme } from './theme/dark-bw-theme';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -260,8 +261,8 @@ import { FooterComponent } from './footer/footer.component';
       },
     }),
     ThemeModule.forRoot({
-        themes: [lightTheme, jmuTheme],
-        active: 'jmu'
+        themes: [lightTheme, jmuTheme, darkBWTheme],
+        active: 'dark-bw'
     }),
   ],
   providers: [ 

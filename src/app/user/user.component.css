@@ -6,6 +6,7 @@
 
 @media screen and (min-width: 500px) {
 	.username {
+		font-family: var(--banner-font);
 		font-weight: bold;
 		vertical-align: top;
 	}
@@ -24,23 +25,16 @@
 
 .cheeseburger-button {
 	background-color: #00000000;
-	color: white;
+	color: var(--on-primary-dark);
 	border-style: none;
 }
-
-.login-button {
-	background-color: #00000000;
-	color: white;
-	border-style: none;
-}
-
 
 .user {
 	vertical-align: baseline;
 }
 
 .nav {
-	background-color: #CBB677;
+	background-color: var(--background);
 	width: 100%;
 }
 
@@ -48,18 +42,6 @@
 	background-color: #0000;
 	border: 0;
 	margin: 0 4px 0 4px;
-}
-
-.nav-item:hover {
-	background-color: #AD9C65;
-}
-
-.nav-item-selected {
-	background-color: #F4EFE1;
-}
-
-.nav-wrapper {
-	margin: 0 auto;
 }
 
 .logout-label {

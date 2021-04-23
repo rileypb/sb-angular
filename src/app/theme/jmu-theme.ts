@@ -68,11 +68,13 @@ export const jmuTheme: Theme = {
 
     '--error': red,
     '--on-error': white,
+    '--okay': darkgreen,
+    '--on-okay': slate,
 
     '--warning': orange,
     '--on-warning': white,
 
-    '--banner-font': '"Segoe UI", Roboto, sans-serif',
-    '--text-font': 'Times, serif'
+    '--banner-font': 'cursive, "Segoe UI", Roboto, sans-serif',
+    '--text-font': 'Impact, Georgia, serif'
   }
 };
