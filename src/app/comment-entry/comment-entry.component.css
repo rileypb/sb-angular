@@ -1,4 +1,13 @@
 .comment-text-area {
 	width: 100%;
 	box-shadow: 2px 2px #ddd;
+	font-family: var(--user-font);
+}
+
+.comment-text-area::placeholder {
+	font-family: var(--menu-font);
+}
+
+.submit-button {
+	font-family: var(--menu-font);
 }

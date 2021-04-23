@@ -16,17 +16,8 @@
 						</mat-card-content>
 					</mat-card>
 				</div>
+
 				<div class="col-md-6">
-<!-- 					<mat-card class="inner-detail-card" *ngIf="mode == 'show' && epicId > 0">
-						<mat-card-title>
-							<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-eye"></mat-icon>
-							Detail
-							<button style="position: relative; top: -4px" *ngIf="permission(selectedEpic, 'update')" mat-icon-button color="primary" matTooltip="Edit Epic" (click)="editEpic()"><mat-icon>edit</mat-icon></button>
-						</mat-card-title>
-						<mat-card-content>
-							<sb-epic-loader [epicId]="epicId"><app-epic-detail #epicView></app-epic-detail></sb-epic-loader>
-						</mat-card-content>
-					</mat-card> -->
 					<mat-card class="inner-detail-card">
 						<mat-card-title [ngSwitch]="mode">
 							<div *ngSwitchCase="'show'">

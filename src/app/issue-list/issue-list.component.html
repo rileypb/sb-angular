@@ -10,13 +10,13 @@
   	     (cdkDropListDropped)="onDrop($event)">
       
       <div *ngIf="issues; else progressSpinner">
-        <div class="drag-placeholder" *ngIf="showEmptyListSpace && (filteredIssues | async)?.length == 0">Drag and drop issues here</div>
+        <div class="drag-placeholder menu-text" *ngIf="showEmptyListSpace && (filteredIssues | async)?.length == 0">Drag and drop issues here</div>
         <div class="issue-card text-truncate pl-2" 
              (click)="clickIssue(issue)"
              [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index" cdkDrag>
           
           <div class="drag-placeholder" *cdkDragPlaceholder></div>
-          <div class="row align-items-center">
+          <div class="row align-items-center banner-text">
             <button style="position: relative; left: 8px" mat-icon-button *ngIf="showViewIcon" (click)="onViewIssue(issue)">
               <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
             </button>
@@ -40,7 +40,7 @@
              (click)="clickIssue(issue)"
              [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index">
           <div class="row align-items-center">
-            <div class="col-10 text-truncate">
+            <div class="col-10 text-truncate banner-text">
               <span [ngClass]="{ 'completed-title': issue.completed }">#{{issue.id}} - {{issue.title}}</span> <mat-icon *ngIf="issue.completed" class="ml-3 checkmark" fontSet="fas" fontIcon="fa-check-circle"></mat-icon>
             </div>
             <button mat-icon-button *ngIf="allowRemove" (click)="removeIssue(issue)">
@@ -50,8 +50,8 @@
               <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" [matMenuTriggerFor]="issueMenu">more_horiz</mat-icon>
             </button>
             <mat-menu #issueMenu="matMenu">
-              <button class="menu-option" mat-menu-item (click)="markCompleted(issue)">Mark Completed</button>
-              <button class="menu-option" mat-menu-item (click)="moveToBacklog(issue)">Move to Product Backlog</button>
+              <button class="menu-option menu-text" mat-menu-item (click)="markCompleted(issue)">Mark Completed</button>
+              <button class="menu-option menu-text" mat-menu-item (click)="moveToBacklog(issue)">Move to Product Backlog</button>
             </mat-menu>
           </div>
         </div>

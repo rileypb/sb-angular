@@ -1,10 +1,19 @@
 .project-frame-card {
-	background-color: var(--background);
-	color: var(--on-background);
-
+	width: 90%;
+	max-width: 1200px;
+	margin: 0 auto;
+	margin-top: 1rem;
+	min-height: 90%;
 	border: 1px solid var(--gray);
 	box-shadow: 2px 2px 2px #bbb;
-	padding: 20px;
+}
+
+@media screen and (max-width: 779px) {
+	.project-frame-card {
+		width: 100%;
+		margin-top: 0;
+		height: 100%;
+	}
 }
 
 .picture-input {
@@ -16,5 +25,14 @@
 }
 
 .card-title {
-	
+	font-size: x-large;
+	background-color: var(--secondary-light);
+	color: var(--on-secondary-light);
+	padding: 10px 0 10px 20px;
+	box-shadow: 0 2px 2px var(--gray);
+	font-family: var(--banner-font);
+}
+
+.card-contents {
+	padding: 0px 20px 20px 20px;
 }

@@ -2,18 +2,18 @@
 
           <div *ngIf="task; else progressSpinner">
             <div class="mt-2 ml-1 row">
-              <span class="col-2">
+              <span class="col-2 banner-text">
                 <mat-icon fontIcon="fa-hammer" fontSet="fas"></mat-icon>#{{task.id}}
               </span>
-              <a class="col-7 task-link text-wrap" matTooltip="Edit Task" [class.disabled]="!permission(task, 'update') ? true : null" (click)="editTask(task, $event)">{{task.title}}</a>
-              <span class="col-3">
+              <a class="col-7 task-link text-wrap banner-text" matTooltip="Edit Task" [class.disabled]="!permission(task, 'update') ? true : null" (click)="editTask(task, $event)">{{task.title}}</a>
+              <span class="col-3 user-text">
                 <a *ngIf="permission(task, 'update')" class="task-link estimate-link" matTooltip="Edit Estimate" [hidden]="isEditingEstimate()" [disabled]="!permission(task, 'update') ? true : null" (click)="startEditingEstimate()">{{task.estimate}} hours</a>
                 <span *ngIf="!permission(task, 'update')">{{task.estimate}} hours</span>
                 <input [hidden]="!isEditingEstimate()" type="text" #estimateEditor [(ngModel)]="estimate" (blur)="stopEditingEstimate(false)" (keydown)="processKeyPress($event)">
               </span>
             </div>
 
-            <div class="mt-1 ml-3 text-wrap" [innerHtml]="task.description"></div>
+            <div class="mt-1 ml-3 text-wrap base-text" [innerHtml]="task.description"></div>
 
             <div class="mt-2 ml-1 row">
               <span class="col-11">

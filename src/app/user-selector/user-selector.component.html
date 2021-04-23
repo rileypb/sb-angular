@@ -3,13 +3,13 @@
 	<span *ngIf="!assignee">Unassigned</span>
 </ng-template>
 
-Assignee:
+<span class="menu-text mr-1">Assignee:</span>
 <span *ngIf="!disabled; else fixedAssignee">
 	<img *ngIf="assignee" class="user-picture m-1" [src]="assignee.picture">
 	<mat-form-field>
-		<mat-select class="assignee-select" [(value)]="assigneeId" (selectionChange)="onChangeSelection()">
-			<mat-option [value]="-1">Unassigned</mat-option>
-			<mat-option *ngFor="let user of team" [value]="user.id"><img class="user-picture" [src]="user.picture">{{user.first_name}} {{user.last_name}}</mat-option>
+		<mat-select class="assignee-select base-text" [(value)]="assigneeId" (selectionChange)="onChangeSelection()">
+			<mat-option class="base-text" [value]="-1">Unassigned</mat-option>
+			<mat-option class="base-text" *ngFor="let user of team" [value]="user.id"><img class="user-picture m-1" [src]="user.picture">{{user.first_name}} {{user.last_name}}</mat-option>
 		</mat-select>
 	</mat-form-field>
 </span>

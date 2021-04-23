@@ -90,10 +90,35 @@
 
 .banner-text {
 	font-family: var(--banner-font);
-	font-size: xx-large;
 }
 
 .base-text {
 	font-family: var(--text-font);
 }
 
+.menu-text {
+	font-family: var(--menu-font);
+}
+
+.menu-text-bold {
+	font-family: var(--menu-font);
+	font-weight: bold;
+}
+
+.user-text { 
+	font-family: var(--user-font);
+}
+
+
+.mat-form-field-label {
+	font-family: var(--menu-font) !important;
+}
+
+
+.mat-select-panel {
+	font-family: var(--user-font) !important;
+}
+
+.mat-input-element {
+	font-family: var(--user-font) !important;
+}

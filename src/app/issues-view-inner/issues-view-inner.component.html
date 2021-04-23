@@ -5,7 +5,7 @@
 			<div class="row" cdkDropListGroup>
 				<div class="col-md-6">
 					<mat-card class="inner-detail-card">
-						<mat-card-title>
+						<mat-card-title class="banner-text">
 							<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-scroll"></mat-icon>
 							Issues
 							<button style="position: relative; top: -4px" *ngIf="permission(project, 'create-issue')" mat-icon-button color="primary" matTooltip="New Issue" (click)="createIssue()"><mat-icon>add_circle</mat-icon></button>
@@ -30,17 +30,17 @@
 					<mat-card class="inner-detail-card">
 						<mat-card-title [ngSwitch]="mode">
 							<div *ngSwitchCase="'show'">
-								<div *ngIf="issue">
+								<div *ngIf="issue" class="banner-text">
 									<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-eye"></mat-icon>
 									Detail
 									<button style="position: relative; top: -4px" *ngIf="permission(issue, 'update')" mat-icon-button color="primary" matTooltip="Edit Issue" (click)="editIssue()"><mat-icon>edit</mat-icon></button>
 								</div>
 							</div>
-							<div *ngSwitchCase="'edit'">
+							<div *ngSwitchCase="'edit'" class="banner-text">
 								<mat-icon class="mr-1">edit</mat-icon>
 								Edit Issue
 							</div>
-							<div *ngSwitchCase="'create'">
+							<div *ngSwitchCase="'create'" class="banner-text">
 								<mat-icon class="mr-1">add_circle</mat-icon>
 								Create Issue
 							</div>
