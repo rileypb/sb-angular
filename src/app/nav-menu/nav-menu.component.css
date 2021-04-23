@@ -9,6 +9,7 @@
 	margin: 0 2px 0 2px;
 	height: 2rem;
 	color: var(--on-background);
+	font-family: var(--menu-font);
 }
 
 .nav-item:hover {

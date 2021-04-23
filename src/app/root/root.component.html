@@ -25,7 +25,7 @@
 		</div>
 	</div>
 
-	<div *ngIf="dataService.users" class="active-users text-truncate">
+	<div *ngIf="dataService.users" class="active-users text-truncate base-text">
 		Active users:
 		<div *ngFor="let user of dataService.users" class="text-truncate">
 		   	<img [src]="user.picture"

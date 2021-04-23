@@ -75,6 +75,7 @@ export const jmuTheme: Theme = {
     '--on-warning': white,
 
     '--banner-font': 'cursive, "Segoe UI", Roboto, sans-serif',
-    '--text-font': 'Impact, Georgia, serif'
+    '--text-font': 'Impact, Georgia, serif',
+    '--menu-font': 'fantasy'
   }
 };

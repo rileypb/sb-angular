@@ -13,7 +13,6 @@ import { callWithSnackBar } from '../util';
 export class ProjectFrameComponent extends Base implements OnInit {
   @Input() project:Project;
   @Input() showEditButton:boolean = false;
-  @Input() showTeamButton:boolean = false;
   @Input() showSettingsButton:boolean = true;
 
   public mode:string = "showingContent";

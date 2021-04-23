@@ -262,7 +262,7 @@ import { FooterComponent } from './footer/footer.component';
     }),
     ThemeModule.forRoot({
         themes: [lightTheme, jmuTheme, darkBWTheme],
-        active: 'dark-bw'
+        active: 'jmu' //'dark-bw'
     }),
   ],
   providers: [ 
