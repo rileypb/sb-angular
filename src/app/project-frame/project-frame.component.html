@@ -4,7 +4,7 @@
 
 		<div class="project-frame-card">
 			<div class="banner-text card-title">
-				<mat-icon *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
+				<mat-icon class="sb-icon" *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
 				<img class="project-picture" *ngIf="project.picture" [src]="project.picture" (click)="showContent()">
 				{{project.name}}
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Edit Project" (click)="editProject()"><mat-icon>edit</mat-icon></button>

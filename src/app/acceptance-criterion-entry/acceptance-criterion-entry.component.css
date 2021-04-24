@@ -1,9 +1,13 @@
-
+.acceptance-criteria-textarea {
+	background-color: var(--background);
+	border-color: var(--on-background);
+	color: var(--on-background);
+}
 
 .acceptance-criteria-row {
 	align-items: center
 }
 
-.acceptance-criteria-row:hover {
-	background-color: var(--light-gray);
+.ac-checkbox {
+	padding-left: 9px;
 }

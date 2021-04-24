@@ -32,8 +32,8 @@
 			</mat-item>
 			<mat-item *ngIf="editable && permission(issue,'update')">
 				<div class="row add-ac-wrapper">
-					<button *ngIf="permission(issue, 'update')" mat-icon-button matTooltip="New Acceptance Criterion" (click)="createAC(newCriterion.value)" [disabled]="newCriterion.value.trim() == ''"><mat-icon class="add-ac sb-icon">add_circle</mat-icon></button>
-					<textarea class="col-11 user-text issue-card" #newCriterion></textarea>
+					<button class="col-1" *ngIf="permission(issue, 'update')" mat-icon-button matTooltip="New Acceptance Criterion" (click)="createAC(newCriterion.value)" [disabled]="newCriterion.value.trim() == ''"><mat-icon class="add-ac sb-icon">add_circle</mat-icon></button>
+					<textarea class="col-10 user-text issue-card" #newCriterion></textarea>
 				</div>
 			</mat-item>
 		</mat-list>

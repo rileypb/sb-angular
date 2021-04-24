@@ -103,7 +103,7 @@
 }
 
 .sb-icon {
-	color: var(--primary);
+	color: var(--primary-dark);
 }
 
 
@@ -124,7 +124,6 @@
 	outline-color: green !important;
 }
 
-
 .mat-select-panel {
 	font-family: var(--user-font) !important;
 }
@@ -139,5 +138,38 @@
 
 .mat-input-element {
 	font-family: var(--user-font) !important;
+}
+
+.mat-checkbox-background {
+	background-color: var(--background) !important;
+	border: 1px solid var(--on-background) !important;
+}
+
+.mat-checkbox-checkmark {
+	border-color: var(--on-background) !important;
+}
+
+.mat-checkbox-frame {
+	border-color: var(--on-background) !important;
+}
+
+.mat-checkbox-checkmark-path {
+	stroke: var(--on-background) !important;
+}
+
+::-webkit-scrollbar-track
+{
+  background-color: var(--background);
+}
+
+::-webkit-scrollbar
+{
+  width: 12px;
+  background-color: var(--primary);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: var(--primary-dark);
 }
 

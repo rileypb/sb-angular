@@ -30,6 +30,7 @@
 	color: var(--on-background);
 }
 
-.comment-display-box {
+.comments-display-box {
 	background-color: var(--background);
 }
+
