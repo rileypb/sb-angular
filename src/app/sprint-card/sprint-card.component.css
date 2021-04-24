@@ -35,6 +35,11 @@
 	font-size: x-large;
 }
 
+.pause-icon {
+	color: var(--warning);
+	font-size: x-large;
+}
+
 .sprint-info {
 	padding: 5px;
 }

@@ -17,19 +17,19 @@
 						<a class="product-backlog-link menu-text" *ngIf="mode == 'viewIssue'" (click)="mode = 'backlog'">Show Product Backlog</a>
 						<mat-card-title [ngSwitch]="mode">
 							<div class="banner-text" *ngSwitchCase="'backlog'">
-								<mat-icon fontSet="fas" fontIcon="fa-list-alt"></mat-icon>
+								<mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-list-alt"></mat-icon>
 								Product Backlog
 							</div>
 							<div class="banner-text" *ngSwitchCase="'edit'">
-								<mat-icon class="mr-1">edit</mat-icon>
+								<mat-icon class="mr-1 sb-icon">edit</mat-icon>
 								Edit Sprint
 							</div>
 							<div class="banner-text" *ngSwitchCase="'create'">
-								<mat-icon class="mr-1">add_circle</mat-icon>
+								<mat-icon class="mr-1 sb-icon">add_circle</mat-icon>
 								Create Sprint
 							</div>
 							<div class="banner-text" *ngSwitchCase="'viewIssue'">
-								<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+								<mat-icon class="mr-1 sb-icon" fontSet="fas" fontIcon="fa-eye"></mat-icon>
 								View Issue
 							</div>
 						</mat-card-title>
