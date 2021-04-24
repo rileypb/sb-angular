@@ -5,5 +5,5 @@
 }
 
 .acceptance-criteria-row:hover {
-	background-color: #eee;
+	background-color: var(--light-gray);
 }

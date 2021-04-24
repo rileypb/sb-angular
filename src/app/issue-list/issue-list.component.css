@@ -4,89 +4,54 @@
 
 .issue-card {
 	font-size: small;
-	background: white;
+	background: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: #CCC;
+	border-color: var(--light-gray);
 	border-style: solid;
-	box-shadow: 2px 2px #ddd;
+	box-shadow: 2px 2px var(--light-gray);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .issue-card:hover {
 	cursor: move;
-	border: 2px solid #666;
+	border: 2px solid var(--dark-gray);
 }
 
 .issue-card:active {
-	background-color: #999 !important;
+	background-color: var(--gray) !important;
 }
 
 .fixed-issue-card {
 	font-size: small;
-	background: white;
+	background: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: #CCC;
+	border-color: var(--light-gray);
 	border-style: solid;
-	box-shadow: 2px 2px #ddd;
+	box-shadow: 2px 2px var(--light-gray);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .fixed-issue-card:hover {
 	cursor: default;
-	border: 2px solid #666;
+	border: 2px solid var(--dark-gray);
 }
 
 .fixed-issue-card:active {
-	background-color: #999 !important;
+	background-color: var(--gray) !important;
 }
 
 .issue-card-body {
 	font-size: x-small;
 }
 
-.issue-id {
-	font-family: sans-serif;
-	font-weight: bold;
-}
-
-.issue-link {
-	color: #444;
-}
-
-.issue-link:hover {
-	text-decoration: none;
-	color: blue;
-}
-
-.issue-title {
-	font-family: sans-serif;
-	font-style: italic;
-}
-
 .drag-placeholder {
-  background: #eeeeee;
-  border: dotted 1px #999;
+  background: var(--gray);
+  border: dotted 1px var(--dark-gray);
   min-height: 40px;
-}
-
-.small-button {
-	font-size: x-small;
-}
-
-.issue-description {
-	font-family: sans-serif;
-	background: #ddd;
-}
-
-.drag-icon {
-	color: #aaa;
-}
-
-.checkmark {
 }
 
 .completed-title {

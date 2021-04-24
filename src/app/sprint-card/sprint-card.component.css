@@ -10,6 +10,11 @@
 	color: blue;
 }
 
+.team-summary-link {
+	text-decoration: underline; 
+	text-decoration-style: dotted;
+}
+
 .sprint-card {
 	font-size: small;
 	border-radius: 5px;

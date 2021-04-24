@@ -7,18 +7,19 @@
 <p class="banner-text"><mat-icon fontSet="fas" fontIcon="fa-palette"></mat-icon> Color: <mat-icon *ngIf="epic.color" class="ml-1" fontSet="fas" fontIcon="fa-circle" [ngStyle]="{'color':epic.color}" [matTooltip]="epic.color"></mat-icon>
 <mat-icon *ngIf="!epic.color" class="ml-1" fontSet="far" fontIcon="fa-circle" matTooltip="No Color Set"></mat-icon></p>
 
-<mat-card>
+<mat-card class="issues-card">
 	<mat-card-title class="banner-text">
 		Issues
 	</mat-card-title>
 	<mat-card-content>
 		<sb-issue-list [issues]="((epicIssues | async) || {issues: { list: []}}).issues.list" fixed="true" (issueSelected)="onIssueSelected($event)"></sb-issue-list>
-		<form style="display: inline; width:100%" [hidden]="!permission(epic, 'update')">
-			<mat-form-field style="width:100%" #searchField>
+		<form class="add-issue-form mt-1" [hidden]="!permission(epic, 'update')">
+			<mat-form-field class="add-issue-form" #searchField>
 				<input type="text"
 					   class="issue-input"
 					   placeholder="Add an Issue"
 					   aria-label="issue"
+					   appearance="fill"
 					   matInput
 					   [formControl]="issueControl"
 					   [matAutocomplete]="auto" #issueInput>

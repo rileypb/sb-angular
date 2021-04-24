@@ -1,0 +1,4 @@
+:host ::ng-deep .ck-editor__editable_inline {
+    height: 12rem;
+    font-family: var(--user-font);
+}

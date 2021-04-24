@@ -4,77 +4,42 @@
 
 .epic-card {
 	font-size: small;
-	background: white;
+	background-color: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: #CCC;
+	border-color: var(--light-gray);
 	border-style: solid;
-	box-shadow: 2px 2px #ddd;
+	box-shadow: 2px 2px var(--light-gray);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .epic-card:hover {
-	border: 2px solid #666;
+	border: 2px solid var(--dark-gray);
 	cursor: move;
 }
 
 .fixed-epic-card {
 	font-size: small;
-	background: white;
+	background: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: #CCC;
+	border-color: var(--gray);
 	border-style: solid;
-	box-shadow: 2px 2px #ddd;
+	box-shadow: 2px 2px var(--gray);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .fixed-epic-card:hover {
-	border: 2px solid #666;
-}
-
-.epic-card-body {
-	font-size: x-small;
-}
-
-.epic-id {
-	font-family: sans-serif;
-	font-weight: bold;
-}
-
-.epic-link {
-	color: #444;
-}
-
-.epic-link:hover {
-	text-decoration: none;
-	color: blue;
-}
-
-.epic-title {
-	font-family: sans-serif;
-	font-style: italic;
+	border: 2px solid var(--dark-gray);
 }
 
 .drag-placeholder {
-  background: #eeeeee;
-  border: dotted 1px #999;
+  background: var(--gray);
+  border: dotted 1px var(--dark-gray);
   min-height: 40px;
 }
 
-.small-button {
-	font-size: x-small;
-}
-
-.epic-description {
-	font-family: sans-serif;
-	background: #ddd;
-}
-
-.drag-icon {
-	color: #aaa;
-}
 
 

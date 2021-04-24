@@ -1,15 +1,17 @@
-<ng-template #fixedAssignee>
-	<span *ngIf="assignee"><img class="select-picture" [src]="assignee.picture">{{assignee.first_name}} {{assignee.last_name}}</span>
-	<span *ngIf="!assignee">Unassigned</span>
-</ng-template>
+<div class="selector">
+	<ng-template #fixedAssignee>
+		<span *ngIf="assignee"><img class="user-picture m-1" [src]="assignee.picture">{{assignee.first_name}} {{assignee.last_name}}</span>
+		<span *ngIf="!assignee">Unassigned</span>
+	</ng-template>
 
-<span class="menu-text mr-1">Assignee:</span>
-<span *ngIf="!disabled; else fixedAssignee">
-	<img *ngIf="assignee" class="user-picture m-1" [src]="assignee.picture">
-	<mat-form-field>
-		<mat-select class="assignee-select base-text" [(value)]="assigneeId" (selectionChange)="onChangeSelection()">
-			<mat-option class="base-text" [value]="-1">Unassigned</mat-option>
-			<mat-option class="base-text" *ngFor="let user of team" [value]="user.id"><img class="user-picture m-1" [src]="user.picture">{{user.first_name}} {{user.last_name}}</mat-option>
-		</mat-select>
-	</mat-form-field>
-</span>
+	<span class="menu-text mr-1">Assignee:</span>
+	<span *ngIf="!disabled; else fixedAssignee">
+		<img *ngIf="assignee" class="user-picture m-1" [src]="assignee.picture">
+		<mat-form-field>
+			<mat-select class="assignee-select base-text" [(value)]="assigneeId" (selectionChange)="onChangeSelection()">
+				<mat-option class="assignee-select base-text" [value]="-1">Unassigned</mat-option>
+				<mat-option class="assignee-select base-text" *ngFor="let user of team" [value]="user.id"><img class="user-picture m-1" [src]="user.picture">{{user.first_name}} {{user.last_name}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</span>
+</div>

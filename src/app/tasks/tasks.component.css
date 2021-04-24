@@ -4,18 +4,19 @@
 
 .task-card {
 	font-size: small;
-	background: white;
+	background: var(--background);
 	border-radius: 5px;
 	border-width: 1px;
-	border-color: #CCC;
+	border-color: var(--light-gray);
 	border-style: solid;
-	box-shadow: 2px 2px #ddd;
+	box-shadow: 2px 2px var(--light-gray);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .task-card:hover {
-	background: #EEE;
+	background: var(--background);
+	border-color: var(--gray);
 	cursor: default;
 }
 

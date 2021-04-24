@@ -3,10 +3,10 @@
 	<div>
 
 		<mat-card class="sprint-frame-card">
-			<mat-card-title>
+			<mat-card-title class="banner-text">
 				<mat-icon fontSet="fas" fontIcon="fa-shapes"></mat-icon>
 				{{sprint.id}} - {{sprint.title}}
-				<span class="ml-3">Goal: {{ sprint.goal }}</span>
+				<span class="ml-3 menu-text">Goal: <span class="banner-text">{{ sprint.goal }}</span></span>
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(sprint, 'update')" mat-icon-button color="primary" matTooltip="Edit Sprint" (click)="editSprint()"><mat-icon>edit</mat-icon></button>
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showSuspendButton && permission(sprint, 'update')" mat-icon-button color="warn" matTooltip="Suspend Sprint" (click)="suspendSprint()"><mat-icon>pause_circle</mat-icon></button>
 				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showFinishButton && permission(sprint, 'update')" mat-icon-button color="primary" matTooltip="Finish Sprint" (click)="finishSprint()"><mat-icon>check_circle</mat-icon></button>

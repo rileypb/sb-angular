@@ -16,11 +16,11 @@
 	             [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index" cdkDrag>
 	          <div class="drag-placeholder" *cdkDragPlaceholder></div>
 	          <mat-expansion-panel-header>
-	          	<mat-expansion-panel-title class="text-truncate issue-panel">
+	          	<mat-expansion-panel-title class="text-truncate issue-panel banner-text">
 	              <button mat-icon-button *ngIf="showViewIcon" (click)="onViewIssue($event, issue)">
 	                  <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
 	              </button>
-	           	  #{{issue.id}} - {{issue.title}} - {{taskList.percentComplete == -1 ? "0 hours" : (taskList.percentComplete | percent)}}
+	           	  #{{issue.id}} - {{issue.title}} - <span class="menu-text">{{taskList.percentComplete == -1 ? "0 hours" : (taskList.percentComplete | percent)}}</span>
 	           	</mat-expansion-panel-title>
             <mat-progress-bar class="issue-progress-bar" mode="determinate" [value]="100*taskList.percentComplete"></mat-progress-bar>
 	          </mat-expansion-panel-header>
@@ -39,7 +39,7 @@
              (click)="clickIssue(issue)"
              [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index">
           <div class="row align-items-center">
-            <div class="col-10 text-truncate" (click)="clickIssue(issue)">
+            <div class="col-10 text-truncate banner-text" (click)="clickIssue(issue)">
               #{{issue.id}} - {{issue.title}}
             </div>
             <button mat-icon-button *ngIf="allowRemove" (click)="removeIssue(issue)">

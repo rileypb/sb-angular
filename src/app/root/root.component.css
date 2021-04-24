@@ -104,6 +104,16 @@
 	background-color: var(--background);
 }
 
+.backdrop {
+	position: fixed;
+	background-color: var(--background);
+	top: 2rem;
+	bottom: 2rem;
+	left: 0px;
+	right: 0px;
+	z-index: -1;
+}
+
 @media screen and (min-width: 780px) {
 	.nav-menu {
 

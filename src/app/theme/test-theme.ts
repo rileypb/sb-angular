@@ -25,32 +25,32 @@ let lightblue = '#D2EBF5';
 let red = '#A4232B';
 let orange = '#FFBD00';
 
-export const jmuTheme: Theme = {
-  name: 'jmu',
+export const testTheme: Theme = {
+  name: 'test',
   properties: {
-    '--background': white,
-    '--on-background': slate,
+    '--background': slate,
+    '--on-background': orange,
 
-    '--primary-dark': darkpurple,
-    '--on-primary-dark': white,
-    '--primary': purple,
-    '--on-primary': slate,
-    '--primary-light': lightpurple,
-    '--on-primary-light': slate,
+    '--primary-dark': darkgreen,
+    '--on-primary-dark': orange,
+    '--primary': green,
+    '--on-primary': red,
+    '--primary-light': lightgreen,
+    '--on-primary-light': red,
 
-    '--secondary-dark': darkgold,
-    '--on-secondary-dark': slate,
-    '--secondary': gold,
-    '--on-secondary': slate,
-    '--secondary-light': lightgold,
-    '--on-secondary-light': slate,
+    '--secondary-dark': darkblue,
+    '--on-secondary-dark': orange,
+    '--secondary': blue,
+    '--on-secondary': red,
+    '--secondary-light': lightblue,
+    '--on-secondary-light': red,
 
     '--accent-1-dark': darkgreen,
-    '--on-accent-1-dark': white,
+    '--on-accent-1-dark': orange,
     '--accent-1': green,
-    '--on-accent-1': slate,
+    '--on-accent-1': red,
     '--accent-1-light': lightgreen,
-    '--on-accent-1-light': slate,
+    '--on-accent-1-light': red,
 
     '--accent-2-dark': darkblue,
     '--on-accent-2-dark': white,
@@ -62,9 +62,9 @@ export const jmuTheme: Theme = {
     '--surface': white,
     '--on-surface': slate,
 
-    '--dark-gray': darkgray,
-    '--gray': gray,
-    '--light-gray': lightgray,
+    '--dark-gray': darkpurple,
+    '--gray': purple,
+    '--light-gray': lightpurple,
 
     '--error': red,
     '--on-error': white,

@@ -1,25 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/fontawesome-free-5.14.0-web/css/fontawesome.css';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&family=Roboto+Mono&display=swap');
 /*@import '@angular/material/prebuilt-themes/indigo-pink.css';*/
 <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-
-:root {
-	--accent-color: #9999BB;
-
-	--link-color: #673ab7;
-	--link-color-hover: #a63ab7;
-	--link-color-active: #b73a89;
-	
-	--mdc-theme-primary: #000044;
-	--mdc-theme-accent: #0F0;
-
-}
 
 
 
 
 .main-body {
-	background-color: #FFF;
+	background-color: white;
 }
 
 .mat-card {
@@ -33,15 +22,19 @@
 }
 
 .sb-link {
-	color: var(--link-color) !important;
+	color: var(--accent-2-dark) !important;
 }
 
 .sb-link:hover {
-	color: var(--link-color-hover) !important;
+	color: var(--accent-2) !important;
 }
 
 .sb-link:active {
-	color: var(--link-color-active) !important;
+	color: var(--accent-2-light) !important;
+}
+
+.sb-link:visited {
+	color: var(--primary);
 }
 
 .user-picture {
@@ -109,9 +102,26 @@
 	font-family: var(--user-font);
 }
 
+.sb-icon {
+	color: var(--primary);
+}
+
 
 .mat-form-field-label {
 	font-family: var(--menu-font) !important;
+	color: var(--on-background) !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+	color: var(--error);
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+	background-color: var(--on-background) !important;
+
+	color: var(--on-background) !important;
+	background-color: var(--on-background) !important;
+	outline-color: green !important;
 }
 
 
@@ -119,6 +129,15 @@
 	font-family: var(--user-font) !important;
 }
 
+.mat-select-value-text {
+	color: var(--on-background);
+}
+
+.mat-select-arrow {
+	color: var(--on-background);
+}
+
 .mat-input-element {
 	font-family: var(--user-font) !important;
 }
+

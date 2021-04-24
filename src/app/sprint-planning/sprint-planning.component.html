@@ -5,7 +5,7 @@
 				<div class="col-md-6">
 					<mat-card class="inner-detail-card">
 						<div style="height:100%;">
-					  		<h6>Open and Pending Sprints
+					  		<h6 class="banner-text">Open and Pending Sprints
 			 			    <button *ngIf="permission(project, 'create-sprint')" mat-icon-button matTooltip="New Sprint" (click)="newSprint()"><mat-icon color="primary">add_circle</mat-icon></button></h6>
 		 			    	<sb-sprint-list [project]="project" [currentOnly]="true" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="!project.currentSprint" (start)="onStart($event)" [editable]="true" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
 							<!-- <app-sprints style="height:100%; display: flex; flex-direction: column;" [project]="project"></app-sprints> -->
@@ -14,21 +14,21 @@
 				</div>
 				<div class="col-md-6">
 					<mat-card class="inner-detail-card">
-						<a class="product-backlog-link" *ngIf="mode == 'viewIssue'" (click)="mode = 'backlog'">Show Product Backlog</a>
+						<a class="product-backlog-link menu-text" *ngIf="mode == 'viewIssue'" (click)="mode = 'backlog'">Show Product Backlog</a>
 						<mat-card-title [ngSwitch]="mode">
-							<div *ngSwitchCase="'backlog'">
+							<div class="banner-text" *ngSwitchCase="'backlog'">
 								<mat-icon fontSet="fas" fontIcon="fa-list-alt"></mat-icon>
 								Product Backlog
 							</div>
-							<div *ngSwitchCase="'edit'">
+							<div class="banner-text" *ngSwitchCase="'edit'">
 								<mat-icon class="mr-1">edit</mat-icon>
 								Edit Sprint
 							</div>
-							<div *ngSwitchCase="'create'">
+							<div class="banner-text" *ngSwitchCase="'create'">
 								<mat-icon class="mr-1">add_circle</mat-icon>
 								Create Sprint
 							</div>
-							<div *ngSwitchCase="'viewIssue'">
+							<div class="banner-text" *ngSwitchCase="'viewIssue'">
 								<mat-icon class="mr-1" fontSet="fas" fontIcon="fa-eye"></mat-icon>
 								View Issue
 							</div>
