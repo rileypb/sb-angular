@@ -2,10 +2,10 @@
 	height: 2rem;
 	padding: 4px;
 
-	background-color: var(--light-gray);
+	background-color: var(--secondary);
 
 	border-width: 1px;
-	border-style: groove;
+	box-shadow: 0 -2px 1px var(--light-gray);
 }
 
 
