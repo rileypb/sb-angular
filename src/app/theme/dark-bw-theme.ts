@@ -63,6 +63,7 @@ export const darkBWTheme: Theme = {
 
     '--banner-font': '"Segoe UI", Roboto, sans-serif',
     '--text-font': 'Consolas, monospace',
-    '--menu-font': 'serif'
+    '--menu-font': '"Segoe UI", Roboto, sans-serif',
+    '--user-font': 'Consolas, monospace',
   }
 };

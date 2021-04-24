@@ -173,3 +173,14 @@
   background-color: var(--primary-dark);
 }
 
+.mat-progress-bar-element {
+	background-color: var(--primary-light);
+}
+
+.mat-progress-bar-fill::after {
+	background-color: var(--primary-dark);
+}
+
+.mat-spinner svg circle {
+	stroke: var(--primary-dark);
+}

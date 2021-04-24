@@ -6,7 +6,7 @@
 					<mat-card class="inner-detail-card">
 						<div style="height:100%;">
 					  		<h6 class="banner-text">Open and Pending Sprints
-			 			    <button *ngIf="permission(project, 'create-sprint')" mat-icon-button matTooltip="New Sprint" (click)="newSprint()"><mat-icon color="primary">add_circle</mat-icon></button></h6>
+			 			    <button *ngIf="permission(project, 'create-sprint')" mat-icon-button matTooltip="New Sprint" (click)="newSprint()"><mat-icon class="sb-icon">add_circle</mat-icon></button></h6>
 		 			    	<sb-sprint-list [project]="project" [currentOnly]="true" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="!project.currentSprint" (start)="onStart($event)" [editable]="true" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
 							<!-- <app-sprints style="height:100%; display: flex; flex-direction: column;" [project]="project"></app-sprints> -->
 						</div>

@@ -1,18 +1,18 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
 <sb-sprint-frame *ngIf="sprint; else progressSpinner" [sprint]="sprint" [showSuspendButton]="true" [showFinishButton]="true" (suspend)="onSuspendSprint($event)" (finish)="onFinishSprint($event)">
-	<div  class="row" cdkDropListGroup>
-		<div class="col-4">
+	<div class="row" cdkDropListGroup>
+		<div class="col-4 issue-status-column">
 			<h4 class="menu-text">Open</h4>
 			<sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="Open" (transfer)="setState($event, 'Open')" (viewIssue)="onViewIssue($event)">
 			</sb-sprint-issue-state-list>
 		</div>
-		<div class="col-4">
+		<div class="col-4 issue-status-column">
 			<h4 class="menu-text">In Progress</h4>
 			<sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="In Progress" (transfer)="setState($event, 'In Progress')" (viewIssue)="onViewIssue($event)">
 			</sb-sprint-issue-state-list>
 		</div>
-		<div class="col-4">
+		<div class="col-4 issue-status-column">
 			<h4 class="menu-text">Closed</h4>
 			<sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="Closed" (transfer)="setState($event, 'Closed')" (viewIssue)="onViewIssue($event)">
 			</sb-sprint-issue-state-list>
