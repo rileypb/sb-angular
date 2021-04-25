@@ -35,6 +35,8 @@ export class RootComponent implements OnInit {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
     matIconRegistry.registerFontClassAlias ('fas');
+
+    
   }
 
   ngOnInit() {

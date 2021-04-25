@@ -27,6 +27,7 @@ let orange = '#FFBD00';
 
 export const jmuTheme: Theme = {
   name: 'jmu',
+  fonts: 'https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&family=Roboto+Mono&display=swap',
   properties: {
     '--background': white,
     '--on-background': slate,
@@ -79,4 +80,6 @@ export const jmuTheme: Theme = {
     '--menu-font': '"Open Sans", sans-serif',
     '--user-font': '"Roboto Mono", monospace'
   }
+
 };
+

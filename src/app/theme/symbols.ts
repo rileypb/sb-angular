@@ -5,6 +5,7 @@ export const ACTIVE_THEME = new InjectionToken('ACTIVE_THEME');
 
 export interface Theme {
   name: string;
+  fonts?: string;
   properties: any;
 }
 

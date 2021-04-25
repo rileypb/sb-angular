@@ -43,6 +43,16 @@ export class ThemeDirective implements OnInit, OnDestroy {
    * Update the theme on the scoped element.
    */
   updateTheme(theme: Theme) {
+
+    if (theme.fonts) {
+      let head  = this._document.getElementsByTagName('head')[0];
+      let link  = this._document.createElement('link');
+      link.rel  = 'stylesheet';
+      link.type = 'text/css';
+      link.href = theme.fonts;
+      head.appendChild(link);
+    }
+
     const element = this.getElement();
 
     // project properties onto the element

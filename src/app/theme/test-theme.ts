@@ -27,6 +27,7 @@ let orange = '#FFBD00';
 
 export const testTheme: Theme = {
   name: 'test',
+  fonts: "https://fonts.googleapis.com/css2?family=Lato&family=Yellowtail&display=swap",
   properties: {
     '--background': slate,
     '--on-background': orange,
@@ -74,9 +75,9 @@ export const testTheme: Theme = {
     '--warning': orange,
     '--on-warning': white,
 
-    '--banner-font': '"Open Sans", sans-serif',
-    '--text-font': '"PT Sans", sans-serif',
-    '--menu-font': '"Open Sans", sans-serif',
+    '--banner-font': 'Yellowtail, monospace',
+    '--text-font': 'Lato, sans-serif',
+    '--menu-font': 'Lato, sans-serif',
     '--user-font': '"Roboto Mono", monospace'
   }
 };
