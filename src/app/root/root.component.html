@@ -11,7 +11,7 @@
 		<router-outlet ></router-outlet>
 	</div>
 
-	<sb-footer class="footer"></sb-footer>
+	<sb-footer class="footer" [news]="news$ | async"></sb-footer>
 
 
 	<ng-template #connecting>

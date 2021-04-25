@@ -1,18 +1,18 @@
 <footer class="footer row">
 
-	<div class="col-3 text-left">	
+	<div class="col-4 text-left">	
 		<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button" (click)="logout()">
 			<mat-icon>logout</mat-icon>
 		</button>
 	</div>
 
-	<div class="col-3 text-center">	
+	<div class="col-4 text-center">
+		<button class="news-button" [matBadge]="news?.unseen_count" [matBadgeHidden]="news?.unseen_count == 0" (click)="showNews()" #newsTrigger>
+			<mat-icon class="material-icons-outlined">feed</mat-icon>
+		</button>
 	</div>
 
-	<div class="col-3 text-center">	
-	</div>
-
-	<div class="col-3 text-right">		
+	<div class="col-4 text-right">		
 		<button *ngIf="dataService.users" class="active-users-button" [matMenuTriggerFor]="activeUsersMenu">
 			<mat-icon class="logout button-icon">people</mat-icon>
 			<span class="button-icon">{{dataService.users.length}}</span>
@@ -20,16 +20,20 @@
 	</div>
 </footer>
 
-		<mat-menu #activeUsersMenu backdropClass="active-users-color">
-			<div *ngIf="dataService.users" class="active-users text-truncate base-text">
-				Active users:
-				<div *ngFor="let user of dataService.users" class="text-truncate">
-				   	<img [src]="user.picture"
-				         [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
-				         [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
-				         class="nav-user-profile user-picture mb-1"
-				         style="width: 32px;"/>
-				         {{user.displayName || (user.first_name + ' ' + user.last_name)}}
-				</div>
-			</div>
-		</mat-menu>
+<mat-menu #activeUsersMenu backdropClass="active-users-color">
+	<div *ngIf="dataService.users" class="active-users text-truncate base-text">
+		Active users:
+		<div *ngFor="let user of dataService.users" class="text-truncate">
+		   	<img [src]="user.picture"
+		         [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
+		         [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
+		         class="nav-user-profile user-picture mb-1"
+		         style="width: 32px;"/>
+		         {{user.displayName || (user.first_name + ' ' + user.last_name)}}
+		</div>
+	</div>
+</mat-menu>
+
+<ng-template #newsFeed>
+  <sb-news-feed class="news-feed" [news]="news?.news_items" (shouldClose)="closeNewsFeed()"></sb-news-feed>
+</ng-template>

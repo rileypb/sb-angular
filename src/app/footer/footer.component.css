@@ -24,6 +24,11 @@
 	}
 }
 
+.news-button {
+	background-color: #00000000;
+	border-style: none;
+}
+
 .active-users-button {
 	background-color: #00000000;
 	border-style: none;
@@ -43,5 +48,10 @@
 	background-color: var(--secondary);
 	color: var(--on-secondary);
 	padding: 6px;
+	width: 100%;
+}
+
+.news-feed {
+	margin: 0 auto;
 	width: 100%;
 }

@@ -1,7 +1,6 @@
 .news-feed-container {
-	max-height: 75vh;
+	max-height: 600px;
 	overflow-y: scroll;
-	max-width: 40vw;
 }
 
 sb-comment-display {
