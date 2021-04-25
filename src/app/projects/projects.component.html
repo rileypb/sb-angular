@@ -5,7 +5,7 @@
     <mat-icon class="mr-3 sb-icon" fontSet="fas" fontIcon="fa-shapes"></mat-icon> Your Projects
   </div>
 
-  <div class="text-left row project-container">
+  <div class="text-left project-container">
     <div class="project-list col-12" *ngFor="let project of (projects | async).projects.list">
       <span class="project-entry"><a class="select-link" [class.disabled]="!permission(project, 'read') ? true : null" [routerLink]="['/projects', project.id, 'dashboard']">{{project.name}}</a></span>
     </div>
