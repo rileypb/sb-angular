@@ -1,11 +1,47 @@
-.epic-description {
-	border-style: inset;
-	border-width: 1px;
-	border-color: # !important;
 
-	background-color: #EEE;
+
+.epic-description {
+
+	background-color: var(--background);
+	color: var(--on-background);
+
+	font-family: var(--text-font);
 }
 
 .current-option {
 	font-size: small;
 }
+
+.issue-input {
+	font-family: var(--user-font);
+}
+
+.issues-card {
+	background-color: var(--background);
+	color: var(--on-background);
+}
+
+.add-issue-form {
+	display: inline; 
+	width:100%;
+}
+
+.add-issue {
+	color: var(--on-background);
+}
+
+.comments-display-box {
+	background-color: var(--background);
+}
+
+
+.epic-number {
+	font-size: small;
+	vertical-align: middle;
+}
+
+.epic-title {
+	font-size: xx-large;
+	vertical-align: middle;
+}
+

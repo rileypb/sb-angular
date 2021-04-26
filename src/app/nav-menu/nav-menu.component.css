@@ -1,0 +1,28 @@
+.nav {
+	background-color: #CBB677;
+	height: 1.85rem;
+}
+
+.nav-item {
+	background-color: #0000;
+	border: 0;
+	margin: 0 2px 0 2px;
+	height: 2rem;
+	color: var(--on-background);
+	font-family: var(--menu-font);
+}
+
+.nav-item:hover {
+	background-color: #B599CE;
+}
+
+.nav-item-selected {
+	background-color: var(--primary-light);
+	color: var(--on-primary-light);
+}
+
+.nav-wrapper {
+	margin: 0 auto;
+}
+
+

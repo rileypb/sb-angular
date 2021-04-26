@@ -1,0 +1,11 @@
+<div *ngIf="(userInfo.user | async)" class="text-truncate user">
+	<button class="cheeseburger-button" [matMenuTriggerFor]="menu"><mat-icon class="cheeseburger">menu</mat-icon></button>
+	<span class="text-left username">{{(userInfo.user | async).name }}</span>
+	
+</div>
+
+<mat-menu #menu="matMenu" backdropClass="nav-color">
+	<nav class="col-7 nav">
+		<sb-nav-menu></sb-nav-menu>
+	</nav>
+</mat-menu>

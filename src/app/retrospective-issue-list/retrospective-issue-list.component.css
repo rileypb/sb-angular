@@ -5,12 +5,12 @@
 
 .description {
 	border-style: solid;
-	border-color: #CCC;
+	border-color: var(--light-gray);
 }
 
 .issue-list-entry {
 	border-bottom-style: solid;
-	border-bottom-color: #000;
+	border-bottom-color: var(--on-background);
 }
 
 .closed-yes {
@@ -22,6 +22,6 @@
 }
 
 .not-accepted {
-	color: red;
+	color: var(--error);
 	font-weight: bold;
 }

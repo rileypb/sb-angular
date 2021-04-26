@@ -1,0 +1,30 @@
+.inner-detail-card {
+	font-family: var(--banner-font);
+	background-color: var(--background);
+	color: var(--on-background);
+}
+
+
+.add-button {
+	background-color: var(--secondary);
+	color: var(--on-secondary);
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: var(--light-gray);
+	border-style: solid;
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.issue-div {
+	margin: 0 auto;
+	border: 1px solid var(--gray);
+	padding-left: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	vertical-align: middle;
+}
+
+.arrow-div {
+	background-color: var(--secondary);
+	color: var(--on-secondary);
+}

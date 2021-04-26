@@ -1,39 +1,58 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
 <div *ngIf="epic; else progressSpinner">
-	<h2>{{epic.title}}</h2>
-<p class="epic-description" [innerHtml]="epic.description"></p>
-<p><mat-icon fontSet="fas" fontIcon="fa-tshirt"></mat-icon> Size: <sb-tshirt-size [size]="epic.size"></sb-tshirt-size></p>
-<p><mat-icon fontSet="fas" fontIcon="fa-palette"></mat-icon> Color: <mat-icon *ngIf="epic.color" fontSet="fas" fontIcon="fa-circle" [ngStyle]="{'color':epic.color}" [matTooltip]="epic.color"></mat-icon>
-<mat-icon *ngIf="!epic.color" fontSet="far" fontIcon="fa-circle" matTooltip="No Color Set"></mat-icon></p>
-
-<mat-card>
-	<mat-card-title>
-		Issues
-	</mat-card-title>
-	<mat-card-content>
-		<sb-issue-list [issues]="((epicIssues | async) || {issues: { list: []}}).issues.list" fixed="true" (issueSelected)="onIssueSelected($event)"></sb-issue-list>
-		<form style="display: inline; width:100%" [hidden]="!permission(epic, 'update')">
-			<mat-form-field style="width:100%" #searchField>
-				<input type="text"
-					   placeholder="Add an Issue"
-					   aria-label="issue"
-					   matInput
-					   [formControl]="issueControl"
-					   [matAutocomplete]="auto" #issueInput>
-				<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="issueLabel" #issueSelector>
-					<mat-option *ngFor="let option of filteredIssues | async" [value]="option" [ngStyle]="{'background-color':option.epic?.color}">
-						<span [ngStyle]="{'color':textColor(option.epic?.color)}">{{option.title}} <span class="current-option" *ngIf="option.epic">[Current: {{option.epic.title}}]</span></span>
-					</mat-option>
-				</mat-autocomplete>
-			</mat-form-field>
-		</form>
-
-		<div class="mt-3">
-		<h6>Comments</h6>
-		<div class="comments-display-box mb-1"><sb-comment-display *ngFor="let comment of epic.comments" [comment]="comment"></sb-comment-display></div>
-		<sb-comment-entry [epicId]="epic.id"></sb-comment-entry>
+	<div class="row" [ngStyle]="{'background-color': adaptiveBackgroundColor(epic.color), 'color': adaptiveFontColor(epic.color)}">
+		<div class="banner-text p-2 col-10 epic-banner">
+			<span class="epic-number">#{{epic.id}} </span><span class="epic-title">{{epic.title}}</span>
+		</div>
+		<div class="col-2 p-2">
+			<button mat-icon-button matTooltip="Edit Epic" (click)="onEditEpic()"><mat-icon class="sb-icon">edit</mat-icon></button>
+		</div>
 	</div>
-	</mat-card-content>
-</mat-card>
+	<p class="epic-description p-2" [innerHtml]="epic.description"></p>
+	<p class="banner-text pl-2">
+		<mat-icon fontSet="fas" fontIcon="fa-tshirt"></mat-icon>
+		Size: 
+		<sb-tshirt-size class="base-text ml-1" [size]="epic.size"></sb-tshirt-size>
+	</p>
+	<p class="banner-text pl-2">
+		<mat-icon fontSet="fas" fontIcon="fa-palette"></mat-icon> 
+		Color: 
+		<mat-icon *ngIf="epic.color" class="ml-1" fontSet="fas" fontIcon="fa-circle" [ngStyle]="{'color':epic.color}" [matTooltip]="epic.color"></mat-icon>
+<mat-icon *ngIf="!epic.color" class="ml-1" fontSet="far" fontIcon="fa-circle" matTooltip="No Color Set"></mat-icon></p>
+
+	<div class="p-2 issues-card">
+		<div class="banner-text">
+			Issues
+		</div>
+		<div>
+			<sb-issue-list [issues]="((epicIssues | async) || {issues: { list: []}}).issues.list" fixed="true" (issueSelected)="onIssueSelected($event)"></sb-issue-list>
+			<form class="add-issue-form mt-1" [hidden]="!permission(epic, 'update')">
+				<mat-form-field class="add-issue-form" #searchField>
+					<input type="text"
+						   class="issue-input"
+						   placeholder="Add an Issue"
+						   aria-label="issue"
+						   appearance="fill"
+						   matInput
+						   [formControl]="issueControl"
+						   [matAutocomplete]="auto" #issueInput>
+					<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="issueLabel" #issueSelector>
+						<mat-option *ngFor="let option of filteredIssues | async" [value]="option" [ngStyle]="{'background-color':option.epic?.color}">
+							<span [ngStyle]="{'color':fontColor(option.epic?.color)}">{{option.title}} <span class="current-option" *ngIf="option.epic">[Current: {{option.epic.title}}]</span></span>
+						</mat-option>
+					</mat-autocomplete>
+				</mat-form-field>
+			</form>
+
+			<div class="mt-3">
+				<h6 class="banner-text">Comments</h6>
+				<div class="comments-display-box mb-1">
+					<sb-comment-display *ngFor="let comment of epic.comments" [comment]="comment">
+					</sb-comment-display>
+				</div>
+				<sb-comment-entry [epicId]="epic.id"></sb-comment-entry>
+			</div>
+		</div>
+	</div>
 </div>

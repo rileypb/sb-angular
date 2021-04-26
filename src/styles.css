@@ -1,51 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/fontawesome-free-5.14.0-web/css/fontawesome.css';
+/*@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&family=Roboto+Mono&display=swap');*/
 /*@import '@angular/material/prebuilt-themes/indigo-pink.css';*/
 <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
-:root {
-	--accent-color: #9999BB;
 
-	--link-color: #673ab7;
-	--link-color-hover: #a63ab7;
-	--link-color-active: #b73a89;
-	
-	--mdc-theme-primary: #000044;
-	--mdc-theme-accent: #0F0;
-}
 
-/*.tooltip {
-	opacity: 1 !important; 
-	background: #000000;
-}
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-*/
-.mat-icon-button:focus {
-	outline: none;
-}
-
-/*.mat-icon.mat-primary {
-	color: var(--mdc-theme-primary);
-}*/
-
-.mat-mini-fab:focus {
-	outline: none;
-}
-
-.mat-button:focus {
-	outline: none;
-}
-/*
-a.disabled {
-	pointer-events: none;
-	cursor: default;
-}
-
-*/
 
 .main-body {
-	background-color: #FFF;
+	background-color: white;
 }
 
 .mat-card {
@@ -59,15 +22,19 @@ a.disabled {
 }
 
 .sb-link {
-	color: var(--link-color) !important;
+	color: var(--accent-2-dark) !important;
 }
 
 .sb-link:hover {
-	color: var(--link-color-hover) !important;
+	color: var(--accent-2) !important;
 }
 
 .sb-link:active {
-	color: var(--link-color-active) !important;
+	color: var(--accent-2-light) !important;
+}
+
+.sb-link:visited {
+	color: var(--primary);
 }
 
 .user-picture {
@@ -101,3 +68,140 @@ a.disabled {
 	.print-frame { display: none; }
 }
 
+
+.nav-color+* .mat-menu-panel {
+	background-color: var(--background);
+}
+
+.active-users-color+* .mat-menu-panel {
+	background-color: var(--secondary);
+}
+
+.base-icon {
+	color: var(--primary-dark);
+}
+
+.banner-text {
+	font-family: var(--banner-font);
+}
+
+.base-text {
+	font-family: var(--text-font);
+}
+
+.menu-text {
+	font-family: var(--menu-font);
+}
+
+.menu-text-bold {
+	font-family: var(--menu-font);
+	font-weight: bold;
+}
+
+.user-text { 
+	font-family: var(--user-font);
+}
+
+.sb-icon {
+	color: var(--primary-dark);
+}
+
+.icon-button {
+	font-family: var(--menu-font);
+}
+
+
+.mat-form-field-label {
+	font-family: var(--menu-font) !important;
+	color: var(--on-background) !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+	color: var(--error);
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+	background-color: var(--on-background) !important;
+
+	color: var(--on-background) !important;
+	background-color: var(--on-background) !important;
+	outline-color: green !important;
+}
+
+.mat-select-panel {
+	font-family: var(--user-font) !important;
+}
+
+.mat-select-value-text {
+	color: var(--on-background);
+}
+
+.mat-select-arrow {
+	color: var(--on-background);
+}
+
+.mat-input-element {
+	font-family: var(--user-font) !important;
+}
+
+.mat-checkbox-background {
+	background-color: var(--background) !important;
+	border: 1px solid var(--on-background) !important;
+}
+
+.mat-checkbox-checkmark {
+	border-color: var(--on-background) !important;
+}
+
+.mat-checkbox-frame {
+	border-color: var(--on-background) !important;
+}
+
+.mat-checkbox-checkmark-path {
+	stroke: var(--on-background) !important;
+}
+
+::-webkit-scrollbar-track
+{
+  background-color: var(--background);
+}
+
+::-webkit-scrollbar
+{
+  width: 12px;
+  background-color: var(--primary);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: var(--primary-dark);
+}
+
+.mat-progress-bar-element {
+	background-color: var(--primary-light);
+}
+
+.mat-progress-bar-fill::after {
+	background-color: var(--primary-dark);
+}
+
+.mat-spinner svg circle {
+	stroke: var(--primary-dark);
+}
+
+
+
+
+
+
+@media (max-width: 799px) {
+	.large-only {
+		display: none !important;
+	}
+}
+
+@media (min-width: 800px) {
+	.small-only {
+		display: none !important;
+	}
+}

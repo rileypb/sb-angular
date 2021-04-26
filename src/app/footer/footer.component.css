@@ -1,0 +1,57 @@
+.footer {
+	height: 2rem;
+	padding: 4px;
+
+	background-color: var(--secondary);
+
+	border-width: 1px;
+	box-shadow: 0 -2px 1px var(--light-gray);
+}
+
+
+.logout-button {
+	background-color: #00000000;
+	border-style: none;
+}
+
+.button-icon {
+	vertical-align: middle;
+}
+
+@media screen and (max-width: 980px) {
+	.b-label {
+		display: none;
+	}
+}
+
+.news-button {
+	background-color: #00000000;
+	border-style: none;
+}
+
+.active-users-button {
+	background-color: #00000000;
+	border-style: none;
+}
+
+.active-users-button > div > span {
+	vertical-align: middle;
+}
+
+@media screen and (min-width: 1052px) {
+	.active-users-button {
+		display: none;
+	}
+}
+
+.active-users {
+	background-color: var(--secondary);
+	color: var(--on-secondary);
+	padding: 6px;
+	width: 100%;
+}
+
+.news-feed {
+	margin: 0 auto;
+	width: 100%;
+}

@@ -1,3 +1,8 @@
 .errorMessage {
-	color: #FF0000 !important;
+	color: var(--error) !important;
+}
+
+.start-button {
+	background-color: var(--warning);
+	color: var(--on-warning);
 }

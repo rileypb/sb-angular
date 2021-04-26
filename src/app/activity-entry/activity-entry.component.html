@@ -44,7 +44,7 @@
 		<app-sprint-number-link [sprint]="activity.sprint2"></app-sprint-number-link> to <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
 
 	<span *ngSwitchCase="'moved_issue_to_product_backlog'">moved <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> 
-		to the <a class="product-backlog-link" (click)="navigateToBacklog()">product backlog</a> 
+		to the <a class="sb-link product-backlog-link" (click)="navigateToBacklog()">product backlog</a> 
 		from <app-sprint-number-link [sprint]="activity.sprint"></app-sprint-number-link></span>
 
 	<span *ngSwitchCase="'removed_issue_from_epic'">removed <app-issue-number-link [issue]="activity.issue"></app-issue-number-link> 

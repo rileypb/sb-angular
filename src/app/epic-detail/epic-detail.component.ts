@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, ElementRef, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Epic } from '../epic';
 import { Base } from '../base';
 import { DataService } from '../data.service';
@@ -28,6 +28,9 @@ export class EpicDetailComponent extends Base implements OnInit {
   epicIssues:Observable<any>;
 
   showInput:boolean = false;
+
+  @Input() showEditButton:boolean;
+  @Output() editEpic:EventEmitter<Epic> = new EventEmitter<Epic>();
 
   constructor(private cdRef:ChangeDetectorRef, private dataService:DataService, private issuesService:IssuesService, 
               private snackBar:MatSnackBar, private epicsService:EpicsService, private router:Router) {
@@ -100,7 +103,27 @@ export class EpicDetailComponent extends Base implements OnInit {
     this.router.navigate(['/projects', issue.project.id, 'backlog', issue.id]);
   }
 
-  textColor(color) {
+  fontColor(color) {
     return Color.fontColor(color);
+  }
+
+  adaptiveFontColor(color) {
+    let fc = Color.fontColor(color);
+    if (fc == '#FFFFFF') {
+      return color;
+    }
+    return fc;
+  }
+
+  adaptiveBackgroundColor(color) {
+    let fc = Color.fontColor(color);
+    if (fc == '#FFFFFF') {
+      return fc;
+    }
+    return color;
+  }
+  
+  onEditEpic() {
+    this.editEpic.emit(this.epic);
   }
 }

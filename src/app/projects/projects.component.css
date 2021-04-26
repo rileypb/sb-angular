@@ -1,16 +1,54 @@
 .projects {
-	padding: 10px;
+	width: 90%;
+	max-width: 800px;
+	margin: 0 auto;
+	margin-top: 1rem;
+	min-height: 90%;
+	border: 1px solid var(--gray);
+	box-shadow: 2px 2px 2px #bbb;
 }
 
-mat-card {
-	margin: 4px;
-	background-color: #ddd;
+@media screen and (max-width: 779px) {
+	.projects {
+		width: 100%;
+		margin-top: 0;
+		height: 100%;
+	}
 }
 
-mat-list-item {
+.card-title {
+	font-size: xx-large;
+	background-color: var(--background);
+	color: var(--on-background);
+	padding: 20px;
+	box-shadow: 0 2px 2px var(--gray);
+	font-family: var(--banner-font);
 }
 
-vertical-list {
-	display: flex; 
-	flex-direction: column;
+.project-container {
+	padding: 20px;
+	font-size: large;
+}
+
+.project-list {
+}
+
+.project-entry {
+	font-family: var(--text-font);
+}
+
+.select-link {
+	color: var(--accent-2-dark);
+}
+
+.select-link:hover {
+	color: var(--accent-2);
+}
+
+.select-link:active {
+	color: var(--accent-2-light);
+}
+
+.select-link:visited {
+	color: var(--primary);
 }

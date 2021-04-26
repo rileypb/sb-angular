@@ -1,59 +1,53 @@
 
-.sprint-link {
-	margin: 10px;
-
-	color: #444;
-}
-
-.sprint-link:hover {
-	text-decoration: none;
-	color: blue;
+.team-summary-link {
+	text-decoration: underline; 
+	text-decoration-style: dotted;
 }
 
 .sprint-card {
-	font-size: small;
 	border-radius: 5px;
 	border-width: 1px;
-	border-color: #AAA;
+	border-color: var(--on-background);
 	border-style: solid;
-	box-shadow: 2px 2px #ddd;
-	padding: 3px;
-	padding-left: 6px;
+}
+
+.sprint-card-section {
+	background-color: var(--background);
+	font-size: small;
 	cursor: default;
 }
 
-.sprint-card-expanded { 
-	background: #CCC;
-}
-
-.sprint-card-expanded:hover { 
-	background: #BBB;
-}
-
-.sprint-card-collapsed {
-	background: #EEE;
-}
-
-.sprint-card-collapsed:hover {
-	background: #DDD;
-}
 
 .sprint-card-content {
-	background-color: #DDD;
+	background-color: var(--background);
+	color: var(--on-background);
 
 	border-width: 1px;
 	border-style: solid;
-	border-color: #AAA;
+	border-color: var(--on-background);
 
 	margin-bottom: 6px;
 
 }
 
 .play-icon {
-	color: #00AA00;
+	color: var(--green);
+	font-size: x-large;
+}
+
+.pause-icon {
+	color: var(--warning);
 	font-size: x-large;
 }
 
 .sprint-info {
 	padding: 5px;
+}
+
+
+.comments-display-box {
+	background-color: var(--background);
+
+	border: 1px solid var(--on-background);
+	margin: 2px;
 }

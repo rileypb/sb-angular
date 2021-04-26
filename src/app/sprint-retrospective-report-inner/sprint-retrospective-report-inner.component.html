@@ -1,34 +1,34 @@
 <mat-card *ngIf="report" class="inner-detail-card">
 	<mat-card-title>
-		<div *ngIf="report.sprint">
+		<div class="banner-text" *ngIf="report.sprint">
 			{{report.sprint.id}} - {{report.sprint.title}}
 		</div>
 	</mat-card-title>
 
 	<mat-card-content>
 		<div *ngIf="report.sprint">
-			<div class="pb-3"><strong>Start:</strong> {{ report.sprint.start_date }} <strong>End:</strong> {{ report.sprint.end_date }}</div>
-			<div class="mb-3">Total estimate: {{ report.sprint.total_estimate }}</div>
-			<h4>Goal: {{report.sprint.goal}}</h4>
-			<div [innerHtml]="report.sprint.description"></div>
+			<div class="pb-3 menu-text">Start: <span class="base-text">{{ report.sprint.start_date }}</span> End: <span class="base-text">{{ report.sprint.end_date }}</span></div>
+			<div class="mb-3 menu-text">Total estimate: <span class="base-text">{{ report.sprint.total_estimate }}</span></div>
+			<h4 class="menu-text">Goal: <span class="base-text">{{report.sprint.goal}}</span></h4>
+			<div class="base-text" [innerHtml]="report.sprint.description"></div>
 
-			<h4>Burndown</h4>
+			<h4 class="banner-text">Burndown</h4>
 			<app-burndown [sprintId]="report.sprint.id"></app-burndown>
-			<h4>Retrospective
+			<h4 class="banner-text">Retrospective
 				<span *ngIf="!editingRetrospective" class="no-print">
 					<button mat-icon-button (click)="editingRetrospective = true"><mat-icon color="primary">edit</mat-icon></button>
 				</span>
 			</h4>
 			<div style="font-size: 12pt; font-weight: normal;" *ngIf="!editingRetrospective">
-				<div [innerHtml]="report.sprint.retrospective"></div>
+				<div class="base-text" [innerHtml]="report.sprint.retrospective"></div>
 				
 			</div>
 			<div class="no-print mb-3" style="font-size: 12pt; font-weight: normal;" *ngIf="editingRetrospective">
 				<ckeditor class="issue-editor mt-6" name="issueDescription" [editor]="Editor" [data]="" [(ngModel)]="report.sprint.retrospective"></ckeditor>
-				<div><button mat-button (click)="editingRetrospective = false">Cancel</button><button mat-button (click)="saveRetrospective()">Save</button></div>
+				<div><button mat-button class="menu-text" (click)="editingRetrospective = false">Cancel</button><button mat-button class="menu-text" (click)="saveRetrospective()">Save</button></div>
 			</div>
 
-			<h4>Issues:</h4>
+			<h4 class="banner-text">Issues:</h4>
 			<sb-retrospective-issue-list [issues]="report.issues"></sb-retrospective-issue-list>
 		</div>
 	</mat-card-content>

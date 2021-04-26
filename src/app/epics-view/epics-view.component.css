@@ -1,0 +1,11 @@
+@media screen and (min-width: 800px) {
+	.inner-view-small {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 799px) {
+	.inner-view-large {
+		display: none;
+	}
+}

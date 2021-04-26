@@ -1,0 +1,18 @@
+@media screen and (min-width: 500px) {
+
+}
+
+@media screen and (max-width: 499px) {
+	.app-name {
+		display: none;
+	}
+}
+
+.app-name {
+	font-family: var(--banner-font);
+	color: var(--on-primary-dark);
+}
+
+.app-icon {
+	color: var(--on-primary-dark);
+}

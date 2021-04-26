@@ -1,0 +1,17 @@
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+<div class="h-100">
+	<app-project-frame *ngIf="project; else progressSpinner" [project]="project">
+		<div *ngIf="epics; else progressSpinner">
+			<div class="col-12">
+				<div *ngIf="selectedEpic" class="epic-div arrow-div"><button mat-icon-button class="arrow-button" (click)="clearSelectedEpic()"><mat-icon class="sb-icon">arrow_back</mat-icon></button></div>
+				
+				<div class="epic-div" *ngFor="let epic of epics" [ngStyle]="{'background-color': (epic.color ? epic.color : '#FFFFFF'), 'color': fontColor(epic.color)}" [ngClass]="{ 'unselected' : selectedEpic && (selectedEpic != epic), 'selected' : selectedEpic == epic }" (click)="selectEpic(epic)">
+					{{epic.title}}
+				</div>
+			</div>
+			<div class="col-12" *ngIf="selectedEpic">
+				Epic detail goes here
+			</div>
+		</div>
+	</app-project-frame>
+</div>

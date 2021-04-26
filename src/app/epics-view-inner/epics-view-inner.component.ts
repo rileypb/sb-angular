@@ -9,6 +9,7 @@ import { callWithSnackBar } from '../util';
 import { EpicFormComponent } from '../epic-form/epic-form.component';
 import { first } from 'rxjs/operators';
 import { ProjectService } from '../project.service';
+import { Color } from '../color';
 
 @Component({
   selector: 'sb-epics-view-inner',
@@ -88,8 +89,16 @@ export class EpicsViewInnerComponent extends Base implements OnInit {
     callWithSnackBar(this.snackBar, this.epicsService.deleteEpic(epic.id),
       ["Deleting epic...", "Epic deleted", "Error deleting epic"])
 					 .subscribe(success => {
-					 	this.mode = "show";
+					 	  this.mode = "show";
 					    this.router.navigate(['projects', this.project.id, 'epics']);
 					 });  
+  }
+
+  fontColor(bgColor:string):string {  
+    return Color.fontColor(bgColor);
+  }
+
+  clearDetail() {
+    this.router.navigate(['projects', this.project.id, 'epics']);
   }
 }

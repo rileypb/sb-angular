@@ -1,11 +1,11 @@
 
 .task-link {
-	color: #444;
+	color: var(--primary-dark);
 }
 
 .task-link:hover {
 	text-decoration: none;
-	color: blue;
+	color: var(--primary);
 }
 
 .estimate-link {

@@ -1,8 +1,8 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
   <div *ngIf="sprint; else progressSpinner" class="px-3">
-    <div [ngClass]="{'sprint-card-expanded' : expanded, 'sprint-card-collapsed' : !expanded}" class="sprint-card text-truncate row">
-      <span class="col-10" (click)="toggleExpanded()">
+    <div class="sprint-card text-truncate row">
+      <span class="col-10 banner-text sprint-card-section" (click)="toggleExpanded()">
         <button *ngIf="!expanded" mat-icon-button><mat-icon>expand_more</mat-icon></button>
         <button *ngIf="expanded" mat-icon-button><mat-icon>expand_less</mat-icon></button>
       
@@ -12,14 +12,14 @@
         </button>
         {{ (sprint$ | async)?.id }} - {{(sprint$ | async)?.title}}
       </span>
-      <span class="col-2">
+      <span class="col-2 sprint-card-section">
         <button mat-icon-button *ngIf="showStartButton" (click)="onStartSprint($event)" matTooltip="Start Sprint">
             <mat-icon class="play-icon" fontSet="fas" fontIcon="fa-play-circle"></mat-icon>
         </button>
         <span>
           <!-- <mat-icon *ngIf="sprint.id == sprint.project.current_sprint_id" class="mt-2" matTooltip="Current Sprint">directions_run</mat-icon> -->
           <button *ngIf="permission(sprint, 'suspend') && (sprint.id == sprint.project.current_sprint_id)" mat-icon-button color="warn" 
-              matTooltip="Suspend Sprint" (click)="suspendSprint()"><mat-icon>pause_circle</mat-icon></button>
+              matTooltip="Suspend Sprint" (click)="suspendSprint()"><mat-icon class="pause-icon">pause_circle</mat-icon></button>
           <mat-icon style="position: relative; top: 6px;" *ngIf="!permission(sprint, 'suspend') && (sprint.id == sprint.project.current_sprint_id)">directions_run</mat-icon>
         </span>
       </span>
@@ -27,22 +27,22 @@
 
     <div class="sprint-card-content" *ngIf="expanded">
       <div class="sprint-info row">
-        <div class="col-12">Goal: {{ (sprint$ | async)?.goal }}</div>
+        <div class="col-12 menu-text">Goal: <span class="base-text">{{ (sprint$ | async)?.goal }}</span></div>
       </div>
       <div class="sprint-info row">
-        <div class="col-6">
-          State: {{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }} 
+        <div class="col-6 menu-text">
+          State: <span class="base-text">{{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }}</span> 
         </div>
-        <div class="col-6">
-          Total Estimate: {{ (sprint$ | async)?.total_estimate }} points
+        <div class="col-6 menu-text">
+          Total Estimate: <span class="base-text">{{ (sprint$ | async)?.total_estimate }} points</span>
         </div>
       </div>
       <div class="sprint-info row">
-        <div class="col-12">Total Work: {{ (sprint$ | async)?.total_work }} hours</div>
+        <div class="col-12 menu-text">Total Work: <span class="base-text">{{ (sprint$ | async)?.total_work }} hours</span></div>
       </div>
       <div class="sprint-info row">
         <div class="col-12">
-          <a class="sb-link" (click)="showSummary()"><mat-icon style="position: relative; top: 4px;">people</mat-icon> Team Summary</a>
+          <a class="sb-link" (click)="showSummary()"><mat-icon style="position: relative; top: 4px;">people</mat-icon> <span class="menu-text team-summary-link">Team Summary</span></a>
         </div>
       </div>
       <div class="sprint-info row">
@@ -55,9 +55,12 @@
   	  </div>
 
       <div class="mt-3">
-      <h6>Comments</h6>
-      <div class="comments-display-box mb-1"><sb-comment-display *ngFor="let comment of sprint.comments" [comment]="comment"></sb-comment-display></div>
-      <sb-comment-entry [sprintId]="sprint.id"></sb-comment-entry>
-  </div>
+        <h6 class="banner-text">Comments</h6>
+        <div class="comments-display-box mb-1">
+          <sb-comment-display *ngFor="let comment of sprint.comments" [comment]="comment">
+          </sb-comment-display>
+        </div>
+        <sb-comment-entry [sprintId]="sprint.id"></sb-comment-entry>
+      </div>
     </div> 
   </div>

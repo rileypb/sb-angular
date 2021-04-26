@@ -1,3 +1,11 @@
 .sprint-frame-card {
-	background-color: #DDD !important;
+	background-color: var(--background);
+}
+
+.pause-button {
+	color: var(--warning);
+}
+
+.finish-button {
+	color: var(--primary-dark);
 }
