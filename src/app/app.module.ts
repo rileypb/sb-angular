@@ -135,6 +135,7 @@ import { UserComponent } from './user/user.component';
 import { StatusComponent } from './status/status.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { EpicsViewInnerSmallComponent } from './epics-view-inner-small/epics-view-inner-small.component';
 
 
 @NgModule({
@@ -236,6 +237,7 @@ import { FooterComponent } from './footer/footer.component';
     StatusComponent,
     NavMenuComponent,
     FooterComponent,
+    EpicsViewInnerSmallComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

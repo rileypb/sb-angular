@@ -184,3 +184,20 @@
 .mat-spinner svg circle {
 	stroke: var(--primary-dark);
 }
+
+
+
+
+
+
+@media (max-width: 799px) {
+	.large-only {
+		display: none !important;
+	}
+}
+
+@media (min-width: 800px) {
+	.small-only {
+		display: none !important;
+	}
+}

@@ -1,7 +1,7 @@
 <div *ngIf="epic">
 <form class="epic-form menu-text" [formGroup]="epicForm" (ngSubmit)="submit()">
 	<div class="row">
-		<mat-form-field class="col-6" appearance="fill">
+		<mat-form-field class="col-12" appearance="fill">
 			<mat-label>Epic Title</mat-label>
 			<input matInput class="user-text" formControlName="title">
 			<mat-error>Title can't be blank</mat-error>

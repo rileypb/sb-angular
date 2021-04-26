@@ -1,28 +1,20 @@
-<div class="project-detail">
-
-	<div>
-
-		<div class="project-frame-card">
-			<div class="banner-text card-title">
-				<mat-icon class="sb-icon" *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
-				<img class="project-picture" *ngIf="project.picture" [src]="project.picture" (click)="showContent()">
-				{{project.name}}
-				<button  style="position: relative; top: -4px; left: 10px;" *ngIf="showEditButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Edit Project" (click)="editProject()"><mat-icon>edit</mat-icon></button>
-				<button *ngIf="showSettingsButton && permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Edit Settings" (click)="editSettings()"><mat-icon class="sb-icon">settings</mat-icon></button>
-			</div>
-			<div [ngSwitch]="mode" class="card-contents">
-				<ng-content *ngSwitchCase="'showingContent'"></ng-content>
-				<div *ngSwitchCase="'editingProject'">EDITING</div>
-				
-				<div *ngSwitchCase="'editingSettings'">
-					<p>Picture URL: <input class="picture-input" [(ngModel)]="project.picture"></p>
-					<p>Auto-close Issues: <input type="checkbox" [(ngModel)]="project.setting_auto_close_issues"></p>
-					<p>Use Acceptance Criteria: <input type="checkbox" [(ngModel)]="project.setting_use_acceptance_criteria"></p>
-					<button (click)="saveSettings()">Save</button>
-				</div>
-			
-			</div>
-		</div>
+<div class="project-frame-card">
+	<div class="banner-text card-title">
+		<mat-icon class="sb-icon" *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
+		<img class="project-picture" *ngIf="project.picture" [src]="project.picture" (click)="showContent()">
+		{{project.name}} 
+		<span class="navigation-segment" *ngIf="navigationService.segment"> : {{navigationService.segment}}</span>
+	</div>
+	<div [ngSwitch]="mode" class="card-contents">
+		<ng-content *ngSwitchCase="'showingContent'"></ng-content>
+		<div *ngSwitchCase="'editingProject'">EDITING</div>
 		
+		<div *ngSwitchCase="'editingSettings'">
+			<p>Picture URL: <input class="picture-input" [(ngModel)]="project.picture"></p>
+			<p>Auto-close Issues: <input type="checkbox" [(ngModel)]="project.setting_auto_close_issues"></p>
+			<p>Use Acceptance Criteria: <input type="checkbox" [(ngModel)]="project.setting_use_acceptance_criteria"></p>
+			<button (click)="saveSettings()">Save</button>
+		</div>
+	
 	</div>
 </div>

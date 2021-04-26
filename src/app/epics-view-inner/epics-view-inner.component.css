@@ -7,3 +7,50 @@
 .epic-list {
 	font-family: var(--banner-font);
 }
+
+@media screen and (min-width: 800px) {
+	.inner-view-small {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 799px) {
+	.inner-view-large {
+		display: none;
+	}
+}
+
+.epic-div {
+	margin: 0 auto;
+	border: 1px solid var(--gray);
+	padding-left: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	vertical-align: middle;
+}
+
+.arrow-div {
+	background-color: var(--secondary);
+	color: var(--on-secondary);
+}
+
+.selected {
+}
+
+.unselected { 
+	display: none;
+}
+
+.arrow-button {
+	padding: 0;
+}
+
+.add-button {
+	background-color: var(--secondary);
+	color: var(--on-secondary);
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: var(--light-gray);
+	border-style: solid;
+	box-shadow: 2px 2px var(--light-gray);
+}

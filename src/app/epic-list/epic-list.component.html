@@ -8,8 +8,8 @@
             
             <div class="drag-placeholder" *cdkDragPlaceholder></div>
             <div class="ml-3 row align-items-center" (click)="clickEpic(epic)">
-              <button class="col-1" *ngIf="!expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_more</mat-icon></button>
-              <button class="col-1" *ngIf="expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_less</mat-icon></button>
+              <button class="col-1 large-only" *ngIf="!expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_more</mat-icon></button>
+              <button class="col-1 large-only" *ngIf="expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_less</mat-icon></button>
               <span class="col-9 text-truncate">
                 #{{epic.id}} - {{epic.title}}
               </span>
@@ -47,12 +47,12 @@
             
             <div class="drag-placeholder" *cdkDragPlaceholder></div>
             <div class="ml-3 row align-items-center" (click)="clickEpic(epic)">
-              <button class="col-1" *ngIf="!expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_more</mat-icon></button>
-              <button class="col-1" *ngIf="expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_less</mat-icon></button>
+              <button class="col-1 large-only" *ngIf="!expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_more</mat-icon></button>
+              <button class="col-1 large-only" *ngIf="expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_less</mat-icon></button>
               <span class="col-9 text-truncate">
                 #{{epic.id}} - {{epic.title}}
               </span>
-              <button *ngIf="allowCreateIssue && permission(epic, 'update')" style="position: relative; left: 2px;" mat-icon-button (click)="createIssue(epic)">
+              <button class="large-only" *ngIf="allowCreateIssue && permission(epic, 'update')" style="position: relative; left: 2px;" mat-icon-button (click)="createIssue(epic)">
                 <mat-icon [ngStyle]="{'color': fontColor(epic ? epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-plus-circle"></mat-icon>
               </button>
             </div>

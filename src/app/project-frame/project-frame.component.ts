@@ -4,6 +4,7 @@ import { Base } from '../base';
 import { ProjectService } from '../project.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
+import { NavigationService } from '../navigation.service';
 
 @Component({
   selector: 'app-project-frame',
@@ -17,7 +18,8 @@ export class ProjectFrameComponent extends Base implements OnInit {
 
   public mode:string = "showingContent";
 
-  constructor(private projectService:ProjectService, private snackBar:MatSnackBar) {
+  constructor(private projectService:ProjectService, private snackBar:MatSnackBar,
+      public navigationService:NavigationService) {
   	super();
   }
 

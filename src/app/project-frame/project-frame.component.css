@@ -3,6 +3,7 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	margin-top: 1rem;
+	margin-bottom: 1rem;
 	min-height: 90%;
 	border: 1px solid var(--gray);
 	box-shadow: 2px 2px 2px #bbb;
@@ -12,7 +13,6 @@
 	.project-frame-card {
 		width: 100%;
 		margin-top: 0;
-		height: 100%;
 	}
 }
 
@@ -35,4 +35,8 @@
 
 .card-contents {
 	padding: 0px 20px 20px 20px;
+}
+
+.navigation-segment {
+	text-transform: capitalize;
 }
