@@ -2,9 +2,9 @@
 
 <div *ngIf="epic; else progressSpinner">
 	<div class="row" [ngStyle]="{'background-color': adaptiveBackgroundColor(epic.color), 'color': adaptiveFontColor(epic.color)}">
-		<h2 class="banner-text p-2 col-10">
-			{{epic.title}}
-		</h2>
+		<div class="banner-text p-2 col-10 epic-banner">
+			<span class="epic-number">#{{epic.id}} </span><span class="epic-title">{{epic.title}}</span>
+		</div>
 		<div class="col-2 p-2">
 			<button mat-icon-button matTooltip="Edit Epic" (click)="onEditEpic()"><mat-icon class="sb-icon">edit</mat-icon></button>
 		</div>

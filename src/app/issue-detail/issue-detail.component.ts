@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Base } from '../base';
 import { Project } from '../project';
 import { Issue } from '../issue';
@@ -25,6 +25,8 @@ export class IssueDetailComponent extends Base implements OnInit {
   @Input() showAcceptanceCriteria:boolean;
   @Input() showCompletionCheckboxes:boolean;
   @Input() editable:boolean = true;
+
+  @Output() editIssue:EventEmitter<Issue> = new EventEmitter<Issue>();
 
   public team:Observable<any>;
   public assignee:any;
@@ -67,6 +69,22 @@ export class IssueDetailComponent extends Base implements OnInit {
     return Color.fontColor(bgColor);
   }
 
+  adaptiveFontColor(color) {
+    let fc = Color.fontColor(color);
+    if (fc == '#FFFFFF') {
+      return color;
+    }
+    return fc;
+  }
+
+  adaptiveBackgroundColor(color) {
+    let fc = Color.fontColor(color);
+    if (fc == '#FFFFFF') {
+      return fc;
+    }
+    return color;
+  }
+
   assignIssue(user:User) {
     callWithSnackBar(this.snackBar,
                      this.issuesService.assignIssue(this.issue.id, user?.id),
@@ -88,6 +106,10 @@ export class IssueDetailComponent extends Base implements OnInit {
        this.create(data);
      }
     });
+  }
+
+  onEditIssue() {
+    this.editIssue.emit(this.issue);
   }
 
   createAC(criterion:string) {

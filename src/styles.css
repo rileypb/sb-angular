@@ -106,6 +106,10 @@
 	color: var(--primary-dark);
 }
 
+.icon-button {
+	font-family: var(--menu-font);
+}
+
 
 .mat-form-field-label {
 	font-family: var(--menu-font) !important;

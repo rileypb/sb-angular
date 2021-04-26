@@ -1,16 +1,16 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<div>
+<!-- <div>
 	<mat-checkbox class="menu-text" [hidden]="!allIssuesAllowed" #checkbox>Show all issues</mat-checkbox>
-</div>
+</div> -->
 <div>
-	<h3 class="banner-text" *ngIf="allIssuesAllowed && checkbox.checked">All Issues</h3>
-	<h3 class="banner-text" *ngIf="!allIssuesAllowed || !checkbox.checked">Backlog Issues</h3>
+	<!-- <h3 class="banner-text" *ngIf="allIssuesAllowed && checkbox.checked">All Issues</h3>
+	<h3 class="banner-text" *ngIf="!allIssuesAllowed || !checkbox.checked">Backlog Issues</h3> -->
 	<sb-issue-list [issues]="issues | async" 
 	               *ngIf="(issues | async); else progressSpinner"
-				   [container]="project" (reorder)="onReorder($event)" [fixed]="checkbox.checked || fixed"
+				   [container]="project" (reorder)="onReorder($event)" [fixed]="false"
 				   (transfer)="onTransfer($event)"
-				   [filter]="checkbox.checked ? null : filterBacklogIssues"
+				   [filter]="filterBacklogIssues"
 				   (issueSelected)="onIssueSelected($event)"></sb-issue-list>
 	
 </div>

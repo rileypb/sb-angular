@@ -5,7 +5,7 @@
 				<div class="col-md-6" [ngClass]="{ 'large-only' : epic || mode=='edit' || mode=='create'}">
 					<div class="inner-detail-card">
 						<div class="col-12 text-right p-0">
-							<button mat-button class="add-button" (click)="createEpic()">
+							<button mat-button class="add-button icon-button" (click)="createEpic()">
 								<mat-icon class="mr-1 sb-icon">add_circle</mat-icon>
 								New
 							</button>
@@ -27,11 +27,11 @@
 						<mat-card-title [ngSwitch]="mode">
 							<div *ngSwitchCase="'show'">
 							</div>
-							<div *ngSwitchCase="'edit'">
+							<div *ngSwitchCase="'edit'" class="banner-text pt-4">
 								<mat-icon class="mr-1 sb-icon">edit</mat-icon>
 								Edit Epic
 							</div>
-							<div *ngSwitchCase="'create'">
+							<div *ngSwitchCase="'create'" class="banner-text pt-4">
 								<mat-icon class="mr-1 sb-icon">add_circle</mat-icon>
 								Create Epic
 							</div>

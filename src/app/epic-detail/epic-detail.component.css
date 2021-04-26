@@ -34,3 +34,14 @@
 	background-color: var(--background);
 }
 
+
+.epic-number {
+	font-size: small;
+	vertical-align: middle;
+}
+
+.epic-title {
+	font-size: xx-large;
+	vertical-align: middle;
+}
+

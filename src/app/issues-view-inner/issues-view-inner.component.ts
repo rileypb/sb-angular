@@ -51,6 +51,10 @@ export class IssuesViewInnerComponent extends Base implements OnInit {
   	}
   }
 
+  clearDetail() {
+    this.issue = null;
+  }
+
   cancelEdit():void {
   	this.mode = 'show';
   }

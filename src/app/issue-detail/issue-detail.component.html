@@ -1,12 +1,15 @@
-<div *ngIf="issue">
-	<h2 class="banner-text">{{issue.id}} - {{issue.title}}</h2>
-	<!-- <h4 *ngIf="issue.assignee && !(team | async)">Assignee: {{issue.assignee.first_name}} {{issue.assignee.last_name}}</h4>
-	<div *ngIf="team | async">
-		<sb-user-selector [team]="(team | async)?.team" [assignee]="issue.assignee" (userSelected)="assignIssue($event)"></sb-user-selector>
-	</div> -->
-	<mat-card class="mb-3 issue-card" *ngIf="issue.assignee || (team | async)">
-		<span class="base-text" [innerHtml]="issue.description"></span>
-	</mat-card>
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+
+<div *ngIf="issue; else progressSpinner">
+	<div class="row" [ngStyle]="{'background-color': adaptiveBackgroundColor(issue.epic?.color), 'color': adaptiveFontColor(issue.epic?.color)}">
+		<div class="banner-text p-2 col-10 issue-banner">
+			<span class="issue-number">#{{issue.id}} </span><span class="issue-title">{{issue.title}}</span>
+		</div>
+		<div class="col-2 p-2">
+			<button mat-icon-button matTooltip="Edit Issue" (click)="onEditIssue()"><mat-icon class="sb-icon">edit</mat-icon></button>
+		</div>
+	</div>
+	<p class="issue-description p-2" [innerHtml]="issue.description"></p>
 	<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon> Estimate: <span class="base-text">{{issue.estimate}}</span></p>
 	<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon> State: <span class="base-text">{{issue.state}}</span></p>
 
