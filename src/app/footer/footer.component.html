@@ -7,7 +7,7 @@
 	</div>
 
 	<div class="col-4 text-center">
-		<button class="news-button" [matBadge]="news?.unseen_count" [matBadgeHidden]="news?.unseen_count == 0" (click)="showNews()" #newsTrigger>
+		<button *ngIf="(login.status | async) == 'logged_in'" class="news-button" [matBadge]="news?.unseen_count" [matBadgeHidden]="news?.unseen_count == 0" (click)="showNews()" #newsTrigger>
 			<mat-icon class="material-icons-outlined">feed</mat-icon>
 		</button>
 	</div>
