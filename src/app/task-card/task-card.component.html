@@ -1,6 +1,6 @@
 <ng-template #progressSpinner><mat-spinner style="min-height: 32px; position: relative; left: 16px" diameter="32"></mat-spinner></ng-template>
 
-          <div *ngIf="task; else progressSpinner">
+          <div *ngIf="task; else progressSpinner" class="pr-3">
             <div class="mt-2 ml-1 row">
               <span class="col-2 banner-text">
                 <mat-icon fontIcon="fa-hammer" fontSet="fas"></mat-icon>#{{task.id}}
