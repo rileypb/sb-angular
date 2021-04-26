@@ -12,6 +12,8 @@ import { callWithSnackBar } from '../util';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Color } from '../color';
+import { MatDialog } from '@angular/material/dialog';
+import { IssueFormDialogComponent } from '../issue-form-dialog/issue-form-dialog.component';
 
 @Component({
   selector: 'app-epic-detail',
@@ -31,9 +33,11 @@ export class EpicDetailComponent extends Base implements OnInit {
 
   @Input() showEditButton:boolean;
   @Output() editEpic:EventEmitter<Epic> = new EventEmitter<Epic>();
+  @Output() reorder:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private cdRef:ChangeDetectorRef, private dataService:DataService, private issuesService:IssuesService, 
-              private snackBar:MatSnackBar, private epicsService:EpicsService, private router:Router) {
+              private snackBar:MatSnackBar, private epicsService:EpicsService, private router:Router,
+              private dialog:MatDialog) {
   	super();
   }
 
@@ -125,5 +129,30 @@ export class EpicDetailComponent extends Base implements OnInit {
   
   onEditEpic() {
     this.editEpic.emit(this.epic);
+  }
+
+  createIssue(epic) {
+    let data = {
+      epic: epic
+    };
+
+    const dialogRef = this.dialog.open(IssueFormDialogComponent, {
+      maxWidth: "800px",
+      minWidth: "80%",
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        console.log("stop here");
+        callWithSnackBar(this.snackBar, this.issuesService.createIssue(dialogResult),
+          ['Creating issue...', 'Created issue', 'Error creating issue']);
+      }
+    });
+
+  }
+
+  onReorder(reorderData:any) {
+    this.reorder.emit(reorderData);
   }
 }

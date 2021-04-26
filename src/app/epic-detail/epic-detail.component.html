@@ -24,14 +24,18 @@
 	<div class="p-2 issues-card">
 		<div class="banner-text">
 			Issues
+			<button mat-icon-button matTooltip="Create issue" (click)=createIssue(epic)>
+				<mat-icon class="add-issue-button sb-icon">add_circle</mat-icon>
+			</button>
 		</div>
 		<div>
-			<sb-issue-list [issues]="((epicIssues | async) || {issues: { list: []}}).issues.list" fixed="true" (issueSelected)="onIssueSelected($event)"></sb-issue-list>
+			<sb-issue-list [issues]="((epicIssues | async) || {issues: { list: []}}).issues.list" (issueSelected)="onIssueSelected($event)" (reorder)="onReorder($event)"></sb-issue-list>
+
 			<form class="add-issue-form mt-1" [hidden]="!permission(epic, 'update')">
 				<mat-form-field class="add-issue-form" #searchField>
 					<input type="text"
 						   class="issue-input"
-						   placeholder="Add an Issue"
+						   placeholder="Add an existing Issue"
 						   aria-label="issue"
 						   appearance="fill"
 						   matInput

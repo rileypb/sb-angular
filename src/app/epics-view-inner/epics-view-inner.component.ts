@@ -85,6 +85,12 @@ export class EpicsViewInnerComponent extends Base implements OnInit {
       ["Reordering Epics...", "Epics Reordered", "Error Reordering Epics"]);
   }
 
+  onReorderIssues(reorderData:any) {
+    callWithSnackBar(this.snackBar, this.epicsService.reorderIssues(this.epic, 
+      reorderData.fromIndex, reorderData.toIndex),
+      ["Reordering Issues...", "Issues Reordered", "Error Reordering Issues"]);
+  }
+
   delete(epic:Epic):void {
     callWithSnackBar(this.snackBar, this.epicsService.deleteEpic(epic.id),
       ["Deleting epic...", "Epic deleted", "Error deleting epic"])

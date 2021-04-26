@@ -21,6 +21,9 @@
 	color: var(--on-background);
 }
 
+.add-issue-button {
+}
+
 .add-issue-form {
 	display: inline; 
 	width:100%;

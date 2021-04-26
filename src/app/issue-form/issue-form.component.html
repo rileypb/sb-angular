@@ -1,6 +1,6 @@
 <form *ngIf="issue" class="issue-form menu-text" [formGroup]="issueForm" (ngSubmit)="submit()">
 	<div class="row">
-		<mat-form-field class="col-6" appearance="fill">
+		<mat-form-field class="col-12" appearance="fill">
 			<mat-label>Issue Title</mat-label>
 			<input matInput formControlName="title">
 			<mat-error>Title can't be blank</mat-error>
