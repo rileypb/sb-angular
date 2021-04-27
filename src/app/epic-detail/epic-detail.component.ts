@@ -144,7 +144,6 @@ export class EpicDetailComponent extends Base implements OnInit {
 
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult) {
-        console.log("stop here");
         callWithSnackBar(this.snackBar, this.issuesService.createIssue(dialogResult),
           ['Creating issue...', 'Created issue', 'Error creating issue']);
       }
@@ -154,5 +153,10 @@ export class EpicDetailComponent extends Base implements OnInit {
 
   onReorder(reorderData:any) {
     this.reorder.emit(reorderData);
+  }
+
+  removeIssue(issue) {
+    issue.epic = null;
+    callWithSnackBar(this.snackBar, this.epicsService.removeIssue(this.epic, issue), ["Removing From Epic", "Removed", "Error While Removing"]);
   }
 }

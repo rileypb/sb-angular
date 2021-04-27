@@ -27,7 +27,7 @@ export class IssuesViewComponent implements OnInit {
     this.dataService.load(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
     this.project$ = this.dataService.values[`projects/${this.locationService.projectId}`];
 
-    this.dataService.load(`projects/${this.locationService.projectId}/issues`, [`projects/${this.locationService.projectId}/issues`]);
+    this.dataService.load(`projects/${this.locationService.projectId}/issues`, [`projects/${this.locationService.projectId}/issues`,`projects/${this.locationService.projectId}/issues/*`]);
     this.issues$ = this.dataService.values[`projects/${this.locationService.projectId}/issues`];
 
     this.sub = this.router.events
@@ -50,7 +50,7 @@ export class IssuesViewComponent implements OnInit {
 
   unloadProject() {
   	this.dataService.unload(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
-    this.dataService.unload(`projects/${this.locationService.projectId}/issues`, [`projects/${this.locationService.projectId}/issues`]);
+    this.dataService.unload(`projects/${this.locationService.projectId}/issues`, [`projects/${this.locationService.projectId}/issues`,`projects/${this.locationService.projectId}/issues/*`]);
   }
 
   ngOnDestroy() {

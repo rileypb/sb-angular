@@ -54,9 +54,10 @@ export class IssueListComponent implements OnInit {
   private _issues:Issue[];
 
   onDrop(event: CdkDragDrop<any>) {
+    console.log("Foooo");
     if (event.previousContainer == event.container) {
       console.log("onDrop");
-      // moveItemInArray(event.container.data.issues, event.previousIndex, event.currentIndex);
+      moveItemInArray(event.container.data.issues, event.previousIndex, event.currentIndex);
       this.reorder.emit({ container: this.container, fromIndex: event.previousIndex, toIndex: event.currentIndex });
     } else {
       let issue = event.previousContainer.data.issues[event.previousIndex];
@@ -72,7 +73,10 @@ export class IssueListComponent implements OnInit {
   	this.issueSelected.emit(issue);
   }
 
-  removeIssue(issue:Issue) {
+  removeIssue(event:MouseEvent, issue:Issue) {
+    console.log("remove issue");
+    // event.preventDefault();
+    event.stopPropagation();
     this.issueRemoved.emit(issue);
   }
 
