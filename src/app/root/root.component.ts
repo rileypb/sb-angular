@@ -28,6 +28,8 @@ export class RootComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
+  private lastStatus:string = null;
+
   constructor(public loginService: LoginService, public dataService:DataService,
       changeDetectorRef:ChangeDetectorRef, media:MediaMatcher, public matIconRegistry: MatIconRegistry,
       public userInfo:UserInfoService, private dialog:MatDialog, private newsService:NewsService) {
@@ -44,6 +46,10 @@ export class RootComponent implements OnInit {
     // this.loginService.init().subscribe(x => {console.log(x); this.initSync();});
     this.loginService.status.subscribe(
       value => {
+        if (value == this.lastStatus) {
+          return;
+        }
+        this.lastStatus = value;
         if (value == 'logged_in') {
           this.initSync();
         } else if (value == 'logged_out') {
