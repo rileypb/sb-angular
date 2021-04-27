@@ -15,6 +15,8 @@ const envConfigFile = `export const environment = {
    	clientId: '${process.env.clientId}',
    	audience: '${process.env.audience}',
    	redirectUri: window.location.origin,
+    useRefreshTokens: true,
+    cacheLocation: "localstorage",
    },
    httpInterceptor: {
    	allowedList: [\`${process.env.apiUri}/*\`],
