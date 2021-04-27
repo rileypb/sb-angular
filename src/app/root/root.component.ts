@@ -10,6 +10,7 @@ import { UserInfoService } from '../user-info.service';
 import { Observable, Subscription } from 'rxjs'
 import { MatDialog } from '@angular/material/dialog';
 import { NewsService } from '../news.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'sb-root',
@@ -30,7 +31,8 @@ export class RootComponent implements OnInit {
 
   constructor(public loginService: LoginService, public dataService:DataService,
       changeDetectorRef:ChangeDetectorRef, media:MediaMatcher, public matIconRegistry: MatIconRegistry,
-      public userInfo:UserInfoService, private dialog:MatDialog, private newsService:NewsService) {
+      public userInfo:UserInfoService, private dialog:MatDialog, private newsService:NewsService,
+      public auth:AuthService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);

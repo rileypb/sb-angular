@@ -22,6 +22,7 @@
 		<div class="col-12 text-center">
 			<div>Please log in.</div>
 			<button (click)="login()">Log in</button>
+			{{(auth.isAuthenticated$ | async)}}
 		</div>
 	</div>
 
