@@ -55,6 +55,12 @@ export class DataService {
 
     this.status.subscribe((x) => console.log(`status: ${x}`));
 
+    this.status.subscribe((s) => {
+    	if (s == 'disconnected') {
+	    	this.reset();
+	    }
+    });
+
     this.api.get("api/me").subscribe();
     
     console.log("monitoring status...");
@@ -93,6 +99,15 @@ export class DataService {
   }
 
   stop() {}
+
+  reset() {
+  	for (let key in this.holds) {
+  		let hold:Hold = this.holds[key];
+  		hold.fastUnload();
+		delete this.holds[hold.address];
+		delete this.values[hold.address];
+  	}
+  }
 
   private doSync():void {
   	for (let key in this.holds) {
