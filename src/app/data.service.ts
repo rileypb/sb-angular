@@ -3,7 +3,7 @@ import { Observable, Subscription, Subject, ReplaySubject } from 'rxjs';
 import { Channel } from 'angular2-actioncable';
 import { CableService } from './cable.service';
 import { filter, mapTo, map, startWith, first } from 'rxjs/operators';
-import { merge, interval } from 'rxjs';
+import { merge, interval, timer } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Api } from './api';
 import { AuthService } from '@auth0/auth0-angular';
@@ -13,6 +13,8 @@ import { UserInfoService } from './user-info.service';
   providedIn: 'root'
 })
 export class DataService {
+  public resetting:boolean = false;
+
   public status:Observable<string>;
   private channel:Channel;
   public isConnected:Observable<boolean>;
@@ -58,6 +60,9 @@ export class DataService {
     this.status.subscribe((s) => {
     	if (s == 'disconnected') {
 	    	this.reset();
+	    	this.resetting = true;
+	    	// give the UI a second to reset
+	    	timer(1).pipe(first()).subscribe(x => this.resetting = false);
 	    }
     });
 
@@ -101,6 +106,7 @@ export class DataService {
   stop() {}
 
   reset() {
+  	console.log("RESET");
   	for (let key in this.holds) {
   		let hold:Hold = this.holds[key];
   		hold.fastUnload();
@@ -154,6 +160,20 @@ export class DataService {
 	delete this.holds[address];
 	delete this.values[address];
   }
+
+  /*
+  core.js:6157 ERROR TypeError: Cannot read property 'next' of undefined
+    at DataService.update (data.service.ts:159)
+    at ProjectIssueListComponent.onReorder (project-issue-list.component.ts:101)
+    at ProjectIssueListComponent_sb_issue_list_3_Template_sb_issue_list_reorder_0_listener (project-issue-list.component.html:11)
+    at executeListenerWithErrorHandling (core.js:15220)
+    at wrapListenerIn_markDirtyAndPreventDefault (core.js:15255)
+    at SafeSubscriber.schedulerFn [as _next] (core.js:25910)
+    at SafeSubscriber.__tryOrUnsub (Subscriber.js:183)
+    at SafeSubscriber.next (Subscriber.js:122)
+    at Subscriber._next (Subscriber.js:72)
+    at Subscriber.next (Subscriber.js:49)
+  */
 
   public update(address:string, newValue:any) {
   	this.values[address].next(newValue);

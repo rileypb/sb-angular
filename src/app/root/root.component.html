@@ -7,7 +7,7 @@
 		</div>
 	</nav>
 	
-	<div *ngIf="(dataService.isConnected | async); else connecting" class="main-content">
+	<div *ngIf="(dataService.isConnected | async) && !dataService.resetting; else connecting" class="main-content">
 		<router-outlet ></router-outlet>
 	</div>
 
