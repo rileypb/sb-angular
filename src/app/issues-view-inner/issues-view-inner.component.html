@@ -11,9 +11,9 @@
 							New
 						</button>
 					</div>
-					<sb-project-issue-list [project]="project" class="product-backlog" allIssuesAllowed="false" #productBacklog (selectIssue)="showDetail($event)"
+					<sb-simple-issues-list [container]="project" [issues]="issues" class="product-backlog" allIssuesAllowed="false" #productBacklog (issueSelected)="showDetail($event)"
 				    [fixed]="!permission(project, 'update')" 
-				    [requestedIssueId]="requestedIssueId"></sb-project-issue-list>
+				    [requestedIssueId]="requestedIssueId"></sb-simple-issues-list>
 				</div>
 			</div>
 

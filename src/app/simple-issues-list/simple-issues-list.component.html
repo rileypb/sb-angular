@@ -1,0 +1,34 @@
+<ng-template #progressSpinner><div class="d-flex justify-content-center"><mat-spinner></mat-spinner></div></ng-template>
+
+<div class="list-container issues">
+  <div class="issue-container column-container">
+  	<div class="list issues" 
+  	     cdkDropList 
+  	     #issueList="cdkDropList" 
+  	     [cdkDropListData]="{ issues: issues, container: container }"
+  	     (cdkDropListDropped)="onDrop($event)">
+      
+      <div *ngIf="issues; else progressSpinner">
+        <div class="drag-placeholder menu-text" *ngIf="showEmptyListSpace && issues?.length == 0">Drag and drop issues here</div>
+        <div class="issue-card text-truncate pl-2" 
+             (click)="clickIssue(issue)"
+             [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of issues; let i = index" cdkDrag>
+          
+          <div class="drag-placeholder" *cdkDragPlaceholder></div>
+          <div class="row align-items-center banner-text">
+            <button style="position: relative; left: 8px" mat-icon-button *ngIf="showViewIcon" (click)="onViewIssue(issue)">
+              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+            </button>
+            <div class="col-10 text-truncate">
+              <span [ngClass]="{ 'completed-title': issue.completed }">#{{issue.id}} - {{issue.title}}</span> <mat-icon *ngIf="issue.completed" class="checkmark ml-3" fontSet="fas" fontIcon="fa-check-circle"></mat-icon>
+            </div>
+            <button mat-icon-button *ngIf="allowRemove && !issue.completed" (click)="removeIssue($event, issue)">
+              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-times-circle"></mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+  </div>
+</div>
