@@ -98,7 +98,7 @@ export class ProjectIssueListComponent implements OnInit {
     console.log("HERE");
     let currentIssues = [...this.issues.value];
     moveItemInArray(currentIssues, reorderData.fromIndex, reorderData.toIndex);
-    this.dataService.update(`projects/${this.project.id}/issues`, { issues: { list: currentIssues }});
+    // this.dataService.update(`projects/${this.project.id}/issues`, { issues: { list: currentIssues }});
     callWithSnackBar(this.snackBar, this.projectService.reorderIssues(reorderData.container, reorderData.fromIndex, reorderData.toIndex), 
                      ['Updating Order...', 'Updated Order', 'Error Updating order']);
   }
@@ -108,7 +108,7 @@ export class ProjectIssueListComponent implements OnInit {
     let tmpArray = [...transferData.to.data.issues];
     transferArrayItem([...transferData.from.data.issues], tmpArray, transferData.fromIndex, transferData.toIndex);
     delete transferData.issue.sprint;
-    this.dataService.update(`projects/${this.project.id}/issues`, { issues: { list: tmpArray }});
+    // this.dataService.update(`projects/${this.project.id}/issues`, { issues: { list: tmpArray }});
     this.transfer.emit(transferData);
   }
 
