@@ -8,7 +8,6 @@ import { darkBWTheme } from './theme/dark-bw-theme';
 import { testTheme } from './theme/test-theme';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ActionCableService, Channel } from 'angular2-actioncable';
@@ -31,7 +30,6 @@ import { DataService } from './data.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SprintBacklogItemComponent } from './sprint-backlog-item/sprint-backlog-item.component';
 import { ErrorComponent } from './error/error.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "../shared/material.module";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { EditIssueDialogComponent } from './edit-issue-dialog/edit-issue-dialog.component';
@@ -44,8 +42,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { EditSprintDialogComponent } from './edit-sprint-dialog/edit-sprint-dialog.component';
 import { MenuContainerComponent } from './menu-container/menu-container.component';
-import { SidemenuComponent } from './sidemenu/sidemenu.component';
-import { SidemenuItemComponent } from './sidemenu-item/sidemenu-item.component';
 import { ProjectTeamComponent } from './project-team/project-team.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -65,7 +61,6 @@ import { ActivityEntryComponent } from './activity-entry/activity-entry.componen
 import { IssueNumberLinkComponent } from './issue-number-link/issue-number-link.component';
 import { TaskNumberLinkComponent } from './task-number-link/task-number-link.component';
 import { SprintNumberLinkComponent } from './sprint-number-link/sprint-number-link.component';
-// import { TopnavComponent } from './topnav/topnav.component';
 import { SprintBacklogComponent } from './sprint-backlog/sprint-backlog.component';
 import { ProductBacklogComponent } from './product-backlog/product-backlog.component';
 import { SprintExecutionComponent } from './sprint-execution/sprint-execution.component';
@@ -74,7 +69,6 @@ import { EpicListComponent } from './epic-list/epic-list.component';
 import { ProjectFrameComponent } from './project-frame/project-frame.component';
 import { EpicsTopLevelComponent } from './epics-top-level/epics-top-level.component';
 import { ProductBacklogTopLevelComponent } from './product-backlog-top-level/product-backlog-top-level.component';
-// import { TopNavLinkComponent } from './top-nav-link/top-nav-link.component';
 import { SprintPlanningTopLevelComponent } from './sprint-planning-top-level/sprint-planning-top-level.component';
 import { DashboardTopLevelComponent } from './dashboard-top-level/dashboard-top-level.component';
 import { SprintExecutionTopLevelComponent } from './sprint-execution-top-level/sprint-execution-top-level.component';
@@ -141,7 +135,6 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
 
 @NgModule({
   declarations: [
-    AppComponent,
     ProjectsComponent,
     TopBarComponent,
     SprintBacklogItemComponent,
@@ -153,8 +146,6 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     CkEditorComponent,
     EditSprintDialogComponent,
     MenuContainerComponent,
-    SidemenuComponent,
-    SidemenuItemComponent,
     ProjectTeamComponent,
     UserProfileComponent,
     SettingsComponent,
@@ -174,7 +165,6 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     IssueNumberLinkComponent,
     TaskNumberLinkComponent,
     SprintNumberLinkComponent,
-    // TopnavComponent,
     SprintBacklogComponent,
     ProductBacklogComponent,
     SprintExecutionComponent,
@@ -183,7 +173,6 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     ProjectFrameComponent,
     EpicsTopLevelComponent,
     ProductBacklogTopLevelComponent,
-    // TopNavLinkComponent,
     SprintPlanningTopLevelComponent,
     DashboardTopLevelComponent,
     SprintExecutionTopLevelComponent,
@@ -249,7 +238,6 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    BrowserAnimationsModule,
     MaterialModule,
     DragDropModule,
     CKEditorModule,
