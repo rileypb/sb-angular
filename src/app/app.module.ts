@@ -30,6 +30,7 @@ import { DataService } from './data.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SprintBacklogItemComponent } from './sprint-backlog-item/sprint-backlog-item.component';
 import { ErrorComponent } from './error/error.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "../shared/material.module";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { EditIssueDialogComponent } from './edit-issue-dialog/edit-issue-dialog.component';
@@ -238,6 +239,7 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
     MaterialModule,
     DragDropModule,
     CKEditorModule,
