@@ -27,19 +27,19 @@
 
 	<mat-card class="mt-4 issue-card" *ngIf="showAcceptanceCriteria"> 
 		<h6 class="menu-text">Acceptance Criteria</h6>
-		<mat-list>
-			<mat-item *ngFor="let criterion of issue.acceptance_criteria">
+		<div>
+			<div *ngFor="let criterion of issue.acceptance_criteria">
 				<div class="mb-2">
 					<sb-acceptance-criterion-entry [criterion]="criterion" [issue]="issue" [showCompletionCheckboxes]="showCompletionCheckboxes" [editable]="editable" (deleteAC)="deleteAC($event)"></sb-acceptance-criterion-entry>
 				</div>
-			</mat-item>
-			<mat-item *ngIf="editable && permission(issue,'update')">
+			</div>
+			<div *ngIf="editable && permission(issue,'update')">
 				<div class="row add-ac-wrapper">
 					<button class="col-1" *ngIf="permission(issue, 'update')" mat-icon-button matTooltip="New Acceptance Criterion" (click)="createAC(newCriterion.value)" [disabled]="newCriterion.value.trim() == ''"><mat-icon class="add-ac sb-icon">add_circle</mat-icon></button>
 					<textarea class="col-10 user-text issue-card" #newCriterion></textarea>
 				</div>
-			</mat-item>
-		</mat-list>
+			</div>
+		</div>
 	</mat-card>
 	
 	<h6 class="mt-4 menu-text">Tasks <button style="position: relative; top: -4px" *ngIf="editable && permission(issue, 'create-task')" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon class="sb-icon">add_circle</mat-icon></button></h6>

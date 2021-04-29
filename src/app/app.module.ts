@@ -65,7 +65,7 @@ import { ActivityEntryComponent } from './activity-entry/activity-entry.componen
 import { IssueNumberLinkComponent } from './issue-number-link/issue-number-link.component';
 import { TaskNumberLinkComponent } from './task-number-link/task-number-link.component';
 import { SprintNumberLinkComponent } from './sprint-number-link/sprint-number-link.component';
-import { TopnavComponent } from './topnav/topnav.component';
+// import { TopnavComponent } from './topnav/topnav.component';
 import { SprintBacklogComponent } from './sprint-backlog/sprint-backlog.component';
 import { ProductBacklogComponent } from './product-backlog/product-backlog.component';
 import { SprintExecutionComponent } from './sprint-execution/sprint-execution.component';
@@ -74,7 +74,7 @@ import { EpicListComponent } from './epic-list/epic-list.component';
 import { ProjectFrameComponent } from './project-frame/project-frame.component';
 import { EpicsTopLevelComponent } from './epics-top-level/epics-top-level.component';
 import { ProductBacklogTopLevelComponent } from './product-backlog-top-level/product-backlog-top-level.component';
-import { TopNavLinkComponent } from './top-nav-link/top-nav-link.component';
+// import { TopNavLinkComponent } from './top-nav-link/top-nav-link.component';
 import { SprintPlanningTopLevelComponent } from './sprint-planning-top-level/sprint-planning-top-level.component';
 import { DashboardTopLevelComponent } from './dashboard-top-level/dashboard-top-level.component';
 import { SprintExecutionTopLevelComponent } from './sprint-execution-top-level/sprint-execution-top-level.component';
@@ -174,7 +174,7 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     IssueNumberLinkComponent,
     TaskNumberLinkComponent,
     SprintNumberLinkComponent,
-    TopnavComponent,
+    // TopnavComponent,
     SprintBacklogComponent,
     ProductBacklogComponent,
     SprintExecutionComponent,
@@ -183,7 +183,7 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     ProjectFrameComponent,
     EpicsTopLevelComponent,
     ProductBacklogTopLevelComponent,
-    TopNavLinkComponent,
+    // TopNavLinkComponent,
     SprintPlanningTopLevelComponent,
     DashboardTopLevelComponent,
     SprintExecutionTopLevelComponent,
