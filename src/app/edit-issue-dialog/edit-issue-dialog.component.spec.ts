@@ -7,7 +7,6 @@ import { Issue } from '../issue';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IssuesService } from '../issues.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CkEditorComponent } from '../ckeditor/ckeditor.component';
 
 describe('EditIssueDialogComponent', () => {
   let component: EditIssueDialogComponent;
@@ -16,7 +15,7 @@ describe('EditIssueDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditIssueDialogComponent, CkEditorComponent ],
+      declarations: [ EditIssueDialogComponent ],
       imports: [ MaterialModule, BrowserAnimationsModule, HttpClientModule ],
       providers: [ { provide: MatDialogRef, useValue: {}}, { provide: MAT_DIALOG_DATA, useValue: issue},
         IssuesService,

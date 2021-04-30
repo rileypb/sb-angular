@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Base } from '../base';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Task } from '../task';
@@ -16,7 +15,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class EditTaskDialogComponent extends Base implements OnInit {
   public newTaskMode: boolean;
   public infoMode:boolean;
-  public Editor = ClassicEditor;
   private fb:FormBuilder = new FormBuilder();
   public editTaskForm:FormGroup;
 

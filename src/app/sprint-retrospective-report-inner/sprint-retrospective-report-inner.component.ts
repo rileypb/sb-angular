@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SprintsService } from '../sprints.service';
 import { callWithSnackBar } from '../util';
@@ -12,7 +11,6 @@ import { callWithSnackBar } from '../util';
 export class SprintRetrospectiveReportInnerComponent implements OnInit {
   @Input() report:any;
   @Input() sprintId:number;
-  public Editor = ClassicEditor;
 
   editingRetrospective:boolean;
 

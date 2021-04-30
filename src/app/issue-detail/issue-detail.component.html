@@ -9,7 +9,7 @@
 			<button mat-icon-button matTooltip="Edit Issue" (click)="onEditIssue()"><mat-icon class="sb-icon">edit</mat-icon></button>
 		</div>
 	</div>
-	<p class="issue-description p-2" [innerHtml]="issue.description"></p>
+	<p class="issue-description p-2">{{issue.description}}</p>
 	<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon> Estimate: <span class="base-text">{{issue.estimate}}</span></p>
 	<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon> State: <span class="base-text">{{issue.state}}</span></p>
 

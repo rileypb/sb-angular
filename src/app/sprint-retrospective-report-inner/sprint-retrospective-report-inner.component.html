@@ -10,7 +10,7 @@
 			<div class="pb-3 menu-text">Start: <span class="base-text">{{ report.sprint.start_date }}</span> End: <span class="base-text">{{ report.sprint.end_date }}</span></div>
 			<div class="mb-3 menu-text">Total estimate: <span class="base-text">{{ report.sprint.total_estimate }}</span></div>
 			<h4 class="menu-text">Goal: <span class="base-text">{{report.sprint.goal}}</span></h4>
-			<div class="base-text" [innerHtml]="report.sprint.description"></div>
+			<div class="base-text">{{report.sprint.description}}</div>
 
 			<h4 class="banner-text">Burndown</h4>
 			<app-burndown [sprintId]="report.sprint.id"></app-burndown>
@@ -20,11 +20,11 @@
 				</span>
 			</h4>
 			<div style="font-size: 12pt; font-weight: normal;" *ngIf="!editingRetrospective">
-				<div class="base-text" [innerHtml]="report.sprint.retrospective"></div>
+				<div class="base-text">{{report.sprint.retrospective}}</div>
 				
 			</div>
 			<div class="no-print mb-3" style="font-size: 12pt; font-weight: normal;" *ngIf="editingRetrospective">
-				<ckeditor class="issue-editor mt-6" name="issueDescription" [editor]="Editor" [data]="" [(ngModel)]="report.sprint.retrospective"></ckeditor>
+				<textarea class="issue-editor mt-6" rows="4" name="issueDescription" [editor]="Editor" [data]="" [(ngModel)]="report.sprint.retrospective"></textarea>
 				<div><button mat-button class="menu-text" (click)="editingRetrospective = false">Cancel</button><button mat-button class="menu-text" (click)="saveRetrospective()">Save</button></div>
 			</div>
 

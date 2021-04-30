@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Base } from '../base';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Sprint } from '../sprint';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
@@ -15,7 +14,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SprintFormComponent extends Base implements OnInit {
 
-  public Editor = ClassicEditor;
   private fb:FormBuilder = new FormBuilder();
   public editSprintForm:FormGroup;
 

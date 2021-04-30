@@ -9,5 +9,5 @@
   <span class="col-2 mt-3">
    	<mat-checkbox [disabled]="!permission(task, 'update')" color="primary" (change)="onCheckboxChange($event)" [checked]="task.state == 'complete'" #checkbox></mat-checkbox>
   </span>
-  <span class="task-description" [innerHtml]="task.description"></span>
+  <span class="task-description">{{task.description}}</span>
 </div>

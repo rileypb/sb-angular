@@ -52,7 +52,7 @@ export class IssuesViewInnerComponent extends Base implements OnInit {
   }
 
   clearDetail() {
-    this.issue = null;
+    this.router.navigate(['projects',this.project.id,'backlog']);
   }
 
   cancelEdit():void {

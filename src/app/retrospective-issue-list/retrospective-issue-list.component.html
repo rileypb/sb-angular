@@ -6,7 +6,7 @@
 			<div class="issue-title banner-text" [ngClass]="{ 'not-accepted': !isAccepted(issue) }">#{{issue.id}} - {{ issue.title }}</div> 
 			<div class="menu-text">Estimate: <span class="base-text">{{ issue.estimate || 0 }}</span></div>
 			<div class="menu-text">Completed: <span class="base-text" [ngClass]="{'closed-yes': issue.completed, 'closed-no': !issue.completed}">{{ issue.completed ? "Yes" : "No" }}</span></div>
-			<div class="description base-text" *ngIf="issue.description" [innerHtml]="issue.description"></div>
+			<div class="description base-text" *ngIf="issue.description">{{issue.description}}</div>
 
 			<ng-template #asdf ><span class="menu-text">ACCEPTED</span></ng-template>
 			<span class="menu-text" *ngIf="!isAccepted(issue); else asdf" class="not-accepted menu-text">NOT ACCEPTED</span>
@@ -17,7 +17,7 @@
 					<span class="banner-text">#{{task.id}} - {{task.title}}</span> ({{task.estimate}} hrs), assigned to {{task.assignee_name}}, 
 					<span *ngIf="task.state == 'complete'">Completed at {{task.completed_at | date:'short'}}</span>
 					<span *ngIf="task.state != 'complete'">Incomplete</span>
-					<div class="description base-text" *ngIf="task.description" [innerHtml]="task.description"></div>
+					<div class="description base-text" *ngIf="task.description">{{task.description}}</div>
 				</div>
 			</div>
 		</div>

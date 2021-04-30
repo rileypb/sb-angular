@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Issue } from '../issue';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { IssuesService } from '../issues.service';
@@ -14,7 +13,6 @@ import { Base } from '../base';
   styleUrls: ['./edit-issue-dialog.component.css']
 })
 export class EditIssueDialogComponent extends Base implements OnInit {
-  public Editor = ClassicEditor;
   private fb:FormBuilder = new FormBuilder();
   public editIssueForm:FormGroup;
   public allowDelete:boolean;

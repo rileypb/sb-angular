@@ -129,9 +129,6 @@ export class ColorPickerFormControlComponent implements OnInit, ControlValueAcce
   }
 
   setDescribedByIds(ids: string[]) {
-    // const controlElement = this._elementRef.nativeElement
-    //   .querySelector('.app-ckeditor')!;
-    // controlElement.setAttribute('aria-describedby', ids.join(' '));
   }
 
   onContainerClick() {

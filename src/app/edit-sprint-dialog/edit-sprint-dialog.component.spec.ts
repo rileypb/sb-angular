@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditSprintDialogComponent } from './edit-sprint-dialog.component';
 import { Sprint } from '../sprint';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
-import { CkEditorComponent } from '../ckeditor/ckeditor.component';
 
 describe('EditSprintDialogComponent', () => {
   let component: EditSprintDialogComponent;
@@ -16,7 +15,7 @@ describe('EditSprintDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditSprintDialogComponent, CkEditorComponent ],
+      declarations: [ EditSprintDialogComponent ],
       imports: [ MaterialModule, BrowserAnimationsModule, HttpClientModule, AppRoutingModule ],
       providers: [ { provide: MatDialogRef, useValue: {}}, { provide: MAT_DIALOG_DATA, useValue: sprint}]
     })

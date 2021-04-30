@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ThemeModule } from './theme/theme.module';
 import { lightTheme } from './theme/light-theme';
 import { jmuTheme } from './theme/jmu-theme';
@@ -37,7 +36,6 @@ import { EditIssueDialogComponent } from './edit-issue-dialog/edit-issue-dialog.
 import { SprintCardComponent } from './sprint-card/sprint-card.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { CkEditorComponent } from './ckeditor/ckeditor.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -144,7 +142,6 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     SprintCardComponent,
     BreadcrumbComponent,
     ConfirmDialogComponent,
-    CkEditorComponent,
     EditSprintDialogComponent,
     MenuContainerComponent,
     ProjectTeamComponent,
@@ -242,7 +239,6 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     BrowserAnimationsModule,
     MaterialModule,
     DragDropModule,
-    CKEditorModule,
     MatFormFieldModule,
     MatInputModule,
     NgxEchartsModule.forRoot({
