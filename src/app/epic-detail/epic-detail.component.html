@@ -31,24 +31,6 @@
 		<div>
 			<sb-issue-list [issues]="((epicIssues | async) || {issues: { list: []}}).issues.list" (issueSelected)="onIssueSelected($event)" (reorder)="onReorder($event)" [allowRemove]="permission(epic, 'update')" (issueRemoved)="removeIssue($event)"></sb-issue-list>
 
-		<!-- 	<form class="add-issue-form mt-1" [hidden]="!permission(epic, 'update')">
-				<mat-form-field class="add-issue-form" #searchField>
-					<input type="text"
-						   class="issue-input"
-						   placeholder="Add an existing Issue"
-						   aria-label="issue"
-						   appearance="fill"
-						   matInput
-						   [formControl]="issueControl"
-						   [matAutocomplete]="auto" #issueInput>
-					<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="issueLabel" #issueSelector>
-						<mat-option *ngFor="let option of filteredIssues | async" [value]="option" [ngStyle]="{'background-color':option.epic?.color}">
-							<span [ngStyle]="{'color':fontColor(option.epic?.color)}">{{option.title}} <span class="current-option" *ngIf="option.epic">[Current: {{option.epic.title}}]</span></span>
-						</mat-option>
-					</mat-autocomplete>
-				</mat-form-field>
-			</form> -->
-
 			<div class="mt-3">
 				<h6 class="banner-text">Comments</h6>
 				<div class="comments-display-box mb-1">
