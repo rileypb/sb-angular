@@ -243,6 +243,7 @@ class Hold {
 
 	fastUnload() {
 		for (let selector in this.selectorCounts) {
+			this.selectorCounts[selector] = 0;
 			this.syncers.get(selector).unsync();
 			this.selectorSubscriptions[selector].unsubscribe();
 		}
