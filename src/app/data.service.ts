@@ -60,9 +60,13 @@ export class DataService {
     this.status.subscribe((s) => {
     	if (s == 'disconnected') {
 	    	this.reset();
+	    	console.log("resetting...");
 	    	this.resetting = true;
 	    	// give the UI a second to reset
-	    	timer(1).pipe(first()).subscribe(x => this.resetting = false);
+	    	timer(100).pipe(first()).subscribe(x => {
+	    		this.resetting = false;
+	    		console.log("done resetting.")
+	    	});
 	    }
     });
 
