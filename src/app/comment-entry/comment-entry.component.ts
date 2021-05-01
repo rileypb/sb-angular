@@ -26,4 +26,8 @@ export class CommentEntryComponent implements OnInit {
   		['Saving comment', 'Saved comment', 'Error saving comment']).subscribe(success => this.text = "");
   }
 
+  shouldDisableSubmit():boolean {
+    return !this.text || this.text.trim().length == 0;
+  }
+
 }
