@@ -75,7 +75,7 @@ export class DataService {
     console.log("monitoring status...");
     this.status.subscribe((x) => {
     	if (x == 'connected') {
-    console.log("connected");
+    		console.log("connected");
 			this.auth.getAccessTokenSilently().subscribe((t) => {
 				console.log("retrieved access token");
 				this.channel.perform("auth", { token: t });
@@ -120,6 +120,7 @@ export class DataService {
   }
 
   private doSync():void {
+	console.log(`doSync`);
   	for (let key in this.holds) {
   		let hold:Hold = this.holds[key];
   		if (hold.needsUpdate) {
@@ -132,6 +133,7 @@ export class DataService {
   }
 
   load(address:string, selectors:string[]):void {
+  	console.log(`load ${address}`);
   	let hold:Hold = this.holds[address];
   	if (!hold) {
   		this.holds[address] = new Hold(address, this.channel, this.api, this.syncers);
@@ -144,6 +146,7 @@ export class DataService {
   }
 
   public unload(address:string, selectors:string[]) {
+  	console.log(`unload ${address} - wait 5 seconds`);
   	interval(5000).pipe(first()).subscribe(() => {
 	  	let hold:Hold = this.holds[address];
 	  	if (hold) {
@@ -154,11 +157,13 @@ export class DataService {
 		    delete this.values[address];
 		  }
 		}
+  		console.log(`unload ${address} - done`);
 	  }
 	);
   }
 
   public fastUnload(address:string) {
+  	console.log(`fast unload ${address} - done`);
   	let hold:Hold = this.holds[address];
   	hold.fastUnload();
 	delete this.holds[address];
@@ -201,7 +206,7 @@ class Hold {
 	}
 
 	refresh() {
-		console.log(`load ${this.address}`);
+		console.log(`refresh ${this.address}`);
 		this.api.get('api/' + this.address).subscribe(
 			success => {
 				this.value.next(success);
