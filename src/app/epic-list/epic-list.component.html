@@ -6,6 +6,7 @@
           <div class="fixed-epic-card text-truncate" 
                [ngStyle]="{'background-color': (epic.color ? epic.color : '#FFFFFF'), 'color': fontColor(epic.color)}">
             
+            <div class="drag-placeholder" *cdkDragPlaceholder></div>
             <div class="ml-3 row align-items-center" (click)="clickEpic(epic)">
               <button class="col-1 large-only" *ngIf="!expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_more</mat-icon></button>
               <button class="col-1 large-only" *ngIf="expanded(epic)" mat-icon-button><mat-icon (click)="toggleExpandEpic(epic)">expand_less</mat-icon></button>
