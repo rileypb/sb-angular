@@ -33,6 +33,8 @@ export class DataService {
 
   private syncers:SyncerRegistry;
 
+  private unloaders:Set<Subscription> = new Set();
+
   constructor(public cableService:CableService, public api:Api, private auth:AuthService, private userInfo:UserInfoService) { }  
 
   init() : void {
@@ -59,10 +61,14 @@ export class DataService {
 
     this.status.subscribe((s) => {
     	if (s == 'disconnected') {
-	    	this.reset();
+	    	console.log("resetting...");
 	    	this.resetting = true;
 	    	// give the UI a second to reset
-	    	timer(1).pipe(first()).subscribe(x => this.resetting = false);
+	    	timer(100).pipe(first()).subscribe(x => {
+	    		this.reset();
+	    		this.resetting = false;
+	    		console.log("done resetting.")
+	    	});
 	    }
     });
 
@@ -71,7 +77,7 @@ export class DataService {
     console.log("monitoring status...");
     this.status.subscribe((x) => {
     	if (x == 'connected') {
-    console.log("connected");
+    		console.log("connected");
 			this.auth.getAccessTokenSilently().subscribe((t) => {
 				console.log("retrieved access token");
 				this.channel.perform("auth", { token: t });
@@ -113,9 +119,14 @@ export class DataService {
 		delete this.holds[hold.address];
 		delete this.values[hold.address];
   	}
+  	for (let sub of this.unloaders) {
+  		console.log("unsubscribe sub");
+  		sub.unsubscribe();
+  	}
   }
 
   private doSync():void {
+	console.log(`doSync`);
   	for (let key in this.holds) {
   		let hold:Hold = this.holds[key];
   		if (hold.needsUpdate) {
@@ -128,6 +139,7 @@ export class DataService {
   }
 
   load(address:string, selectors:string[]):void {
+  	console.log(`load ${address}`);
   	let hold:Hold = this.holds[address];
   	if (!hold) {
   		this.holds[address] = new Hold(address, this.channel, this.api, this.syncers);
@@ -140,7 +152,8 @@ export class DataService {
   }
 
   public unload(address:string, selectors:string[]) {
-  	interval(5000).pipe(first()).subscribe(() => {
+  	console.log(`unload ${address} - wait 5 seconds`);
+  	let sub = interval(5000).pipe(first()).subscribe(() => {
 	  	let hold:Hold = this.holds[address];
 	  	if (hold) {
 		  hold.count--;
@@ -150,11 +163,15 @@ export class DataService {
 		    delete this.values[address];
 		  }
 		}
+		this.unloaders.delete(sub);
+  		console.log(`unload ${address} - done`);
 	  }
 	);
+	this.unloaders.add(sub);
   }
 
   public fastUnload(address:string) {
+  	console.log(`fast unload ${address} - done`);
   	let hold:Hold = this.holds[address];
   	hold.fastUnload();
 	delete this.holds[address];
@@ -197,7 +214,7 @@ class Hold {
 	}
 
 	refresh() {
-		console.log(`load ${this.address}`);
+		console.log(`refresh ${this.address}`);
 		this.api.get('api/' + this.address).subscribe(
 			success => {
 				this.value.next(success);
