@@ -27,8 +27,7 @@ export function callWithSnackBar(snackBar:MatSnackBar, httpCall:Observable<any>,
           duration: 4000,
           panelClass: ['snack-bar-error']
         });
-      },
-      () => { console.log("unknown"); }
+      }
     );
 
     return returnValue;

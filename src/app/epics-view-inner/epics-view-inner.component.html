@@ -1,7 +1,7 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 	<app-project-frame *ngIf="project; else progressSpinner" [project]="project">
 		<div *ngIf="epics; else progressSpinner">
-			<div class="row" cdkDropListGroup>
+			<div class="row">
 				<div class="col-md-6" [ngClass]="{ 'large-only' : epic || mode=='edit' || mode=='create'}">
 					<div class="inner-detail-card">
 						<div class="col-12 text-right p-0">
