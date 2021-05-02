@@ -33,6 +33,8 @@ export class DataService {
 
   private syncers:SyncerRegistry;
 
+  private unloaders:Set<Subscription> = new Set();
+
   constructor(public cableService:CableService, public api:Api, private auth:AuthService, private userInfo:UserInfoService) { }  
 
   init() : void {
@@ -59,11 +61,11 @@ export class DataService {
 
     this.status.subscribe((s) => {
     	if (s == 'disconnected') {
-	    	this.reset();
 	    	console.log("resetting...");
 	    	this.resetting = true;
 	    	// give the UI a second to reset
 	    	timer(100).pipe(first()).subscribe(x => {
+	    		this.reset();
 	    		this.resetting = false;
 	    		console.log("done resetting.")
 	    	});
@@ -117,6 +119,10 @@ export class DataService {
 		delete this.holds[hold.address];
 		delete this.values[hold.address];
   	}
+  	for (let sub of this.unloaders) {
+  		console.log("unsubscribe sub");
+  		sub.unsubscribe();
+  	}
   }
 
   private doSync():void {
@@ -147,7 +153,7 @@ export class DataService {
 
   public unload(address:string, selectors:string[]) {
   	console.log(`unload ${address} - wait 5 seconds`);
-  	interval(5000).pipe(first()).subscribe(() => {
+  	let sub = interval(5000).pipe(first()).subscribe(() => {
 	  	let hold:Hold = this.holds[address];
 	  	if (hold) {
 		  hold.count--;
@@ -157,9 +163,11 @@ export class DataService {
 		    delete this.values[address];
 		  }
 		}
+		this.unloaders.delete(sub);
   		console.log(`unload ${address} - done`);
 	  }
 	);
+	this.unloaders.add(sub);
   }
 
   public fastUnload(address:string) {
