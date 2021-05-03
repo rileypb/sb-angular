@@ -78,4 +78,9 @@ export class IssueSelectionComponent implements OnInit {
   			["Removing from sprint...", "Removed from sprint", "Error removing from sprint"]);
   	}
   }
+
+  status(sprint:Sprint):string {
+  	return (sprint.id == sprint.project?.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : 
+  		"Pending");
+  } 
 }

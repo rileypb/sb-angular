@@ -3,9 +3,11 @@
 <div *ngIf="issues; else progressSpinner">
 	<button (click)="okay()">Done</button>
 	<div>Select Issues for <span class="banner-text sprint-title">{{sprint.title}}:</span></div>
-	<div *ngFor="let issue of issues" class="issue-card text-truncate pl-2" 
+	<div *ngFor="let issue of issues" class="issue-card text-truncate pl-2 row" 
          [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" >
-		<mat-checkbox (click)="toggleInSprint(issue)" [checked]="issue.sprint && issue.sprint.id == sprint.id">#{{issue.id}} - {{issue.title}}</mat-checkbox>
+		<mat-checkbox class="col-10" (click)="toggleInSprint(issue)" [checked]="issue.sprint && issue.sprint.id == sprint.id">#{{issue.id}} - {{issue.title}}</mat-checkbox>
+		<mat-icon *ngIf="issue.sprint && issue.sprint.id != sprint.id" class="col-2" 
+			[matTooltip]="'In sprint \'' + issue.sprint.title + '\' (' + status(issue.sprint) +')'">directions_run</mat-icon>
 	</div>
 	<button (click)="okay()">Done</button>
 </div>
