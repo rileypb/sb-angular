@@ -1,0 +1,24 @@
+.sprint-number {
+	font-size: x-small;
+	vertical-align: middle;
+}
+
+.sprint-title {
+	font-size: x-large;
+	vertical-align: middle;
+}
+
+.sprint-banner {
+	color: var(--primary-dark);
+	background-color: var(--on-primary-dark);
+}
+
+.edit-button {
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: var(--light-gray);
+	border-style: solid;
+	box-shadow: 2px 2px var(--light-gray);
+}

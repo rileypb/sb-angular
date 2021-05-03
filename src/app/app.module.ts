@@ -130,6 +130,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { EpicsViewInnerSmallComponent } from './epics-view-inner-small/epics-view-inner-small.component';
 import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-list.component';
+import { SprintDetailComponent } from './sprint-detail/sprint-detail.component';
+import { IssueSelectionComponent } from './issue-selection/issue-selection.component';
 
 
 @NgModule({
@@ -227,6 +229,8 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     FooterComponent,
     EpicsViewInnerSmallComponent,
     SimpleIssuesListComponent,
+    SprintDetailComponent,
+    IssueSelectionComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

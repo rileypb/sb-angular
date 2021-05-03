@@ -1,1 +1,3 @@
-<sb-sprint-planning [project]="project | async"></sb-sprint-planning>
+<sb-sprint-loader [sprintId]="sprintId">
+	<sb-sprint-planning [project]="project | async" [sprints]="(sprints | async)?.sprints?.list" #sprintView></sb-sprint-planning>
+</sb-sprint-loader>

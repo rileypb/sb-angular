@@ -110,6 +110,20 @@
 	font-family: var(--menu-font);
 }
 
+.sb-button {
+	border-width: 1px;
+	border-style: dotted;
+	border-color: var(--gray);
+}
+
+.green {
+	color: var(--okay);
+}
+
+.red {
+	color: var(--error);
+}
+
 
 .mat-form-field-label {
 	font-family: var(--menu-font) !important;

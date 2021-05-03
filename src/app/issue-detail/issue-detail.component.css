@@ -26,12 +26,12 @@
 
 
 .issue-number {
-	font-size: small;
+	font-size: x-small;
 	vertical-align: middle;
 }
 
 .issue-title {
-	font-size: xx-large;
+	font-size: x-large;
 	vertical-align: middle;
 }
 

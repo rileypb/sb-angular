@@ -23,6 +23,10 @@ export class SprintLoaderComponent implements OnInit {
   }
 
   updateData(id:number) {
+    if (id == 0) {
+      return;
+    }
+
   	this.dataService.load(`sprints/${id}`, [`sprints/${id}`]);
   	this.sub = this.dataService.values[`sprints/${id}`].subscribe((x) => {
   		if (x == null) return;
@@ -35,6 +39,10 @@ export class SprintLoaderComponent implements OnInit {
   }
 
   unloadData(id:number) {
+    if (id == 0) {
+      return;
+    }
+
     this.dataService.unload(`sprints/${id}`, [`sprints/${id}`]);
     this.sub.unsubscribe();
   }

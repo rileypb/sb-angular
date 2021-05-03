@@ -9,6 +9,7 @@ import { callWithSnackBar } from '../util';
 import { DataService } from '../data.service';
 import { SprintsService } from '../sprints.service';
 import { Issue } from '../issue';
+import { Router } from '@angular/router';
 
 function isSprint(obj: Project | Sprint): obj is Sprint {
 	return 'title' in obj;
@@ -22,13 +23,15 @@ function isSprint(obj: Project | Sprint): obj is Sprint {
 export class SprintPlanningComponent extends Base implements OnInit {
 
   @Input() project:Project;
+  @Input() sprints:any;
 
-  mode:String = "backlog";
+  mode:String = "show";
   selectedIssue:Issue;
 
   private sprintUnderEdit:Sprint = null;
 
-  constructor(private issuesService:IssuesService, private snackBar:MatSnackBar, private dataService:DataService, private sprintsService:SprintsService) {
+  constructor(private issuesService:IssuesService, private snackBar:MatSnackBar, private dataService:DataService, 
+              private sprintsService:SprintsService, private router:Router) {
     super(); 
   }
 
@@ -98,5 +101,15 @@ export class SprintPlanningComponent extends Base implements OnInit {
       this.mode = 'viewIssue';
       this.selectedIssue = issue;
     }
+  }
+
+  selectSprint(sprint:Sprint) {
+    if (this.mode == 'show') {
+      this.router.navigate(['projects',this.project.id,'planning',sprint.id]);
+    }
+  }
+
+  clearDetail() {
+    this.router.navigate(['projects', this.project.id, 'planning']);
   }
 }
