@@ -16,6 +16,6 @@
 .submit-button {
 	font-family: var(--menu-font);
 
-	background-color: var(--primary-light);
-	color: var(--on-primary-light);
+	background-color: var(--primary);
+	color: var(--on-primary);
 }

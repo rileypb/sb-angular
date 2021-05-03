@@ -117,20 +117,31 @@
 }
 
 .save-button {
+	font-family: var(--menu-font);
 	background-color: var(--primary-dark);
 	color: var(--on-primary-dark);
 	box-shadow: 2px 2px var(--light-gray);
 }
 
 .cancel-button {
+	font-family: var(--menu-font);
 	background-color: var(--on-primary-dark);
 	color: var(--primary-dark);
 	box-shadow: 2px 2px var(--light-gray);
 }
 
 .delete-button {
+	font-family: var(--menu-font);
 	background-color: var(--on-error);
 	color: var(--error);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.comment-button {
+	font-family: var(--menu-font);
+
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
 	box-shadow: 2px 2px var(--light-gray);
 }
 
@@ -197,6 +208,11 @@
 
 .mat-checkbox-checkmark-path {
 	stroke: var(--on-background) !important;
+}
+
+.mat-button.mat-button-disabled.mat-button-disabled {
+	background-color: var(--primary);
+	color: var(--primary-light);
 }
 
 ::-webkit-scrollbar-track

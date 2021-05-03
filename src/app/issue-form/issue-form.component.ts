@@ -55,7 +55,7 @@ export class IssueFormComponent extends Base implements OnInit {
       maxWidth: "400px",
       data: {
           title: "Are you sure?",
-          message: `You are about to delete epic '${this.issue.title}'`
+          message: `You are about to delete issue '${this.issue.title}'`
       }
     });
 

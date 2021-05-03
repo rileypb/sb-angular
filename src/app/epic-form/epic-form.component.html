@@ -31,9 +31,9 @@
 	 </div>
 
 	 <div mat-dialog-actions class="mb-2">
-	  <button mat-button type="button" class="menu-text-bold" *ngIf="mode == 'edit' && permission(epic.project, 'delete-epic')" color="warn" (click)="confirmDelete()">Delete</button>
-	  <button mat-button type="button" class="menu-text-bold" (click)="cancelEdit.emit()">Cancel</button>
-	  <button mat-button type="submit" class="menu-text-bold" [disabled]="!epicForm.valid">Save</button>
+	  <button mat-button type="button" class="delete-button mr-2" *ngIf="mode == 'edit' && permission(epic.project, 'delete-epic')" (click)="confirmDelete()"><mat-icon>delete</mat-icon>Delete</button>
+	  <button mat-button type="button" class="cancel-button mr-2" (click)="cancelEdit.emit()"><mat-icon>close</mat-icon>Cancel</button>
+	  <button mat-button type="submit" class="save-button" [disabled]="!epicForm.valid"><mat-icon>save</mat-icon>Save</button>
 	</div>
 </form>
 </div>
