@@ -73,22 +73,23 @@ export class SprintPlanningComponent extends Base implements OnInit {
   }
 
   onConfirmEdit(sprint:Sprint) {
-    this.mode = 'backlog';
+    this.mode = 'show';
     callWithSnackBar(this.snackBar, this.sprintsService.save(sprint),
                      ['Saving sprint...', 'Sprint saved', 'Error saving sprint']);
   }
 
   onConfirmCreate(sprint:Sprint) {
-    this.mode = 'backlog';
+    this.mode = 'show';
     sprint.project = this.project;
     callWithSnackBar(this.snackBar, this.sprintsService.createSprint(sprint),
                      ['Creating sprint...', 'Sprint created', 'Error creating sprint']);
   }
 
-  onDeleteSprint(sprint:Sprint) {
-    this.mode = 'backlog';
+  delete(sprint:Sprint) {
+    this.mode = 'show';
     callWithSnackBar(this.snackBar, this.sprintsService.deleteSprint(sprint),
                      ['Deleting sprint...', 'Sprint deleted', 'Error deleting sprint']);
+    this.clearDetail();
   }
 
   onStart(sprint:Sprint) {
@@ -111,5 +112,20 @@ export class SprintPlanningComponent extends Base implements OnInit {
 
   clearDetail() {
     this.router.navigate(['projects', this.project.id, 'planning']);
+  }
+
+  createSprint() {
+    this.mode = "create";
+  }
+
+  saveNewSprint(sprint:Sprint) {
+    sprint.project = this.project;
+    callWithSnackBar(this.snackBar, this.sprintsService.createSprint(sprint),
+                     ['Creating sprint...', 'Sprint created', 'Error creating sprint']);
+    this.mode = "show";
+  }
+
+  cancelEdit() {
+    this.mode = "show";
   }
 }

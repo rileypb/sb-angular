@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Sprint } from '../sprint';
 import { Issue } from '../issue';
 import { Base } from '../base';
@@ -16,6 +16,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./sprint-detail.component.css']
 })
 export class SprintDetailComponent extends Base implements OnInit {
+  @Output() editSprint:EventEmitter<Sprint> = new EventEmitter<Sprint>();
+
   public mode:string = "show";
   sprintIssues:Observable<any>;
   projectIssues:Observable<any>;
@@ -62,5 +64,9 @@ export class SprintDetailComponent extends Base implements OnInit {
 
   onIssueSelected(issue:Issue) { 
   	this.router.navigate(['projects', issue.project.id, 'backlog', issue.id]);
+  }
+
+  onEditSprint() {
+    this.editSprint.emit(this.sprint);
   }
 }

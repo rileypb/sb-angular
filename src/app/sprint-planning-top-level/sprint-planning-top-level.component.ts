@@ -28,7 +28,7 @@ export class SprintPlanningTopLevelComponent implements OnInit {
     this.dataService.load(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
     this.project = this.dataService.values[`projects/${this.locationService.projectId}`];
 
-    this.dataService.load(`projects/${this.locationService.projectId}/sprints?current=true`,[`projects/${this.locationService.projectId}/sprints?current=true`]);
+    this.dataService.load(`projects/${this.locationService.projectId}/sprints?current=true`,[`projects/${this.locationService.projectId}/sprints`]);
     this.sprints = this.dataService.values[`projects/${this.locationService.projectId}/sprints?current=true`];
 
     this.sub = this.router.events
@@ -37,6 +37,9 @@ export class SprintPlanningTopLevelComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
     this.dataService.unload(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
   }
 
@@ -44,17 +47,14 @@ export class SprintPlanningTopLevelComponent implements OnInit {
     console.log("handleNavigation");
     this.locationService.projectId = +this.route.snapshot.paramMap.get('id');
     this.unloadProject();
-    
+
     this.dataService.load(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
     this.project = this.dataService.values[`projects/${this.locationService.projectId}`];
-    this.dataService.load(`projects/${this.locationService.projectId}/epics`, [`projects/${this.locationService.projectId}/epics`]);
-    this.sprints = this.dataService.values[`projects/${this.locationService.projectId}/epics`];
   
     this.sprintId = +this.route.snapshot.paramMap.get('sprint_id');
   }
 
   unloadProject() {
     this.dataService.unload(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
-    this.dataService.unload(`projects/${this.locationService.projectId}/epics`, [`projects/${this.locationService.projectId}/epics`]);
   }
 }

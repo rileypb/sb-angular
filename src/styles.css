@@ -110,6 +110,30 @@
 	font-family: var(--menu-font);
 }
 
+.icon-button-large {
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.save-button {
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.cancel-button {
+	background-color: var(--on-primary-dark);
+	color: var(--primary-dark);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.delete-button {
+	background-color: var(--on-error);
+	color: var(--error);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
 .sb-button {
 	border-width: 1px;
 	border-style: dotted;
