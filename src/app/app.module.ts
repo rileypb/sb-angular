@@ -39,7 +39,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { EditSprintDialogComponent } from './edit-sprint-dialog/edit-sprint-dialog.component';
 import { MenuContainerComponent } from './menu-container/menu-container.component';
 import { ProjectTeamComponent } from './project-team/project-team.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -144,7 +143,6 @@ import { IssueSelectionComponent } from './issue-selection/issue-selection.compo
     SprintCardComponent,
     BreadcrumbComponent,
     ConfirmDialogComponent,
-    EditSprintDialogComponent,
     MenuContainerComponent,
     ProjectTeamComponent,
     UserProfileComponent,

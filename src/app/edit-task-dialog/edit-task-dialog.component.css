@@ -2,3 +2,13 @@
     height: 12rem;
     font-family: var(--user-font);
 }
+
+.not-if-small {
+	
+}
+
+@media (max-width: 500px) {
+	.not-if-small {
+		display: none;
+	}
+}

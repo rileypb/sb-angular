@@ -3,7 +3,7 @@
   <h3 class="banner-text" *ngIf="newTaskMode">New Task</h3>
   <h3 class="banner-text" *ngIf="!newTaskMode">Edit Task</h3>
   <div fxLayout="row">
-  	<mat-form-field style="width:50%" appearance="fill">
+  	<mat-form-field style="width:100%" appearance="fill">
   		<mat-label>Task Title</mat-label>
   		<input matInput formControlName="title">
       <mat-error>Title can't be blank</mat-error>
@@ -20,22 +20,21 @@
   	<input type="number" formControlName="estimate" matInput>
   </mat-form-field>
 
-</form>
-
-<div *ngIf="infoMode">
-  <div class="row">
-    <div class="col-3">
-      State: {{ task.state || "incomplete" }}
-    </div>
-    <div class="col-3">
-      <div *ngIf="task.state == 'complete'">Completed at: {{ task.completed_at | date:'short' }}</div>
+  <div *ngIf="infoMode">
+    <div class="row">
+      <div class="col-3">
+        State: {{ task.state || "incomplete" }}
+      </div>
+      <div class="col-3">
+        <div *ngIf="task.state == 'complete'">Completed at: {{ task.completed_at | date:'short' }}</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div mat-dialog-actions>
-  <button class="menu-text-bold" mat-button *ngIf="!newTaskMode && permission(task.issue, 'delete-task')" color="warn" (click)="confirmDelete()">Delete</button>
-  <button class="menu-text-bold" mat-button (click)="cancelEdit()">Cancel</button>
-  <button class="menu-text-bold" mat-button [disabled]="!editTaskForm.valid" (click)="confirmEdit()">Save</button>
-</div>
+  <div mat-dialog-actions>
+    <button class="delete-button mr-2" mat-button type="button" *ngIf="!newTaskMode && permission(task.issue, 'delete-task')" color="warn" (click)="confirmDelete()"><mat-icon class="not-if-small">delete</mat-icon>Delete</button>
+    <button class="cancel-button mr-2" mat-button type="button" (click)="cancelEdit()"><mat-icon class="not-if-small">close</mat-icon>Cancel</button>
+    <button class="save-button" mat-button type="submit" [disabled]="!editTaskForm.valid" (click)="confirmEdit()"><mat-icon class="not-if-small">save</mat-icon>Save</button>
+  </div>
 
+</form>
