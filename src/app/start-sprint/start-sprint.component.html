@@ -29,7 +29,7 @@
 	</form>
 
 	<div mat-dialog-actions>
-        <button mat-button class="menu-text-bold" (click)="onDismiss()">Cancel</button>
-        <button mat-raised-button class="menu-text-bold start-button" [disabled]="!startSprintForm.valid" (click)="onConfirm()">Start</button>
+        <button mat-button class="cancel-button" (click)="onDismiss()">Cancel</button>
+        <button mat-raised-button class="menu-text-bold save-button" [disabled]="!startSprintForm.valid" (click)="onConfirm()">Start</button>
     </div>
 </mat-card>
