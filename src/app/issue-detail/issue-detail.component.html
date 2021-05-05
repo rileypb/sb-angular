@@ -13,7 +13,11 @@
 		<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon> Estimate: <span class="base-text">{{issue.estimate}}</span></p>
 		<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon> State: <span class="base-text">{{issue.state}}</span></p>
 
-		<h6 class="menu-text">Epic</h6>
+		<h6 class="menu-text">Epic 
+			<button mat-icon-button type="button" (click)="jumpToEpic()" [matTooltip]="issue.epic ? 'Jump to Epic' : 'Jump to Epics List'">
+				<mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
+			</button>
+		</h6>
 		<mat-select class="epic-select base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
 			<mat-option [value]="-1">No Epic</mat-option>
 			<mat-option *ngFor="let epic of epics" [value]="epic.id"

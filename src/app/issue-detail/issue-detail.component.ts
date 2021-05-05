@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ViewChildren, ElementRef, Renderer2, QueryList } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { Base } from '../base';
 import { Project } from '../project';
 import { Issue } from '../issue';
@@ -16,6 +16,7 @@ import { IssuesService } from '../issues.service';
 import { EpicsService } from '../epics.service';
 import { MatSelectChange } from '@angular/material/select';
 import { timer } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class IssueDetailComponent extends Base implements OnInit {
   public epicId:number = -1;
 
   constructor(public dialog: MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService, private dataService:DataService, private issuesService:IssuesService,
-              private epicsService:EpicsService, private renderer:Renderer2) { 
+              private epicsService:EpicsService, private router:Router) { 
     super(); 
   }
 
@@ -169,6 +170,14 @@ export class IssueDetailComponent extends Base implements OnInit {
     if (event.value != -1) {
       callWithSnackBar(this.snackBar, this.epicsService.addIssue(this.epicId, this.issue),
                        ['Adding issue to epic', 'Added issue to epic', 'Error adding issue to epic']);
+    }
+  }
+
+  jumpToEpic() {
+    if (this.issue.epic) {
+      this.router.navigate(['projects', this.issue.project.id, 'epics', this.issue.epic.id]);
+    } else {
+      this.router.navigate(['projects', this.issue.project.id, 'epics']);
     }
   }
 
