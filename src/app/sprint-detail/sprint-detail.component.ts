@@ -11,7 +11,7 @@ import { SprintsService } from '../sprints.service';
 import { callWithSnackBar } from '../util';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { TeamSummaryComponent } from '../team-summary/team-summary.component';
+import { StartSprintComponent } from '../start-sprint/start-sprint.component';
 
 @Component({
   selector: 'sb-sprint-detail',
@@ -20,6 +20,7 @@ import { TeamSummaryComponent } from '../team-summary/team-summary.component';
 })
 export class SprintDetailComponent extends Base implements OnInit {
   @Output() editSprint:EventEmitter<Sprint> = new EventEmitter<Sprint>();
+  @Output() start:EventEmitter<any> = new EventEmitter<any>();
   @Input() project:Project;
   @Input() editable:boolean;
 
@@ -93,5 +94,31 @@ export class SprintDetailComponent extends Base implements OnInit {
     // });
 
     this.mode = "summary";
+  }
+
+  onStartSprint(event) {
+    let data = {
+      sprint: this.sprint,
+      reset: false
+    }
+
+    const dialogRef = this.dialog.open(StartSprintComponent, {
+      maxWidth: "600px",
+      width: '90%',
+      data: data
+    });
+
+    // listen to response
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this.start.emit(data);
+      }    
+    });
+
+    // this.start.emit(this.sprint);
+  }
+
+  suspendSprint() {
+    callWithSnackBar(this.snackBar, this.sprintsService.suspendSprint(this.sprint), ['Suspending sprint...', 'Sprint suspended', 'Error suspending sprint']);
   }
 }

@@ -1,4 +1,9 @@
-
+.state-box {
+	border: 1px solid var(--gray);
+	border-radius: 5px;
+	padding: 3px;
+	box-shadow: 2px 2px var(--light-gray);
+}
 
 .edit-button {
 	background-color: var(--primary-dark);
@@ -12,4 +17,16 @@
 
 .comments-display-box {
 	background-color: var(--background);
+}
+
+.play-icon {
+	color: var(--okay);
+	font-size: 24px;
+	text-shadow: 2px 2px var(--gray);
+}
+
+.pause-icon {
+	color: var(--warning);
+	font-size: 24px;
+	text-shadow: 2px 2px var(--gray);
 }

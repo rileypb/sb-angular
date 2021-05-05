@@ -17,7 +17,21 @@
 		</p>
 		<p class="base-text">{{sprint.description}}</p>
 		<a class="sb-link" (click)="showSummary()"><mat-icon style="position: relative; top: 4px;">people</mat-icon> <span class="menu-text team-summary-link">Team Summary</span></a>
-		<p class="menu-text mt-3"><mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>State: <span class="base-text">{{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }}</span></p>
+		<div class="menu-text mt-3 mb-3 state-box">
+			<mat-icon class="sb-icon align-baseline ml-2" fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>
+			<span class="align-baseline">State: </span> 
+			<span class="base-text align-baseline">{{ (sprint.id == project.currentSprint?.id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }}</span>
+			<span class="align-middle" *ngIf="(!sprint.completed && !project.currentSprint) && permission(sprint, 'start')">
+				<button class="small-button" [matTooltip]="sprint.started ? 'Resume Sprint' : 'Start Sprint'" (click)="onStartSprint($event)">
+					<mat-icon class="play-icon ml-2" fontSet="fas" fontIcon="fa-play-circle"></mat-icon>
+				</button>
+			</span>
+			<span class="align-middle" *ngIf="(sprint.id == project.currentSprint?.id) && permission(sprint, 'suspend')">
+				<button class="small-button" matTooltip="Pause Sprint" (click)="suspendSprint()">
+					<mat-icon class="pause-icon ml-2" fontSet="fas" fontIcon="fa-pause-circle"></mat-icon>
+				</button>
+			</span>
+		</div>
 		<div class="row">
 			<div class="col-6 menu-text"><mat-icon class="sb-icon green" fontSet="fas" fontIcon="fa-play-circle"></mat-icon>Start Date: <span class="base-text">{{ sprint.start_date | date:'shortDate' }}</span></div>
 			<div class="col-6 menu-text"><mat-icon class="sb-icon red" fontSet="fas" fontIcon="fa-stop-circle"></mat-icon>End Date: <span class="base-text">{{ sprint.end_date | date:'shortDate' }}</span></div>
