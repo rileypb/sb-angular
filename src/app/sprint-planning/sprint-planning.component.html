@@ -12,8 +12,8 @@
 						</button>
 					</div>
 					<div *ngFor="let s of sprints">
-						<div (click)="selectSprint(s)">
-							{{s.title}}
+						<div class="sprint-entry" (click)="selectSprint(s)">
+							#{{s.id}} - {{s.title}}
 						</div>
 					</div>
 				</div>

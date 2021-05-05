@@ -146,9 +146,6 @@
 }
 
 .sb-button {
-	border-width: 1px;
-	border-style: dotted;
-	border-color: var(--gray);
 }
 
 .green {

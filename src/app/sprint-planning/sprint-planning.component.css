@@ -51,3 +51,16 @@
 .arrow-button {
 	padding: 0;
 }
+
+.sprint-entry {
+	font-size: small;
+	background: var(--primary-light);
+	color: var(--on-primary-light);
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: var(--primary);
+	border-style: solid;
+	box-shadow: 2px 2px var(--primary);
+	padding: 3px;
+	padding-left: 6px;
+}
