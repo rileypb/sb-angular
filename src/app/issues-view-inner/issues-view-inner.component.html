@@ -42,7 +42,7 @@
 						<div *ngIf="issue">
 							<div *ngSwitchCase="'show'">
 								<app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="false" [issue]="issue"
-				    		    (editIssue)="mode='edit'"></app-issue-detail>
+				    		    (editIssue)="mode='edit'" [epics]="(epics$ | async)?.epics?.list"></app-issue-detail>
 						    </div>
 						</div>
 						<div *ngSwitchCase="'edit'">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ViewChildren, ElementRef, Renderer2, QueryList } from '@angular/core';
 import { Base } from '../base';
 import { Project } from '../project';
 import { Issue } from '../issue';
@@ -13,6 +13,10 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { User } from '../user';
 import { IssuesService } from '../issues.service';
+import { EpicsService } from '../epics.service';
+import { MatSelectChange } from '@angular/material/select';
+import { timer } from 'rxjs';
+
 
 @Component({
   selector: 'app-issue-detail',
@@ -22,29 +26,51 @@ import { IssuesService } from '../issues.service';
 export class IssueDetailComponent extends Base implements OnInit {
   @ViewChild('newCriterion') newCriterion:ElementRef;
 
+  @ViewChild('container') container:ElementRef;
+
   @Input() showAcceptanceCriteria:boolean;
   @Input() showCompletionCheckboxes:boolean;
   @Input() editable:boolean = true;
+
 
   @Output() editIssue:EventEmitter<Issue> = new EventEmitter<Issue>();
 
   public team:Observable<any>;
   public assignee:any;
+  public epicId:number = -1;
 
-  constructor(public dialog: MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService, private dataService:DataService, private issuesService:IssuesService) { 
+  constructor(public dialog: MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService, private dataService:DataService, private issuesService:IssuesService,
+              private epicsService:EpicsService, private renderer:Renderer2) { 
     super(); 
   }
 
 
   ngOnInit(): void {
-    //this.dataService.load(`projects/${this.issue.project.id}/team`, []);
-    //this.team = this.dataService.values[`projects/${this.issue.project.id}/team`];
   }
   
   updateTeam() {
     this.dataService.load(`projects/${this.issue.project.id}/team`, []);
     this.team = this.dataService.values[`projects/${this.issue.project.id}/team`];
   }
+
+  ngAfterViewInit() {
+    this.updateSelectorStyle();
+  }
+
+  private updateSelectorStyle() {
+    if (this.issue) {
+      this.container.nativeElement.style.setProperty('--mat-select-value-text-color', this.fontColor(this.issue.epic?.color));
+    }
+  }
+
+  @Input() set epics(value:any) {
+    this._epics = value;
+    this.updateSelectorStyle();
+  }
+  get epics():any {
+    return this._epics;
+  }
+  private _epics:any;
 
 
   ngOnDestroy() {
@@ -53,12 +79,13 @@ export class IssueDetailComponent extends Base implements OnInit {
 
   @Input() set issue(value:Issue) {
     this._issue = value;
-    this.assignee = this.issue.assignee || "-1";
+    this.epicId = value.epic?.id || -1;
     if (value != null) {
       this.updateTeam();
     } else {
       this.team = null;
     }
+    this.updateSelectorStyle();
   }
   get issue():Issue {
     return this._issue;
@@ -132,6 +159,17 @@ export class IssueDetailComponent extends Base implements OnInit {
   private create(task) {
     callWithSnackBar(this.snackBar, this.tasksService.createTask(task),
                      ['Creating task...', 'Created task', 'Error creating task']);
+  }
+
+  onChangeSelection(event:MatSelectChange) {
+    if (event.value == -1) {
+      callWithSnackBar(this.snackBar, this.epicsService.removeIssue(this.issue.epic, this.issue),
+                       ['Removing issue from epic', 'Removed issue from epic', 'Error removing issue from epic']);
+    }
+    if (event.value != -1) {
+      callWithSnackBar(this.snackBar, this.epicsService.addIssue(this.epicId, this.issue),
+                       ['Adding issue to epic', 'Added issue to epic', 'Error adding issue to epic']);
+    }
   }
 
 }

@@ -182,7 +182,7 @@
 }
 
 .mat-select-value-text {
-	color: var(--on-background);
+	color: var(--mat-select-value-text-color);
 }
 
 .mat-select-arrow {

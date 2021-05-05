@@ -68,7 +68,7 @@ export class EpicDetailComponent extends Base implements OnInit {
     this.epic.issues.push(value);
     value.epic = this.epic;
     let toSave = { id: value.id, epic_id: this.epic.id};
-    callWithSnackBar(this.snackBar, this.epicsService.addIssue(this.epic, value), ['Adding Issue...', 'Issue Added', 'Error Adding Issue']);
+    callWithSnackBar(this.snackBar, this.epicsService.addIssue(this.epic.id, value), ['Adding Issue...', 'Issue Added', 'Error Adding Issue']);
     this.issueInput.nativeElement.value = "";
   }
 

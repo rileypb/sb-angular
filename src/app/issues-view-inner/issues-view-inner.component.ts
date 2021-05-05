@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChildren, QueryList } from '@angular/core
 import { Project } from '../project';
 import { Base } from '../base';
 import { Issue } from '../issue';
+import { Epic } from '../epic';
 import { Router } from '@angular/router';
 import { IssuesService } from '../issues.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,6 +10,8 @@ import { callWithSnackBar } from '../util';
 import { IssueFormComponent } from '../issue-form/issue-form.component';
 import { first } from 'rxjs/operators';
 import { ProjectService } from '../project.service';
+import { DataService } from '../data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sb-issues-view-inner',
@@ -18,18 +21,53 @@ import { ProjectService } from '../project.service';
 export class IssuesViewInnerComponent extends Base implements OnInit {
   @ViewChildren("createIssue") createIssueComponent:QueryList<IssueFormComponent>;
 
-  @Input() project:Project;
   @Input() issues:any;
+
+  epics$:Observable<Epic>;
 
   public mode:String = "show";
   
   constructor(private router:Router, private issuesService:IssuesService, 
-  	          private snackBar:MatSnackBar, private projectService:ProjectService) { 
+  	          private snackBar:MatSnackBar, private projectService:ProjectService, private dataService:DataService) { 
   	super();
   }
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy() {
+    this.unloadEpics(this.project);
+  }
+
+  loadEpics() {
+    if (!this.project) {
+      return;
+    }
+    this.dataService.load(`projects/${this.project.id}/epics`,[`projects/${this.project.id}/epics`, `projects/${this.project.id}/epics/*`]);
+    this.epics$ = this.dataService.values[`projects/${this.project.id}/epics`];
+  }
+
+  unloadEpics(p:Project) {
+    if (!p) {
+      return;
+    }
+    this.dataService.unload(`projects/${p.id}/epics`,[`projects/${p.id}/epics`, `projects/${p.id}/epics/*`]);
+  }
+
+  @Input() set project(value:Project) {
+    console.log("stop here");
+    if (this._project) {
+      this.unloadEpics(this._project);
+    }
+    this._project = value;
+    if (this._project) {
+      this.loadEpics()
+    }
+  }
+  get project():Project {
+    return this._project;
+  }
+  private _project:Project;
 
   @Input() set issue(value:Issue) {
   	this._issue = value;
