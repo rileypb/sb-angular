@@ -3,6 +3,7 @@ import { Project } from '../project';
 import { Base } from '../base';
 import { Issue } from '../issue';
 import { Epic } from '../epic';
+import { Sprint } from '../sprint';
 import { Router } from '@angular/router';
 import { IssuesService } from '../issues.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -24,6 +25,7 @@ export class IssuesViewInnerComponent extends Base implements OnInit {
   @Input() issues:any;
 
   epics$:Observable<Epic>;
+  sprints$:Observable<Sprint>;
 
   public mode:String = "show";
   
@@ -45,6 +47,8 @@ export class IssuesViewInnerComponent extends Base implements OnInit {
     }
     this.dataService.load(`projects/${this.project.id}/epics`,[`projects/${this.project.id}/epics`, `projects/${this.project.id}/epics/*`]);
     this.epics$ = this.dataService.values[`projects/${this.project.id}/epics`];
+    this.dataService.load(`projects/${this.project.id}/sprints?current=true`,[`projects/${this.project.id}/sprints`, `projects/${this.project.id}/sprints/*`]);
+    this.sprints$ = this.dataService.values[`projects/${this.project.id}/sprints?current=true`];
   }
 
   unloadEpics(p:Project) {

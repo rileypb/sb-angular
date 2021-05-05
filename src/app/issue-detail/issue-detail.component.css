@@ -60,7 +60,14 @@
 }
 
 
-.epic-select {
+.epic-selector {
+	padding: 5px;
+	border-radius: 5px;
+	border: 2px solid black;
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.sprint-selector {
 	padding: 5px;
 	border-radius: 5px;
 	border: 2px solid black;

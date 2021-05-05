@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 import { User } from '../user';
 import { IssuesService } from '../issues.service';
 import { EpicsService } from '../epics.service';
+import { SprintsService } from '../sprints.service';
 import { MatSelectChange } from '@angular/material/select';
 import { timer } from 'rxjs';
 import { Router } from '@angular/router';
@@ -32,16 +33,17 @@ export class IssueDetailComponent extends Base implements OnInit {
   @Input() showAcceptanceCriteria:boolean;
   @Input() showCompletionCheckboxes:boolean;
   @Input() editable:boolean = true;
-
+  @Input() sprints:any;
 
   @Output() editIssue:EventEmitter<Issue> = new EventEmitter<Issue>();
 
   public team:Observable<any>;
   public assignee:any;
   public epicId:number = -1;
+  public sprintId:number = -1;
 
   constructor(public dialog: MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService, private dataService:DataService, private issuesService:IssuesService,
-              private epicsService:EpicsService, private router:Router) { 
+              private epicsService:EpicsService, private router:Router, private sprintsService:SprintsService) { 
     super(); 
   }
 
@@ -66,7 +68,6 @@ export class IssueDetailComponent extends Base implements OnInit {
 
   @Input() set epics(value:any) {
     this._epics = value;
-    this.updateSelectorStyle();
   }
   get epics():any {
     return this._epics;
@@ -81,6 +82,7 @@ export class IssueDetailComponent extends Base implements OnInit {
   @Input() set issue(value:Issue) {
     this._issue = value;
     this.epicId = value.epic?.id || -1;
+    this.sprintId = value.sprint?.id || -1;
     if (value != null) {
       this.updateTeam();
     } else {
@@ -179,11 +181,30 @@ export class IssueDetailComponent extends Base implements OnInit {
     }
   }
 
+  onChangeSprintSelection(event:MatSelectChange) {
+    if (event.value == -1) {
+      callWithSnackBar(this.snackBar, this.sprintsService.removeIssue(this.issue.sprint, this.issue),
+                       ['Removing issue from sprint', 'Removed issue from sprint', 'Error removing issue from sprint']);
+    }
+    if (event.value != -1) {
+      callWithSnackBar(this.snackBar, this.sprintsService.addIssue(this.sprintId, this.issue),
+                       ['Adding issue to sprint', 'Added issue to sprint', 'Error adding issue to sprint']);
+    }
+  }
+
   jumpToEpic() {
     if (this.issue.epic) {
       this.router.navigate(['projects', this.issue.project.id, 'epics', this.issue.epic.id]);
     } else {
       this.router.navigate(['projects', this.issue.project.id, 'epics']);
+    }
+  }
+
+  jumpToSprint() {
+    if (this.issue.sprint) {
+      this.router.navigate(['projects', this.issue.project.id, 'planning', this.issue.sprint.id]);
+    } else {
+      this.router.navigate(['projects', this.issue.project.id, 'planning']);
     }
   }
 

@@ -27,6 +27,10 @@ export class SprintsService {
     return this.api.patch(`api/sprints/${sprint.id}/reorder_issues`, { data: { fromIndex: fromIndex, toIndex: toIndex }})
   }
 
+  addIssue(sprintId:number, issue:Issue):Observable<any> {
+    return this.api.patch(`api/sprints/${sprintId}/add_issue`, { issue: { issue_id: issue.id }})
+  }
+
   removeIssue(sprint:Sprint, issue:Issue):Observable<any> {
     return this.api.patch(`api/sprints/${sprint.id}/remove_issue`, { issue: { id: issue.id }})
   }

@@ -18,11 +18,23 @@
 				<mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
 			</button>
 		</h6>
-		<mat-select class="epic-select base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
+		<mat-select class="epic-selector mat-color-font base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
 			<mat-option [value]="-1">No Epic</mat-option>
 			<mat-option *ngFor="let epic of epics" [value]="epic.id"
 					[ngStyle]="{'background-color': (epic.color ? epic.color : '#FFFFFF'), 'color': fontColor(epic.color)}">
 				{{epic.title}}
+			</mat-option>
+		</mat-select>
+
+		<h6 class="menu-text mt-2">Sprint 
+			<button mat-icon-button type="button" (click)="jumpToSprint()" [matTooltip]="issue.sprint ? 'Jump to Sprint' : 'Jump to Sprints List'">
+				<mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
+			</button>
+		</h6>
+		<mat-select class="sprint-selector base-text" [(value)]="sprintId" (selectionChange)="onChangeSprintSelection($event)">
+			<mat-option [value]="-1">No Sprint</mat-option>
+			<mat-option *ngFor="let sprint of sprints" [value]="sprint.id">
+				{{sprint.title}}
 			</mat-option>
 		</mat-select>
 

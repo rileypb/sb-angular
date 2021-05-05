@@ -199,7 +199,7 @@
 	font-family: var(--user-font) !important;
 }
 
-.mat-select-value-text {
+.mat-color-font .mat-select-value-text {
 	color: var(--mat-select-value-text-color);
 }
 
