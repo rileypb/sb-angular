@@ -1,17 +1,4 @@
-.sprint-number {
-	font-size: x-small;
-	vertical-align: middle;
-}
 
-.sprint-title {
-	font-size: x-large;
-	vertical-align: middle;
-}
-
-.sprint-banner {
-	color: var(--primary-dark);
-	background-color: var(--on-primary-dark);
-}
 
 .edit-button {
 	background-color: var(--primary-dark);

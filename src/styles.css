@@ -37,6 +37,27 @@
 	color: var(--primary);
 }
 
+.small-button {
+	padding: 0;
+	border: 0;
+	background-color: var(--background);
+}
+
+.sprint-banner {
+	color: var(--primary-dark);
+	background-color: var(--on-primary-dark);
+}
+
+.sprint-number {
+	font-size: x-small;
+	vertical-align: middle;
+}
+
+.sprint-title {
+	font-size: x-large;
+	vertical-align: middle;
+}
+
 .user-picture {
 	border-radius: 5px;
 	height: 2rem;

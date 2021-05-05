@@ -16,7 +16,8 @@
 			<span class="base-text align-baseline">{{sprint.goal}}</span>
 		</p>
 		<p class="base-text">{{sprint.description}}</p>
-		<p class="menu-text"><mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>State: <span class="base-text">{{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }}</span></p>
+		<a class="sb-link" (click)="showSummary()"><mat-icon style="position: relative; top: 4px;">people</mat-icon> <span class="menu-text team-summary-link">Team Summary</span></a>
+		<p class="menu-text mt-3"><mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>State: <span class="base-text">{{ (sprint.id == sprint.project.current_sprint_id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }}</span></p>
 		<div class="row">
 			<div class="col-6 menu-text"><mat-icon class="sb-icon green" fontSet="fas" fontIcon="fa-play-circle"></mat-icon>Start Date: <span class="base-text">{{ sprint.start_date | date:'shortDate' }}</span></div>
 			<div class="col-6 menu-text"><mat-icon class="sb-icon red" fontSet="fas" fontIcon="fa-stop-circle"></mat-icon>End Date: <span class="base-text">{{ sprint.end_date | date:'shortDate' }}</span></div>
@@ -44,7 +45,10 @@
 		</div>
 	</div>
 
-    <div *ngIf="mode=='select'">
+    <div *ngIf="mode == 'select'">
 		<sb-issue-selection [sprint]="sprint" [issues]="(projectIssues | async)?.issues?.list" (close)="mode = 'show'"></sb-issue-selection>
+	</div>
+	<div *ngIf="mode == 'summary'">
+		<sb-team-summary [editable]="true" [project]="project" [sprint]="sprint" (close)="mode = 'show'"></sb-team-summary>
 	</div>
 </div>

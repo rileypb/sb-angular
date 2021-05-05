@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Sprint } from '../sprint';
 import { Issue } from '../issue';
+import { Project } from '../project';
 import { Base } from '../base';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
@@ -9,6 +10,8 @@ import { IssuesService } from '../issues.service';
 import { SprintsService } from '../sprints.service'; 
 import { callWithSnackBar } from '../util';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { TeamSummaryComponent } from '../team-summary/team-summary.component';
 
 @Component({
   selector: 'sb-sprint-detail',
@@ -17,12 +20,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SprintDetailComponent extends Base implements OnInit {
   @Output() editSprint:EventEmitter<Sprint> = new EventEmitter<Sprint>();
+  @Input() project:Project;
+  @Input() editable:boolean;
 
   public mode:string = "show";
   sprintIssues:Observable<any>;
   projectIssues:Observable<any>;
 
-  constructor(private dataService:DataService, private router:Router, private issuesService:IssuesService, private snackBar:MatSnackBar, private sprintsService:SprintsService) { 
+  constructor(private dataService:DataService, public dialog:MatDialog, private router:Router, private issuesService:IssuesService, private snackBar:MatSnackBar, private sprintsService:SprintsService) { 
   	super();
   }
 
@@ -68,5 +73,25 @@ export class SprintDetailComponent extends Base implements OnInit {
 
   onEditSprint() {
     this.editSprint.emit(this.sprint);
+  }
+
+  showSummary() {
+    // let data = {
+    //   sprint: this.sprint,
+    //   project: this.project,
+    //   editable: this.editable
+    // }
+
+    // const dialogRef = this.dialog.open(TeamSummaryComponent, {
+    //   width: "90%",
+    //   maxWidth: "800px",
+    //   data: data
+    // });
+
+    // // listen to response
+    // dialogRef.afterClosed().subscribe(dialogResult => {
+    // });
+
+    this.mode = "summary";
   }
 }

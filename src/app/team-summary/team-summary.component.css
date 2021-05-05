@@ -9,3 +9,27 @@
 .work-estimate {
 	font-weight: bolder;
 }
+
+.unassigned-work-title {
+	font-weight: bolder;
+}
+
+.unassigned-work-card {
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--gray);
+	border-radius: 3px;
+
+	padding: 2px;
+}
+
+.done-button {
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: var(--light-gray);
+	border-style: solid;
+	box-shadow: 2px 2px var(--light-gray);
+	margin-top: 3px;
+}

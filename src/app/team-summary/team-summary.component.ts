@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '../project';
 import { Sprint } from '../sprint';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,35 +9,46 @@ import { TasksService } from '../tasks.service';
 import { User } from '../user';
 import { Base } from '../base';
 
-export interface DialogData {
-	sprint:Sprint;
-	project:Project;
-  editable:boolean;
-}
-
 @Component({
   selector: 'sb-team-summary',
   templateUrl: './team-summary.component.html',
   styleUrls: ['./team-summary.component.css']
 })
 export class TeamSummaryComponent extends Base implements OnInit {
-  sprint:Sprint;
-  project:Project;
-  editable:boolean;  
+  @Input() project:Project;
+  @Input() editable:boolean;  
+
+  @Output() close:EventEmitter<any> = new EventEmitter<any>();
 
   teamSummary:Observable<any>;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, private dataService:DataService, public dialog:MatDialog, private snackBar:MatSnackBar, private tasksService:TasksService) {
+  constructor(private dataService:DataService, private snackBar:MatSnackBar, private tasksService:TasksService) {
   	super();
-    this.project = data.project;
-  	this.sprint = data.sprint;
-    this.editable = data.editable;
   }
 
   ngOnInit(): void {
-  	this.dataService.load(`sprints/${this.sprint.id}/team_summary`, [`sprints/${this.sprint.id}/team_summary`]);
-  	this.teamSummary = this.dataService.values[`sprints/${this.sprint.id}/team_summary`];
   }
+
+  private loadSummary():void {
+    this.dataService.load(`sprints/${this.sprint.id}/team_summary`, [`sprints/${this.sprint.id}/team_summary`]);
+    this.teamSummary = this.dataService.values[`sprints/${this.sprint.id}/team_summary`];
+  }
+
+  private unloadSummary():void {
+    this.dataService.unload(`sprints/${this.sprint.id}/team_summary`, [`sprints/${this.sprint.id}/team_summary`]);
+  }
+
+  @Input() set sprint(value:Sprint) {
+    if (this._sprint) {
+      this.unloadSummary();
+    }
+    this._sprint = value;
+    this.loadSummary();
+  }
+  get sprint():Sprint {
+    return this._sprint;
+  }
+  private _sprint:Sprint;
 
   ngOnDestroy() {
   	// we do a fast unload because we want fresh data every time we load the dialog.
@@ -53,6 +63,10 @@ export class TeamSummaryComponent extends Base implements OnInit {
   assignTask(task, user) {
 		callWithSnackBar(this.snackBar, this.tasksService.assignTask(task.id, user.id),
 			["Assigning task...", "Assigned task", "Error assigning task"]);
+  }
+
+  okay() {
+    this.close.emit();
   }
 
 }

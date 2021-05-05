@@ -43,7 +43,7 @@
 					<mat-card-content [ngSwitch]="mode">
 						<div *ngIf="sprint">
 							<div *ngSwitchCase="'show'">
-								<sb-sprint-detail [sprint]="sprint" [showEditButton]="permission(sprint, 'update')" (editSprint)="mode = 'edit'" (reorder)="onReorderIssues($event)"></sb-sprint-detail>
+								<sb-sprint-detail [sprint]="sprint" [project]="project" [editable]="true" [showEditButton]="permission(sprint, 'update')" (editSprint)="mode = 'edit'" (reorder)="onReorderIssues($event)"></sb-sprint-detail>
 						    </div>
 						</div>
 						<div *ngSwitchCase="'edit'">

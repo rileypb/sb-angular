@@ -1,34 +1,39 @@
-<ng-template #progressSpinner><mat-spinner style="min-height: 32px;" diameter="32"></mat-spinner></ng-template>
+<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<div style="border: solid 1px #CCC;">
-	<mat-dialog-content style="margin: 8px;">
+<div>
+		<div class="banner-text p-2 col-10 sprint-banner">
+			<span class="sprint-number">#{{sprint.id}} </span><span class="sprint-title">{{sprint.title}}</span>
+		</div>	
+		<div class="col-12 text-right p-0">
+			<button mat-button class="done-button icon-button" (click)="okay()">Done</button>
+		</div>
 		<div *ngIf="project && project.team && (teamSummary | async); else progressSpinner">
-			<mat-card class="user-summary-card" *ngFor="let user of (teamSummary | async).team.members">
+			<div class="user-summary-card mb-3" *ngFor="let user of (teamSummary | async).team.members">
 				<div><img *ngIf="user.picture" class="user-picture" [src]="user.picture"> {{ user.displayName || (user.first_name + " " + user.last_name) }} </div>
 				<div class="work-estimate">Total estimated work: {{user.work.work}} hours</div>
 				<div *ngIf="user.work.assigned_issues.length > 0">
 					<div>Assigned Work:</div>
 					<ul>
-						<li class="user-summary-card" *ngFor="let issue of user.work.assigned_issues">Issue #{{issue.id}} - {{issue.title}}
+						<li *ngFor="let issue of user.work.assigned_issues">Issue #{{issue.id}} - {{issue.title}}
 							<ul class="row" *ngFor="let task of issue.assigned_tasks">
 								<li>
-									Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours
-									<button *ngIf="editable && permission(task, 'update')" mat-icon-button color="primary" (click)="unassignTask(task)">
-										<mat-icon fontSet="fas" fontIcon="fa-times-circle" matTooltip="Unassign"></mat-icon>
+									<button *ngIf="editable && permission(task, 'update')" class="sb-button small-button" (click)="unassignTask(task)">
+										<mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-times-circle" matTooltip="Unassign"></mat-icon>
 									</button>
+									Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours
 								</li>
 							</ul>
 						</li>
 					</ul>
 				</div>
-			</mat-card>
-			<mat-card class="user-summary-card" *ngIf="(teamSummary | async).team.unassignedWork.unassigned_issues.length > 0">
-				Unassigned Work:
+			</div>
+			<div class="unassigned-work-card" *ngIf="(teamSummary | async).team.unassignedWork.unassigned_issues.length > 0">
+				<span class="unassigned-work-title">Unassigned Work:</span>
 				<ul>
 					<li *ngFor="let issue of (teamSummary | async).team.unassignedWork.unassigned_issues">
 						Issue #{{issue.id}} - {{issue.title}}
 						<ul>
-							<li *ngFor="let task of issue.unassigned_tasks" class="row">
+							<li *ngFor="let task of issue.unassigned_tasks">
 								<span class="col-4">Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours</span>
 								<sb-user-selector *ngIf="editable && permission(task, 'update')" class="col-8" [team]="(teamSummary | async)?.team.members" [assignee]="task.assignee" (userSelected)="assignTask(task, $event)"></sb-user-selector> 
 								<!-- <button mat-icon-button color="primary" (click)="assign_task(task)">
@@ -38,7 +43,6 @@
 						</ul>
 					</li>
 				</ul>
-			</mat-card>
+			</div>
 		</div>
-	</mat-dialog-content>
 </div>
