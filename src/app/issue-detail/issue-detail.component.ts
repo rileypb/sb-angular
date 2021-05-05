@@ -98,6 +98,9 @@ export class IssueDetailComponent extends Base implements OnInit {
   }
 
   adaptiveFontColor(color) {
+    if (!color) {
+      return 'var(--on-background)';
+    }
     let fc = Color.fontColor(color);
     if (fc == '#FFFFFF') {
       return color;
@@ -106,6 +109,9 @@ export class IssueDetailComponent extends Base implements OnInit {
   }
 
   adaptiveBackgroundColor(color) {
+    if (!color) {
+      return 'var(--background)';
+    }
     let fc = Color.fontColor(color);
     if (fc == '#FFFFFF') {
       return fc;

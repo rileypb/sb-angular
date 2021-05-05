@@ -22,3 +22,7 @@
 	border-style: solid;
 	box-shadow: 2px 2px var(--light-gray);
 }
+
+.comments-display-box {
+	background-color: var(--background);
+}
