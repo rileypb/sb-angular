@@ -58,7 +58,7 @@ export class IssueDetailComponent extends Base implements OnInit {
   }
 
   private updateSelectorStyle() {
-    if (this.issue) {
+    if (this.issue && this.container) {
       this.container.nativeElement.style.setProperty('--mat-select-value-text-color', this.fontColor(this.issue.epic?.color));
     }
   }
