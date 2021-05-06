@@ -45,7 +45,7 @@ export class EpicsService {
     return this.api.patch(`api/epics/${epic.id}/reorder_issues`, { data: { fromIndex: fromIndex, toIndex: toIndex }})
   }
 
-  addIssue(epic:Epic, issue:Issue, index:number = -1) {
-    return this.api.patch(`api/epics/${epic.id}/add_issue`, { data: { issue_id: issue.id, index: index } });
+  addIssue(epicId:number, issue:Issue, index:number = -1) {
+    return this.api.patch(`api/epics/${epicId}/add_issue`, { data: { issue_id: issue.id, index: index } });
   }
 }

@@ -1,46 +1,104 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
 <app-project-frame *ngIf="project; else progressSpinner" [project]="project">
-			<div class="row" cdkDropListGroup>
-				<div class="col-md-6">
-					<mat-card class="inner-detail-card">
-						<div style="height:100%;">
-					  		<h6 class="banner-text">Open and Pending Sprints
-			 			    <button *ngIf="permission(project, 'create-sprint')" mat-icon-button matTooltip="New Sprint" (click)="newSprint()"><mat-icon class="sb-icon">add_circle</mat-icon></button></h6>
-		 			    	<sb-sprint-list [project]="project" [currentOnly]="true" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="!project.currentSprint" (start)="onStart($event)" [editable]="true" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
-							<!-- <app-sprints style="height:100%; display: flex; flex-direction: column;" [project]="project"></app-sprints> -->
+	<div *ngIf="sprints; else progressSpinner">
+		<div class="row">
+			<div class="col-md-6" [ngClass]="{ 'large-only' : sprint || mode=='edit' || mode=='create'}">
+				<div class="inner-detail-card">
+					<div class="col-12 text-right p-0">
+						<button mat-button class="add-button icon-button" (click)="createSprint()">
+							<mat-icon class="mr-1 sb-icon">add_circle</mat-icon>
+							New
+						</button>
+					</div>
+					<div *ngFor="let s of sprints">
+						<div class="banner-text sprint-entry" (click)="selectSprint(s)">
+							#{{s.id}} - {{s.title}}
 						</div>
-					</mat-card>
-				</div>
-				<div class="col-md-6">
-					<mat-card class="inner-detail-card">
-						<a class="product-backlog-link menu-text" *ngIf="mode == 'viewIssue'" (click)="mode = 'backlog'">Show Product Backlog</a>
-						<mat-card-title [ngSwitch]="mode">
-							<div class="banner-text" *ngSwitchCase="'backlog'">
-								<mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-list-alt"></mat-icon>
-								Product Backlog
-							</div>
-							<div class="banner-text" *ngSwitchCase="'edit'">
-								<mat-icon class="mr-1 sb-icon">edit</mat-icon>
-								Edit Sprint
-							</div>
-							<div class="banner-text" *ngSwitchCase="'create'">
-								<mat-icon class="mr-1 sb-icon">add_circle</mat-icon>
-								Create Sprint
-							</div>
-							<div class="banner-text" *ngSwitchCase="'viewIssue'">
-								<mat-icon class="mr-1 sb-icon" fontSet="fas" fontIcon="fa-eye"></mat-icon>
-								View Issue
-							</div>
-						</mat-card-title>
-
-						<mat-card-content [ngSwitch]="mode">
-							<sb-project-issue-list *ngSwitchCase="'backlog'" [project]="project" (transfer)="onTransfer($event)" [fixed]="!permission(project, 'update')"></sb-project-issue-list>
-							<sb-sprint-form *ngSwitchCase="'edit'" [sprint]="sprintUnderEdit" mode="edit" (confirm)="onConfirmEdit($event)" (cancel)="mode='backlog'" (delete)="onDeleteSprint($event)"></sb-sprint-form>
-							<sb-sprint-form *ngSwitchCase="'create'" mode="create" (confirm)="onConfirmCreate($event)" (cancel)="mode='backlog'"></sb-sprint-form>
-							<sb-issue-loader *ngSwitchCase="'viewIssue'" [issueId]="selectedIssue?.id"><app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="false" #issueView></app-issue-detail></sb-issue-loader>
-						</mat-card-content>
-					</mat-card>
+					</div>
 				</div>
 			</div>
+
+			<div *ngIf="sprint" class="sprint-div arrow-div col-12 small-only">
+				<button mat-icon-button class="arrow-button" (click)="clearDetail()">
+					<mat-icon class="sb-icon align-middle">arrow_back</mat-icon>
+				</button>
+				Sprint List
+			</div>
+
+			<div class="col-md-6">
+				<div class="inner-detail-card">
+					<mat-card-title [ngSwitch]="mode">
+						<div *ngSwitchCase="'show'">
+						</div>
+						<div *ngSwitchCase="'edit'" class="banner-text pt-4">
+							<mat-icon class="mr-1 sb-icon">edit</mat-icon>
+							Edit Sprint
+						</div>
+						<div *ngSwitchCase="'create'" class="banner-text pt-4">
+							<mat-icon class="mr-1 sb-icon">add_circle</mat-icon>
+							Create Sprint
+						</div>
+					</mat-card-title>
+					<mat-card-content [ngSwitch]="mode">
+						<div *ngIf="sprint">
+							<div *ngSwitchCase="'show'">
+								<sb-sprint-detail [sprint]="sprint" [project]="project" [editable]="true" [showEditButton]="permission(sprint, 'update')" (editSprint)="mode = 'edit'" (reorder)="onReorderIssues($event)" (start)="onStart($event)"></sb-sprint-detail>
+						    </div>
+						</div>
+						<div *ngSwitchCase="'edit'">
+							<sb-sprint-form mode="edit" *ngSwitchCase="'edit'" (confirm)="onConfirmEdit($event)" (cancel)="cancelEdit()" (delete)="delete($event)" [sprint]="sprint"></sb-sprint-form>
+						</div>
+						<div *ngSwitchCase="'create'">
+							<sb-sprint-form mode="create" #createEpic (confirm)="saveNewSprint($event)" (cancel)="cancelEdit()"></sb-sprint-form>
+						</div>
+					</mat-card-content>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+<!-- 	<div class="row" cdkDropListGroup>
+		<div class="col-md-6">
+			<mat-card class="inner-detail-card">
+				<div style="height:100%;">
+			  		<h6 class="banner-text">Open and Pending Sprints
+	 			    <button *ngIf="permission(project, 'create-sprint')" mat-icon-button matTooltip="New Sprint" (click)="newSprint()"><mat-icon class="sb-icon">add_circle</mat-icon></button></h6>
+ 			    	<sb-sprint-list [project]="project" [currentOnly]="true" (transfer)="onTransfer($event)" (selected)="onSprintSelected($event)" [showStartButton]="!project.currentSprint" (start)="onStart($event)" [editable]="true" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
+				</div>
+			</mat-card>
+		</div>
+		<div class="col-md-6">
+			<mat-card class="inner-detail-card">
+				<a class="product-backlog-link menu-text" *ngIf="mode == 'viewIssue'" (click)="mode = 'backlog'">Show Product Backlog</a>
+				<mat-card-title [ngSwitch]="mode">
+					<div class="banner-text" *ngSwitchCase="'backlog'">
+						<mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-list-alt"></mat-icon>
+						Product Backlog
+					</div>
+					<div class="banner-text" *ngSwitchCase="'edit'">
+						<mat-icon class="mr-1 sb-icon">edit</mat-icon>
+						Edit Sprint
+					</div>
+					<div class="banner-text" *ngSwitchCase="'create'">
+						<mat-icon class="mr-1 sb-icon">add_circle</mat-icon>
+						Create Sprint
+					</div>
+					<div class="banner-text" *ngSwitchCase="'viewIssue'">
+						<mat-icon class="mr-1 sb-icon" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+						View Issue
+					</div>
+				</mat-card-title>
+
+				<mat-card-content [ngSwitch]="mode">
+					<sb-project-issue-list *ngSwitchCase="'backlog'" [project]="project" (transfer)="onTransfer($event)" [fixed]="!permission(project, 'update')"></sb-project-issue-list>
+					<sb-sprint-form *ngSwitchCase="'edit'" [sprint]="sprintUnderEdit" mode="edit" (confirm)="onConfirmEdit($event)" (cancel)="mode='backlog'" (delete)="onDeleteSprint($event)"></sb-sprint-form>
+					<sb-sprint-form *ngSwitchCase="'create'" mode="create" (confirm)="onConfirmCreate($event)" (cancel)="mode='backlog'"></sb-sprint-form>
+					<sb-issue-loader *ngSwitchCase="'viewIssue'" [issueId]="selectedIssue?.id"><app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="false" #issueView></app-issue-detail></sb-issue-loader>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div> -->
 </app-project-frame>

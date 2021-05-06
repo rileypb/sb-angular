@@ -9,6 +9,7 @@ import { callWithSnackBar } from '../util';
 import { DataService } from '../data.service';
 import { SprintsService } from '../sprints.service';
 import { Issue } from '../issue';
+import { Router } from '@angular/router';
 
 function isSprint(obj: Project | Sprint): obj is Sprint {
 	return 'title' in obj;
@@ -22,13 +23,15 @@ function isSprint(obj: Project | Sprint): obj is Sprint {
 export class SprintPlanningComponent extends Base implements OnInit {
 
   @Input() project:Project;
+  @Input() sprints:any;
 
-  mode:String = "backlog";
+  mode:String = "show";
   selectedIssue:Issue;
 
   private sprintUnderEdit:Sprint = null;
 
-  constructor(private issuesService:IssuesService, private snackBar:MatSnackBar, private dataService:DataService, private sprintsService:SprintsService) {
+  constructor(private issuesService:IssuesService, private snackBar:MatSnackBar, private dataService:DataService, 
+              private sprintsService:SprintsService, private router:Router) {
     super(); 
   }
 
@@ -70,22 +73,23 @@ export class SprintPlanningComponent extends Base implements OnInit {
   }
 
   onConfirmEdit(sprint:Sprint) {
-    this.mode = 'backlog';
+    this.mode = 'show';
     callWithSnackBar(this.snackBar, this.sprintsService.save(sprint),
                      ['Saving sprint...', 'Sprint saved', 'Error saving sprint']);
   }
 
   onConfirmCreate(sprint:Sprint) {
-    this.mode = 'backlog';
+    this.mode = 'show';
     sprint.project = this.project;
     callWithSnackBar(this.snackBar, this.sprintsService.createSprint(sprint),
                      ['Creating sprint...', 'Sprint created', 'Error creating sprint']);
   }
 
-  onDeleteSprint(sprint:Sprint) {
-    this.mode = 'backlog';
+  delete(sprint:Sprint) {
+    this.mode = 'show';
     callWithSnackBar(this.snackBar, this.sprintsService.deleteSprint(sprint),
                      ['Deleting sprint...', 'Sprint deleted', 'Error deleting sprint']);
+    this.clearDetail();
   }
 
   onStart(sprint:Sprint) {
@@ -98,5 +102,30 @@ export class SprintPlanningComponent extends Base implements OnInit {
       this.mode = 'viewIssue';
       this.selectedIssue = issue;
     }
+  }
+
+  selectSprint(sprint:Sprint) {
+    if (this.mode == 'show') {
+      this.router.navigate(['projects',this.project.id,'planning',sprint.id]);
+    }
+  }
+
+  clearDetail() {
+    this.router.navigate(['projects', this.project.id, 'planning']);
+  }
+
+  createSprint() {
+    this.mode = "create";
+  }
+
+  saveNewSprint(sprint:Sprint) {
+    sprint.project = this.project;
+    callWithSnackBar(this.snackBar, this.sprintsService.createSprint(sprint),
+                     ['Creating sprint...', 'Sprint created', 'Error creating sprint']);
+    this.mode = "show";
+  }
+
+  cancelEdit() {
+    this.mode = "show";
   }
 }

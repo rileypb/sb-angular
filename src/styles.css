@@ -37,6 +37,27 @@
 	color: var(--primary);
 }
 
+.small-button {
+	padding: 0;
+	border: 0;
+	background-color: var(--background);
+}
+
+.sprint-banner {
+	color: var(--primary-dark);
+	background-color: var(--on-primary-dark);
+}
+
+.sprint-number {
+	font-size: x-small;
+	vertical-align: middle;
+}
+
+.sprint-title {
+	font-size: x-large;
+	vertical-align: middle;
+}
+
 .user-picture {
 	border-radius: 5px;
 	height: 2rem;
@@ -110,6 +131,52 @@
 	font-family: var(--menu-font);
 }
 
+.icon-button-large {
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.save-button {
+	font-family: var(--menu-font);
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.cancel-button {
+	font-family: var(--menu-font);
+	background-color: var(--on-primary-dark);
+	color: var(--primary-dark);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.delete-button {
+	font-family: var(--menu-font);
+	background-color: var(--on-error);
+	color: var(--error);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.comment-button {
+	font-family: var(--menu-font);
+
+	background-color: var(--primary-dark);
+	color: var(--on-primary-dark);
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.sb-button {
+}
+
+.green {
+	color: var(--okay);
+}
+
+.red {
+	color: var(--error);
+}
+
 
 .mat-form-field-label {
 	font-family: var(--menu-font) !important;
@@ -132,8 +199,8 @@
 	font-family: var(--user-font) !important;
 }
 
-.mat-select-value-text {
-	color: var(--on-background);
+.mat-color-font .mat-select-value-text {
+	color: var(--mat-select-value-text-color);
 }
 
 .mat-select-arrow {
@@ -159,6 +226,11 @@
 
 .mat-checkbox-checkmark-path {
 	stroke: var(--on-background) !important;
+}
+
+.mat-button.mat-button-disabled.mat-button-disabled {
+	background-color: var(--primary);
+	color: var(--primary-light);
 }
 
 ::-webkit-scrollbar-track

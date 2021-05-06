@@ -1,7 +1,7 @@
 
 <form [formGroup]="editSprintForm">
   <div fxLayout="row">
-  	<mat-form-field style="width:50%" appearance="fill">
+  	<mat-form-field style="width:100%" appearance="fill">
   		<mat-label>Issue Title</mat-label>
   		<input matInput formControlName="title">
       <mat-error>Title can't be blank</mat-error>
@@ -21,8 +21,8 @@
   </div>
 
 <div mat-dialog-actions>
-  <button mat-button class="menu-text-bold" *ngIf="mode == 'edit' && permission(sprint, 'delete')" color="warn" (click)="confirmDelete()">Delete</button>
-  <button mat-button class="menu-text-bold" type="button" (click)="cancelEdit()">Cancel</button>
-  <button mat-button class="menu-text-bold" [disabled]="!editSprintForm.valid" (click)="confirmEdit()">Save</button>
+  <button mat-button class="delete-button mr-2" *ngIf="mode == 'edit' && permission(sprint, 'delete')" type="button" (click)="confirmDelete()"><mat-icon>delete</mat-icon>Delete</button>
+  <button mat-button class="cancel-button mr-2" type="button" (click)="cancelEdit()"><mat-icon>close</mat-icon>Cancel</button>
+  <button mat-button class="save-button" [disabled]="!editSprintForm.valid" (click)="confirmEdit()"><mat-icon>save</mat-icon>Save</button>
 </div>
 

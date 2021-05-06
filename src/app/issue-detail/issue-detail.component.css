@@ -26,12 +26,12 @@
 
 
 .issue-number {
-	font-size: small;
+	font-size: x-small;
 	vertical-align: middle;
 }
 
 .issue-title {
-	font-size: xx-large;
+	font-size: x-large;
 	vertical-align: middle;
 }
 
@@ -59,8 +59,21 @@
 	border: 1px solid var(--on-background);
 }
 
-/*.assignee-select {
-	background-color: var(--accent-color);
-	min-height: 3em;
-	border-radius: 3px;
-}*/
+
+.epic-selector {
+	padding: 5px;
+	border-radius: 5px;
+	border: 2px solid black;
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.sprint-selector {
+	padding: 5px;
+	border-radius: 5px;
+	border: 2px solid black;
+	box-shadow: 2px 2px var(--light-gray);
+}
+
+.epic-select.mat-selected {
+	opacity: 85%;
+}

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../location.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DataService } from '../data.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'sb-sprint-planning-top-level',
@@ -11,19 +12,49 @@ import { Observable } from 'rxjs';
 })
 export class SprintPlanningTopLevelComponent implements OnInit {
   project:Observable<any>;
+  sprints:Observable<any>;
 
-  constructor(private locationService:LocationService, private route:ActivatedRoute, private dataService:DataService) { }
+  sprintId:number;
+
+  private sub:Subscription;
+
+  constructor(private locationService:LocationService, private route:ActivatedRoute, private dataService:DataService, private router:Router) { }
 
   ngOnInit(): void {
   	this.locationService.setTab('sprint-planning');
   	this.locationService.projectId = +this.route.snapshot.paramMap.get('id');
+    this.sprintId = +this.route.snapshot.paramMap.get('sprint_id');
 
     this.dataService.load(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
     this.project = this.dataService.values[`projects/${this.locationService.projectId}`];
+
+    this.dataService.load(`projects/${this.locationService.projectId}/sprints?current=true`,[`projects/${this.locationService.projectId}/sprints`]);
+    this.sprints = this.dataService.values[`projects/${this.locationService.projectId}/sprints?current=true`];
+
+    this.sub = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event:NavigationEnd) => this.handleNavigation(event));
   }
 
   ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
     this.dataService.unload(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
   }
 
+  handleNavigation(event:NavigationEnd):void {
+    console.log("handleNavigation");
+    this.locationService.projectId = +this.route.snapshot.paramMap.get('id');
+    this.unloadProject();
+
+    this.dataService.load(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
+    this.project = this.dataService.values[`projects/${this.locationService.projectId}`];
+  
+    this.sprintId = +this.route.snapshot.paramMap.get('sprint_id');
+  }
+
+  unloadProject() {
+    this.dataService.unload(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
+  }
 }

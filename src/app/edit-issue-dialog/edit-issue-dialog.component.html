@@ -39,8 +39,8 @@
   </mat-form-field>
 
 <div mat-dialog-actions>
-  <button mat-button *ngIf="!newIssueMode && permission(data.issue.project && allowDelete, 'delete-issue')" color="warn" (click)="confirmDelete()">Delete</button>
-  <button mat-button (click)="cancelEdit()">Cancel</button>
-  <button mat-button [disabled]="!editIssueForm.valid" (click)="confirmEdit()">Save</button>
+  <button mat-button class="delete-button mr-2" *ngIf="!newIssueMode && permission(data.issue.project, 'delete-issue') && allowDelete" (click)="confirmDelete()"><mat-icon>delete</mat-icon>Delete</button>
+  <button mat-button class="cancel-button mr-2" type="button" (click)="cancelEdit()"><mat-icon>close</mat-icon>Cancel</button>
+  <button mat-button class="save-button" [disabled]="!editIssueForm.valid" (click)="confirmEdit()"><mat-icon>save</mat-icon>Save</button>
 </div>
 

@@ -77,4 +77,8 @@ export class IssuesService {
   deleteAcceptanceCriterion(issueId:number, acId:number):Observable<any> {
     return this.api.delete(`api/issues/${issueId}/remove_acceptance_criterion/${acId}`);
   }
+
+  moveToSprint(issueId:number, sprintId:number):Observable<any> {
+    return this.api.patch(`api/issues/${issueId}/move_to_sprint/${sprintId}`);
+  }
 }

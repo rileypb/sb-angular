@@ -21,6 +21,7 @@ const routes: Routes = [
 	{ path: 'projects/settings', component: SettingsComponent },
 	{ path: 'projects/:id/dashboard', component: DashboardTopLevelComponent },
 	{ path: 'projects/:id/planning', component: SprintPlanningTopLevelComponent },
+	{ path: 'projects/:id/planning/:sprint_id', component: SprintPlanningTopLevelComponent },
 	{ path: 'projects/:id/backlog', component: IssuesViewComponent },
 	{ path: 'projects/:id/backlog/:issue_id', component: IssuesViewComponent },
 	{ path: 'projects/:id/team', component: ProjectTeamComponent },

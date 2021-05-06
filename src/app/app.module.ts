@@ -39,7 +39,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { EditSprintDialogComponent } from './edit-sprint-dialog/edit-sprint-dialog.component';
 import { MenuContainerComponent } from './menu-container/menu-container.component';
 import { ProjectTeamComponent } from './project-team/project-team.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -130,6 +129,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { EpicsViewInnerSmallComponent } from './epics-view-inner-small/epics-view-inner-small.component';
 import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-list.component';
+import { SprintDetailComponent } from './sprint-detail/sprint-detail.component';
+import { IssueSelectionComponent } from './issue-selection/issue-selection.component';
+import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.component';
 
 
 @NgModule({
@@ -142,7 +144,6 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     SprintCardComponent,
     BreadcrumbComponent,
     ConfirmDialogComponent,
-    EditSprintDialogComponent,
     MenuContainerComponent,
     ProjectTeamComponent,
     UserProfileComponent,
@@ -227,6 +228,9 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
     FooterComponent,
     EpicsViewInnerSmallComponent,
     SimpleIssuesListComponent,
+    SprintDetailComponent,
+    IssueSelectionComponent,
+    ExpandableIssueComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

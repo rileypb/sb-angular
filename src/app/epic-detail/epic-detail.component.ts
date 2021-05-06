@@ -25,8 +25,6 @@ export class EpicDetailComponent extends Base implements OnInit {
 
   issueControl:FormControl = new FormControl();
 
-  filteredIssues:Observable<any>;
-
   epicIssues:Observable<any>;
 
   showInput:boolean = false;
@@ -35,36 +33,13 @@ export class EpicDetailComponent extends Base implements OnInit {
   @Output() editEpic:EventEmitter<Epic> = new EventEmitter<Epic>();
   @Output() reorder:EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private cdRef:ChangeDetectorRef, private dataService:DataService, private issuesService:IssuesService, 
+  constructor(private dataService:DataService, private issuesService:IssuesService, 
               private snackBar:MatSnackBar, private epicsService:EpicsService, private router:Router,
               private dialog:MatDialog) {
   	super();
   }
 
   ngOnInit(): void {
-  }
-
-  loadIssues():void {
-    if (!this.filteredIssues) {
-      // load issues for drop down
-      this.dataService.load(`projects/${this.epic.project.id}/issues`, 
-                           [`projects/${this.epic.project.id}/issues`, `projects/${this.epic.project.id}/issues/*`]);
-      let mappedDataValues:Observable<any> = this.dataService.values[`projects/${this.epic.project.id}/issues`].pipe(
-        map(obj => (obj ? obj.issues.list : []))
-      );
-      let combined:Observable<any> = combineLatest(
-        mappedDataValues,
-        this.issueControl.valueChanges.pipe(startWith(''))
-      );
-      this.filteredIssues = combined.pipe(map(values => {
-        let epicIssuesIds = (this.epic.issues?.map(v => v.id) || []);
-        const filterValue = values[1].hasOwnProperty('title') ? values[1].title.toLowerCase() : values[1].toString().toLowerCase();
-        return values[0].filter(option => {
-          console.log("filter");
-          return option.title.toLowerCase().includes(filterValue) && !epicIssuesIds.includes(option.id);
-        });
-      }));
-    }
   }
 
   @Input() set epic(value:Epic) {
@@ -74,7 +49,6 @@ export class EpicDetailComponent extends Base implements OnInit {
     this._epic = value;
     this.dataService.load(`epics/${this._epic.id}/issues`, [`epics/${this._epic.id}/issues`, `epics/${this._epic.id}/issues/*`]);
     this.epicIssues = this.dataService.values[`epics/${this._epic.id}/issues`];
-    this.loadIssues();
   }
   get epic():Epic {
     return this._epic;
@@ -94,7 +68,7 @@ export class EpicDetailComponent extends Base implements OnInit {
     this.epic.issues.push(value);
     value.epic = this.epic;
     let toSave = { id: value.id, epic_id: this.epic.id};
-    callWithSnackBar(this.snackBar, this.epicsService.addIssue(this.epic, value), ['Adding Issue...', 'Issue Added', 'Error Adding Issue']);
+    callWithSnackBar(this.snackBar, this.epicsService.addIssue(this.epic.id, value), ['Adding Issue...', 'Issue Added', 'Error Adding Issue']);
     this.issueInput.nativeElement.value = "";
   }
 
@@ -112,6 +86,9 @@ export class EpicDetailComponent extends Base implements OnInit {
   }
 
   adaptiveFontColor(color) {
+    if (!color) {
+      return 'var(--on-background)';
+    }
     let fc = Color.fontColor(color);
     if (fc == '#FFFFFF') {
       return color;
@@ -120,6 +97,9 @@ export class EpicDetailComponent extends Base implements OnInit {
   }
 
   adaptiveBackgroundColor(color) {
+    if (!color) {
+      return 'var(--background)';
+    }
     let fc = Color.fontColor(color);
     if (fc == '#FFFFFF') {
       return fc;
