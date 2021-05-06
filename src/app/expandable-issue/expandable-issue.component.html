@@ -1,0 +1,26 @@
+	<mat-expansion-panel class="m-1 mt-3 panel"
+	     (click)="clickIssue(issue)">
+	  <mat-expansion-panel-header [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}">
+	  	<div class="text-truncate issue-panel banner-text">
+	      <!-- <button mat-icon-button (click)="onViewIssue($event, issue)">
+	        <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+	      </button> -->
+	   	  #{{issue.id}} - {{issue.title}} - <span class="menu-text">{{taskList.percentComplete == -1 ? "0 hours" : (taskList.percentComplete | percent)}}</span>
+	   	</div>
+	    <mat-progress-bar class="issue-progress-bar" mode="determinate" [value]="100*taskList.percentComplete"></mat-progress-bar>
+	  </mat-expansion-panel-header>
+	  <div class="mt-2">
+		  <sb-checkable-task-list [issue]="issue" #taskList></sb-checkable-task-list>
+	  </div>
+	  <mat-action-row>
+	  	<button mat-icon-button class="small-button action-button" [ngClass]="{'selected': issue.state=='Open'}" matTooltip="State: Open" (click)="setState(issue, 'Open')">
+	  		<mat-icon [ngClass]="{'sb-icon': issue.state=='Open', 'faded-icon': issue.state!='Open'}" fontSet="fas" fontIcon="fa-ellipsis-h"></mat-icon>
+	  	</button>
+	  	<button mat-icon-button class="small-button action-button" [ngClass]="{'selected': issue.state=='In Progress'}" matTooltip="State: In Progress" (click)="setState(issue, 'In Progress')">
+	  		<mat-icon [ngClass]="{'sb-icon': issue.state=='In Progress', 'faded-icon': issue.state!='In Progress'}" fontSet="fas" fontIcon="fa-running"></mat-icon>
+	  	</button>
+	  	<button mat-icon-button class="small-button action-button" [ngClass]="{'selected': issue.state=='Closed'}" matTooltip="State: Closed" (click)="setState(issue, 'Closed')">
+	  		<mat-icon [ngClass]="{'sb-icon': issue.state=='Closed', 'faded-icon': issue.state!='Closed'}" fontSet="fas" fontIcon="fa-check"></mat-icon>
+	  	</button>
+	  </mat-action-row>
+	</mat-expansion-panel>

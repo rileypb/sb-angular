@@ -3,13 +3,14 @@
 }
 
 .task-card {
+	font-family: var(--text-font);
 	font-size: small;
-	background: white;
+	background: var(--background);
 	border-radius: 5px;
 	border-width: 1px;
-	border-color: #CCC;
+	border-color: var(--gray);
 	border-style: solid;
-	box-shadow: 2px 2px #ddd;
+	box-shadow: 2px 2px var(--gray);
 	padding: 3px;
 	padding-left: 6px;
 	color: black;

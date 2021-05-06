@@ -131,6 +131,7 @@ import { EpicsViewInnerSmallComponent } from './epics-view-inner-small/epics-vie
 import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-list.component';
 import { SprintDetailComponent } from './sprint-detail/sprint-detail.component';
 import { IssueSelectionComponent } from './issue-selection/issue-selection.component';
+import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.component';
 
 
 @NgModule({
@@ -229,6 +230,7 @@ import { IssueSelectionComponent } from './issue-selection/issue-selection.compo
     SimpleIssuesListComponent,
     SprintDetailComponent,
     IssueSelectionComponent,
+    ExpandableIssueComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

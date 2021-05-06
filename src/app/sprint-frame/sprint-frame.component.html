@@ -2,7 +2,7 @@
 	<div>
 
 		<div class="sprint-frame-card">
-			<mat-card-title class="banner-text row">
+			<div class="banner-text row">
 				<div class="col-10">
 					<mat-icon fontSet="fas" fontIcon="fa-running"></mat-icon>
 					{{sprint.id}} - {{sprint.title}}
@@ -12,7 +12,7 @@
 					<button style="position: relative; top: -4px; left: 10px;" *ngIf="showSuspendButton && permission(sprint, 'update')" mat-icon-button matTooltip="Suspend Sprint" (click)="suspendSprint()"><mat-icon class="pause-button">pause_circle</mat-icon></button>
 					<button style="position: relative; top: -4px; left: 10px;" *ngIf="showFinishButton && permission(sprint, 'update')" mat-icon-button matTooltip="Finish Sprint" (click)="finishSprint()"><mat-icon class="finish-button">check_circle</mat-icon></button>
 				</div>
-			</mat-card-title>
+			</div>
 			<ng-content></ng-content>
 		</div>
 		
