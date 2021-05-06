@@ -21,8 +21,8 @@
 		</div> 
 	</div>
 	<div class="small-only" cdkDropListGroup>
-		<mat-accordion>
-			<div class="small-issue-entry" *ngFor="let issue of (issues | async)?.issues.list || []">
+		<mat-accordion class="row">
+			<div class="small-issue-entry col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let issue of (issues | async)?.issues.list || []">
 				<sb-expandable-issue [issue]="issue"></sb-expandable-issue>
 			</div>
 		</mat-accordion>
