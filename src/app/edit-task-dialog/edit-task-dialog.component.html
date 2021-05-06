@@ -22,10 +22,10 @@
 
   <div *ngIf="infoMode">
     <div class="row">
-      <div class="col-3">
+      <div class="col-xs-12 col-md-6">
         State: {{ task.state || "incomplete" }}
       </div>
-      <div class="col-3">
+      <div class="col-xs-12 col-md-6">
         <div *ngIf="task.state == 'complete'">Completed at: {{ task.completed_at | date:'short' }}</div>
       </div>
     </div>
