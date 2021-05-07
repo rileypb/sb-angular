@@ -2,16 +2,15 @@
 
 <div class="list-container issues">
   <div class="issue-container column-container">
-  	<div class="list issues" 
-  		 *ngIf="!fixed"
-  	     cdkDropList 
-  	     #issueList="cdkDropList" 
-  	     [cdkDropListData]="{ issues: (filteredIssues | async), container: container }"
-  	     (cdkDropListDropped)="onDrop($event)">
+  	<div class="list issues">
 
       <div *ngIf="issues; else progressSpinner">
       	<mat-accordion>
-	        <mat-expansion-panel class="m-1"
+          <div *ngFor="let issue of (filteredIssues | async); let i = index">
+            <sb-expandable-issue [issue]="issue"></sb-expandable-issue>
+          </div>
+	        <!-- <mat-expansion-panel class="m-1"
+               hideToggle="true"
 	             (click)="clickIssue(issue)"
 	             [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index" cdkDrag>
 	          <div class="drag-placeholder" *cdkDragPlaceholder></div>
@@ -25,7 +24,7 @@
             <mat-progress-bar class="issue-progress-bar" mode="determinate" [value]="100*taskList.percentComplete"></mat-progress-bar>
 	          </mat-expansion-panel-header>
 	          <sb-checkable-task-list [issue]="issue" #taskList></sb-checkable-task-list>
-	        </mat-expansion-panel>
+	        </mat-expansion-panel> -->
     	</mat-accordion>
       </div>
 

@@ -9,12 +9,12 @@
 				</sb-sprint-issue-state-list>
 			</div>
 			<div class="col-4 issue-status-column">
-				<h4 class="menu-text">In Progress</h4>
+				<h4 class="menu-text">In Progress<mat-icon class="sb-icon ml-2" fontSet="fas" fontIcon="fa-running" matTooltip="In Progress"></mat-icon></h4>
 				<sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="In Progress" (transfer)="setState($event, 'In Progress')" (viewIssue)="onViewIssue($event)">
 				</sb-sprint-issue-state-list>
 			</div>
 			<div class="col-4 issue-status-column">
-				<h4 class="menu-text">Closed</h4>
+				<h4 class="menu-text">Closed<mat-icon class="sb-icon ml-2" fontSet="fas" fontIcon="fa-check" matTooltip="Closed"></mat-icon></h4>
 				<sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="Closed" (transfer)="setState($event, 'Closed')" (viewIssue)="onViewIssue($event)">
 				</sb-sprint-issue-state-list>
 			</div>

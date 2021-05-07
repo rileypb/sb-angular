@@ -1,13 +1,20 @@
 	<mat-expansion-panel class="m-1 mt-3 panel"
-	     (click)="clickIssue(issue)">
+	     (click)="clickIssue(issue)" hideToggle="true">
 	  <mat-expansion-panel-header [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}">
-	  	<div class="text-truncate issue-panel banner-text">
-	      <!-- <button mat-icon-button (click)="onViewIssue($event, issue)">
-	        <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
-	      </button> -->
-	   	  #{{issue.id}} - {{issue.title}} - <span class="menu-text">{{taskList.percentComplete == -1 ? "0 hours" : (taskList.percentComplete | percent)}}</span>
-	   	</div>
-	    <mat-progress-bar class="issue-progress-bar" mode="determinate" [value]="100*taskList.percentComplete"></mat-progress-bar>
+	  	<div class="row w-100 mt-2">
+		  	<div class="text-truncate issue-panel banner-text col-10">
+		      <!-- <button mat-icon-button (click)="onViewIssue($event, issue)">
+		        <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+		      </button> -->
+		   	  #{{issue.id}} - {{issue.title}} - <span class="menu-text">{{taskList.percentComplete == -1 ? "0 hours" : (taskList.percentComplete | percent)}}</span>
+		   	</div>
+		   	<div class="col-2 text-right">
+		   		<mat-icon *ngIf="issue.state == 'In Progress'" class="sb-icon small-only" fontSet="fas" fontIcon="fa-running" matTooltip="In Progress"></mat-icon>
+		   		<mat-icon *ngIf="issue.state == 'Closed'" class="sb-icon small-only" fontSet="fas" fontIcon="fa-check" matTooltip="Closed"></mat-icon>
+		   	</div>
+		</div>
+	    <mat-progress-bar class="issue-progress-bar" mode="determinate" 
+	    	[value]="issue.state == 'Closed' ? 100 : (issue.state == 'In Progress' && taskList.percentComplete == -1 ? 50 : 100*taskList.percentComplete)"></mat-progress-bar>
 	  </mat-expansion-panel-header>
 	  <div class="mt-2">
 		  <sb-checkable-task-list [issue]="issue" #taskList></sb-checkable-task-list>
