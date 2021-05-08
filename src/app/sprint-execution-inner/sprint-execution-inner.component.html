@@ -1,7 +1,7 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
 <sb-sprint-frame *ngIf="sprint; else progressSpinner" [sprint]="sprint" [showSuspendButton]="true" [showFinishButton]="true" (suspend)="onSuspendSprint($event)" (finish)="onFinishSprint($event)">
-	<div class="large-only">
+	<div class="large-only mt-3">
 		<div class="row" cdkDropListGroup>
 			<div class="col-4 issue-status-column">
 				<h4 class="menu-text">Open</h4>
