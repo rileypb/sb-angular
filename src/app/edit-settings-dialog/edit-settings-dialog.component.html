@@ -1,0 +1,10 @@
+<h6 class="banner-text">Edit User Settings</h6>
+<mat-form-field appearance="fill">
+	<mat-label>UI Theme</mat-label>
+	<mat-select [(ngModel)]="user.theme" (valueChange)="changeTheme($event)" matInput>
+		<mat-option value="jmu">James Madison University</mat-option>
+		<mat-option value="uchicago">University of Chicago</mat-option>
+		<mat-option value="dark-bw">Black and White</mat-option>
+		<mat-option value="light">Light</mat-option>
+	</mat-select>
+</mat-form-field>

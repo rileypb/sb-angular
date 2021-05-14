@@ -1,18 +1,24 @@
 <footer class="footer row">
 
-	<div class="col-4 text-left">	
+	<div class="col-3 text-center">	
 		<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button" (click)="logout()">
 			<mat-icon>logout</mat-icon>
 		</button>
 	</div>
 
-	<div class="col-4 text-center">
+	<div class="col-3 text-center">
+		<button *ngIf="currentUser" class="settings-button" (click)="editSettings()">
+			<mat-icon class="material-icons-outlined">settings</mat-icon>
+		</button>
+	</div>
+
+	<div class="col-3 text-center">
 		<button *ngIf="(login.status | async) == 'logged_in'" class="news-button" [matBadge]="news?.unseen_count" [matBadgeHidden]="news?.unseen_count == 0" (click)="showNews()" #newsTrigger>
 			<mat-icon class="material-icons-outlined">feed</mat-icon>
 		</button>
 	</div>
 
-	<div class="col-4 text-right">		
+	<div class="col-3 text-center">		
 		<button *ngIf="dataService.users" class="active-users-button" [matMenuTriggerFor]="activeUsersMenu">
 			<mat-icon class="logout button-icon">people</mat-icon>
 			<span class="button-icon">{{dataService.users.length}}</span>
@@ -36,4 +42,8 @@
 
 <ng-template #newsFeed>
   <sb-news-feed class="news-feed" [news]="news?.news_items" (shouldClose)="closeNewsFeed()"></sb-news-feed>
+</ng-template>
+
+<ng-template #settingsDialog>
+  <sb-edit-settings-dialog class="settings-dialog" [user]="currentUser" (shouldClose)="closeSettingsDialog()"></sb-edit-settings-dialog>
 </ng-template>

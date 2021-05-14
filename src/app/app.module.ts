@@ -1,10 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+import { CookieModule } from 'ngx-cookie';
+
 import { ThemeModule } from './theme/theme.module';
 import { lightTheme } from './theme/light-theme';
 import { jmuTheme } from './theme/jmu-theme';
 import { darkBWTheme } from './theme/dark-bw-theme';
 import { testTheme } from './theme/test-theme';
+import { uChicagoTheme } from './theme/uchicago-theme';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -132,6 +136,7 @@ import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-li
 import { SprintDetailComponent } from './sprint-detail/sprint-detail.component';
 import { IssueSelectionComponent } from './issue-selection/issue-selection.component';
 import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.component';
+import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-settings-dialog.component';
 
 
 @NgModule({
@@ -231,10 +236,12 @@ import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.co
     SprintDetailComponent,
     IssueSelectionComponent,
     ExpandableIssueComponent,
+    EditSettingsDialogComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
     BrowserModule,
+    CookieModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -256,7 +263,7 @@ import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.co
       },
     }),
     ThemeModule.forRoot({
-        themes: [lightTheme, jmuTheme, darkBWTheme, testTheme],
+        themes: [lightTheme, jmuTheme, darkBWTheme, testTheme, uChicagoTheme],
         active: 'jmu' //'dark-bw'
     }),
   ],

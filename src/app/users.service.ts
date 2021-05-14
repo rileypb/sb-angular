@@ -9,6 +9,7 @@ export class UsersService {
   constructor(private api:Api) { }
 
   save(user) {
+  	console.log("save user")
   	return this.api.patch(`api/users/${user.id}`, { user: user });
   }
 }

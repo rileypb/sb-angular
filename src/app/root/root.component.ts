@@ -10,6 +10,7 @@ import { UserInfoService } from '../user-info.service';
 import { Observable, Subscription } from 'rxjs'
 import { MatDialog } from '@angular/material/dialog';
 import { NewsService } from '../news.service';
+import { ThemeService } from '../theme/theme.service';
 
 @Component({
   selector: 'sb-root',
@@ -24,15 +25,19 @@ export class RootComponent implements OnInit {
   @Input() syncServiceStatus : string;
 
   public news$:Observable<any>;
+  public user$:Observable<any>;
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
   private lastStatus:string = null;
 
+  private userSub:Subscription;
+
   constructor(public loginService: LoginService, public dataService:DataService,
       changeDetectorRef:ChangeDetectorRef, media:MediaMatcher, public matIconRegistry: MatIconRegistry,
-      public userInfo:UserInfoService, private dialog:MatDialog, private newsService:NewsService) {
+      public userInfo:UserInfoService, private dialog:MatDialog, private newsService:NewsService,
+      private themeService:ThemeService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -66,10 +71,24 @@ export class RootComponent implements OnInit {
         if (x == 'connected') {
           this.dataService.load('news', ['news']);
           this.news$ = this.dataService.values['news'];
+          this.dataService.load('user_profile', []);
+          this.user$ = this.dataService.values['user_profile'];
+          this.userSub = this.user$.subscribe(
+            x => {
+              if (x) {
+                this.setTheme(x.theme);
+                this.userSub.unsubscribe();
+              }
+            }
+          );
           sub.unsubscribe();
         }
       }
     );
+  }
+
+  setTheme(themeName:string):void {
+    this.themeService.setTheme(themeName);
   }
 
   stopSync() : void {

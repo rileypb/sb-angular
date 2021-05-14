@@ -13,14 +13,20 @@ import { MatDialog } from '@angular/material/dialog';
 export class FooterComponent implements OnInit {
   @ViewChild("newsFeed") newsFeed:TemplateRef<any>;
   @ViewChild("newsTrigger") newsTrigger:ElementRef<any>;
+  @ViewChild("settingsDialog") settingsDialog:TemplateRef<any>;
 
   @Input() news:any;
+  @Input() currentUser:any;
+
 
   constructor(public login:LoginService, public dataService:DataService, 
   	private newsService:NewsService, private dialog:MatDialog) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void { 
 
+  }
+
+  ngOnDestroy():void {
   }
 
   logout() {
@@ -34,6 +40,15 @@ export class FooterComponent implements OnInit {
   }
 
   closeNewsFeed():void {
+    this.dialog.closeAll();
+  }
+
+  editSettings():void {
+    this.dialog.open(this.settingsDialog, { 
+      width: '400px', position: { bottom: '2rem' }});
+  }
+
+  closeSettingsDialog():void {
     this.dialog.closeAll();
   }
 }

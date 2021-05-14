@@ -9,7 +9,7 @@
 }
 
 .app-name {
-	font-family: var(--banner-font);
+	font-family: var(--logo-font);
 	color: var(--on-primary-dark);
 }
 

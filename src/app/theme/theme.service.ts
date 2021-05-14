@@ -1,5 +1,6 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { THEMES, ACTIVE_THEME, Theme } from './symbols';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable()
 export class ThemeService {
@@ -8,8 +9,12 @@ export class ThemeService {
 
   constructor(
     @Inject(THEMES) public themes: Theme[],
-    @Inject(ACTIVE_THEME) public theme: string
-  ) {}
+    @Inject(ACTIVE_THEME) public theme: string,
+    private cookieService:CookieService,
+  ) {
+    let themeName:string = this.cookieService.get("themeName");
+    this.setTheme(themeName || 'jmu');
+  }
 
   getTheme(name: string) {
     const theme = this.themes.find(t => t.name === name);
@@ -30,6 +35,7 @@ export class ThemeService {
   }
 
   setTheme(name: string) {
+    this.cookieService.put("themeName", name);
     this.theme = name;
     this.themeChange.emit( this.getActiveTheme());
   }

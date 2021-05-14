@@ -75,6 +75,7 @@ export const jmuTheme: Theme = {
     '--warning': orange,
     '--on-warning': white,
 
+    '--logo-font': '"Open Sans", sans-serif',
     '--banner-font': '"Open Sans", sans-serif',
     '--text-font': '"PT Sans", sans-serif',
     '--menu-font': '"Open Sans", sans-serif',
