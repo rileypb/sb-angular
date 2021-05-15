@@ -2,7 +2,7 @@
 
 <div *ngIf="issues; else progressSpinner">
 	<div class="col-12 text-right p-0">
-		<button mat-button class="done-button icon-button" (click)="okay()">Done</button>
+		<button mat-button class="save-button icon-button mb-2 mt-2" (click)="okay()">Done</button>
 	</div>
 	<div>Select Issues for <span class="banner-text sprint-title">{{sprint.title}}:</span></div>
 	<div *ngFor="let issue of issues" class="issue-card text-truncate pl-2 row" 
@@ -12,6 +12,6 @@
 			[matTooltip]="'In sprint \'' + issue.sprint.title + '\' (' + status(issue.sprint) +')'">directions_run</mat-icon>
 	</div>
 	<div class="col-12 text-right p-0">
-		<button mat-button class="done-button icon-button" (click)="okay()">Done</button>
+		<button mat-button class="save-button icon-button mt-2" (click)="okay()">Done</button>
 	</div>
 </div>

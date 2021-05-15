@@ -7,17 +7,18 @@
 }
 
 .selected {
-	background-color: var(--secondary);
+	background-color: var(--selected-state-button-background);
+	color: var(--on-selected-state-button-background);
 }
 
 .faded-icon {
-	color: var(--primary);
+	color: var(--unselected-state-button-icon);
 }
 
 .panel {
-	background-color: var(--light-gray);
+	background-color: var(--issue-state-card-background);
 }
 
 .action-button {
-	box-shadow: 2px 2px var(--gray);
+	box-shadow: 2px 2px var(--button-shadow);
 }

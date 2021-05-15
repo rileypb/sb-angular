@@ -17,19 +17,19 @@
 .unassigned-work-card {
 	border-style: solid;
 	border-width: 1px;
-	border-color: var(--gray);
+	border-color: var(--card-border);
 	border-radius: 3px;
 
 	padding: 2px;
 }
 
 .done-button {
-	background-color: var(--primary-dark);
-	color: var(--on-primary-dark);
+	background-color: var(--go-button-background);
+	color: var(--on-go-button-background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: var(--light-gray);
+	border-color: var(--button-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--button-shadow);
 	margin-top: 3px;
 }

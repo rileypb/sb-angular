@@ -32,7 +32,7 @@
   </div>
 
   <div mat-dialog-actions>
-    <button class="delete-button mr-2" mat-button type="button" *ngIf="!newTaskMode && permission(task.issue, 'delete-task')" color="warn" (click)="confirmDelete()"><mat-icon class="not-if-small">delete</mat-icon>Delete</button>
+    <button class="delete-button mr-2" mat-button type="button" *ngIf="!newTaskMode && permission(task.issue, 'delete-task')" (click)="confirmDelete()"><mat-icon class="not-if-small">delete</mat-icon>Delete</button>
     <button class="cancel-button mr-2" mat-button type="button" (click)="cancelEdit()"><mat-icon class="not-if-small">close</mat-icon>Cancel</button>
     <button class="save-button" mat-button type="submit" [disabled]="!editTaskForm.valid" (click)="confirmEdit()"><mat-icon class="not-if-small">save</mat-icon>Save</button>
   </div>

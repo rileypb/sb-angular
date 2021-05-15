@@ -18,40 +18,65 @@ export const darkBWTheme: Theme = {
     '--background': white,
     '--on-background': black,
 
-    '--primary-dark': black,
-    '--on-primary-dark': white,
-    '--primary': gray,
-    '--on-primary': black,
-    '--primary-light': lightgray,
-    '--on-primary-light': black,
+    '--header-background': black,
+    '--on-header-background': white,
 
-    '--secondary-dark': darkgray,
-    '--on-secondary-dark': white,
-    '--secondary': gray,
-    '--on-secondary': black,
-    '--secondary-light': lightgray,
-    '--on-secondary-light': black,
+    '--footer-background': black,
+    '--on-footer-background': white,
 
-    '--accent-1-dark': darkgray,
-    '--on-accent-1-dark': white,
-    '--accent-1': gray,
-    '--on-accent-1': black,
-    '--accent-1-light': lightgray,
-    '--on-accent-1-light': black,
+    '--default-icon-color': black,
 
-    '--accent-2-dark': darkgray,
-    '--on-accent-2-dark': white,
-    '--accent-2': gray,
-    '--on-accent-2': black,
-    '--accent-2-light': lightgray,
-    '--on-accent-2-light': black,
+    '--icon-button-background': white,
+    '--on-icon-button-background': black,
 
-    '--surface': black,
-    '--on-surface': white,
+    '--card-shadow': black,
+    '--button-shadow': black,
 
-    '--dark-gray': darkgray,
-    '--gray': gray,
-    '--light-gray': lightgray,
+    '--card-border': black,
+    '--card-border-hover': white,
+    '--button-border': black,
+
+    '--link': black,
+    '--link-active': white,
+    '--link-hover': black,
+    '--link-visited': black,
+
+    '--background-hover': white,
+
+    '--go-button-background': black,
+    '--on-go-button-background': white,
+    '--cancel-button-background': white,
+    '--on-cancel-button-background': black,
+    '--danger-button-background': red,
+    '--on-danger-button-background': black,
+    '--disabled-button-background': white,
+    '--on-disabled-button-background': white,
+
+    '--nav-item-selected-background': black,
+    '--on-nav-item-selected-background': white,
+    '--nav-item-hover-background': black,
+    '--on-nav-item-hover-background': white,
+
+    '--spinner': black,
+    '--progress-bar-element': gray,
+    '--progress-bar-fill': black,
+
+    '--scrollbar-track': white,
+    '--scrollbar': black,
+    '--scrollbar-thumb': black,
+
+    '--drag-placeholder-background': white,
+    '--drag-placeholder-border': black,
+
+    '--arrow-background': white,
+    '--on-arrow-background': black,
+
+    '--selected-state-button-background': black,
+    '--on-selected-state-button-background': white,
+    '--unselected-state-button-icon': black,
+    '--issue-state-card-background': white,
+
+    '--list-selected': black,
 
     '--error': red,
     '--on-error': white,
@@ -59,11 +84,12 @@ export const darkBWTheme: Theme = {
     '--on-okay': white,
 
     '--warning': orange,
-    '--on-warning': white,
+    '--on-warning': black,
 
-    '--banner-font': '"Segoe UI", Roboto, sans-serif',
-    '--text-font': 'Consolas, monospace',
-    '--menu-font': '"Segoe UI", Roboto, sans-serif',
-    '--user-font': 'Consolas, monospace',
+    '--logo-font': 'Helvetica, sans-serif',
+    '--banner-font': 'Helvetica, sans-serif',
+    '--text-font': 'Consolas, Courier, monospace',
+    '--menu-font': 'Helvetica, sans-serif',
+    '--user-font': 'Consolas, Courier, monospace'
   }
 };

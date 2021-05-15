@@ -1,6 +1,6 @@
 .comment-text-area {
 	width: 100%;
-	box-shadow: 2px 2px #ddd;
+	box-shadow: 2px 2px var(--card-shadow);
 	font-family: var(--user-font);
 
 	background-color: var(--background);
@@ -16,6 +16,6 @@
 .submit-button {
 	font-family: var(--menu-font);
 
-	background-color: var(--primary);
-	color: var(--on-primary);
+	background-color: var(--go-button-background);
+	color: var(--on-go-button-background);
 }

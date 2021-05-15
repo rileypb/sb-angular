@@ -7,59 +7,29 @@
 	background: var(--background);
 	border-radius: 5px;
 	border-width: 1px;
-	border-color: var(--light-gray);
+	border-color: var(--card-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--card-shadow);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .task-card:hover {
-	background: var(--background);
-	border-color: var(--gray);
+	border-color: var(--card-border-hover);
 	cursor: default;
 }
 
+/*.task-card:active {
+	background-color: var(--background-hover);
+}*/
+
 .task-card-body {
 	font-size: x-small;
-}
-
-.task-id {
-	font-family: sans-serif;
-	font-weight: bold;
-}
-
-.task-link {
-	color: #444;
-}
-
-.task-link:hover {
-	text-decoration: none;
-	color: blue;
-}
-
-.task-title {
-	font-family: sans-serif;
-	font-style: italic;
-}
-
-.drag-placeholder {
-  background: #eeeeee;
-  border: dotted 1px #999;
-  min-height: 40px;
 }
 
 .small-button {
 	font-size: x-small;
 }
 
-.task-description {
-	font-family: sans-serif;
-	background: #ddd;
-}
-
-.drag-icon {
-	color: #aaa;
-}
 
 

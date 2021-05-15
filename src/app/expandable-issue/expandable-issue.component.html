@@ -21,13 +21,13 @@
 	  </div>
 	  <mat-action-row>
 	  	<button mat-icon-button class="small-button action-button" [ngClass]="{'selected': issue.state=='Open'}" matTooltip="State: Open" (click)="setState(issue, 'Open')">
-	  		<mat-icon [ngClass]="{'sb-icon': issue.state=='Open', 'faded-icon': issue.state!='Open'}" fontSet="fas" fontIcon="fa-ellipsis-h"></mat-icon>
+	  		<mat-icon [ngClass]="{'faded-icon': issue.state!='Open'}" fontSet="fas" fontIcon="fa-ellipsis-h"></mat-icon>
 	  	</button>
 	  	<button mat-icon-button class="small-button action-button" [ngClass]="{'selected': issue.state=='In Progress'}" matTooltip="State: In Progress" (click)="setState(issue, 'In Progress')">
-	  		<mat-icon [ngClass]="{'sb-icon': issue.state=='In Progress', 'faded-icon': issue.state!='In Progress'}" fontSet="fas" fontIcon="fa-running"></mat-icon>
+	  		<mat-icon [ngClass]="{'faded-icon': issue.state!='In Progress'}" fontSet="fas" fontIcon="fa-running"></mat-icon>
 	  	</button>
 	  	<button mat-icon-button class="small-button action-button" [ngClass]="{'selected': issue.state=='Closed'}" matTooltip="State: Closed" (click)="setState(issue, 'Closed')">
-	  		<mat-icon [ngClass]="{'sb-icon': issue.state=='Closed', 'faded-icon': issue.state!='Closed'}" fontSet="fas" fontIcon="fa-check"></mat-icon>
+	  		<mat-icon [ngClass]="{'faded-icon': issue.state!='Closed'}" fontSet="fas" fontIcon="fa-check"></mat-icon>
 	  	</button>
 	  </mat-action-row>
 	</mat-expansion-panel>

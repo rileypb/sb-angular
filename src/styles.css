@@ -8,33 +8,29 @@
 
 
 .main-body {
-	background-color: white;
+	background-color: var(--background);
 }
 
 .mat-card {
 	border-style: solid;
 	border-width: 0.25px;
-	border-color: var(--accent-color);
-}
-
-.app-icon {
-	color: var(--accent-color);
+	border-color: var(--card-border);
 }
 
 .sb-link {
-	color: var(--accent-2-dark) !important;
+	color: var(--link) !important;
 }
 
 .sb-link:hover {
-	color: var(--accent-2) !important;
+	color: var(--link-hover) !important;
 }
 
 .sb-link:active {
-	color: var(--accent-2-light) !important;
+	color: var(--link-active) !important;
 }
 
 .sb-link:visited {
-	color: var(--primary);
+	color: var(--link-visited);
 }
 
 .small-button {
@@ -44,8 +40,8 @@
 }
 
 .sprint-banner {
-	color: var(--primary-dark);
-	background-color: var(--on-primary-dark);
+	color: var(--text);
+	background-color: var(--background);
 }
 
 .sprint-number {
@@ -72,9 +68,13 @@
 	overflow-y: scroll;
 	border: solid 1px;
 	border-radius: 2px;
-	box-shadow: 2px 2px #ddd;
-	background-color: #fff;
+	box-shadow: 2px 2px var(--card-shadow);
+	background-color: var(--background);
 	padding: 3px;
+}
+
+.warning {
+	background-color: var(--warning);
 }
 
 .print-frame {}
@@ -95,11 +95,11 @@
 }
 
 .active-users-color+* .mat-menu-panel {
-	background-color: var(--secondary);
+	background-color: var(--footer-background);
 }
 
 .base-icon {
-	color: var(--primary-dark);
+	color: var(--go-button-background);
 }
 
 .banner-text {
@@ -124,7 +124,7 @@
 }
 
 .sb-icon {
-	color: var(--primary-dark);
+	color: var(--default-icon-color);
 }
 
 .icon-button {
@@ -132,41 +132,63 @@
 }
 
 .icon-button-large {
-	background-color: var(--primary-dark);
+	background-color: var(--go-button-background);
 	color: var(--on-primary-dark);
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--button-shadow);
 }
 
 .save-button {
 	font-family: var(--menu-font);
-	background-color: var(--primary-dark);
-	color: var(--on-primary-dark);
-	box-shadow: 2px 2px var(--light-gray);
+	background-color: var(--go-button-background);
+	color: var(--on-go-button-background);
+	box-shadow: 2px 2px var(--button-shadow);
 }
 
 .cancel-button {
 	font-family: var(--menu-font);
-	background-color: var(--on-primary-dark);
+	background-color: var(--on-go-button-background);
 	color: var(--primary-dark);
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--button-shadow);
 }
 
 .delete-button {
 	font-family: var(--menu-font);
 	background-color: var(--on-error);
 	color: var(--error);
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--button-shadow);
 }
 
 .comment-button {
 	font-family: var(--menu-font);
 
-	background-color: var(--primary-dark);
-	color: var(--on-primary-dark);
-	box-shadow: 2px 2px var(--light-gray);
+	background-color: var(--go-button-background);
+	color: var(--on-go-button-background);
+	box-shadow: 2px 2px var(--button-shadow);
+}
+
+.add-button {
+	background-color: var(--icon-button-background);
+	color: var(--on-icon-button-background);
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: var(--button-border);
+	border-style: solid;
+	box-shadow: 2px 2px var(--button-shadow);
+}
+
+.arrow-div {
+	background-color: var(--arrow-background);
+	color: var(--on-arrow-background);
 }
 
 .sb-button {
+}
+
+.drag-placeholder {
+  background-color: var(--drag-placeholder-background);
+  border: dotted 1px var(--drag-placeholder-border);
+  min-height: 40px;
+  border-radius: 5px;
 }
 
 .green {
@@ -229,36 +251,36 @@
 }
 
 .mat-button.mat-button-disabled.mat-button-disabled {
-	background-color: var(--primary);
-	color: var(--primary-light);
+	background-color: var(--disabled-button-background);
+	color: var(--on-disabled-button-background);
 }
 
 ::-webkit-scrollbar-track
 {
-  background-color: var(--background);
+  background-color: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar
 {
   width: 12px;
-  background-color: var(--primary);
+  background-color: var(--scrollbar);
 }
 
 ::-webkit-scrollbar-thumb
 {
-  background-color: var(--primary-dark);
+  background-color: var(--scrollbar-thumb);
 }
 
 .mat-progress-bar-element {
-	background-color: var(--primary-light);
+	background-color: var(--progress-bar-element);
 }
 
 .mat-progress-bar-fill::after {
-	background-color: var(--primary-dark);
+	background-color: var(--progress-bar-fill);
 }
 
 .mat-spinner svg circle {
-	stroke: var(--primary-dark);
+	stroke: var(--spinner);
 }
 
 

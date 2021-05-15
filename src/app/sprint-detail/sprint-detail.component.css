@@ -1,18 +1,8 @@
 .state-box {
-	border: 1px solid var(--gray);
+	border: 1px solid var(--card-border);
 	border-radius: 5px;
 	padding: 3px;
-	box-shadow: 2px 2px var(--light-gray);
-}
-
-.edit-button {
-	background-color: var(--primary-dark);
-	color: var(--on-primary-dark);
-	border-radius: 5px;
-	border-width: 2px;
-	border-color: var(--light-gray);
-	border-style: solid;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--card-shadow);
 }
 
 .comments-display-box {
@@ -22,11 +12,9 @@
 .play-icon {
 	color: var(--okay);
 	font-size: 24px;
-	text-shadow: 2px 2px var(--gray);
 }
 
 .pause-icon {
 	color: var(--warning);
 	font-size: 24px;
-	text-shadow: 2px 2px var(--gray);
 }

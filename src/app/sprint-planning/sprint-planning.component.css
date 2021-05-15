@@ -1,16 +1,17 @@
 .product-backlog-link {
 	text-decoration: underline; 
 	text-decoration-style: dotted;
+	color: var(--link);
 }
 
 .product-backlog-link:hover {
 	text-decoration: underline; 
 	text-decoration-style: dotted;
-	color: #683ab7;
+	color: var(--link-hover);
 }
 
 .product-backlog.link:active {
-	color: #888;
+	color: var(--link-active);
 }
 
 .inner-detail-card {
@@ -20,33 +21,18 @@
 
 .comments-display-box {
 	background-color: var(--background);
-
 	border: 1px solid var(--on-background);
-}
-
-.add-button {
-	background-color: var(--secondary);
-	color: var(--on-secondary);
-	border-radius: 5px;
-	border-width: 2px;
-	border-color: var(--light-gray);
-	border-style: solid;
-	box-shadow: 2px 2px var(--light-gray);
 }
 
 .sprint-div {
 	margin: 0 auto;
-	border: 1px solid var(--gray);
+	border: 1px solid var(--card-border);
 	padding-left: 4px;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	vertical-align: middle;
 }
 
-.arrow-div {
-	background-color: var(--secondary);
-	color: var(--on-secondary);
-}
 
 .arrow-button {
 	padding: 0;
@@ -58,9 +44,17 @@
 	color: var(--on-background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: var(--gray);
+	border-color: var(--card-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--gray);
+	box-shadow: 2px 2px var(--card-shadow);
 	padding: 3px;
 	padding-left: 6px;
+}
+
+.sprint-entry:hover {
+	border-color: var(--card-border-hover);
+}
+
+.sprint-entry:active {
+	background-color: var(--background-hover);
 }

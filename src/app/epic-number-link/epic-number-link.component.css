@@ -1,10 +1,11 @@
 .epic-number-link {
 	text-decoration: underline; 
 	text-decoration-style: dotted;
+	color: var(--link);
 }
 
 .epic-number-link:hover {
 	text-decoration: underline; 
 	text-decoration-style: solid;
-	color: #683ab7;
+	color: var(--link-hover);
 }

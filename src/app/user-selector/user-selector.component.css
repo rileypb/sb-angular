@@ -12,5 +12,5 @@
 .assignee-select.mat-selected {
 	background-color: var(--background) !important;
 	opacity: 85%;
-	color: var(--primary-dark) !important;
+	color: var(--list-selected) !important;
 }

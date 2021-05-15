@@ -2,17 +2,17 @@
 	height: 2rem;
 	padding: 4px;
 
-	background-color: var(--secondary);
+	background-color: var(--footer-background);
 
 	border-width: 1px;
-	box-shadow: 0 -2px 1px var(--light-gray);
+	box-shadow: 0 -2px 1px var(--card-shadow);
 }
 
 
 .logout-button {
 	background-color: #00000000;
 	border-style: none;
-	color: var(--on-secondary);
+	color: var(--on-footer-background);
 }
 
 .button-icon {
@@ -28,19 +28,19 @@
 .news-button {
 	background-color: #00000000;
 	border-style: none;
-	color: var(--on-secondary);
+	color: var(--on-footer-background);
 }
 
 .settings-button {
 	background-color: #00000000;
 	border-style: none;
-	color: var(--on-secondary);
+	color: var(--on-footer-background);
 }
 
 .active-users-button {
 	background-color: #00000000;
 	border-style: none;
-	color: var(--on-secondary);
+	color: var(--on-footer-background);
 }
 
 .active-users-button > div > span {
@@ -54,8 +54,8 @@
 }
 
 .active-users {
-	background-color: var(--secondary);
-	color: var(--on-secondary);
+	background-color: var(--footer-background);
+	color: var(--on-footer-background);
 	padding: 6px;
 	width: 100%;
 }

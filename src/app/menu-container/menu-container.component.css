@@ -9,6 +9,6 @@
 }
 
 .selectedMenuItem {
-	background-color: #EEE;
+	background-color: var(--background-hover);
 	pointer-events: none;
 }

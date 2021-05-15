@@ -17,9 +17,9 @@
 	background-color: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: var(--light-gray);
+	border-color: var(--card-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--card-shadow);
 	padding: 3px;
 	padding-left: 6px;
 }
@@ -33,16 +33,6 @@
 .issue-title {
 	font-size: x-large;
 	vertical-align: middle;
-}
-
-
-.epic-card:hover {
-	cursor: default;
-	border: 2px solid var(--dark-gray);
-}
-
-.epic-card:active {
-	background-color: var(--gray) !important;
 }
 
 .add-ac {
@@ -64,14 +54,14 @@
 	padding: 5px;
 	border-radius: 5px;
 	border: 2px solid black;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--card-shadow);
 }
 
 .sprint-selector {
 	padding: 5px;
 	border-radius: 5px;
 	border: 2px solid black;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--card-shadow);
 }
 
 .epic-select.mat-selected {

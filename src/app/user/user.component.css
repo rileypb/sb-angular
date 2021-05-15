@@ -25,7 +25,7 @@
 
 .cheeseburger-button {
 	background-color: #00000000;
-	color: var(--on-primary-dark);
+	color: var(--on-header-background);
 	border-style: none;
 }
 

@@ -7,20 +7,20 @@
 	background: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: var(--light-gray);
+	border-color: var(--card-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--card-shadow);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .issue-card:hover {
 	cursor: move;
-	border: 2px solid var(--dark-gray);
+	border: 2px solid var(--card-border-hover);
 }
 
 .issue-card:active {
-	background-color: var(--gray) !important;
+	background-color: var(--background-hover) !important;
 }
 
 .fixed-issue-card {
@@ -28,30 +28,24 @@
 	background: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: var(--light-gray);
+	border-color: var(--card-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--card-shadow);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .fixed-issue-card:hover {
 	cursor: default;
-	border: 2px solid var(--dark-gray);
+	border: 2px solid var(--card-border-hover);
 }
 
 .fixed-issue-card:active {
-	background-color: var(--gray) !important;
+	background-color: var(--background-hover) !important;
 }
 
 .issue-card-body {
 	font-size: x-small;
-}
-
-.drag-placeholder {
-  background: var(--gray);
-  border: dotted 1px var(--dark-gray);
-  min-height: 40px;
 }
 
 .completed-title {

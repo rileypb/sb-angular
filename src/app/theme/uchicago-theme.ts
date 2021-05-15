@@ -15,55 +15,81 @@ let lightred = '#b1746f';
 let red = '#8f3931';
 let orange = '#c16622';
 let darkgreen = '#58593f';
+let yellow = '#ffa319';
 
 export const uChicagoTheme: Theme = {
   name: 'uchicago',
-  properties: {
+  properties: {    
     '--background': white,
     '--on-background': black,
 
-    '--primary-dark': maroon,
-    '--on-primary-dark': white,
-    '--primary': red,
-    '--on-primary': white,
-    '--primary-light': lightred,
-    '--on-primary-light': white,
+    '--header-background': maroon,
+    '--on-header-background': white,
 
-    '--secondary-dark': darkgray,
-    '--on-secondary-dark': white,
-    '--secondary': gray,
-    '--on-secondary': white,
-    '--secondary-light': lightgray,
-    '--on-secondary-light': black,
+    '--footer-background': white,
+    '--on-footer-background': maroon,
 
-    '--accent-1-dark': darkgray,
-    '--on-accent-1-dark': white,
-    '--accent-1': gray,
-    '--on-accent-1': black,
-    '--accent-1-light': lightgray,
-    '--on-accent-1-light': black,
+    '--default-icon-color': maroon,
 
-    '--accent-2-dark': darkgray,
-    '--on-accent-2-dark': white,
-    '--accent-2': gray,
-    '--on-accent-2': black,
-    '--accent-2-light': lightgray,
-    '--on-accent-2-light': black,
+    '--icon-button-background': maroon,
+    '--on-icon-button-background': white,
 
-    '--surface': black,
-    '--on-surface': white,
+    '--card-shadow': lightgray,
+    '--button-shadow': lightgray,
 
-    '--dark-gray': darkgray,
-    '--gray': gray,
-    '--light-gray': lightgray,
+    '--card-border': lightgray,
+    '--card-border-hover': black,
+    '--button-border': lightgray,
+
+    '--link': maroon,
+    '--link-active': lightred,
+    '--link-hover': lightred,
+    '--link-visited': lightred,
+
+    '--background-hover': lightgray,
+
+    '--go-button-background': maroon,
+    '--on-go-button-background': white,
+    '--cancel-button-background': white,
+    '--on-cancel-button-background': maroon,
+    '--danger-button-background': red,
+    '--on-danger-button-background': black,
+    '--disabled-button-background': lightred,
+    '--on-disabled-button-background': lightgray,
+
+    '--nav-item-selected-background': maroon,
+    '--on-nav-item-selected-background': white,
+    '--nav-item-hover-background': lightred,
+    '--on-nav-item-hover-background': white,
+
+    '--spinner': maroon,
+    '--progress-bar-element': lightred,
+    '--progress-bar-fill': maroon,
+
+    '--scrollbar-track': white,
+    '--scrollbar': lightred,
+    '--scrollbar-thumb': lightred,
+
+    '--drag-placeholder-background': lightred,
+    '--drag-placeholder-border': black,
+
+    '--arrow-background': maroon,
+    '--on-arrow-background': white,
+
+    '--selected-state-button-background': maroon,
+    '--on-selected-state-button-background': white,
+    '--unselected-state-button-icon': lightred,
+    '--issue-state-card-background': lightgray,
+
+    '--list-selected': maroon,
 
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,
     '--on-okay': white,
 
-    '--warning': orange,
-    '--on-warning': white,
+    '--warning': yellow,
+    '--on-warning': black,
 
     '--logo-font': '"Fette Fraktur", Gotham, "Proxima Nova", Arial, Helvetica, sans-serif',
     '--banner-font': 'Gotham, "Proxima Nova", Arial, Helvetica, sans-serif',

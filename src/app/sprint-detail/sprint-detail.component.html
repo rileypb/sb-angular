@@ -22,12 +22,12 @@
 			<span class="align-baseline">State: </span> 
 			<span class="base-text align-baseline">{{ (sprint.id == project.currentSprint?.id) ? "Active" : ( sprint.started ? ( sprint.completed ? "Completed" : "Suspended" ) : "Pending" ) }}</span>
 			<span class="align-middle" *ngIf="(!sprint.completed && !project.currentSprint) && permission(sprint, 'start')">
-				<button class="small-button" [matTooltip]="sprint.started ? 'Resume Sprint' : 'Start Sprint'" (click)="onStartSprint($event)">
+				<button class="small-button mt-1" [matTooltip]="sprint.started ? 'Resume Sprint' : 'Start Sprint'" (click)="onStartSprint($event)">
 					<mat-icon class="play-icon ml-2" fontSet="fas" fontIcon="fa-play-circle"></mat-icon>
 				</button>
 			</span>
 			<span class="align-middle" *ngIf="(sprint.id == project.currentSprint?.id) && permission(sprint, 'suspend')">
-				<button class="small-button" matTooltip="Pause Sprint" (click)="suspendSprint()">
+				<button class="small-button mt-1" matTooltip="Pause Sprint" (click)="suspendSprint()">
 					<mat-icon class="pause-icon ml-2" fontSet="fas" fontIcon="fa-pause-circle"></mat-icon>
 				</button>
 			</span>
@@ -40,7 +40,7 @@
 		<div class="p-2 issues-card">
 			<div class="banner-text">
 				Issues
-				<button mat-icon-button matTooltip="Create issue" (click)=addIssue(sprint)>
+				<button mat-icon-button matTooltip="Select issues" (click)=addIssue(sprint)>
 					<mat-icon class="add-issue-button sb-icon">add_circle</mat-icon>
 				</button>
 			</div>

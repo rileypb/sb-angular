@@ -7,15 +7,15 @@
 	background-color: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: var(--light-gray);
+	border-color: var(--card-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--light-gray);
+	box-shadow: 2px 2px var(--card-shadow);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .epic-card:hover {
-	border: 2px solid var(--dark-gray);
+	border: 2px solid var(--card-border-hover);
 	cursor: move;
 }
 
@@ -24,20 +24,14 @@
 	background: var(--background);
 	border-radius: 5px;
 	border-width: 2px;
-	border-color: var(--gray);
+	border-color: var(--card-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--gray);
+	box-shadow: 2px 2px var(--card-shadow);
 	padding: 3px;
 	padding-left: 6px;
 }
 
 .fixed-epic-card:hover {
-	border: 2px solid var(--dark-gray);
-}
-
-.drag-placeholder {
-  background: var(--gray);
-  border: dotted 1px var(--dark-gray);
-  min-height: 40px;
+	border: 2px solid var(--card-border-hover);
 }
 

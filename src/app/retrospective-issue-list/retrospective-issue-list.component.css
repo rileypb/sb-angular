@@ -5,7 +5,7 @@
 
 .description {
 	border-style: solid;
-	border-color: var(--light-gray);
+	border-color: var(--card-border);
 }
 
 .issue-list-entry {

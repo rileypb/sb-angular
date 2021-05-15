@@ -3,7 +3,7 @@ mat-card {
 }
 
 .inner-issue-card {
-	background-color: #ddd;
+	background-color: var(--background);
 }
 
 .issue-card-column {

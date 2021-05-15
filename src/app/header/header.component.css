@@ -2,7 +2,7 @@
 	height: 2rem;
 	padding: 4px;
 
-	background-color: var(--primary-dark);
-	color: var(--on-primary-dark);
+	background-color: var(--header-background);
+	color: var(--on-header-background);
 }
 

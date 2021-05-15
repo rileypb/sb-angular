@@ -32,48 +32,72 @@ export const jmuTheme: Theme = {
     '--background': white,
     '--on-background': slate,
 
-    '--primary-dark': darkpurple,
-    '--on-primary-dark': white,
-    '--primary': purple,
-    '--on-primary': slate,
-    '--primary-light': lightpurple,
-    '--on-primary-light': slate,
+    '--header-background': darkpurple,
+    '--on-header-background': white,
 
-    '--secondary-dark': darkgold,
-    '--on-secondary-dark': slate,
-    '--secondary': gold,
-    '--on-secondary': slate,
-    '--secondary-light': lightgold,
-    '--on-secondary-light': slate,
+    '--footer-background': gold,
+    '--on-footer-background': slate,
 
-    '--accent-1-dark': darkgreen,
-    '--on-accent-1-dark': white,
-    '--accent-1': green,
-    '--on-accent-1': slate,
-    '--accent-1-light': lightgreen,
-    '--on-accent-1-light': slate,
+    '--default-icon-color': darkpurple,
 
-    '--accent-2-dark': darkblue,
-    '--on-accent-2-dark': white,
-    '--accent-2': blue,
-    '--on-accent-2': slate,
-    '--accent-2-light': lightblue,
-    '--on-accent-2-light': slate,
+    '--icon-button-background': gold,
+    '--on-icon-button-background': darkpurple,
 
-    '--surface': white,
-    '--on-surface': slate,
+    '--card-shadow': gray,
+    '--button-shadow': gray,
 
-    '--dark-gray': darkgray,
-    '--gray': gray,
-    '--light-gray': lightgray,
+    '--card-border': gray,
+    '--card-border-hover': darkgray,
+    '--button-border': gray,
+
+    '--link': darkpurple,
+    '--link-active': lightpurple,
+    '--link-hover': purple,
+    '--link-visited': purple,
+
+    '--background-hover': lightgray,
+
+    '--go-button-background': darkpurple,
+    '--on-go-button-background': white,
+    '--cancel-button-background': purple,
+    '--on-cancel-button-background': purple,
+    '--danger-button-background': purple,
+    '--on-danger-button-background': purple,
+    '--disabled-button-background': purple,
+    '--on-disabled-button-background': gray,
+
+    '--nav-item-selected-background': purple,
+    '--on-nav-item-selected-background': slate,
+    '--nav-item-hover-background': purple,
+    '--on-nav-item-hover-background': slate,
+
+    '--spinner': darkpurple,
+    '--progress-bar-element': purple,
+    '--progress-bar-fill': darkpurple,
+
+    '--scrollbar-track': white,
+    '--scrollbar': purple,
+    '--scrollbar-thumb': darkpurple,
+
+    '--drag-placeholder-background': gray,
+    '--drag-placeholder-border': darkgray,
+
+    '--arrow-background': gold,
+    '--on-arrow-background': slate,
+
+    '--selected-state-button-background': gold,
+    '--unselected-state-button-icon': purple,
+    '--issue-state-card-background': lightgray,
+
+    '--list-selected': darkpurple,
 
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,
-    '--on-okay': slate,
+    '--on-okay': white,
 
     '--warning': orange,
-    '--on-warning': white,
+    '--on-warning': slate,
 
     '--logo-font': '"Open Sans", sans-serif',
     '--banner-font': '"Open Sans", sans-serif',

@@ -1,10 +1,11 @@
 .sprint-number-link {
 	text-decoration: underline; 
 	text-decoration-style: dotted;
+	color: var(--link);
 }
 
 .sprint-number-link:hover {
 	text-decoration: underline; 
 	text-decoration-style: dotted;
-	color: #683ab7;
+	color: var(--link-hover);
 }

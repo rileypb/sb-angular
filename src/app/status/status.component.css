@@ -14,5 +14,5 @@
 
 .status-text {
 	font-family: var(--banner-font);
-	color: var(--on-primary-dark);
+	color: var(--on-header-background);
 }

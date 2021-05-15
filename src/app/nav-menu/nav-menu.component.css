@@ -1,5 +1,4 @@
 .nav {
-	background-color: #CBB677;
 	height: 1.85rem;
 }
 
@@ -13,12 +12,13 @@
 }
 
 .nav-item:hover {
-	background-color: #B599CE;
+	background-color: var(--nav-item-hover-background);
+	color: var(--on-nav-item-hover-background);
 }
 
 .nav-item-selected {
-	background-color: var(--primary-light);
-	color: var(--on-primary-light);
+	background-color: var(--nav-item-selected-background);
+	color: var(--on-nav-item-selected-background);
 }
 
 .nav-wrapper {

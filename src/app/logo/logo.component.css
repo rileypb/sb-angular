@@ -10,9 +10,9 @@
 
 .app-name {
 	font-family: var(--logo-font);
-	color: var(--on-primary-dark);
+	color: var(--on-header-background);
 }
 
 .app-icon {
-	color: var(--on-primary-dark);
+	color: var(--on-header-background);
 }
