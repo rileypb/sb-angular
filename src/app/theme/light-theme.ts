@@ -74,7 +74,7 @@ export const lightTheme: Theme = {
     '--selected-state-button-background': darkgray,
     '--on-selected-state-button-background': white,
     '--unselected-state-button-icon': gray,
-    '--issue-state-card-background': white,
+    '--issue-state-card-background': lightgray,
 
     '--list-selected': black,
 
