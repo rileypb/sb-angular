@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../task';
-import { UiStateService } from '../ui-state.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,14 +10,13 @@ import { Router } from '@angular/router';
 export class TaskNumberLinkComponent implements OnInit {
   @Input() task:Task;
 
-  constructor(private router:Router, private uiStateService:UiStateService) { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
   navigateToIssue():void {
-  	this.uiStateService.selectedIssue = this.task.issue;
-  	this.router.navigate([`/projects/${this.task.issue.project.id}/issues`]);
+  	this.router.navigate([`/projects/${this.task.issue.project.id}/backlog/${this.task.issue.id}`]);
   }
 
 }
