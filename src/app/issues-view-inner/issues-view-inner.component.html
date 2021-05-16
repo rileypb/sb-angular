@@ -6,7 +6,7 @@
 			<div class="col-md-6" [ngClass]="{ 'large-only' : issue || mode=='edit' || mode=='create'}">
 				<div class="inner-detail-card">
 					<div class="col-12 text-right p-0">
-						<button mat-button class="add-button icon-button" (click)="createIssue()">
+						<button mat-button class="add-button icon-button" (click)="createIssue()" matTooltip="New Issue">
 							<mat-icon class="mr-1">add_circle</mat-icon>
 							New
 						</button>
