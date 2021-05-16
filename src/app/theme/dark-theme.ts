@@ -1,6 +1,6 @@
 import { Theme } from './symbols';
 
-let foreground = '#444444';
+let foreground = '#AAAAAA';
 let black = '#000';
 let white = '#fff';
 
@@ -12,13 +12,13 @@ let red = '#A4232B';
 let orange = '#FFBD00';
 let darkgreen = '#33A532';
 
-export const lightTheme: Theme = {
-  name: 'light',
+export const darkTheme: Theme = {
+  name: 'dark',
   properties: {
-    '--background': white,
+    '--background': black,
     '--on-background': foreground,
 
-    '--header-background': lightgray,
+    '--header-background': foreground,
     '--on-header-background': darkgray,
 
     '--footer-background': gray,
@@ -26,8 +26,8 @@ export const lightTheme: Theme = {
 
     '--default-icon-color': darkgray,
 
-    '--icon-button-background': white,
-    '--on-icon-button-background': foreground,
+    '--icon-button-background': foreground,
+    '--on-icon-button-background': darkgray,
 
     '--card-shadow': gray,
     '--button-shadow': gray,
@@ -53,9 +53,9 @@ export const lightTheme: Theme = {
     '--on-disabled-button-background': white,
 
     '--nav-item-selected-background': foreground,
-    '--on-nav-item-selected-background': white,
+    '--on-nav-item-selected-background': darkgray,
     '--nav-item-hover-background': foreground,
-    '--on-nav-item-hover-background': white,
+    '--on-nav-item-hover-background': darkgray,
 
     '--spinner': foreground,
     '--progress-bar-element': gray,
@@ -76,11 +76,11 @@ export const lightTheme: Theme = {
     '--unselected-state-button-icon': gray,
     '--issue-state-card-background': lightgray,
 
-    '--list-selected': black,
+    '--list-selected': white,
 
     '--form-field-underline': foreground,
     '--form-field-caret': foreground,
-    '--form-field-fill': "#0000000b",
+    '--form-field-fill': "#FFFFFF11",
     '--form-select-color': foreground,
 
     '--error': red,

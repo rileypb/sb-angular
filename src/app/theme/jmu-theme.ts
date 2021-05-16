@@ -91,6 +91,11 @@ export const jmuTheme: Theme = {
 
     '--list-selected': darkpurple,
 
+    '--form-field-underline': darkpurple,
+    '--form-field-caret': darkpurple,
+    '--form-field-fill': "#0000000b",
+    '--form-select-color': darkpurple,
+
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,

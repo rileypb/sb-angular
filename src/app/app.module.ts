@@ -9,6 +9,7 @@ import { jmuTheme } from './theme/jmu-theme';
 import { darkBWTheme } from './theme/dark-bw-theme';
 import { testTheme } from './theme/test-theme';
 import { uChicagoTheme } from './theme/uchicago-theme';
+import { darkTheme } from './theme/dark-theme';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -263,7 +264,7 @@ import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-setting
       },
     }),
     ThemeModule.forRoot({
-        themes: [lightTheme, jmuTheme, darkBWTheme, testTheme, uChicagoTheme],
+        themes: [lightTheme, jmuTheme, darkBWTheme, testTheme, uChicagoTheme, darkTheme],
         active: 'jmu' //'dark-bw'
     }),
   ],

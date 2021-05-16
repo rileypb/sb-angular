@@ -222,15 +222,31 @@
 }
 
 .mat-color-font .mat-select-value-text {
-	color: var(--mat-select-value-text-color);
+	color: var(--form-select-color);
+}
+
+.mat-select-value-text {
+	color: var(--form-select-color);
 }
 
 .mat-select-arrow {
 	color: var(--on-background);
 }
 
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+	color: var(--form-select-color);
+}
+
+.mat-dialog-container {
+	background-color: var(--background);
+	border: 2px solid var(--card-border);
+	border-radius: 5px;
+	box-shadow: 2px 2px var(--card-shadow);
+}
+
 .mat-input-element {
 	font-family: var(--user-font) !important;
+	color: var(--form-select-color) !important;
 }
 
 .mat-checkbox-background {
@@ -284,8 +300,25 @@
 }
 
 
+ .mat-form-field-ripple {
+    background-color: var(--form-field-underline);
+  }
 
+ .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: var(--form-field-underline);
+  }
 
+  .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  	color: var(--on-background);
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+  	background-color: var(--form-field-fill);
+  }
+
+.mat-input-element {
+    caret-color: var(--form-field-caret);
+}
 
 
 @media (max-width: 799px) {

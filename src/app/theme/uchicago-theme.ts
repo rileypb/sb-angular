@@ -83,6 +83,11 @@ export const uChicagoTheme: Theme = {
 
     '--list-selected': maroon,
 
+    '--form-field-underline': maroon,
+    '--form-field-caret': maroon,
+    '--form-field-fill': "#0000000b",
+    '--form-select-color': maroon,
+
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,

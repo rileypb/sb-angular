@@ -78,6 +78,11 @@ export const darkBWTheme: Theme = {
 
     '--list-selected': black,
 
+    '--form-field-underline': black,
+    '--form-field-caret': black,
+    '--form-field-fill': "#0000000b",
+    '--form-select-color': black,
+
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,
