@@ -88,7 +88,7 @@ export const lightTheme: Theme = {
 
     '--logo-font': 'Helvetica, sans-serif',
     '--banner-font': 'Helvetica, sans-serif',
-    '--text-font': 'Consolas, Courier, monospace',
+    '--text-font': '"Times New Roman", serif',
     '--menu-font': 'Helvetica, sans-serif',
     '--user-font': 'Consolas, Courier, monospace'
   }
