@@ -1,5 +1,9 @@
 <h6 class="banner-text">Edit User Settings</h6>
 <mat-form-field appearance="fill">
+	<mat-label>Display Name</mat-label>
+	<input [(ngModel)]="user.displayName" (focus)="startEditingDisplayName()" (blur)="cancelEditingDisplayName()" (keydown)="onDisplayNameKeydown($event)" matInput #displayName>
+</mat-form-field>
+<mat-form-field appearance="fill">
 	<mat-label>UI Theme</mat-label>
 	<mat-select [(ngModel)]="user.theme" (valueChange)="changeTheme($event)" matInput>
 		<mat-option value="jmu">James Madison University</mat-option>
