@@ -96,6 +96,8 @@ export const jmuTheme: Theme = {
     '--form-field-fill': "#0000000b",
     '--form-select-color': darkpurple,
 
+    '--mat-select-value-text-color': darkpurple,
+
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,

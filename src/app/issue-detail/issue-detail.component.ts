@@ -27,8 +27,7 @@ import { Router } from '@angular/router';
 })
 export class IssueDetailComponent extends Base implements OnInit {
   @ViewChild('newCriterion') newCriterion:ElementRef;
-
-  @ViewChild('container') container:ElementRef;
+  @ViewChild('epicSelector') epicSelector:ElementRef;
 
   @Input() showAcceptanceCriteria:boolean;
   @Input() showCompletionCheckboxes:boolean;
@@ -61,8 +60,8 @@ export class IssueDetailComponent extends Base implements OnInit {
   }
 
   private updateSelectorStyle() {
-    if (this.issue && this.container) {
-      this.container.nativeElement.style.setProperty('--mat-select-value-text-color', this.fontColor(this.issue.epic?.color));
+    if (this.issue && this.epicSelector) {
+      this.epicSelector.nativeElement.style.setProperty('--mat-select-value-text-color', this.fontColor(this.issue.epic?.color));
     }
   }
 

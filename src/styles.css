@@ -235,7 +235,7 @@ h2 {
 }
 
 .mat-select-value-text {
-	color: var(--form-select-color);
+	color: var(--mat-select-value-text-color) !important;
 }
 
 .mat-select-arrow {
@@ -279,6 +279,10 @@ h2 {
 	background-color: var(--disabled-button-background);
 	color: var(--on-disabled-button-background);
 }
+
+/*.mat-option.mat-active {
+	color: var(--form-select-color) !important;
+}*/
 
 ::-webkit-scrollbar-track
 {

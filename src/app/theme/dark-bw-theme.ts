@@ -83,6 +83,8 @@ export const darkBWTheme: Theme = {
     '--form-field-fill': "#0000000b",
     '--form-select-color': black,
 
+    '--mat-select-value-text-color': black,
+
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,

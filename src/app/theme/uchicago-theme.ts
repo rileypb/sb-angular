@@ -88,6 +88,8 @@ export const uChicagoTheme: Theme = {
     '--form-field-fill': "#0000000b",
     '--form-select-color': maroon,
 
+    '--mat-select-value-text-color': maroon,
+
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,

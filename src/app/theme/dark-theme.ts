@@ -83,6 +83,8 @@ export const darkTheme: Theme = {
     '--form-field-fill': "#FFFFFF11",
     '--form-select-color': foreground,
 
+    '--mat-select-value-text-color': lightgray,
+
     '--error': red,
     '--on-error': white,
     '--okay': darkgreen,
