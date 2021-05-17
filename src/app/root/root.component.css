@@ -98,13 +98,13 @@
 	z-index: -1;
 }
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 801px) {
 	.nav-menu {
 
 	}
 }
 
-@media screen and (max-width: 779px) {
+@media screen and (max-width: 800px) {
 	.nav-menu {
 		display: none;
 	}

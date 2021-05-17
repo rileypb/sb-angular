@@ -330,13 +330,13 @@ h2 {
 }
 
 
-@media (max-width: 799px) {
+@media (max-width: 767px) {
 	.large-only {
 		display: none !important;
 	}
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
 	.small-only {
 		display: none !important;
 	}
