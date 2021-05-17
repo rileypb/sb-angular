@@ -3,26 +3,26 @@
   <div fxLayout="row">
   	<mat-form-field style="width:100%" appearance="fill">
   		<mat-label>Issue Title</mat-label>
-  		<input matInput formControlName="title">
+  		<input matInput formControlName="title" (keydown)="keyDown($event)" #titleInput>
       <mat-error>Title can't be blank</mat-error>
   	</mat-form-field>
   </div>
   <div fxLayout="row">
     <mat-form-field style="width:100%" appearance="fill">
       <mat-label>Goal</mat-label>
-      <input matInput formControlName="goal">
+      <input matInput formControlName="goal" (keydown)="keyDown($event)" >
     </mat-form-field>
   </div>
   <div fxLayout="row">
     <mat-form-field style="min-width: 100%;" appearance="fill">
       <mat-label>Description</mat-label>
-      <textarea formControlName="description" rows="4" matInput></textarea>
+      <textarea formControlName="description" rows="4" matInput (keydown)="keyDown($event)" ></textarea>
     </mat-form-field>
   </div>
 
 <div mat-dialog-actions>
   <button mat-button class="delete-button mr-2" *ngIf="mode == 'edit' && permission(sprint, 'delete')" type="button" (click)="confirmDelete()"><mat-icon>delete</mat-icon>Delete</button>
-  <button mat-button class="cancel-button mr-2" type="button" (click)="cancelEdit()"><mat-icon>close</mat-icon>Cancel</button>
-  <button mat-button class="save-button" [disabled]="!editSprintForm.valid" (click)="confirmEdit()"><mat-icon>save</mat-icon>Save</button>
+  <button type="reset" mat-button class="cancel-button mr-2" type="button" (click)="cancelEdit()"><mat-icon>close</mat-icon>Cancel</button>
+  <button mat-button type="submit" class="save-button" [disabled]="!editSprintForm.valid" (click)="confirmEdit()"><mat-icon>save</mat-icon>Save</button>
 </div>
 

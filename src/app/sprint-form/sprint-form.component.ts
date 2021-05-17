@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Base } from '../base';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Sprint } from '../sprint';
@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./sprint-form.component.css']
 })
 export class SprintFormComponent extends Base implements OnInit {
+  @ViewChild("titleInput") titleInput:ElementRef;
 
   private fb:FormBuilder = new FormBuilder();
   public editSprintForm:FormGroup;
@@ -35,6 +36,10 @@ export class SprintFormComponent extends Base implements OnInit {
       goal: new FormControl(this.sprint.goal),
       description: new FormControl(this.sprint.description),
   	});
+  }
+
+  ngAfterViewInit() {
+    this.titleInput.nativeElement.focus();
   }
 
   confirmEdit() {
@@ -62,6 +67,17 @@ export class SprintFormComponent extends Base implements OnInit {
         this.deleteSprint(this.sprint);
       }      
     });
+  }
+
+  keyDown(event:KeyboardEvent) {
+    let chrCode:number;
+    if (event.charCode)     chrCode = event.charCode;
+    else if (event.which)   chrCode = event.which;
+    else if (event.keyCode) chrCode = event.keyCode;
+    console.log(chrCode);
+    if (chrCode == 27) {
+      this.cancel.emit();
+    }
   }
 
   private deleteSprint(sprint: Sprint) : void {

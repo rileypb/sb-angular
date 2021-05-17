@@ -6,7 +6,7 @@
 				<div class="col-md-6 no-print">
 					<mat-card class="inner-detail-card">
 						<div style="height:100%;">
-					  		<h6 class="banner-text">Completed Sprints</h6>
+					  		<div class="banner-text">Completed Sprints</div>
 		 			    	<sb-sprint-list [project]="project" [completedOnly]="true" (selected)="selectSprint($event)" (loaded)="selectSprint($event)" [showStartButton]="false" [editable]="false" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
 						</div>
 					</mat-card>

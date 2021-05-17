@@ -1,10 +1,11 @@
 <div class="project-frame-card">
-	<div class="banner-text card-title">
-		<mat-icon class="sb-icon" *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
+	<h1 class="banner-text card-title">
+		<mat-icon class="sb-icon mr-1" *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
 		<img class="project-picture" *ngIf="project.picture" [src]="project.picture" (click)="showContent()">
-		{{project.name}} 
-		<span class="navigation-segment" *ngIf="navigationService.segment"> : {{navigationService.segment}}</span>
-	</div>
+		 
+		<span class="navigation-segment" *ngIf="navigationService.segment">{{project.name}} : {{navigationService.segment}}</span>
+		<span class="navigation-segment" *ngIf="!navigationService.segment">{{project.name}}</span>
+	</h1>
 	<div [ngSwitch]="mode" class="card-contents">
 		<ng-content *ngSwitchCase="'showingContent'"></ng-content>
 		<div *ngSwitchCase="'editingProject'">EDITING</div>

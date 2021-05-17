@@ -1,5 +1,5 @@
-<div class="settings-dialog">
-	<h6 class="banner-text">Edit User Settings</h6>
+<div class="settings-dialog" aria-describedby="User Settings" role="dialog">
+	<div class="banner-text" tabindex="0" role="heading">Edit User Settings</div>
 	<mat-form-field appearance="fill">
 		<mat-label>Display Name</mat-label>
 		<input [(ngModel)]="user.displayName" (focus)="startEditingDisplayName()" (blur)="cancelEditingDisplayName()" (keydown)="onDisplayNameKeydown($event)" matInput #displayName>

@@ -13,11 +13,11 @@
 		<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon> Estimate: <span class="base-text">{{issue.estimate}}</span></p>
 		<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon> State: <span class="base-text">{{issue.state}}</span></p>
 
-		<h6 class="menu-text">Epic 
+		<div class="menu-text">Epic 
 			<button mat-icon-button type="button" (click)="jumpToEpic()" [matTooltip]="issue.epic ? 'Jump to Epic' : 'Jump to Epics List'">
 				<mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
 			</button>
-		</h6>
+		</div>
 		<mat-select class="epic-selector mat-color-font base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
 			<mat-option [value]="-1">No Epic</mat-option>
 			<mat-option *ngFor="let epic of epics" [value]="epic.id"
@@ -26,11 +26,11 @@
 			</mat-option>
 		</mat-select>
 
-		<h6 class="menu-text mt-2">Sprint 
+		<div class="menu-text mt-2">Sprint 
 			<button mat-icon-button type="button" (click)="jumpToSprint()" [matTooltip]="issue.sprint ? 'Jump to Sprint' : 'Jump to Sprints List'">
 				<mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
 			</button>
-		</h6>
+		</div>
 		<mat-select class="sprint-selector base-text" [(value)]="sprintId" (selectionChange)="onChangeSprintSelection($event)">
 			<mat-option [value]="-1">No Sprint</mat-option>
 			<mat-option *ngFor="let sprint of sprints" [value]="sprint.id">
@@ -39,7 +39,7 @@
 		</mat-select>
 
 		<mat-card class="mt-4 issue-card" *ngIf="showAcceptanceCriteria"> 
-			<h6 class="menu-text">Acceptance Criteria</h6>
+			<div class="menu-text">Acceptance Criteria</div>
 			<div>
 				<div *ngFor="let criterion of issue.acceptance_criteria">
 					<div class="mb-2">
@@ -55,7 +55,7 @@
 			</div>
 		</mat-card>
 		
-		<h6 class="mt-4 menu-text">Tasks <button style="position: relative; top: -4px" *ngIf="editable && permission(issue, 'create-task')" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon class="sb-icon">add_circle</mat-icon></button></h6>
+		<div class="mt-4 menu-text">Tasks <button style="position: relative; top: -4px" *ngIf="editable && permission(issue, 'create-task')" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon class="sb-icon">add_circle</mat-icon></button></div>
 
 		<ng-template #notasks><span class="base-text">No Tasks</span></ng-template>
 		<div *ngIf="issue.tasks && issue.tasks.length > 0; else notasks">
@@ -63,7 +63,7 @@
 		</div>
 
 		<div class="mt-3">
-			<h6 class="menu-text">Comments</h6>
+			<div class="menu-text">Comments</div>
 			<div class="comments-display-box mb-1"><sb-comment-display *ngFor="let comment of issue.comments" [comment]="comment"></sb-comment-display></div>
 			<sb-comment-entry [issueId]="issue.id"></sb-comment-entry>
 		</div>

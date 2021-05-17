@@ -1,5 +1,5 @@
 <div class="base-text display-box pb-3">
 	<div class="mb-1">{{ comment.text }}</div>
-	<img *ngIf="comment.user.picture" class="user-picture" [src]="comment.user.picture"> {{ comment.user.display_name }} 
+	<img *ngIf="comment.user.picture" class="user-picture" alt="commenter" [src]="comment.user.picture"> {{ comment.user.display_name }} 
 	<app-rich-date class="ml-1" [date]="comment.created_at"></app-rich-date>
 </div>

@@ -1,25 +1,25 @@
 <footer class="footer row">
 
 	<div class="col-3 text-center">	
-		<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button" (click)="logout()">
+		<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button" (click)="logout()" aria-label="Logout">
 			<mat-icon>logout</mat-icon>
 		</button>
 	</div>
 
 	<div class="col-3 text-center">
-		<button *ngIf="currentUser" class="settings-button" (click)="editSettings()">
+		<button *ngIf="currentUser" class="settings-button" (click)="editSettings()" aria-label="user settings">
 			<mat-icon class="material-icons-outlined">settings</mat-icon>
 		</button>
 	</div>
 
 	<div class="col-3 text-center">
-		<button *ngIf="(login.status | async) == 'logged_in'" class="news-button" [matBadge]="news?.unseen_count" [matBadgeHidden]="news?.unseen_count == 0" (click)="showNews()" #newsTrigger>
+		<button *ngIf="(login.status | async) == 'logged_in'" class="news-button" [matBadge]="news?.unseen_count" [matBadgeHidden]="news?.unseen_count == 0" (click)="showNews()" #newsTrigger aria-label="news feed">
 			<mat-icon class="material-icons-outlined">feed</mat-icon>
 		</button>
 	</div>
 
 	<div class="col-3 text-center">		
-		<button *ngIf="dataService.users" class="active-users-button" [matMenuTriggerFor]="activeUsersMenu">
+		<button *ngIf="dataService.users" class="active-users-button" [matMenuTriggerFor]="activeUsersMenu" aria-label="active users">
 			<mat-icon class="logout button-icon">people</mat-icon>
 			<span class="button-icon">{{dataService.users.length}}</span>
 		</button>
