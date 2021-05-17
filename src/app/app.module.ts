@@ -31,7 +31,6 @@ import { UiStateService } from './ui-state.service';
 import { DataService } from './data.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SprintBacklogItemComponent } from './sprint-backlog-item/sprint-backlog-item.component';
 import { ErrorComponent } from './error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "../shared/material.module";
@@ -43,7 +42,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { MenuContainerComponent } from './menu-container/menu-container.component';
-import { ProjectTeamComponent } from './project-team/project-team.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { EpicDetailComponent } from './epic-detail/epic-detail.component';
@@ -139,13 +137,11 @@ import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-setting
 @NgModule({
   declarations: [
     ProjectsComponent,
-    SprintBacklogItemComponent,
     ErrorComponent,
     EditIssueDialogComponent,
     SprintCardComponent,
     ConfirmDialogComponent,
     MenuContainerComponent,
-    ProjectTeamComponent,
     UserProfileComponent,
     SettingsComponent,
     EpicDetailComponent,
