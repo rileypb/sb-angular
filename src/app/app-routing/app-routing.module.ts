@@ -6,7 +6,6 @@ import { SprintBacklogItemComponent } from '../sprint-backlog-item/sprint-backlo
 import { ProjectTeamComponent } from '../project-team/project-team.component';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { SettingsComponent } from '../settings/settings.component';
-import { EpicsTopLevelComponent } from '../epics-top-level/epics-top-level.component';
 import { IssueDetailComponent } from '../issue-detail/issue-detail.component';
 import { ProductBacklogTopLevelComponent } from '../product-backlog-top-level/product-backlog-top-level.component';
 import { SprintExecutionTopLevelComponent } from '../sprint-execution-top-level/sprint-execution-top-level.component';

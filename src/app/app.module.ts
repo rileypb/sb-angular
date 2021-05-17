@@ -25,7 +25,6 @@ import { ProjectsComponent } from './projects/projects.component';
 import { LoginService } from './login.service';
 import { CableService } from './cable.service';
 import { ProjectService } from './project.service';
-import { TopBarComponent } from './top-bar/top-bar.component';
 import { IssuesService } from './issues.service';
 import { LocationService } from './location.service';
 import { UiStateService } from './ui-state.service';
@@ -39,7 +38,6 @@ import { MaterialModule } from "../shared/material.module";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { EditIssueDialogComponent } from './edit-issue-dialog/edit-issue-dialog.component';
 import { SprintCardComponent } from './sprint-card/sprint-card.component';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -70,7 +68,6 @@ import { SprintExecutionComponent } from './sprint-execution/sprint-execution.co
 import { SprintRetrospectiveComponent } from './sprint-retrospective/sprint-retrospective.component';
 import { EpicListComponent } from './epic-list/epic-list.component';
 import { ProjectFrameComponent } from './project-frame/project-frame.component';
-import { EpicsTopLevelComponent } from './epics-top-level/epics-top-level.component';
 import { ProductBacklogTopLevelComponent } from './product-backlog-top-level/product-backlog-top-level.component';
 import { SprintPlanningTopLevelComponent } from './sprint-planning-top-level/sprint-planning-top-level.component';
 import { DashboardTopLevelComponent } from './dashboard-top-level/dashboard-top-level.component';
@@ -132,7 +129,6 @@ import { UserComponent } from './user/user.component';
 import { StatusComponent } from './status/status.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FooterComponent } from './footer/footer.component';
-import { EpicsViewInnerSmallComponent } from './epics-view-inner-small/epics-view-inner-small.component';
 import { SimpleIssuesListComponent } from './simple-issues-list/simple-issues-list.component';
 import { SprintDetailComponent } from './sprint-detail/sprint-detail.component';
 import { IssueSelectionComponent } from './issue-selection/issue-selection.component';
@@ -143,12 +139,10 @@ import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-setting
 @NgModule({
   declarations: [
     ProjectsComponent,
-    TopBarComponent,
     SprintBacklogItemComponent,
     ErrorComponent,
     EditIssueDialogComponent,
     SprintCardComponent,
-    BreadcrumbComponent,
     ConfirmDialogComponent,
     MenuContainerComponent,
     ProjectTeamComponent,
@@ -176,7 +170,6 @@ import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-setting
     SprintRetrospectiveComponent,
     EpicListComponent,
     ProjectFrameComponent,
-    EpicsTopLevelComponent,
     ProductBacklogTopLevelComponent,
     SprintPlanningTopLevelComponent,
     DashboardTopLevelComponent,
@@ -232,7 +225,6 @@ import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-setting
     StatusComponent,
     NavMenuComponent,
     FooterComponent,
-    EpicsViewInnerSmallComponent,
     SimpleIssuesListComponent,
     SprintDetailComponent,
     IssueSelectionComponent,
