@@ -35,7 +35,7 @@ export class FooterComponent implements OnInit {
 
   showNews() {
     this.dialog.open(this.newsFeed, { 
-    	width: '400px', position: { bottom: '2rem' }});
+    	width: '400px', position: { bottom: '3rem' }});
     this.newsService.readAll();
   }
 
@@ -45,7 +45,7 @@ export class FooterComponent implements OnInit {
 
   editSettings():void {
     this.dialog.open(this.settingsDialog, { 
-      width: '400px', position: { bottom: '2rem' }});
+      width: '400px', position: { bottom: '3rem' }});
   }
 
   closeSettingsDialog():void {

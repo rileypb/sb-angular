@@ -1,10 +1,10 @@
 <div class="settings-dialog" aria-describedby="User Settings" role="dialog">
-	<div class="banner-text" tabindex="0" role="heading">Edit User Settings</div>
-	<mat-form-field appearance="fill">
+	<div class="banner-text mb-1" tabindex="0" role="heading">Edit User Settings</div>
+	<mat-form-field appearance="fill" style="width:100%">
 		<mat-label>Display Name</mat-label>
 		<input [(ngModel)]="user.displayName" (focus)="startEditingDisplayName()" (blur)="cancelEditingDisplayName()" (keydown)="onDisplayNameKeydown($event)" matInput #displayName>
 	</mat-form-field>
-	<mat-form-field appearance="fill">
+	<mat-form-field appearance="fill" style="width:100%">
 		<mat-label>UI Theme</mat-label>
 		<mat-select [(ngModel)]="user.theme" (valueChange)="changeTheme($event)" matInput>
 			<mat-option value="jmu">James Madison University</mat-option>
