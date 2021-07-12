@@ -41,7 +41,7 @@ export class BurndownComponent implements OnInit {
   }
 
   setBurndownData(sprint:Sprint) { 
-    if (!sprint) {
+    if (!sprint?.burndownData) {
       return;
     }  
     this.options = {

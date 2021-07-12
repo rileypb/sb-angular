@@ -112,6 +112,7 @@ export class SprintDetailComponent extends Base implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult) {
         this.start.emit(data);
+        this.dataService.forceRefresh(`projects/${this.sprint.project.id}`);
       }    
     });
 

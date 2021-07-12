@@ -8,6 +8,9 @@
 			<button mat-button class="done-button icon-button" (click)="okay()">Done</button>
 		</div>
 		<div *ngIf="project && project.team && (teamSummary | async); else progressSpinner">
+			<div class="total-unassigned-work">
+				Total Unassigned Work: {{ (teamSummary | async).team.unassignedWork.total_work }} hours
+			</div>
 			<div class="user-summary-card mb-3" *ngFor="let user of (teamSummary | async).team.members">
 				<div><img *ngIf="user.picture" class="user-picture" alt="user" [src]="user.picture"> {{ user.displayName || (user.first_name + " " + user.last_name) }} </div>
 				<div class="work-estimate">Total estimated work: {{user.work.work}} hours</div>

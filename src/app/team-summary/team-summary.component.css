@@ -33,3 +33,9 @@
 	box-shadow: 2px 2px var(--button-shadow);
 	margin-top: 3px;
 }
+
+.total-unassigned-work {
+	font-weight: bolder;
+	padding-bottom: 3px;
+	text-decoration: underline;
+}

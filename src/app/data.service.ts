@@ -184,6 +184,10 @@ export class DataService {
   	this.values[address].next(newValue);
   }
 
+  public forceRefresh(address:string):void {
+  	this.holds[address].forceRefresh();
+  }
+
 }
 class Hold {
 	public count:number = 0;
@@ -210,6 +214,10 @@ class Hold {
 				console.log(error);
 			}
 		);
+	}
+
+	forceRefresh() {
+		this._needsUpdate = true;
 	}
 
 	get needsUpdate():boolean {

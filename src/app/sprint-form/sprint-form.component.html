@@ -2,7 +2,7 @@
 <form [formGroup]="editSprintForm">
   <div fxLayout="row">
   	<mat-form-field style="width:100%" appearance="fill">
-  		<mat-label>Issue Title</mat-label>
+  		<mat-label>Sprint Title</mat-label>
   		<input matInput formControlName="title" (keydown)="keyDown($event)" #titleInput>
       <mat-error>Title can't be blank</mat-error>
   	</mat-form-field>
