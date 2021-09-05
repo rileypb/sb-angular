@@ -1,9 +1,13 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ThemeService } from '../theme/theme.service';
+import { IssuesService } from '../issues.service';
 import { UsersService } from '../users.service';
+import { ProjectService } from '../project.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { first } from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
+import {InputDialogComponent} from '../input-dialog/input-dialog.component';
 
 @Component({
   selector: 'sb-edit-settings-dialog',
@@ -17,11 +21,11 @@ export class EditSettingsDialogComponent implements OnInit {
 
   private originalDisplayName:string;
 
-  constructor(private themeService:ThemeService, private usersService:UsersService, private snackBar:MatSnackBar) { }
+  constructor(public dialog: MatDialog, private projectService:ProjectService, private themeService:ThemeService, private usersService:UsersService, private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
-
+ 
   changeTheme(newTheme):void {
   	this.user.theme = newTheme;
   	this.themeService.setTheme(newTheme);
@@ -61,6 +65,43 @@ export class EditSettingsDialogComponent implements OnInit {
       ["Saving setting...", "Setting saved", "Error saving setting"]).pipe(first()).subscribe(
         x => location.reload()
     );
+  }
+
+  onAddProjectClick():void {console.log("opening dialog")
+    const dialogRef = this.dialog.open(InputDialogComponent, {
+      maxWidth: "400px",
+      data: {
+          title: "Add Project",
+          message: `Enter your project key:`
+      }
+    });
+
+    // listen to response
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+
+        callWithSnackBar(this.snackBar, this.projectService.joinProject(dialogResult),
+          ["Joining Project...", "Project joined", "Error joining project"]).pipe(first()).subscribe(
+            x => location.reload()
+        );
+    //     this.snackBar.open("Deleting Issue...", null, {
+    //       duration: 30000,
+    //     });
+    //     this.issuesService.deleteIssue(this.data.issue.id).subscribe(
+    //       success => {
+    //         this.snackBar.open("Issue Deleted", null, {
+    //           duration: 2000,
+    //         });
+    //       },
+    //       error => {
+    //         this.snackBar.open("Error Deleting Issue", null, {
+    //           duration: 4000,
+    //         });
+    //       }
+    //     );
+    //     this.dialogRef.close(false);
+      }    
+   });
   }
 
 }

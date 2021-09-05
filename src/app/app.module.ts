@@ -132,6 +132,7 @@ import { SprintDetailComponent } from './sprint-detail/sprint-detail.component';
 import { IssueSelectionComponent } from './issue-selection/issue-selection.component';
 import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.component';
 import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-settings-dialog.component';
+import { InputDialogComponent } from './input-dialog/input-dialog.component';
 
 
 @NgModule({
@@ -226,6 +227,7 @@ import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-setting
     IssueSelectionComponent,
     ExpandableIssueComponent,
     EditSettingsDialogComponent,
+    InputDialogComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

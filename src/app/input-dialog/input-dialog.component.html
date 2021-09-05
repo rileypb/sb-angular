@@ -1,0 +1,13 @@
+<mat-card fxLayoutGap>
+
+    <p mat-dialog-title>{{data.title}}</p>
+
+    <p display-2>{{data.message}}</p>
+
+    <input type="input" [(ngModel)]="formInput" mat-input>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onDismiss()">No</button>
+        <button mat-raised-button class="warning" (click)="onConfirm()">Yes</button>
+    </div>
+</mat-card>

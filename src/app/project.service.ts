@@ -35,4 +35,8 @@ export class ProjectService {
   reorderIssues(project:Project, fromIndex:number, toIndex:number) {
     return this.api.patch(`api/projects/${project.id}/reorder_issues`, { data: { fromIndex: fromIndex, toIndex: toIndex }});
   } 
+
+  joinProject(projectKey:string):Observable<any> {
+    return this.api.post(`api/projects/join`, { data: { projectKey: projectKey }})
+  }
 }

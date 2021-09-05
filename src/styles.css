@@ -149,21 +149,21 @@ h2 {
 .save-button {
 	font-family: var(--menu-font);
 	background-color: var(--go-button-background);
-	color: var(--on-go-button-background);
+	color: var(--on-go-button-background) !important;
 	box-shadow: 2px 2px var(--button-shadow);
 }
 
 .cancel-button {
 	font-family: var(--menu-font);
 	background-color: var(--on-go-button-background);
-	color: var(--primary-dark);
+	color: var(--primary-dark) !important;
 	box-shadow: 2px 2px var(--button-shadow);
 }
 
 .delete-button {
 	font-family: var(--menu-font);
 	background-color: var(--on-error);
-	color: var(--error);
+	color: var(--error) !important;
 	box-shadow: 2px 2px var(--button-shadow);
 }
 
@@ -171,13 +171,13 @@ h2 {
 	font-family: var(--menu-font);
 
 	background-color: var(--go-button-background);
-	color: var(--on-go-button-background);
+	color: var(--on-go-button-background) !important;
 	box-shadow: 2px 2px var(--button-shadow);
 }
 
 .add-button {
 	background-color: var(--icon-button-background);
-	color: var(--on-icon-button-background);
+	color: var(--on-icon-button-background) !important;
 	border-radius: 5px;
 	border-width: 2px;
 	border-color: var(--button-border);
