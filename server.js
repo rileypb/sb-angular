@@ -21,6 +21,11 @@ app.get('/*', function (req, res) {
   );
 });
 
+app.get('/assets/privacy.html', function(req, res) {
+    res.sendFile('assets/privacy.html', { root: './dist' }
+    );
+});
+
 app.listen(process.env.PORT || 4200);
 
 console.log(`Running on port ${process.env.PORT || 4200}`)
