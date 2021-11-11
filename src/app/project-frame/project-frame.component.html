@@ -6,7 +6,7 @@
 		<span class="navigation-segment" *ngIf="navigationService.segment">{{project.name}} : {{navigationService.segment}}</span>
 		<span class="navigation-segment" *ngIf="!navigationService.segment">{{project.name}}</span>
 
-		<mat-icon class="sb-icon ml-4" *ngIf="permission(project, 'update')" fontSet="fas" fontIcon="fa-sliders-h" (click)="editSettings()"></mat-icon>
+		<mat-icon class="sb-icon ml-4" *ngIf="permission(project, 'configure')" fontSet="fas" fontIcon="fa-sliders-h" (click)="editSettings()"></mat-icon>
 	</h1>
 	<div [ngSwitch]="mode" class="card-contents">
 		<ng-content *ngSwitchCase="'showingContent'"></ng-content>
