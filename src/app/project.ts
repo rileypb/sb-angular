@@ -11,4 +11,5 @@ export interface Project {
 	picture?:string;
 	setting_auto_close_issues?:boolean;
 	setting_use_acceptance_criteria?:boolean;
+	hidden?:boolean;
 }

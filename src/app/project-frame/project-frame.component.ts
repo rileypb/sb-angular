@@ -49,7 +49,12 @@ export class ProjectFrameComponent extends Base implements OnInit {
 
   saveSettings() {
     callWithSnackBar(this.snackBar,
-                     this.projectService.updateProject({ id: this.project.id, picture: this.project.picture, setting_auto_close_issues: this.project.setting_auto_close_issues, setting_use_acceptance_criteria: this.project.setting_use_acceptance_criteria }),
+                     this.projectService.updateProject(
+                       { id: this.project.id, picture: this.project.picture, 
+                         setting_auto_close_issues: this.project.setting_auto_close_issues, 
+                         setting_use_acceptance_criteria: this.project.setting_use_acceptance_criteria, 
+                         hidden: this.project.hidden
+                       }),
                      ["Saving settings...", "Settings saved", "Error saving settings"]);
   }
 
