@@ -18,7 +18,8 @@
 				<span class="base-text align-baseline">{{sprint.goal}}</span>
 			</p>
 			<p class="base-text">{{sprint.description}}</p>
-			<a class="sb-link" (click)="showSummary()"><mat-icon style="position: relative; top: 4px;">people</mat-icon> <span class="menu-text team-summary-link">Team Summary</span></a>
+			<p><a class="sb-link" (click)="showSummary()"><mat-icon style="position: relative; top: 4px;">people</mat-icon> <span class="menu-text team-summary-link">Team Summary</span></a>
+			<p><a class="sb-link" (click)="showSnapshot()"><span class="menu-text team-summary-link">Sprint Snapshot</span></a>
 			<div class="menu-text mt-3 mb-3 state-box">
 				<mat-icon class="sb-icon align-baseline ml-2" fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>
 				<span class="align-baseline">State: </span> 
@@ -67,5 +68,8 @@
 	</div>
 	<div *ngIf="mode == 'summary'">
 		<sb-team-summary [editable]="true" [project]="project" [sprint]="sprint" (close)="mode = 'show'"></sb-team-summary>
+	</div>
+	<div *ngIf="mode == 'snapshot'">
+		<sb-sprint-snapshot [editable]="true" [project]="project" [sprint]="sprint" (close)="mode = 'show'"></sb-sprint-snapshot>
 	</div>
 </div>

@@ -74,7 +74,6 @@ export class SprintFormComponent extends Base implements OnInit {
     if (event.charCode)     chrCode = event.charCode;
     else if (event.which)   chrCode = event.which;
     else if (event.keyCode) chrCode = event.keyCode;
-    console.log(chrCode);
     if (chrCode == 27) {
       this.cancel.emit();
     }
