@@ -42,8 +42,8 @@ export class IssuesViewComponent implements OnInit {
   	
   	this.dataService.load(`projects/${this.locationService.projectId}`, [`projects/${this.locationService.projectId}`]);
     this.project$ = this.dataService.values[`projects/${this.locationService.projectId}`];
-    this.dataService.load(`projects/${this.locationService.projectId}/issues`, [`projects/${this.locationService.projectId}/issues`]);
-    this.issues$ = this.dataService.values[`projects/${this.locationService.projectId}/issues`];
+    this.dataService.load(`projects/${this.locationService.projectId}/issues?backlog=true`, [`projects/${this.locationService.projectId}/issues`]);
+    this.issues$ = this.dataService.values[`projects/${this.locationService.projectId}/issues?backlog=true`];
 	
 	this.issueId = +this.route.snapshot.paramMap.get('issue_id');
   }
