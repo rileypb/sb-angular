@@ -3,6 +3,7 @@ import { Api } from './api';
 import { Observable, Subject, ReplaySubject } from 'rxjs';
 
 import { Project } from './project';
+import { User } from './user';
 
 @Injectable()
 export class ProjectService {
@@ -38,5 +39,9 @@ export class ProjectService {
 
   joinProject(projectKey:string):Observable<any> {
     return this.api.post(`api/projects/join`, { data: { projectKey: projectKey }})
+  }
+
+  addMember(project:Project, user:User):Observable<any> {
+    return this.api.post(`api/projects/${project.id}/add_member`, { data: { user_id: user.id }});
   }
 }
