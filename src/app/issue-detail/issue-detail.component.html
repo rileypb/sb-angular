@@ -5,7 +5,7 @@
 			<div class="banner-text p-2 col-10 issue-banner">
 				<span class="issue-number">#{{issue.id}} </span><span class="issue-title">{{issue.title}}</span>
 			</div>
-			<div class="col-2 p-2">
+			<div *ngIf="issue.state != 'Closed'" class="col-2 p-2">
 				<button mat-icon-button matTooltip="Edit Issue" (click)="onEditIssue()"><mat-icon class="sb-icon">edit</mat-icon></button>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 		</div>
 		<div #epicSelector>
 			<mat-form-field class="form-field">
-				<mat-select class="epic-selector mat-color-font base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
+				<mat-select [disabled]="issue.state == 'Closed'" class="epic-selector mat-color-font base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
 					<mat-option [value]="-1">No Epic</mat-option>
 					<mat-option *ngFor="let epic of epics" [value]="epic.id"
 							[ngStyle]="{'background-color': (epic.color ? epic.color : '#FFFFFF'), 'color': fontColor(epic.color)}">
@@ -36,7 +36,7 @@
 			</button>
 		</div>
 		<mat-form-field class="form-field">
-			<mat-select class="sprint-selector base-text" [(value)]="sprintId" (selectionChange)="onChangeSprintSelection($event)">
+			<mat-select [disabled]="issue.state == 'Closed'" class="sprint-selector base-text" [(value)]="sprintId" (selectionChange)="onChangeSprintSelection($event)">
 				<mat-option [value]="-1">No Sprint</mat-option>
 				<mat-option *ngFor="let sprint of sprints" [value]="sprint.id">
 					{{sprint.title}}
@@ -49,23 +49,23 @@
 			<div>
 				<div *ngFor="let criterion of issue.acceptance_criteria">
 					<div class="mb-2">
-						<sb-acceptance-criterion-entry [criterion]="criterion" [issue]="issue" [showCompletionCheckboxes]="showCompletionCheckboxes" [editable]="editable" (deleteAC)="deleteAC($event)"></sb-acceptance-criterion-entry>
+						<sb-acceptance-criterion-entry [criterion]="criterion" [issue]="issue" [showCompletionCheckboxes]="showCompletionCheckboxes" [editable]="editable && issue.state != 'Closed'" (deleteAC)="deleteAC($event)"></sb-acceptance-criterion-entry>
 					</div>
 				</div>
-				<div *ngIf="editable && permission(issue,'update')">
+				<div *ngIf="editable && permission(issue,'update') && issue.state != 'Closed'">
 					<div class="row add-ac-wrapper">
-						<button class="col-1" *ngIf="permission(issue, 'update')" mat-icon-button matTooltip="New Acceptance Criterion" (click)="createAC(newCriterion.value)" [disabled]="newCriterion.value.trim() == ''"><mat-icon class="add-ac sb-icon">add_circle</mat-icon></button>
+						<button class="col-1" *ngIf="permission(issue, 'update')" mat-icon-button matTooltip="New Acceptance Criterion" (click)="createAC(newCriterion.value)" [disabled]="newCriterion.value.trim() == ''"><mat-icon class="add-ac sb-icon" >add_circle</mat-icon></button>
 						<textarea class="col-10 user-text issue-card" #newCriterion></textarea>
 					</div>
 				</div>
 			</div>
 		</mat-card>
 		
-		<div class="mt-4 menu-text">Tasks <button style="position: relative; top: -4px" *ngIf="editable && permission(issue, 'create-task')" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon class="sb-icon">add_circle</mat-icon></button></div>
+		<div class="mt-4 menu-text">Tasks <button style="position: relative; top: -4px" *ngIf="editable && permission(issue, 'create-task') && issue.state != 'Closed'" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon class="sb-icon">add_circle</mat-icon></button></div>
 
 		<ng-template #notasks><span class="base-text">No Tasks</span></ng-template>
 		<div *ngIf="issue.tasks && issue.tasks.length > 0; else notasks">
-			<app-tasks [issue]="issue"></app-tasks>
+			<app-tasks [editable]="issue.state != 'Closed'" [issue]="issue"></app-tasks>
 		</div>
 
 		<div class="mt-3">

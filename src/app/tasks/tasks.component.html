@@ -2,7 +2,7 @@
 
 <div class="list-container tasks" *ngIf="tasks | async; else progressSpinner">
   <div class="task-container column-container">
-  	<div class="list tasks" 
+  	<div *ngIf="editable; else staticList" class="list tasks" 
   	     cdkDropList 
   	     #taskList="cdkDropList" 
   	     [cdkDropListData]="{ tasks: (tasks | async), issue: issue }"
@@ -17,5 +17,17 @@
       </div>
 
   	</div>
+
+    <ng-template #staticList>
+      <div class="list tasks">
+
+        <div>
+          <div class="task-card text-truncate" *ngFor="let task of (tasks | async).tasks.list; let i = index">
+            <sb-task-card [task]="task" [editable]="false"></sb-task-card>
+          </div>
+        </div>
+
+      </div>
+    </ng-template>
   </div>
 </div>

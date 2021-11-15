@@ -18,7 +18,7 @@
             <div class="mt-2 ml-1 row">
               <span class="col-11">
                 <div *ngIf="team | async">
-                  <sb-user-selector [team]="(team | async)?.team" [assignee]="task.assignee" (userSelected)="assignTask($event)" [disabled]="!permission(task, 'update')"></sb-user-selector>
+                  <sb-user-selector [team]="(team | async)?.team" [assignee]="task.assignee" (userSelected)="assignTask($event)" [disabled]="!permission(task, 'update') || !editable"></sb-user-selector>
                 </div>
               </span>
             </div>
