@@ -133,7 +133,6 @@ import { IssueSelectionComponent } from './issue-selection/issue-selection.compo
 import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.component';
 import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-settings-dialog.component';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
-import { AddMemberDialogComponent } from './add-member-dialog/add-member-dialog.component';
 
 
 @NgModule({
@@ -229,7 +228,6 @@ import { AddMemberDialogComponent } from './add-member-dialog/add-member-dialog.
     ExpandableIssueComponent,
     EditSettingsDialogComponent,
     InputDialogComponent,
-    AddMemberDialogComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
@@ -260,7 +258,7 @@ import { AddMemberDialogComponent } from './add-member-dialog/add-member-dialog.
         active: 'jmu' //'dark-bw'
     }),
   ],
-  providers: [
+  providers: [ 
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHttpInterceptor,

@@ -23,7 +23,6 @@
 				<h2 class="banner-text">
 					<mat-icon class="sb-icon" style="position: relative; top: 3px;">people</mat-icon>
 					Team
-					<button style="position: relative; top: -4px" *ngIf="permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Add Member" (click)="addMember()"><mat-icon class="sb-icon">add_circle</mat-icon></button>
 				</h2>
 				<mat-card-content class="base-text">
 					<div *ngFor="let user of project.team">
