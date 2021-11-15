@@ -21,6 +21,7 @@ export class TaskCardComponent extends Base implements OnInit {
 
   @Input() task:Task;
   @Input() editCoordinator:EditCoordinator;
+  @Input() editable:boolean = true;
 
   public team:Observable<any>;
 
@@ -48,8 +49,9 @@ export class TaskCardComponent extends Base implements OnInit {
                      ["Assigning task...", "Assigned task", "Error assigning task"]);
   }
 
-  editTask(task:Task, event:any):void {
+  editTask(task:Task, event:any):void {  
     event.stopPropagation();
+    if (!this.editable) return;
     this.taskUnderEdit = JSON.parse(JSON.stringify(task));
 
     const dialogRef = this.dialog.open(EditTaskDialogComponent, {
@@ -73,7 +75,7 @@ export class TaskCardComponent extends Base implements OnInit {
   // }
 
   startEditingEstimate() {
-  	console.log("startEditingEstimate");
+    if (!this.editCoordinator) return;
     this.editCoordinator.objectUnderEdit = `estimate-${this.task.id}`;
     this.estimate = this.task.estimate;
     this.originalEstimate = this.task.estimate;
@@ -83,6 +85,7 @@ export class TaskCardComponent extends Base implements OnInit {
   }
 
   isEditingEstimate() {
+    if (!this.editCoordinator) return;
   	return this.editCoordinator.objectUnderEdit == `estimate-${this.task.id}`;
   }
 
@@ -95,6 +98,7 @@ export class TaskCardComponent extends Base implements OnInit {
   }
 
   stopEditingEstimate(saveEdit) {
+    if (!this.editCoordinator) return;
     this.editCoordinator.objectUnderEdit = null;
     if (saveEdit)
     {

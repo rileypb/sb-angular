@@ -26,7 +26,7 @@ export class EditCoordinator {
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent extends Base implements OnInit {
-  
+  @Input() editable:boolean;
   selectedTask: Task;
   tasks: Observable<any>;
 
