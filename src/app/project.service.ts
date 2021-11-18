@@ -3,6 +3,7 @@ import { Api } from './api';
 import { Observable, Subject, ReplaySubject } from 'rxjs';
 
 import { Project } from './project';
+import { User } from './user';
 
 @Injectable()
 export class ProjectService {

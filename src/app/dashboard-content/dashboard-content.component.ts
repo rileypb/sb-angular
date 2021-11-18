@@ -3,10 +3,11 @@ import { Project } from '../project';
 import { Base } from '../base';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { User } from '../user';	
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { callWithSnackBar } from '../util';
 import { ProjectService } from '../project.service';
 import {InputDialogComponent} from '../input-dialog/input-dialog.component';
+import { AddMemberDialogComponent } from '../add-member-dialog/add-member-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { callWithSnackBar } from '../util';
 
 @Component({
   selector: 'sb-dashboard-content',
