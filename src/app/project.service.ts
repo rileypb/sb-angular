@@ -41,7 +41,7 @@ export class ProjectService {
     return this.api.post(`api/projects/join`, { data: { projectKey: projectKey }})
   }
 
-  addMember(project:Project, user:User):Observable<any> {
-    return this.api.post(`api/projects/${project.id}/add_member`, { data: { user_id: user.id }});
+  addMember(project:Project, userEmail:string):Observable<any> {
+    return this.api.post(`api/projects/${project.id}/add_member`, { data: { email: userEmail }});
   }
 }

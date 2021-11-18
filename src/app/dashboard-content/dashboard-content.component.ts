@@ -7,6 +7,7 @@ import { AddMemberDialogComponent } from '../add-member-dialog/add-member-dialog
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 import { ProjectService } from '../project.service';
+import {InputDialogComponent} from '../input-dialog/input-dialog.component';
 
 @Component({
   selector: 'sb-dashboard-content',
@@ -26,23 +27,22 @@ export class DashboardContentComponent extends Base implements OnInit {
   addMember(): void {
     console.log("addMember");
     let data:User = { id: -1 };
-    const dialogRef:MatDialogRef<AddMemberDialogComponent, any> = this.dialog.open(AddMemberDialogComponent, {
-      width: '90%',
-      data: data,
-      disableClose: true
+    const dialogRef:MatDialogRef<InputDialogComponent, any> = this.dialog.open(InputDialogComponent, {
+      maxWidth: '400px',
+      data: {
+        title: "Add Project Member",
+        message: 'Enter member email:'
+      }
     });
-    //dialogRef.componentInstance.newTaskMode = true;
 
-    dialogRef.afterClosed().subscribe(result => {
-     if (result) {
-       this.doAddMember(data);
-     }
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.doAddMember(dialogResult);
     });
   }
 
-  private doAddMember(memberData:User) {
+  private doAddMember(userEmail:string) {
   	callWithSnackBar(this.snackBar,
-  					 this.projectService.addMember(this.project, memberData),
+  					 this.projectService.addMember(this.project, userEmail),
   					 ['Adding member...', 'Member added', 'Error adding member']);
   }
 }
