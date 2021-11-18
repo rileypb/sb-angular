@@ -8,6 +8,7 @@ import {InputDialogComponent} from '../input-dialog/input-dialog.component';
 import { AddMemberDialogComponent } from '../add-member-dialog/add-member-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'sb-dashboard-content',
@@ -25,7 +26,6 @@ export class DashboardContentComponent extends Base implements OnInit {
   }
 
   addMember(): void {
-    console.log("addMember");
     const dialogRef:MatDialogRef<InputDialogComponent, any> = this.dialog.open(InputDialogComponent, {
       maxWidth: '400px',
       data: {
@@ -43,5 +43,25 @@ export class DashboardContentComponent extends Base implements OnInit {
   	callWithSnackBar(this.snackBar,
   					 this.projectService.addMember(this.project, userEmail),
   					 ['Adding member...', 'Member added', 'Error adding member']);
+  }
+
+  removeMember(user:User): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: {
+          title: "Are you sure?",
+          message: `You are about to remove user ${user.displayName} from this project.` 
+      }
+    });
+
+   // listen to response
+   dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        callWithSnackBar(this.snackBar, this.projectService.removeMember(this.project.id, user.id),
+          ["Removing team member...", "Team member removed", "Error removing team member"]
+        );
+        dialogRef.close(false);
+      }    
+   });
   }
 }

@@ -44,4 +44,8 @@ export class ProjectService {
   addMember(project:Project, userEmail:string):Observable<any> {
     return this.api.post(`api/projects/${project.id}/add_member`, { data: { email: userEmail }});
   }
+
+  removeMember(projectId:number, userId:number):Observable<any> {
+    return this.api.post(`api/projects/${projectId}/remove_member`, { data: { userId: userId }});
+  }
 }
