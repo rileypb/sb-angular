@@ -38,12 +38,12 @@ export class SprintSnapshotComponent extends Base implements OnInit {
   }
 
   private loadSnapshot():void {
-    this.dataService.load(`sprints/${this.sprint.id}/snapshot`, [`sprints/${this.sprint.id}/snapshot`]);
-    this.snapshot = this.dataService.values[`sprints/${this.sprint.id}/snapshot`];
+    this.dataService.load(`sprints/${this.sprint.id}/compare`, [`sprints/${this.sprint.id}/compare`]);
+    this.snapshot = this.dataService.values[`sprints/${this.sprint.id}/compare`];
   }
 
   private unloadSnapshot():void {
-    this.dataService.unload(`sprints/${this.sprint.id}/snapshot`, [`sprints/${this.sprint.id}/snapshot`]);
+    this.dataService.unload(`sprints/${this.sprint.id}/compare`, [`sprints/${this.sprint.id}/compare`]);
   }
 
   @Input() set sprint(value:Sprint) {
@@ -60,7 +60,7 @@ export class SprintSnapshotComponent extends Base implements OnInit {
 
   ngOnDestroy() {
     // we do a fast unload because we want fresh data every time we load the dialog.
-    this.dataService.fastUnload(`sprints/${this.sprint.id}/snapshot`);
+    this.dataService.fastUnload(`sprints/${this.sprint.id}/compare`);
   }
 
 
