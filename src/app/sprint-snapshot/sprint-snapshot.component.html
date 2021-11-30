@@ -1,5 +1,11 @@
-<p>{{ snapshotText(snapshot | async) }}</p>
-
-		<div class="col-12 text-right p-0">
-			<button mat-button class="done-button icon-button" (click)="okay()">Done</button>
-		</div>
+<div class="row" *ngStyle="{'border-style'}">
+	<div class="col-6">
+		{{ (snapshot | async)?.comparison.title_old }}
+	</div>
+	<div class="col-6">
+		{{ (snapshot | async)?.comparison.title_old }}
+	</div>
+	<div class="col-12 text-right p-0">
+		<button mat-button class="save-button" (click)="okay()">Done</button>
+	</div>
+</div>
