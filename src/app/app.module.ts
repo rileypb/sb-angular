@@ -135,6 +135,7 @@ import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-setting
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { SprintSnapshotComponent } from './sprint-snapshot/sprint-snapshot.component';
 import { IssueCompareComponent } from './issue-compare/issue-compare.component';
+import { AcceptanceCriterionCompareComponent } from './acceptance-criterion-compare/acceptance-criterion-compare.component';
 
 
 @NgModule({
@@ -232,6 +233,7 @@ import { IssueCompareComponent } from './issue-compare/issue-compare.component';
     InputDialogComponent,
     SprintSnapshotComponent,
     IssueCompareComponent,
+    AcceptanceCriterionCompareComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

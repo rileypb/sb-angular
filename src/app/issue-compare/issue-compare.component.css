@@ -1,0 +1,11 @@
+.issue {
+	background-color: var(--header-background);
+	color: var(--on-header-background);
+	border-style: solid;
+	border-width: 1px;
+	margin-bottom: 2px;
+}
+
+.title {
+	font-weight: bold;
+}

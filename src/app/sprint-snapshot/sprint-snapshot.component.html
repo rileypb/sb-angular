@@ -22,8 +22,10 @@
 		{{ (snapshot | async)?.comparison.goal_new }}
 	</div>
 </div>
+<div>Issues:</div>
 <div class="row" *ngFor="let issue of (snapshot | async)?.comparison.issues">
-	<sb-issue-compare [issue]="issue"></sb-issue-compare>
+	<div class="col-1"></div>
+	<sb-issue-compare class="col-11" [issue]="issue"></sb-issue-compare>
 </div>
 <div class="col-12 text-right p-0">
 	<button mat-button class="save-button" (click)="okay()">Done</button>
