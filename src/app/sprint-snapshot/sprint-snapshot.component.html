@@ -1,11 +1,30 @@
-<div class="row" *ngStyle="{'border-style'}">
+<div class="row" [ngClass]="{ 'different': (snapshot | async)?.comparison.title_old != (snapshot | async)?.comparison.title_new }">
 	<div class="col-6">
 		{{ (snapshot | async)?.comparison.title_old }}
 	</div>
 	<div class="col-6">
-		{{ (snapshot | async)?.comparison.title_old }}
+		{{ (snapshot | async)?.comparison.title_new }}
 	</div>
-	<div class="col-12 text-right p-0">
-		<button mat-button class="save-button" (click)="okay()">Done</button>
+</div>
+<div class="row" [ngClass]="{ 'different': (snapshot | async)?.comparison.description_old != (snapshot | async)?.comparison.description_new }">
+	<div class="col-6">
+		{{ (snapshot | async)?.comparison.description_old }}
 	</div>
+	<div class="col-6">
+		{{ (snapshot | async)?.comparison.description_new }}
+	</div>
+</div>
+<div class="row" [ngClass]="{ 'different': (snapshot | async)?.comparison.goal_old != (snapshot | async)?.comparison.goal_new }">
+	<div class="col-6">
+		{{ (snapshot | async)?.comparison.goal_old }}
+	</div>
+	<div class="col-6">
+		{{ (snapshot | async)?.comparison.goal_new }}
+	</div>
+</div>
+<div class="row" *ngFor="let issue of (snapshot | async)?.comparison.issues">
+	<sb-issue-compare [issue]="issue"></sb-issue-compare>
+</div>
+<div class="col-12 text-right p-0">
+	<button mat-button class="save-button" (click)="okay()">Done</button>
 </div>

@@ -134,6 +134,7 @@ import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.co
 import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-settings-dialog.component';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { SprintSnapshotComponent } from './sprint-snapshot/sprint-snapshot.component';
+import { IssueCompareComponent } from './issue-compare/issue-compare.component';
 
 
 @NgModule({
@@ -230,6 +231,7 @@ import { SprintSnapshotComponent } from './sprint-snapshot/sprint-snapshot.compo
     EditSettingsDialogComponent,
     InputDialogComponent,
     SprintSnapshotComponent,
+    IssueCompareComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
