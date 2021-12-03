@@ -3,9 +3,13 @@
 	color: var(--on-header-background);
 	border-style: solid;
 	border-width: 1px;
-	margin-bottom: 2px;
 }
 
 .title {
 	font-weight: bold;
+}
+
+.ac {
+	background-color: var(--footer-background);
+	color:  var(--on-footer-background);
 }

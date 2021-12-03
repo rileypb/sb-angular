@@ -1,4 +1,4 @@
-<div class="issue">
+<div class="issue mb-4">
 	<div class="row" [ngClass]="{ 'different': issue.title_old != issue.title_new }">
 		<div class="col-4 title">Title:</div>
 		<div class="col-4">
@@ -25,9 +25,23 @@
 	</div>
 	<div *ngIf="issue?.acceptance_criteria.length > 0">
 		<div class="title">Acceptance Criteria:</div>
-		<div class="row" *ngFor="let ac of issue.acceptance_criteria">
+		<div class="row ac m-4" *ngFor="let ac of issue.acceptance_criteria">
 			<div class="col-1"></div>
 			<sb-acceptance-criterion-compare class="col-11" [acceptanceCriterion]="ac"></sb-acceptance-criterion-compare>
+		</div>
+	</div>
+	<div *ngIf="issue?.acceptance_criteria_removed.length > 0">
+		<div class="title">Acceptance Criteria Removed:</div>
+		<div class="row different ac m-4" *ngFor="let ac of issue.acceptance_criteria_removed">
+			<div class="col-1"></div>
+			{{ ac.criterion }}
+		</div>
+	</div>
+	<div *ngIf="issue?.acceptance_criteria_added.length > 0">
+		<div class="title">Acceptance Criteria Added:</div>
+		<div class="row different ac m-4" *ngFor="let ac of issue.acceptance_criteria_added">
+			<div class="col-1"></div>
+			{{ ac.criterion }}
 		</div>
 	</div>
 </div>
