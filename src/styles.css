@@ -215,6 +215,20 @@ h2 {
 	border-radius: 4px;
 }
 
+.added {
+	border-style: solid;
+	border-width: 4px;
+	border-color: var(--okay);
+	border-radius: 4px;
+}
+
+.removed {
+	border-style: solid;
+	border-width: 4px;
+	border-color: var(--error);
+	border-radius: 4px;
+}
+
 
 .mat-form-field-label {
 	font-family: var(--menu-font) !important;
