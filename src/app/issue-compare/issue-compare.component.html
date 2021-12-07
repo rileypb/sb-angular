@@ -30,14 +30,14 @@
 		</div>
 	</div>
 	<div *ngIf="issue?.acceptance_criteria_removed.length > 0">
-		<div class="title">Acceptance {{ issue?.acceptance_criteria_removed.length > 1 ? "Criteria" : "Criterion" }} Removed:</div>
+		<div class="row title m-0"><div class="col-12">Acceptance {{ issue?.acceptance_criteria_removed.length > 1 ? "Criteria" : "Criterion" }} Removed:</div></div>
 		<div class="row removed ac m-4" *ngFor="let ac of issue.acceptance_criteria_removed">
 			<div class="col-1"></div>
 			{{ ac.criterion }}
 		</div>
 	</div>
 	<div *ngIf="issue?.acceptance_criteria_added.length > 0">
-		<div class="title">Acceptance {{ issue?.acceptance_criteria_added.length > 1 ? "Criteria" : "Criterion" }} Added:</div>
+		<div class="row title m-0"><div class="col-12">Acceptance {{ issue?.acceptance_criteria_added.length > 1 ? "Criteria" : "Criterion" }} Added:</div></div>
 		<div class="row added ac m-4" *ngFor="let ac of issue.acceptance_criteria_added">
 			<div class="col-1"></div>
 			{{ ac.criterion }}
