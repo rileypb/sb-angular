@@ -1,5 +1,4 @@
-<div class="row" [ngClass]="{ 'different': acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new }">
-	<div class="col-4"></div>
-	<div class="col-4">{{ acceptanceCriterion.criterion_old }}</div>
-	<div class="col-4">{{ acceptanceCriterion.criterion_new }}</div>
+<div class="row" [ngClass]="{ 'different': acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new }" style="margin-left: 0; margin-right: 0;">
+	<div class="col-6 text-wrap">{{ acceptanceCriterion.criterion_old }}</div>
+	<div class="col-6 text-wrap" *ngIf="acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new">{{ acceptanceCriterion.criterion_new }}</div>
 </div>

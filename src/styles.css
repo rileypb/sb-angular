@@ -209,24 +209,30 @@ h2 {
 }
 
 .different {
-	border-style: solid;
+	background-color: var(--warning);
+	color: var(--on-warning);
+	/*border-style: solid;
 	border-width: 4px;
 	border-color: var(--warning);
-	border-radius: 4px;
+	border-radius: 4px;*/
 }
 
 .added {
-	border-style: solid;
+	background-color: var(--okay) !important;
+	color: var(--on-okay) !important;
+	/*border-style: solid;
 	border-width: 4px;
 	border-color: var(--okay);
-	border-radius: 4px;
+	border-radius: 4px;*/
 }
 
 .removed {
-	border-style: solid;
+	background-color: var(--error) !important;
+	color: var(--on-error) !important;
+	/*border-style: solid;
 	border-width: 4px;
 	border-color: var(--error);
-	border-radius: 4px;
+	border-radius: 4px;*/
 }
 
 
