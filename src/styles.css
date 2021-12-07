@@ -212,6 +212,11 @@ h2 {
 	color: var(--error);
 }
 
+.pretext {
+	font-family: var(--text-font);
+	font-size: medium;
+}
+
 
 .mat-form-field-label {
 	font-family: var(--menu-font) !important;
