@@ -23,6 +23,7 @@
 			{{ issue.epic_old.title }}
 		</div>
 	</div>
+
 	<div *ngIf="issue?.acceptance_criteria.length > 0">
 		<div class="row title m-0"><div class="col-12">Acceptance {{ issue?.acceptance_criteria.length > 1 ? "Criteria" : "Criterion" }}:</div></div>
 		<div class="row ac m-4" *ngFor="let ac of issue.acceptance_criteria">
@@ -41,6 +42,29 @@
 		<div class="row added ac m-4" *ngFor="let ac of issue.acceptance_criteria_added">
 			<div class="col-1"></div>
 			{{ ac.criterion }}
+		</div>
+	</div>
+
+	<div *ngIf="issue?.tasks.length > 0">
+		<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks.length > 1 ? "s" : "" }}:</div></div>
+		<div class="row ac m-4" *ngFor="let ac of issue.tasks">
+			<!-- <sb-acceptance-criterion-compare class="col-12 m-0 p-0" [acceptanceCriterion]="ac"></sb-acceptance-criterion-compare> -->
+		</div>
+	</div>
+	<div *ngIf="issue?.tasks_removed.length > 0">
+		<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks_removed.length > 1 ? "s" : "" }} Removed:</div></div>
+		<div class="row removed ac m-4" *ngFor="let ac of issue.tasks">
+			<div class="col-1"></div>
+			<!-- {{ ac.criterion }} -->
+			foo
+		</div>
+	</div>
+	<div *ngIf="issue?.tasks_added.length > 0">
+		<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks_added.length > 1 ? "s" : "" }} Added:</div></div>
+		<div class="row added ac m-4" *ngFor="let ac of issue.tasks_added">
+			<div class="col-1"></div>
+			<!-- {{ ac.criterion }} -->
+			bar
 		</div>
 	</div>
 </div>
