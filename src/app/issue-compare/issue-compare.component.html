@@ -47,13 +47,13 @@
 
 	<div *ngIf="issue?.tasks.length > 0">
 		<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks.length > 1 ? "s" : "" }}:</div></div>
-		<div class="row ac m-4" *ngFor="let ac of issue.tasks">
-			<!-- <sb-acceptance-criterion-compare class="col-12 m-0 p-0" [acceptanceCriterion]="ac"></sb-acceptance-criterion-compare> -->
+		<div class="row ac m-4" *ngFor="let task of issue.tasks">
+			<sb-task-compare [task]="task" class="col-12 m-0 p-0"></sb-task-compare>
 		</div>
 	</div>
 	<div *ngIf="issue?.tasks_removed.length > 0">
 		<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks_removed.length > 1 ? "s" : "" }} Removed:</div></div>
-		<div class="row removed ac m-4" *ngFor="let ac of issue.tasks">
+		<div class="row removed ac m-4" *ngFor="let ac of issue.tasks_removed">
 			<div class="col-1"></div>
 			<!-- {{ ac.criterion }} -->
 			foo

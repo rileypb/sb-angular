@@ -136,6 +136,7 @@ import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { SprintSnapshotComponent } from './sprint-snapshot/sprint-snapshot.component';
 import { IssueCompareComponent } from './issue-compare/issue-compare.component';
 import { AcceptanceCriterionCompareComponent } from './acceptance-criterion-compare/acceptance-criterion-compare.component';
+import { TaskCompareComponent } from './task-compare/task-compare.component';
 
 
 @NgModule({
@@ -234,6 +235,7 @@ import { AcceptanceCriterionCompareComponent } from './acceptance-criterion-comp
     SprintSnapshotComponent,
     IssueCompareComponent,
     AcceptanceCriterionCompareComponent,
+    TaskCompareComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
