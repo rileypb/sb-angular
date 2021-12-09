@@ -49,6 +49,24 @@
 	width: 10%;
 }
 
+.pulse {
+	background-color: white;
+}
+
+.no-pulse {
+	animation-duration: 2s;
+	animation-name: pulseout;
+}
+
+@keyframes pulseout {
+	from {
+		background-color: white;
+	}
+	to {
+		background-color: #FFFFFF00;
+	}
+}
+
 @media screen and (max-width: 1051px) {
 	.active-users {
 		display: none;

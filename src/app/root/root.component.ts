@@ -24,6 +24,8 @@ export class RootComponent implements OnInit {
   @Input() error : string;
   @Input() syncServiceStatus : string;
 
+  public pulse:number = -1;
+
   public news$:Observable<any>;
   public user$:Observable<any>;
 
@@ -73,6 +75,12 @@ export class RootComponent implements OnInit {
           this.news$ = this.dataService.values['news'];
           this.dataService.load('user_profile', []);
           this.user$ = this.dataService.values['user_profile'];
+          this.dataService.pulse.subscribe(
+            userId => {
+              console.log(userId);
+              this.pulse = userId;
+            }
+          );
           this.userSub = this.user$.subscribe(
             x => {
               if (x) {

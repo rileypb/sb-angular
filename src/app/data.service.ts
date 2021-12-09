@@ -21,6 +21,8 @@ export class DataService {
   public isDisconnected:Observable<boolean>;
   public users:any;
 
+  public pulse:Subject<number> = new Subject<number>();
+
   public users_by_team:any = {};
 
   private received:Subject<any> = new Subject<any>();
@@ -92,6 +94,13 @@ export class DataService {
 								}
 							}
 						}
+					}
+					if (msg.selector == 'user_pulse') {
+						console.log("user_pulse");
+						this.pulse.next(msg.data.id);
+						timer(100).pipe(first()).subscribe((x) => {
+							this.pulse.next(-1);
+						});
 					}
 				});
 			});
@@ -273,6 +282,7 @@ class CountingSyncer {
 	}
 
 	sync():Observable<string> {
+		console.log(`sync ${this.selector}`);
 		this.counter++;
 		if (this.counter == 1) {
 			this.subscribe();

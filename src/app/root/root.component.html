@@ -27,7 +27,7 @@
 
 	<div *ngIf="dataService.users" class="active-users text-truncate banner-text">
 		Active users:
-		<div *ngFor="let user of dataService.users" class="text-truncate base-text">
+		<div *ngFor="let user of dataService.users" [ngClass]="{ 'pulse': pulse == user.id, 'no-pulse': pulse != user.id }" class="text-truncate base-text">
 		   	<img [src]="user.picture"
 		         [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
 		         [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
