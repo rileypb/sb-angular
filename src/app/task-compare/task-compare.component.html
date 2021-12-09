@@ -1,17 +1,5 @@
 <div style="margin-left: 0; margin-right: 0;">
-	<div class="row" [ngClass]="{ 'different': task.title_old != task.title_new }" style="margin-left: 0; margin-right: 0;">
-		<div class="col-4">Title:</div>
-		<div class="text-wrap" [ngClass]="{ 'col-4': task.title_old != task.title_new, 'col-8': task.title_old == task.title_new}">{{ task.title_old }}</div>
-		<div class="col-4 text-wrap" *ngIf="task.title_old != task.title_new">{{ task.title_new }}</div>
-	</div>
-	<div class="row" [ngClass]="{ 'different': task.description_old != task.description_new }" style="margin-left: 0; margin-right: 0;">
-		<div class="col-4">Description:</div>
-		<div class="text-wrap" [ngClass]="{ 'col-4': task.description_old != task.description_new, 'col-8': task.description_old == task.description_new}">{{ task.description_old }}</div>
-		<div class="col-4 text-wrap" *ngIf="task.description_old != task.description_new">{{ task.description_new }}</div>
-	</div>
-	<div class="row" [ngClass]="{ 'different': task.estimate_old != task.estimate_new }" style="margin-left: 0; margin-right: 0;">
-		<div class="col-4">Estimate:</div>
-		<div class="text-wrap" [ngClass]="{ 'col-4': task.estimate_old != task.estimate_new, 'col-8': task.estimate_old == task.estimate_new}">{{ task.estimate_old }}</div>
-		<div class="col-4 text-wrap" *ngIf="task.estimate_old != task.estimate_new">{{ task.estimate_new }}</div>
-	</div>
+	<sb-comparison label="Title" [old]="task.title_old" [new]="task.title_new"></sb-comparison>
+	<sb-comparison label="Description" [old]="task.description_old" [new]="task.description_new"></sb-comparison>
+	<sb-comparison label="Estimate" [old]="task.estimate_old" [new]="task.estimate_new"></sb-comparison>
 </div>

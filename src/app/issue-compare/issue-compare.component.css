@@ -13,3 +13,8 @@
 	background-color: var(--footer-background);
 	color:  var(--on-footer-background);
 }
+
+.task {
+	background-color: var(--footer-background);
+	color:  var(--on-footer-background);
+}

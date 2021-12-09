@@ -24,47 +24,62 @@
 		</div>
 	</div>
 
-	<div *ngIf="issue?.acceptance_criteria.length > 0">
-		<div class="row title m-0"><div class="col-12">Acceptance {{ issue?.acceptance_criteria.length > 1 ? "Criteria" : "Criterion" }}:</div></div>
-		<div class="row ac m-4" *ngFor="let ac of issue.acceptance_criteria">
-			<sb-acceptance-criterion-compare class="col-12 m-0 p-0" [acceptanceCriterion]="ac"></sb-acceptance-criterion-compare>
-		</div>
-	</div>
-	<div *ngIf="issue?.acceptance_criteria_removed.length > 0">
-		<div class="row title m-0"><div class="col-12">Acceptance {{ issue?.acceptance_criteria_removed.length > 1 ? "Criteria" : "Criterion" }} Removed:</div></div>
-		<div class="row removed ac m-4" *ngFor="let ac of issue.acceptance_criteria_removed">
-			<div class="col-1"></div>
-			{{ ac.criterion }}
-		</div>
-	</div>
-	<div *ngIf="issue?.acceptance_criteria_added.length > 0">
-		<div class="row title m-0"><div class="col-12">Acceptance {{ issue?.acceptance_criteria_added.length > 1 ? "Criteria" : "Criterion" }} Added:</div></div>
-		<div class="row added ac m-4" *ngFor="let ac of issue.acceptance_criteria_added">
-			<div class="col-1"></div>
-			{{ ac.criterion }}
-		</div>
-	</div>
+	<sb-acceptance-criteria-compare-list [acceptanceCriteria]="issue?.acceptance_criteria" [acceptanceCriteriaAdded]="issue?.acceptance_criteria_added" [acceptanceCriteriaRemoved]="issue?.acceptance_criteria_removed"></sb-acceptance-criteria-compare-list>
 
 	<div *ngIf="issue?.tasks.length > 0">
 		<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks.length > 1 ? "s" : "" }}:</div></div>
-		<div class="row ac m-4" *ngFor="let task of issue.tasks">
+		<div class="row task m-4" *ngFor="let task of issue.tasks">
 			<sb-task-compare [task]="task" class="col-12 m-0 p-0"></sb-task-compare>
 		</div>
 	</div>
 	<div *ngIf="issue?.tasks_removed.length > 0">
 		<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks_removed.length > 1 ? "s" : "" }} Removed:</div></div>
-		<div class="row removed ac m-4" *ngFor="let ac of issue.tasks_removed">
-			<div class="col-1"></div>
-			<!-- {{ ac.criterion }} -->
-			foo
+		<div class="row removed task m-4" *ngFor="let task of issue.tasks_removed">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-4">
+						Title:
+					</div>
+					<div class="col-8">{{task.title}}</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						Description:
+					</div>
+					<div class="col-8">{{task.description}}</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						Estimate:
+					</div>
+					<div class="col-8">{{task.estimate}}</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div *ngIf="issue?.tasks_added.length > 0">
 		<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks_added.length > 1 ? "s" : "" }} Added:</div></div>
-		<div class="row added ac m-4" *ngFor="let ac of issue.tasks_added">
-			<div class="col-1"></div>
-			<!-- {{ ac.criterion }} -->
-			bar
+		<div class="row added task m-4" *ngFor="let task of issue.tasks_added">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-4">
+						Title:
+					</div>
+					<div class="col-8">{{task.title}}</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						Description:
+					</div>
+					<div class="col-8">{{task.description}}</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						Estimate:
+					</div>
+					<div class="col-8">{{task.estimate}}</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
