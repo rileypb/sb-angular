@@ -27,7 +27,7 @@
 				</h2>
 				<mat-card-content class="base-text">
 					<div *ngFor="let user of project.team">
-						<button style="position: relative; top: -4px" *ngIf="permission(project, 'configure')" [ngClass]="{'hide': project.owner.id == user.id}" mat-icon-button color="primary" matTooltip="Remove Member" (click)="removeMember(user)"><mat-icon class="sb-icon-warn">cancel</mat-icon></button>
+						<button style="position: relative; top: -4px" *ngIf="permission(project, 'configure') && (project.owner.id != user.id)" mat-icon-button color="primary" matTooltip="Remove Member" (click)="removeMember(user)"><mat-icon class="sb-icon-warn">cancel</mat-icon></button>
 						<img *ngIf="user.picture" class="user-picture" [src]="user.picture" alt="user"> {{ user.displayName || (user.first_name + " " + user.last_name) }}
 					</div>
 				</mat-card-content>

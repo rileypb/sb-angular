@@ -35,7 +35,9 @@ export class DashboardContentComponent extends Base implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      this.doAddMember(dialogResult);
+      if (dialogResult) {
+        this.doAddMember(dialogResult);
+      } 
     });
   }
 
