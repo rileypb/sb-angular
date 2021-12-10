@@ -1,4 +1,16 @@
-<div class="row" [ngClass]="{ 'different': acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new }" style="margin-left: 0; margin-right: 0;">
-	<div lass="text-wrap" [ngClass]="{ 'col-6': acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new, 'col-12': acceptanceCriterion.criterion_old == acceptanceCriterion.criterion_new}">{{ acceptanceCriterion.criterion_old }}</div>
-	<div class="col-6 text-wrap" *ngIf="acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new">{{ acceptanceCriterion.criterion_new }}</div>
+<div class="row p-2" [ngClass]="{ 'different': acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new }" style="margin-left: 0; margin-right: 0;">
+	<div class="col-12">
+		<div class="row">
+			<div class="col-4 title">
+				Id:
+			</div>
+			<div class="col-8">
+				{{ acceptanceCriterion.id }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="text-wrap" [ngClass]="{ 'col-6': acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new, 'col-12': acceptanceCriterion.criterion_old == acceptanceCriterion.criterion_new}">{{ acceptanceCriterion.criterion_old }}</div>
+			<div class="col-6 text-wrap" *ngIf="acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new">{{ acceptanceCriterion.criterion_new }}</div>
+		</div>
+	</div>
 </div>
