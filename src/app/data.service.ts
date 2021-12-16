@@ -96,7 +96,6 @@ export class DataService {
 						}
 					}
 					if (msg.selector == 'user_pulse') {
-						console.log("user_pulse");
 						this.pulse.next(msg.data.id);
 						timer(100).pipe(first()).subscribe((x) => {
 							this.pulse.next(-1);

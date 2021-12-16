@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, ChangeDetectorRef, ViewChild, TemplateRef, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectorRef, ViewChild, TemplateRef, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { LoginService } from '../login.service';
 import { User } from '../user';
 import { MediaMatcher } from '@angular/cdk/layout';
@@ -11,6 +11,7 @@ import { Observable, Subscription } from 'rxjs'
 import { MatDialog } from '@angular/material/dialog';
 import { NewsService } from '../news.service';
 import { ThemeService } from '../theme/theme.service';
+import { UserPictureComponent } from '../user-picture/user-picture.component';
 
 @Component({
   selector: 'sb-root',
@@ -20,11 +21,12 @@ import { ThemeService } from '../theme/theme.service';
 export class RootComponent implements OnInit {
   @ViewChild("newsFeed") newsFeed:TemplateRef<any>;
   @ViewChild("newsTrigger") newsTrigger:ElementRef<any>;
+  @ViewChildren("userPicture") userPictures:QueryList<UserPictureComponent>;
   title = 'Scrumboard';
   @Input() error : string;
   @Input() syncServiceStatus : string;
 
-  public pulse:number = -1;
+  //public pulse:number = -1;
 
   public news$:Observable<any>;
   public user$:Observable<any>;
@@ -77,8 +79,7 @@ export class RootComponent implements OnInit {
           this.user$ = this.dataService.values['user_profile'];
           this.dataService.pulse.subscribe(
             userId => {
-              console.log(userId);
-              this.pulse = userId;
+              this.pulse(userId);
             }
           );
           this.userSub = this.user$.subscribe(
@@ -93,6 +94,16 @@ export class RootComponent implements OnInit {
         }
       }
     );
+  }
+
+  pulse(userId:number):void {
+    console.log(this.userPictures);
+    this.userPictures.forEach((eRef) => {
+      if (eRef.userId == userId) {
+        console.log("found");
+        eRef.pulse();
+      }
+    });
   }
 
   setTheme(themeName:string):void {

@@ -27,13 +27,13 @@
 
 	<div *ngIf="dataService.users" class="active-users text-truncate banner-text">
 		Active users:
-		<div *ngFor="let user of dataService.users" [ngClass]="{ 'pulse': pulse == user.id, 'no-pulse': pulse != user.id }" class="text-truncate base-text">
-		   	<img [src]="user.picture"
-		         [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
-		         [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
-		         class="nav-user-profile user-picture mb-1"
-		         style="width: 32px;"/>
-		         {{user.displayName || (user.first_name + ' ' + user.last_name)}}
+		<div *ngFor="let user of dataService.users" class="text-truncate base-text">
+			<sb-user-picture #userPicture
+							 [userId]="user.id"
+							 [src]="user.picture"
+							 [username]="user.displayName || (user.first_name + ' ' + user.last_name)">
+			</sb-user-picture>
+
 		</div>
 	</div>
 </div>

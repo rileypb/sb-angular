@@ -134,6 +134,7 @@ import { ExpandableIssueComponent } from './expandable-issue/expandable-issue.co
 import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-settings-dialog.component';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { AddMemberDialogComponent } from './add-member-dialog/add-member-dialog.component';
+import { UserPictureComponent } from './user-picture/user-picture.component';
 
 
 @NgModule({
@@ -230,6 +231,7 @@ import { AddMemberDialogComponent } from './add-member-dialog/add-member-dialog.
     EditSettingsDialogComponent,
     InputDialogComponent,
     AddMemberDialogComponent,
+    UserPictureComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [
