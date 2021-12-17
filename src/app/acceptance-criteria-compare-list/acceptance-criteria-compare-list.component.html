@@ -1,6 +1,6 @@
 <div class="p-2" *ngIf="acceptanceCriteria.length > 0">
 	<div class="row title m-0"><div class="col-12">Acceptance {{ acceptanceCriteria.length > 1 ? "Criteria" : "Criterion" }}:</div></div>
-	<div class="row ac m-4" *ngFor="let ac of acceptanceCriteria">
+	<div class="row ac m-4 p-0" *ngFor="let ac of acceptanceCriteria">
 		<sb-acceptance-criterion-compare class="col-12 m-0 p-0" [acceptanceCriterion]="ac"></sb-acceptance-criterion-compare>
 	</div>
 </div>

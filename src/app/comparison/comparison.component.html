@@ -1,4 +1,5 @@
 	<div class="row" [ngClass]="{ 'different': old != new }" style="margin-left: 0; margin-right: 0;">
+		<div style="position: absolute; left: -16px; color: white;" *ngIf="old != new"><mat-icon>arrow_right</mat-icon></div>
 		<div class="col-4 font-weight-bold">{{label}}:</div>
 		<div class="text-wrap" [ngClass]="{ 'col-4': old != new, 'col-8': old == new}">{{ old }}</div>
 		<div class="col-4 text-wrap" *ngIf="old != new">{{ new }}</div>

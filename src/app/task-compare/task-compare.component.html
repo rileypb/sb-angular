@@ -2,5 +2,5 @@
 	<sb-comparison label="Title" [old]="task.title_old" [new]="task.title_new"></sb-comparison>
 	<sb-comparison label="Description" [old]="task.description_old" [new]="task.description_new"></sb-comparison>
 	<sb-comparison label="Estimate" [old]="task.estimate_old" [new]="task.estimate_new"></sb-comparison>
-	<sb-comparison label="Assignee" [old]="task.assignee_old" [new]="task.assignee_new || 'unassigned'"></sb-comparison>
+	<sb-comparison label="Assignee" [old]="task.assignee_old || 'unassigned'" [new]="task.assignee_new || 'unassigned'"></sb-comparison>
 </div>

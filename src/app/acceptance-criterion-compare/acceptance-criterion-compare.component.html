@@ -1,16 +1,6 @@
-<div class="row p-2" [ngClass]="{ 'different': acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new }" style="margin-left: 0; margin-right: 0;">
-	<div class="col-12">
-		<div class="row">
-			<div class="col-4 title">
-				Id:
-			</div>
-			<div class="col-8">
-				{{ acceptanceCriterion.id }}
-			</div>
-		</div>
-		<div class="row">
-			<div class="text-wrap" [ngClass]="{ 'col-6': acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new, 'col-12': acceptanceCriterion.criterion_old == acceptanceCriterion.criterion_new}">{{ acceptanceCriterion.criterion_old }}</div>
-			<div class="col-6 text-wrap" *ngIf="acceptanceCriterion.criterion_old != acceptanceCriterion.criterion_new">{{ acceptanceCriterion.criterion_new }}</div>
-		</div>
+<div class="row" style="margin-left: 0; margin-right: 0; padding: 0;">
+	<div class="ml-0 col-12 p-0">
+		<sb-comparison label="Id" [old]="acceptanceCriterion.id" [new]="acceptanceCriterion.id"></sb-comparison>
+		<sb-comparison label="criterion" [old]="acceptanceCriterion.criterion_old" [new]="acceptanceCriterion.criterion_new"></sb-comparison>
 	</div>
 </div>
