@@ -1,7 +1,7 @@
-<div theme class="no-print sbroot">
-	<sb-header class="header"></sb-header>
+<div theme class="sbroot">
+	<sb-header class="no-print header"></sb-header>
 	
-	<nav class="nav nav-menu">
+	<nav class="no-print nav nav-menu">
 		<div class="nav-wrapper">
 			<sb-nav-menu></sb-nav-menu>
 		</div>
@@ -11,7 +11,7 @@
 		<router-outlet ></router-outlet>
 	</div>
 
-	<sb-footer class="footer" [news]="news$ | async" [currentUser]="user$ | async"></sb-footer>
+	<sb-footer class="no-print footer" [news]="news$ | async" [currentUser]="user$ | async"></sb-footer>
 
 
 	<ng-template #connecting>
@@ -25,7 +25,7 @@
 		</div>
 	</div>
 
-	<div *ngIf="dataService.users" class="active-users text-truncate banner-text">
+	<div *ngIf="dataService.users" class="no-print active-users text-truncate banner-text">
 		Active users:
 		<div *ngFor="let user of dataService.users" class="text-truncate base-text">
 		   	<img [src]="user.picture"
