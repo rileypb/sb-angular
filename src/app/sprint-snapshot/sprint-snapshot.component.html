@@ -1,28 +1,7 @@
-<div class="row" [ngClass]="{ 'different': (snapshot | async)?.comparison.title_old != (snapshot | async)?.comparison.title_new }">
-	<div class="col-6">
-		{{ (snapshot | async)?.comparison.title_old }}
-	</div>
-	<div class="col-6">
-		{{ (snapshot | async)?.comparison.title_new }}
-	</div>
-</div>
-<div class="row" [ngClass]="{ 'different': (snapshot | async)?.comparison.description_old != (snapshot | async)?.comparison.description_new }">
-	<div class="col-6">
-		{{ (snapshot | async)?.comparison.description_old }}
-	</div>
-	<div class="col-6">
-		{{ (snapshot | async)?.comparison.description_new }}
-	</div>
-</div>
-<div class="row" [ngClass]="{ 'different': (snapshot | async)?.comparison.goal_old != (snapshot | async)?.comparison.goal_new }">
-	<div class="col-6">
-		{{ (snapshot | async)?.comparison.goal_old }}
-	</div>
-	<div class="col-6">
-		{{ (snapshot | async)?.comparison.goal_new }}
-	</div>
-</div>
-<div>Issues:</div>
+<sb-comparison label="Title" [old]="(snapshot | async)?.comparison.title_old" [new]="(snapshot | async)?.comparison.title_new"></sb-comparison>
+<sb-comparison label="Description" [old]="(snapshot | async)?.comparison.description_old" [new]="(snapshot | async)?.comparison.description_new"></sb-comparison>
+<sb-comparison label="Goal" [old]="(snapshot | async)?.comparison.goal_old" [new]="(snapshot | async)?.comparison.goal_new"></sb-comparison>
+<div class="mt-2">Issues:</div>
 <div class="row" *ngFor="let issue of (snapshot | async)?.comparison.issues">
 	<div class="col-1"></div>
 	<sb-issue-compare class="col-11" [issue]="issue"></sb-issue-compare>

@@ -5,24 +5,8 @@
 			{{ issue.id }}
 		</div>
 	</div>
-	<div class="row m-0" [ngClass]="{ 'different': issue.title_old != issue.title_new }">
-		<div class="col-4 title">Title:</div>
-		<div class="col-4">
-			{{ issue.title_old }}
-		</div>
-		<div class="col-4">
-			{{ issue.title_new }}
-		</div>
-	</div>
-	<div class="row m-0" [ngClass]="{ 'different': issue.estimate_old != issue.estimate_new }">
-		<div class="col-4 title">Estimate:</div>
-		<div class="col-4">
-			{{ issue.estimate_old }}
-		</div>
-		<div class="col-4">
-			{{ issue.estimate_new }}
-		</div>
-	</div>
+	<sb-comparison label="Title" [old]="issue.title_old" [new]="issue.title_new"></sb-comparison>
+	<sb-comparison label="Estimate" [old]="issue.estimate_old" [new]="issue.estimate_new"></sb-comparison>
 	<div class="row m-0" *ngIf="issue.epic_old">
 		<div class="col-4 title">Epic:</div>
 		<div class="col-8">
