@@ -53,6 +53,7 @@ export class ProjectFrameComponent extends Base implements OnInit {
                        { id: this.project.id, picture: this.project.picture, 
                          setting_auto_close_issues: this.project.setting_auto_close_issues, 
                          setting_use_acceptance_criteria: this.project.setting_use_acceptance_criteria, 
+                         allow_issue_completion_without_sprint: this.project.allow_issue_completion_without_sprint,
                          hidden: this.project.hidden
                        }),
                      ["Saving settings...", "Settings saved", "Error saving settings"]);

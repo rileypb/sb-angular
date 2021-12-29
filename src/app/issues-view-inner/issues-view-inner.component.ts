@@ -139,4 +139,9 @@ export class IssuesViewInnerComponent extends Base implements OnInit {
 					    this.router.navigate(['projects', this.project.id, 'backlog']);
 					 });  
   }
+
+  onCompleteIssue(issue:Issue):void {
+    callWithSnackBar(this.snackBar, this.issuesService.markCompleted(issue.id),
+      ["Completing issue...", "Issue completed", "Error completing issue"]); 
+  }
 }

@@ -16,6 +16,7 @@
 			<p>Picture URL: <input class="picture-input" [(ngModel)]="project.picture"></p>
 			<p>Auto-close Issues: <input type="checkbox" [(ngModel)]="project.setting_auto_close_issues"></p>
 			<p>Use Acceptance Criteria: <input type="checkbox" [(ngModel)]="project.setting_use_acceptance_criteria"></p>
+			<p>Allow Completing Issue Without Sprint: <input type="checkbox" [(ngModel)]="project.allow_issue_completion_without_sprint"></p>
 			<p>Hidden: <input type="checkbox" [(ngModel)]="project.hidden"></p>
 			<button (click)="saveSettings()">Save</button>
 		</div>

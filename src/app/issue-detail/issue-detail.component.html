@@ -2,11 +2,12 @@
 <div>
 	<div *ngIf="issue; else progressSpinner">
 		<div class="row" [ngStyle]="{'background-color': adaptiveBackgroundColor(issue.epic?.color), 'color': adaptiveFontColor(issue.epic?.color)}">
-			<div class="banner-text p-2 col-10 issue-banner">
+			<div class="banner-text p-2 issue-banner" [ngClass]="{'col-8' : issue.closable, 'col-10' : !issue.closable}">
 				<span class="issue-number">#{{issue.id}} </span><span class="issue-title">{{issue.title}}</span>
 			</div>
-			<div *ngIf="issue.state != 'Closed'" class="col-2 p-2">
+			<div *ngIf="issue.state != 'Closed'" class="p-2" [ngClass]="{'col-4' : issue.closable, 'col-2' : !issue.closable}">
 				<button mat-icon-button matTooltip="Edit Issue" (click)="onEditIssue()"><mat-icon class="sb-icon">edit</mat-icon></button>
+				<button mat-icon-button *ngIf="issue.closable" matTooltip="Complete Issue" (click)="onComplete()"><mat-icon class="sb-icon">check_circle</mat-icon></button>
 			</div>
 		</div>
 		<p class="issue-description p-2"><pre class="pretext">{{issue.description}}</pre>

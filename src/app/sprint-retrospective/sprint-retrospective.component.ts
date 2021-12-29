@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../project';
+import { Issue } from '../issue';
 import { Base } from '../base';
+import { IssuesService } from '../issues.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { callWithSnackBar } from '../util';
 
 @Component({
   selector: 'app-sprint-retrospective',
@@ -14,7 +18,7 @@ export class SprintRetrospectiveComponent extends Base implements OnInit {
   editingRetrospective:boolean = false;
   selectedIssueId:number = null;
 
-  constructor() {
+  constructor(private issuesService:IssuesService, private snackBar:MatSnackBar) {
     super();
   }
 
@@ -33,5 +37,10 @@ export class SprintRetrospectiveComponent extends Base implements OnInit {
 
   onIssueSelected(issue) {
     this.selectedIssueId = issue.id;
+  }
+
+  onCompleteIssue(issue:Issue) {
+    callWithSnackBar(this.snackBar, this.issuesService.markCompleted(issue.id),
+      ["Completing issue...", "Issue completed", "Error completing issue"]); 
   }
 }

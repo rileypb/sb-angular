@@ -35,6 +35,7 @@ export class IssueDetailComponent extends Base implements OnInit {
   @Input() sprints:any;
 
   @Output() editIssue:EventEmitter<Issue> = new EventEmitter<Issue>();
+  @Output() completeIssue:EventEmitter<Issue> = new EventEmitter<Issue>();
 
   public team:Observable<any>;
   public assignee:any;
@@ -145,6 +146,10 @@ export class IssueDetailComponent extends Base implements OnInit {
 
   onEditIssue() {
     this.editIssue.emit(this.issue);
+  }
+
+  onComplete() {
+    this.completeIssue.emit(this.issue);
   }
 
   createAC(criterion:string) {

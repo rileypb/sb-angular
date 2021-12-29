@@ -16,7 +16,7 @@
 				</div>
 				<div class="col-md-6" *ngIf="selectedIssueId">
 					<sb-issue-loader [issueId]="selectedIssueId">
-						<app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="true" [editable]="false" #issueView></app-issue-detail>
+						<app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="true" [editable]="false" (completeIssue)="onCompleteIssue($event)" #issueView></app-issue-detail>
 					</sb-issue-loader>
 				</div>
 			</div>
