@@ -1,0 +1,123 @@
+<sb-comparison label="Title" [old]="(snapshot | async)?.comparison.title_old" [new]="(snapshot | async)?.comparison.title_new"></sb-comparison>
+<sb-comparison label="Description" [old]="(snapshot | async)?.comparison.description_old" [new]="(snapshot | async)?.comparison.description_new"></sb-comparison>
+<sb-comparison label="Goal" [old]="(snapshot | async)?.comparison.goal_old" [new]="(snapshot | async)?.comparison.goal_new"></sb-comparison>
+<div class="mt-2">Issues:</div>
+<div class="row" *ngFor="let issue of (snapshot | async)?.comparison.issues">
+	<div class="col-1"></div>
+	<sb-issue-compare class="col-11" [issue]="issue"></sb-issue-compare>
+</div>
+<div *ngIf="(snapshot | async)?.comparison.removed_issues.length > 0">
+	<div>Removed Issues:</div>
+	<div class="row" *ngFor="let issue of (snapshot | async)?.comparison.removed_issues">
+		<div class="col-1"></div>
+		<div class="col-11 issue mb-4">
+			<div class="removed p-2">
+				<div class="row">
+					<div class="col-4 title">Title:</div>
+					<div class="col-8">
+						{{ issue.title }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4 title">Description:</div>
+					<div class="col-8">
+						{{ issue.description }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4 title">Estimate:</div>
+					<div class="col-8">
+						{{ issue.estimate }}
+					</div>
+				</div>
+				<div class="row" *ngIf="issue.epic">
+					<div class="col-4 title">Epic:</div>
+					<div class="col-8">
+						{{ issue.epic.title }}
+					</div>
+				</div>
+				<div class="p-2" *ngIf="issue.acceptance_criteria.length > 0">
+					<div class="row title m-0"><div class="col-12">Acceptance {{ issue.acceptance_criteria.length > 1 ? "Criteria" : "Criterion" }}:</div></div>
+					<div class="row ac m-4 border p-2" *ngFor="let ac of issue.acceptance_criteria">
+						{{ ac.criterion }}
+					</div>
+				</div>	
+				<div *ngIf="issue?.tasks.length > 0">
+					<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks.length > 1 ? "s" : "" }}:</div></div>
+					<div class="row task border p-2 m-4" *ngFor="let task of issue.tasks">
+						<div class="col-12">
+							<div class="row">
+								<div class="col-4 title">Title:</div>
+								<div class="col-8">{{ task.title }}</div>
+							</div>
+							<div class="row">
+								<div class="col-4 title">Description:</div>
+								<div class="col-8">{{ task.description }}</div>
+							</div>
+							<div class="row">
+								<div class="col-4 title">Estimate:</div>
+								<div class="col-8">{{ task.estimate }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="(snapshot | async)?.comparison.added_issues.length > 0">
+	<div>Added Issues:</div>
+	<div class="row" *ngFor="let issue of (snapshot | async)?.comparison.added_issues">
+		<div class="col-1"></div>
+		<div class="col-11 issue mb-4">
+			<div class="added p-2">
+				<div class="row">
+					<div class="col-4 title">Title:</div>
+					<div class="col-8">
+						{{ issue.title }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4 title">Description:</div>
+					<div class="col-8">
+						{{ issue.description }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4 title">Estimate:</div>
+					<div class="col-8">
+						{{ issue.estimate }}
+					</div>
+				</div>
+				<div class="row" *ngIf="issue.epic">
+					<div class="col-4 title">Epic:</div>
+					<div class="col-8">
+						{{ issue.epic.title }}
+					</div>
+				</div>
+				<div *ngIf="issue?.tasks.length > 0">
+					<div class="row title m-0"><div class="col-12">Task{{ issue?.tasks.length > 1 ? "s" : "" }}:</div></div>
+					<div class="row task border p-2 m-4" *ngFor="let task of issue.tasks">
+						<div class="col-12">
+							<div class="row">
+								<div class="col-4 title">Title:</div>
+								<div class="col-8">{{ task.title }}</div>
+							</div>
+							<div class="row">
+								<div class="col-4 title">Description:</div>
+								<div class="col-8">{{ task.description }}</div>
+							</div>
+							<div class="row">
+								<div class="col-4 title">Estimate:</div>
+								<div class="col-8">{{ task.estimate }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-12 text-right p-0">
+	<button mat-button class="save-button" (click)="okay()">Done</button>
+</div>

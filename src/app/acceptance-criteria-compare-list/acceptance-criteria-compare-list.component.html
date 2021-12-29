@@ -1,0 +1,38 @@
+<div class="p-2" *ngIf="acceptanceCriteria.length > 0">
+	<div class="row title m-0"><div class="col-12">Acceptance {{ acceptanceCriteria.length > 1 ? "Criteria" : "Criterion" }}:</div></div>
+	<div class="row ac m-4 p-0" *ngFor="let ac of acceptanceCriteria">
+		<sb-acceptance-criterion-compare class="col-12 m-0 p-0" [acceptanceCriterion]="ac"></sb-acceptance-criterion-compare>
+	</div>
+</div>
+<div class="p-2" *ngIf="acceptanceCriteriaRemoved.length > 0">
+	<div class="row title m-0"><div class="col-12">Acceptance {{ acceptanceCriteriaRemoved.length > 1 ? "Criteria" : "Criterion" }} Removed:</div></div>
+	<div class="row removed ac m-4" *ngFor="let ac of acceptanceCriteriaRemoved">
+		<div class="col-12 m-0 p-2">
+			<div class="row m-0">
+				<div class="col-4 title">
+					Id:
+				</div>
+				<div class="col-8">
+					{{ ac.id }}
+				</div>
+			</div>
+			<div class="row m-0"><div class="col-12">{{ ac.criterion }}</div></div>
+		</div>
+	</div>
+</div>
+<div class="p-2" *ngIf="acceptanceCriteriaAdded.length > 0">
+	<div class="row title m-0"><div class="col-12">Acceptance {{ acceptanceCriteriaAdded.length > 1 ? "Criteria" : "Criterion" }} Added:</div></div>
+	<div class="row added ac m-4" *ngFor="let ac of acceptanceCriteriaAdded">
+		<div class="col-12 m-0 p-2">
+			<div class="row m-0">
+				<div class="col-4 title">
+					Id:
+				</div>
+				<div class="col-8">
+					{{ ac.id }}
+				</div>
+			</div>
+			<div class="row m-0"><div class="col-12">{{ ac.criterion }}</div></div>
+		</div>
+	</div>
+</div>

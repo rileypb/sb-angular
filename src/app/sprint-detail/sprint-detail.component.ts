@@ -96,6 +96,10 @@ export class SprintDetailComponent extends Base implements OnInit {
     this.mode = "summary";
   }
 
+  showSnapshot() {
+    this.mode = "snapshot";
+  }
+
   onStartSprint(event) {
     let data = {
       sprint: this.sprint,

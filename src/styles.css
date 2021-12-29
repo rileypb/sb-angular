@@ -217,6 +217,33 @@ h2 {
 	font-size: medium;
 }
 
+.different {
+	background-color: var(--warning);
+	color: var(--on-warning);
+	/*border-style: solid;
+	border-width: 4px;
+	border-color: var(--warning);
+	border-radius: 4px;*/
+}
+
+.added {
+	background-color: var(--okay) !important;
+	color: var(--on-okay) !important;
+	/*border-style: solid;
+	border-width: 4px;
+	border-color: var(--okay);
+	border-radius: 4px;*/
+}
+
+.removed {
+	background-color: var(--error) !important;
+	color: var(--on-error) !important;
+	/*border-style: solid;
+	border-width: 4px;
+	border-color: var(--error);
+	border-radius: 4px;*/
+}
+
 
 .mat-form-field-label {
 	font-family: var(--menu-font) !important;

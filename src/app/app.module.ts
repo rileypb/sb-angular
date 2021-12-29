@@ -135,6 +135,12 @@ import { EditSettingsDialogComponent } from './edit-settings-dialog/edit-setting
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { AddMemberDialogComponent } from './add-member-dialog/add-member-dialog.component';
 import { UserPictureComponent } from './user-picture/user-picture.component';
+import { SprintSnapshotComponent } from './sprint-snapshot/sprint-snapshot.component';
+import { IssueCompareComponent } from './issue-compare/issue-compare.component';
+import { AcceptanceCriterionCompareComponent } from './acceptance-criterion-compare/acceptance-criterion-compare.component';
+import { TaskCompareComponent } from './task-compare/task-compare.component';
+import { ComparisonComponent } from './comparison/comparison.component';
+import { AcceptanceCriteriaCompareListComponent } from './acceptance-criteria-compare-list/acceptance-criteria-compare-list.component';
 
 
 @NgModule({
@@ -232,6 +238,12 @@ import { UserPictureComponent } from './user-picture/user-picture.component';
     InputDialogComponent,
     AddMemberDialogComponent,
     UserPictureComponent,
+    SprintSnapshotComponent,
+    IssueCompareComponent,
+    AcceptanceCriterionCompareComponent,
+    TaskCompareComponent,
+    ComparisonComponent,
+    AcceptanceCriteriaCompareListComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

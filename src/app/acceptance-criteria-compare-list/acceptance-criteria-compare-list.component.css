@@ -1,0 +1,8 @@
+.title {
+	font-weight: bold;
+}
+
+.ac {
+	background-color: var(--footer-background);
+	color:  var(--on-footer-background);
+}
