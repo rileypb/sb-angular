@@ -1,5 +1,5 @@
 <div class="row acceptance-criteria-row">
-	<mat-checkbox *ngIf="showCompletionCheckboxes" class="col-1 pt-2 ac-checkbox" color="primary" (click)="toggleCompleted(criterion)" [(ngModel)]="criterion.completed"></mat-checkbox>
+	<mat-checkbox *ngIf="showCompletionCheckboxes && permission(issue, 'accept_ac')" class="col-1 pt-2 ac-checkbox" color="primary" (click)="toggleCompleted(criterion)" [(ngModel)]="criterion.completed"></mat-checkbox>
 	<button class="col-1" *ngIf="permission(issue, 'update') && editable" mat-icon-button color="primary" matTooltip="Delete Acceptance Criterion" (click)="deleteAC.emit(criterion)"><mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-times-circle"></mat-icon></button>
 	<textarea class="user-text acceptance-criteria-textarea" [ngClass]="{'col-9': showCompletionCheckboxes, 'col-10': !showCompletionCheckboxes }" (keydown)="onCriterionKeyDown($event, criterion)" (focus)="startEditing(criterion)" (blur)="saveCriterion(criterion)" [readonly]="!editable" [(ngModel)]="criterion.criterion" #criterionEditor></textarea>
 </div>
