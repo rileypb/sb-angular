@@ -1,0 +1,14 @@
+<div class="ml-4">
+	<div *ngIf="teacherReport?.incompleteIssues">
+		<div class="row title">Incomplete Issues:</div>
+		<div *ngFor="let issue of teacherReport?.incompleteIssues">
+			#{{issue.id}} - Title: {{issue.title}}
+		</div>
+	</div>
+	<div *ngIf="teacherReport?.incompleteTasks">
+		<div class="row title">Incomplete Tasks:</div>
+		<div *ngFor="let task of teacherReport?.incompleteTasks">
+			#{{task.id}} - Title: {{task.title}}
+		</div>
+	</div>
+</div>

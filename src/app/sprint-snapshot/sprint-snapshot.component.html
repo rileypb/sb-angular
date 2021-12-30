@@ -1,3 +1,5 @@
+<sb-teacher-report [teacherReport]="(teacherReport | async)?.teacher_report"></sb-teacher-report>
+<div class="m-4"></div>
 <sb-comparison label="Title" [old]="(snapshot | async)?.comparison.title_old" [new]="(snapshot | async)?.comparison.title_new"></sb-comparison>
 <sb-comparison label="Description" [old]="(snapshot | async)?.comparison.description_old" [new]="(snapshot | async)?.comparison.description_new"></sb-comparison>
 <sb-comparison label="Goal" [old]="(snapshot | async)?.comparison.goal_old" [new]="(snapshot | async)?.comparison.goal_new"></sb-comparison>

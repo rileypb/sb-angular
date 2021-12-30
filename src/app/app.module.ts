@@ -141,6 +141,7 @@ import { AcceptanceCriterionCompareComponent } from './acceptance-criterion-comp
 import { TaskCompareComponent } from './task-compare/task-compare.component';
 import { ComparisonComponent } from './comparison/comparison.component';
 import { AcceptanceCriteriaCompareListComponent } from './acceptance-criteria-compare-list/acceptance-criteria-compare-list.component';
+import { TeacherReportComponent } from './teacher-report/teacher-report.component';
 
 
 @NgModule({
@@ -244,6 +245,7 @@ import { AcceptanceCriteriaCompareListComponent } from './acceptance-criteria-co
     TaskCompareComponent,
     ComparisonComponent,
     AcceptanceCriteriaCompareListComponent,
+    TeacherReportComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
   imports: [

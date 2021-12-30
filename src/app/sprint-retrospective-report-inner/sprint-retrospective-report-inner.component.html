@@ -14,7 +14,7 @@
 					<h4 class="menu-text">Goal: <span class="base-text">{{report.sprint.goal}}</span></h4>
 					<div class="base-text">{{report.sprint.description}}</div>
 
-					<div class="mt-3" *ngIf="permission(report.sprint, 'compare')"><a class="sb-link" (click)="mode = 'compare'"><span class="menu-text team-summary-link">Sprint Compare</span></a></div>
+					<div class="mt-3" *ngIf="permission(report.sprint, 'compare')"><a class="sb-link" (click)="mode = 'compare'"><span class="menu-text team-summary-link">Teacher Report</span></a></div>
 
 					<h4 class="banner-text">Burndown</h4>
 					<app-burndown [sprintId]="report.sprint.id"></app-burndown>

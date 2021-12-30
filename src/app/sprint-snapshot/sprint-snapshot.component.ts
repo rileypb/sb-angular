@@ -20,6 +20,7 @@ export class SprintSnapshotComponent extends Base implements OnInit {
   @Output() close:EventEmitter<any> = new EventEmitter<any>();
 
   snapshot:Observable<any>;
+  teacherReport:Observable<any>;
 
   done:boolean = false
   public snapshotText(ss) {
@@ -40,6 +41,8 @@ export class SprintSnapshotComponent extends Base implements OnInit {
   private loadSnapshot():void {
     this.dataService.load(`sprints/${this.sprint.id}/compare`, [`sprints/${this.sprint.id}/compare`]);
     this.snapshot = this.dataService.values[`sprints/${this.sprint.id}/compare`];
+    this.dataService.load(`sprints/${this.sprint.id}/teacher_report`, [`sprints/${this.sprint.id}/teacher_report`]);
+    this.teacherReport = this.dataService.values[`sprints/${this.sprint.id}/teacher_report`];
   }
 
   private unloadSnapshot():void {
