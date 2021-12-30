@@ -21,7 +21,7 @@
 		</div>
 		<div #epicSelector>
 			<mat-form-field class="form-field">
-				<mat-select [disabled]="issue.state == 'Closed'" class="epic-selector mat-color-font base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
+				<mat-select [disabled]="issue.state == 'Closed' || issue.sprint?.completed " class="epic-selector mat-color-font base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
 					<mat-option [value]="-1">No Epic</mat-option>
 					<mat-option *ngFor="let epic of epics" [value]="epic.id"
 							[ngStyle]="{'background-color': (epic.color ? epic.color : '#FFFFFF'), 'color': fontColor(epic.color)}">
@@ -37,7 +37,7 @@
 			</button>
 		</div>
 		<mat-form-field class="form-field">
-			<mat-select [disabled]="issue.state == 'Closed'" class="sprint-selector base-text" [(value)]="sprintId" (selectionChange)="onChangeSprintSelection($event)">
+			<mat-select [disabled]="issue.state == 'Closed' || issue.sprint?.completed" class="sprint-selector base-text" [(value)]="sprintId" (selectionChange)="onChangeSprintSelection($event)">
 				<mat-option [value]="-1">No Sprint</mat-option>
 				<mat-option *ngFor="let sprint of sprints" [value]="sprint.id">
 					{{sprint.title}}
