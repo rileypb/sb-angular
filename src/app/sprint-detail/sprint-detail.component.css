@@ -1,8 +1,7 @@
 .state-box {
 	border: 1px solid var(--card-border);
-	border-radius: 5px;
+	border-radius: 1px;
 	padding: 3px;
-	box-shadow: 2px 2px var(--card-shadow);
 }
 
 .comments-display-box {

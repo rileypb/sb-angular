@@ -8,7 +8,7 @@
   	     [cdkDropListData]="{ issues: issues, container: container }"
   	     (cdkDropListDropped)="onDrop($event)">
       
-      <div *ngIf="issues; else progressSpinner">
+      <div class="mt-1" *ngIf="issues; else progressSpinner">
         <div class="drag-placeholder menu-text" *ngIf="showEmptyListSpace && issues?.length == 0">Drag and drop issues here</div>
         <div class="issue-card text-truncate pl-2" 
              (click)="clickIssue(issue)"

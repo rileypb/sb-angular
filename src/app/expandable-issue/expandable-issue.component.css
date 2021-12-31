@@ -17,8 +17,14 @@
 
 .panel {
 	background-color: var(--issue-state-card-background);
+	border-radius: 1px !important;
 }
 
 .action-button {
-	box-shadow: 2px 2px var(--button-shadow);
+	border: 1px solid var(--button-border);
+}
+
+.action-button:hover {
+	border: 1px solid var(--button-shadow);
+	filter: drop-shadow(1px 1px var(--button-shadow));
 }

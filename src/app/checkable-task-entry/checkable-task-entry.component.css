@@ -6,11 +6,10 @@
 	font-family: var(--text-font);
 	font-size: small;
 	background: var(--background);
-	border-radius: 5px;
+	border-radius: 1px;
 	border-width: 1px;
 	border-color: var(--card-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--card-shadow);
 	padding: 3px;
 	padding-left: 6px;
 	color: black;
@@ -19,6 +18,7 @@
 .task-card:hover {
 	background: var(--background-hover);
 	cursor: default;
+	filter: drop-shadow(1px 1px var(--button-shadow));
 }
 
 .small-button {

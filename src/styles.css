@@ -144,6 +144,10 @@ h2 {
 	font-family: var(--menu-font);
 }
 
+.icon-button:hover {
+	filter: drop-shadow(1px 1px var(--button-shadow));
+}
+
 .icon-button-large {
 	background-color: var(--go-button-background);
 	color: var(--on-primary-dark);
@@ -155,6 +159,7 @@ h2 {
 	background-color: var(--go-button-background);
 	color: var(--on-go-button-background) !important;
 	box-shadow: 2px 2px var(--button-shadow);
+	border-radius: 1px !important;
 }
 
 .cancel-button {
@@ -182,11 +187,15 @@ h2 {
 .add-button {
 	background-color: var(--icon-button-background);
 	color: var(--on-icon-button-background) !important;
-	border-radius: 5px;
+	border-radius: 1px !important;
 	border-width: 2px;
 	border-color: var(--button-border);
 	border-style: solid;
-	box-shadow: 2px 2px var(--button-shadow);
+	/*box-shadow: 2px 2px var(--button-shadow);*/
+}
+
+.add-button:hover {
+	filter: drop-shadow(1px 1px var(--button-shadow));
 }
 
 .arrow-div {

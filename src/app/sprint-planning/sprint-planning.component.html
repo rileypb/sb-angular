@@ -11,7 +11,7 @@
 							New
 						</button>
 					</div>
-					<div *ngFor="let s of sprints">
+					<div class="mt-1" *ngFor="let s of sprints">
 						<div class="banner-text sprint-entry" role="button" tabindex="0" (click)="selectSprint(s)">
 							#{{s.id}} - {{s.title}}
 						</div>

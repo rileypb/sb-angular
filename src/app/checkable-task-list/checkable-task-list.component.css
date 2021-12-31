@@ -4,15 +4,12 @@
 
 .task-card {
 	font-size: small;
-	background: white;
-	border-radius: 5px;
-	border-width: 1px;
-	border-color: var(--card-border);
-	border-style: solid;
-	box-shadow: 2px 2px var(--card-shadow);
+	background: var(--background);
+	border: 2px solid var(--card-shadow);
+	border-radius: 1px;
 	padding: 3px;
 	padding-left: 6px;
-	color: black;
+	margin-top: 1px;
 }
 
 .task-card:hover {

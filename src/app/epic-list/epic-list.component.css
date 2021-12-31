@@ -5,13 +5,11 @@
 .epic-card {
 	font-size: small;
 	background-color: var(--background);
-	border-radius: 5px;
-	border-width: 2px;
-	border-color: var(--card-border);
-	border-style: solid;
-	box-shadow: 2px 2px var(--card-shadow);
+	border: 2px solid var(--card-shadow);
+	border-radius: 1px;
 	padding: 3px;
 	padding-left: 6px;
+	margin-top:  1px;
 }
 
 .epic-card:hover {
@@ -22,16 +20,15 @@
 .fixed-epic-card {
 	font-size: small;
 	background: var(--background);
-	border-radius: 5px;
-	border-width: 2px;
-	border-color: var(--card-border);
-	border-style: solid;
-	box-shadow: 2px 2px var(--card-shadow);
+	border: 2px solid var(--card-shadow);
+	border-radius: 1px;
 	padding: 3px;
 	padding-left: 6px;
+	margin-top: 1px;
 }
 
 .fixed-epic-card:hover {
+	cursor: default;
 	border: 2px solid var(--card-border-hover);
 }
 

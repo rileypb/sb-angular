@@ -26,7 +26,7 @@
 .done-button {
 	background-color: var(--go-button-background);
 	color: var(--on-go-button-background);
-	border-radius: 5px;
+	border-radius: 1px;
 	border-width: 2px;
 	border-color: var(--button-border);
 	border-style: solid;
