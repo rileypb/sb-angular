@@ -3,7 +3,9 @@
           <div *ngIf="task; else progressSpinner" class="pr-3">
             <div class="mt-2 ml-1 row">
               <span class="col-2 banner-text">
-                <mat-icon fontIcon="fa-hammer" fontSet="fas"></mat-icon>#{{task.id}}
+                <mat-icon *ngIf="task.state != 'complete'" fontIcon="fa-hammer" fontSet="fas"></mat-icon>
+                <mat-icon *ngIf="task.state == 'complete'" fontIcon="fa-check" fontSet="fas"></mat-icon>
+                #{{task.id}}
               </span>
               <a class="col-7 task-link text-wrap banner-text" matTooltip="Edit Task" [class.disabled]="!permission(task, 'update') ? true : null" (click)="editTask(task, $event)">{{task.title}}</a>
               <span class="col-3 user-text">
@@ -14,8 +16,9 @@
             </div>
 
             <div class="mt-1 ml-3 text-wrap base-text">{{task.description}}</div>
+            <div class="mt-2 ml-3"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>State: {{ task.state || 'Open' }}</div>
 
-            <div class="mt-2 ml-1 row">
+            <div class="ml-1 row">
               <span class="col-11">
                 <div *ngIf="team | async">
                   <sb-user-selector [team]="(team | async)?.team" [assignee]="task.assignee" (userSelected)="assignTask($event)" [disabled]="!permission(task, 'update') || !editable"></sb-user-selector>
