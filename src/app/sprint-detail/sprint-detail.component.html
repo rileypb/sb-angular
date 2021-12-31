@@ -18,8 +18,11 @@
 				<span class="base-text align-baseline">{{sprint.goal}}</span>
 			</p>
 			<p class="base-text">{{sprint.description}}</p>
+			<p><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon>Total Estimate:
+				<span class="base-text align-baseline">{{sprint.total_estimate}} points</span>
+			</p>
 			<p><a class="sb-link" (click)="showSummary()"><mat-icon style="position: relative; top: 4px;">people</mat-icon> <span class="menu-text team-summary-link">Team Summary</span></a>
-			<p><a class="sb-link" (click)="showSnapshot()"><span class="menu-text team-summary-link">Sprint Snapshot</span></a>
+			<!-- <p><a class="sb-link" (click)="showSnapshot()"><span class="menu-text team-summary-link">Sprint Snapshot</span></a> -->
 			<div class="menu-text mt-3 mb-3 state-box">
 				<mat-icon class="sb-icon align-baseline ml-2" fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>
 				<span class="align-baseline">State: </span> 
