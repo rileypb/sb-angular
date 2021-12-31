@@ -6,7 +6,7 @@
 		      <!-- <button mat-icon-button (click)="onViewIssue($event, issue)">
 		        <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
 		      </button> -->
-		   	  #{{issue.id}} - {{issue.title}} - <span class="menu-text">{{taskList.percentComplete == -1 ? "0 hours" : (taskList.percentComplete | percent)}}</span>
+		   	  #{{issue.id}} - {{issue.title}} - {{ issue.estimate }} points - <span class="menu-text">{{taskList.percentComplete == -1 ? "0 hours" : (taskList.percentComplete | percent)}}</span>
 		   	</div>
 		   	<div class="col-2 text-right">
 		   		<mat-icon *ngIf="issue.state == 'In Progress'" class="sb-icon small-only" fontSet="fas" fontIcon="fa-running" matTooltip="In Progress"></mat-icon>
