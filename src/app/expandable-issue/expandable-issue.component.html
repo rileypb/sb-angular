@@ -2,7 +2,7 @@
 	     (click)="clickIssue(issue)" hideToggle="true">
 	  <mat-expansion-panel-header class="panel" [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}">
 	  	<div class="row w-100 mt-2">
-		  	<div class="text-truncate issue-panel banner-text col-10">
+		  	<div class="text-wrap issue-panel banner-text col-10">
 		      <!-- <button mat-icon-button (click)="onViewIssue($event, issue)">
 		        <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
 		      </button> -->
