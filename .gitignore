@@ -48,3 +48,4 @@ report.*.json
 .env
 
 src/environments/*.ts
+.angular
