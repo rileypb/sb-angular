@@ -12,6 +12,9 @@
     "e2e": "ng e2e",
     "build-serve": "node --max_old_space_size=8048 ./node_modules/@angular/cli/bin/ng serve"
   },
+  "engines": { 
+    "node" : ">=14.1.0"
+  },
   "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "14.0.0",
