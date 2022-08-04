@@ -13,7 +13,7 @@
     "build-serve": "node --max_old_space_size=8048 ./node_modules/@angular/cli/bin/ng serve"
   },
   "engines": { 
-    "node" : ">=14.1.0"
+    "node" : "16.x"
   },
   "private": true,
   "dependencies": {
