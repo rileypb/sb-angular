@@ -7,7 +7,7 @@
 			</div>
 			<div *ngIf="issue.state != 'Closed'" class="p-2" [ngClass]="{'col-4' : issue.closable, 'col-2' : !issue.closable}">
 				<button mat-icon-button matTooltip="Edit Issue" (click)="onEditIssue()"><mat-icon class="sb-icon">edit</mat-icon></button>
-				<!-- <button mat-icon-button *ngIf="issue.closable" matTooltip="Complete Issue" (click)="onComplete()"><mat-icon class="sb-icon">check_circle</mat-icon></button> -->
+				<button mat-icon-button *ngIf="issue.closable" matTooltip="Complete Issue" (click)="onComplete()"><mat-icon class="sb-icon">check_circle</mat-icon></button>
 			</div>
 		</div>
 		<p class="issue-description p-2" [innerHtml]="issue.description">
