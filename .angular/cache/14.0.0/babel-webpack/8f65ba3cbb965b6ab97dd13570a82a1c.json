@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Base {\n  permission(model, type) {\n    return model && model.permissions && model.permissions.indexOf(type) != -1;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

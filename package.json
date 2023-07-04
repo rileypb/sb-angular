@@ -2,6 +2,9 @@
   "name": "sb-angular",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "ng": "ng",
     "config": "node set-env.js",

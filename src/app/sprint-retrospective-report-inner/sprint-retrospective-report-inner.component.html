@@ -25,7 +25,7 @@
 						</span>
 					</h4>
 					<div style="font-size: 12pt; font-weight: normal;" *ngIf="!editingRetrospective">
-						<div class="base-text"><pre cleass="pretext">{{report.sprint.retrospective}}</pre></div>
+						<div class="base-text"><p [innerHtml]="report.sprint.retrospective"></p></div>
 						
 					</div>
 					<div class="no-print mb-3" style="font-size: 12pt; font-weight: normal;" *ngIf="editingRetrospective">
