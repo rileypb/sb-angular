@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription, Subject, ReplaySubject } from 'rxjs';
-import { Channel } from 'angular2-actioncable';
-import { CableService } from './cable.service';
+import { Channel, ActionCableService } from './actioncable.service';
 import { filter, mapTo, map, startWith, first } from 'rxjs/operators';
 import { merge, interval, timer } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
@@ -37,7 +36,7 @@ export class DataService {
 
   private unloaders:Set<Subscription> = new Set();
 
-  constructor(public cableService:CableService, public api:Api, private auth:AuthService, private userInfo:UserInfoService) { }  
+  constructor(public cableService:ActionCableService, public api:Api, private auth:AuthService, private userInfo:UserInfoService) { }  
 
   init() : void {
   	this.channel = this.cableService.channel('SyncChannel');

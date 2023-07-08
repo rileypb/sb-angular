@@ -14,7 +14,6 @@ import { darkTheme } from './theme/dark-theme';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ActionCableService, Channel } from 'angular2-actioncable';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -23,7 +22,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { ProjectsComponent } from './projects/projects.component';
 
 import { LoginService } from './login.service';
-import { CableService } from './cable.service';
+import { ActionCableService } from './actioncable.service';
 import { ProjectService } from './project.service';
 import { IssuesService } from './issues.service';
 import { LocationService } from './location.service';
@@ -285,7 +284,6 @@ import { TeacherReportComponent } from './teacher-report/teacher-report.componen
   	ActionCableService,
   	ProjectService,
   	LoginService,
-  	CableService,
     IssuesService,
     LocationService,
     UiStateService,
