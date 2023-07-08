@@ -20,7 +20,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/build-angular": "^14.1.0",
+    "@angular-devkit/build-angular": "^15.0.0",
     "@angular/animations": "^14.1.0",
     "@angular/cdk": "^14.1.0",
     "@angular/cli": "^14.0.0",
