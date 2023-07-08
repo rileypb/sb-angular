@@ -41,7 +41,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "angular2-actioncable": "^6.0.2",
     "colors": "^1.1.2",
     "core-js": "^2.4.1",
     "dotenv": "^5.0.0",
