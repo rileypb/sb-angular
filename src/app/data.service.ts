@@ -74,6 +74,7 @@ export class DataService {
     this.api.get("api/me").subscribe();
     
     this.status.subscribe((x) => {
+		console.log(`status: ${x}`);
     	if (x == 'connected') {
 			this.auth.getAccessTokenSilently().subscribe((t) => {
 				this.channel.perform("auth", { token: t });
@@ -135,9 +136,11 @@ export class DataService {
   }
 
   private processMessage(msg) : void {
+	console.log("message", msg);
   }
 
   load(address:string, selectors:string[]):void {
+	console.log("load", address, selectors);
   	let hold:Hold = this.holds[address];
   	if (!hold) {
   		this.holds[address] = new Hold(address, this.channel, this.api, this.syncers);
@@ -243,6 +246,7 @@ class Hold {
 			}
 			this.selectorCounts[selector]++;
 			if (this.selectorCounts[selector] == 1) {
+				console.log(`syncing ${selector}`);
 				this.selectorSubscriptions[selector] = this.syncers.get(selector).sync().subscribe(
 					msg => this._needsUpdate = true
 				);
@@ -298,7 +302,9 @@ class CountingSyncer {
 	private subscribe() {
 		this.subscription = this.received.subscribe(
 			msg => {
+				console.log("received >>>", msg);
 				if (msg.hasOwnProperty('selector') && msg.selector === this.selector) {
+					console.log("received <<<", msg);
 					this.syncs.next(msg);
 				}
 			}

@@ -15,21 +15,26 @@ export class Channel {
                 this.connectedSubject.next(true);
             },
             disconnected: () => {
-                this.connectedSubject.next(false);
+                this.disconnectedSubject.next(false);
             },
             received: (data) => {
+                console.log("received", data);
                 this.receivedSubject.next(data);
             },
             rejected: () => {
                 this.rejectedSubject.next(true);
             },
             perform: (action, data) => {
-            
+                console.log("perform", action, data);
+                this.channel.send({ action: action, data: data });
             },
         });
     }
 
     received(): Observable<any> {
+        if (this.cable.disconnected) {
+            this.reconnect();
+        }
         return this.receivedSubject;
     }
 
@@ -47,7 +52,7 @@ export class Channel {
                 this.connectedSubject.next(true);
             },
             disconnected: () => {
-                this.connectedSubject.next(false);
+                this.disconnectedSubject.next(false);
             },
             received: (data) => {
                 this.receivedSubject.next(data);
@@ -56,7 +61,7 @@ export class Channel {
                 this.rejectedSubject.next(true);
             },
             perform: (action, data) => {
-                this.perform(action, data);
+
             },
         });
     }
@@ -76,6 +81,7 @@ export class ActionCableService {
     
     constructor() {
         this.cable = createConsumer(environment.cableUrl);
+        this.cable.connection.reopenDelay = 5000;
     }
 
     // a map from channel name to channel
