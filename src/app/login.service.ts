@@ -16,7 +16,7 @@ export class LoginService {
   error: string;
   lastValue:any = null;
 
-  constructor(private api: Api, private router: Router, private cableService: ActionCableService, private auth:AuthService) {
+  constructor(private auth:AuthService) {
     this.status.next('pending');
     this.auth.user$.subscribe(value => {
       if (value == this.lastValue) return;
@@ -35,7 +35,7 @@ export class LoginService {
   }
 
   logout(): void {
-    this.auth.logout({ returnTo: document.location.origin });
+    this.auth.logout({ logoutParams: { returnTo: document.location.origin }});
   }
 
 }

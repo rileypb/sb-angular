@@ -246,7 +246,7 @@ import { TeacherReportComponent } from './teacher-report/teacher-report.componen
     AcceptanceCriteriaCompareListComponent,
     TeacherReportComponent,
   ],
-  entryComponents: [ConfirmDialogComponent],
+  // entryComponents: [ConfirmDialogComponent],
   imports: [
     BrowserModule,
     CookieModule.forRoot(),
@@ -269,6 +269,13 @@ import { TeacherReportComponent } from './teacher-report/teacher-report.componen
       httpInterceptor: {
         ...environment.httpInterceptor,
       },
+      authorizationParams: {
+        audience: environment.auth.audience,
+        redirect_uri: window.location.origin,
+        scope: 'openid profile email offline_access',
+        useFormData: false,
+        useRefreshTokensFallback: true,
+      }
     }),
     ThemeModule.forRoot({
         themes: [lightTheme, jmuTheme, darkBWTheme, testTheme, uChicagoTheme, darkTheme],
