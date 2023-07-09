@@ -1,29 +1,29 @@
 		<button class="nav-item text-left" [ngClass]="{ 'nav-item-selected' : nav.segment == 'projects' }" (click)="nav.go('projects')">
-			<mat-icon fontSet="fas" fontIcon="fa-shapes"></mat-icon>
+			<mat-icon fontSet="fas" fontIcon="fa-shapes" class="nav-icon"></mat-icon>
 			Projects
 		</button>
 		<button class="nav-item text-left" [ngClass]="{ 'nav-item-selected' : nav.segment == 'dashboard' }" (click)="nav.go('dashboard')" [disabled]="nav.projectId==0">
-			<mat-icon fontSet="fas" fontIcon="fa-tachometer-alt"></mat-icon>
+			<mat-icon fontSet="fas" fontIcon="fa-tachometer-alt" class="nav-icon"></mat-icon>
 			Dashboard
 		</button>
 		<button class="nav-item text-left" [ngClass]="{ 'nav-item-selected' : nav.segment == 'epics' }" (click)="nav.go('epics')" [disabled]="nav.projectId==0">
-			<mat-icon fontSet="fas" fontIcon="fa-scroll"></mat-icon>
+			<mat-icon fontSet="fas" fontIcon="fa-scroll" class="nav-icon"></mat-icon>
 			Epics
 		</button>
 		<button class="nav-item text-left" [ngClass]="{ 'nav-item-selected' : nav.segment == 'backlog' }" (click)="nav.go('backlog')" [disabled]="nav.projectId==0">
-			<mat-icon fontSet="fas" fontIcon="fa-list-alt"></mat-icon>
+			<mat-icon fontSet="fas" fontIcon="fa-list-alt" class="nav-icon"></mat-icon>
 			Backlog
 		</button>
 		<button class="nav-item text-left" [ngClass]="{ 'nav-item-selected' : nav.segment == 'planning' }" (click)="nav.go('planning')" [disabled]="nav.projectId==0">
-			<mat-icon fontSet="fas" fontIcon="fa-drafting-compass"></mat-icon>
+			<mat-icon fontSet="fas" fontIcon="fa-drafting-compass" class="nav-icon"></mat-icon>
 			Planning
 		</button>
 		<button class="nav-item text-left" [ngClass]="{ 'nav-item-selected' : nav.segment == 'execution' }" (click)="nav.go('execution')" [disabled]="nav.projectId==0">
-			<mat-icon fontSet="fas" fontIcon="fa-hard-hat"></mat-icon>
+			<mat-icon fontSet="fas" fontIcon="fa-hard-hat" class="nav-icon"></mat-icon>
 			Execution
 		</button>
 		<button class="nav-item text-left" [ngClass]="{ 'nav-item-selected' : nav.segment == 'retrospective' }" (click)="nav.go('retrospective')" [disabled]="nav.projectId==0">
-			<mat-icon fontSet="fas" fontIcon="fa-hourglass-end"></mat-icon>
+			<mat-icon fontSet="fas" fontIcon="fa-hourglass-end" class="nav-icon"></mat-icon>
 			Retrospective
 		</button>
 		<ng-content></ng-content>

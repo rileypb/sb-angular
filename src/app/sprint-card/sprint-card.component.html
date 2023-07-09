@@ -3,12 +3,12 @@
   <div *ngIf="sprint; else progressSpinner" class="px-3">
     <div class="sprint-card text-truncate row">
       <span class="col-10 banner-text sprint-card-section" (click)="toggleExpanded()">
-        <button *ngIf="!expanded" mat-icon-button><mat-icon>expand_more</mat-icon></button>
-        <button *ngIf="expanded" mat-icon-button><mat-icon>expand_less</mat-icon></button>
+        <button *ngIf="!expanded" mat-icon-button style="vertical-align: middle;"><mat-icon style="margin-top: -22px;">expand_more</mat-icon></button>
+        <button *ngIf="expanded" mat-icon-button style="vertical-align: middle;"><mat-icon style="margin-top: -22px;">expand_less</mat-icon></button>
       
 
-        <button mat-icon-button (click)="onViewSprint($event)" matTooltip="View Sprint">
-            <mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
+        <button mat-icon-button (click)="onViewSprint($event)" matTooltip="View Sprint" style="vertical-align: middle;">
+            <mat-icon fontSet="fas" fontIcon="fa-eye" style="margin-top: -22px;"></mat-icon>
         </button>
         {{ (sprint$ | async)?.id }} - {{(sprint$ | async)?.title}}
       </span>

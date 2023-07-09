@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/fontawesome-free-5.14.0-web/css/fontawesome.css';
-/*@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&family=Roboto+Mono&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&family=Roboto+Mono&display=swap');
 /*@import '@angular/material/prebuilt-themes/indigo-pink.css';*/
 @import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
 
@@ -61,6 +61,15 @@ h2 {
 .sprint-title {
 	font-size: x-large;
 	vertical-align: middle;
+}
+
+.sprint-card {
+	padding-top: 10px;
+}
+
+.sprint-card-section {
+    /* margin-bottom: 10px; */
+    margin-top: -10px;
 }
 
 .user-picture {
@@ -140,6 +149,10 @@ h2 {
 	color: var(--warning);
 }
 
+.nav-icon {
+	vertical-align: -webkit-baseline-middle;
+}
+
 .icon-button {
 	font-family: var(--menu-font);
 }
@@ -154,9 +167,14 @@ h2 {
 	box-shadow: 2px 2px var(--button-shadow);
 }
 
+.mdc-button.save-button {
+	background-color: var(--go-button-background);
+}
+
 .save-button {
 	font-family: var(--menu-font);
 	background-color: var(--go-button-background);
+	background: var(--go-button-background);
 	color: var(--on-go-button-background) !important;
 	box-shadow: 2px 2px var(--button-shadow);
 	border-radius: 1px !important;
@@ -184,8 +202,18 @@ h2 {
 	box-shadow: 2px 2px var(--button-shadow);
 }
 
+.mdc-button.add-button {
+	background-color: var(--icon-button-background);
+}
+
+.mat-icon {
+	font-size: large;
+	vertical-align: -webkit-baseline-middle;
+}
+
 .add-button {
 	background-color: var(--icon-button-background);
+	background: var(--icon-button-background);
 	color: var(--on-icon-button-background) !important;
 	border-radius: 1px !important;
 	border-width: 2px;
@@ -251,6 +279,14 @@ h2 {
 	border-width: 4px;
 	border-color: var(--error);
 	border-radius: 4px;*/
+}
+
+.settings-dialog {
+	margin: 10px;
+    /* border: black;
+    border-width: medium;
+    border-style: solid;
+    padding: 10px; */
 }
 
 
