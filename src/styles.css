@@ -150,7 +150,8 @@ h2 {
 }
 
 .nav-icon {
-	vertical-align: -webkit-baseline-middle;
+	vertical-align: middle;
+	margin-top: -5px;
 }
 
 .icon-button {
