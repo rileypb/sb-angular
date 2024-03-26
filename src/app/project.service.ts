@@ -24,6 +24,10 @@ export class ProjectService {
   	return this.api.get('api/projects/' + id + '/issues');
   }
 
+  createProject(project:Project):Observable<any> {
+    return this.api.post('api/projects', { project: project });
+  }
+
   updateProject(project:Project):Observable<any> {
     console.log("updateProject");
     return this.api.patch(`api/projects/${project.id}`, {project: project});
