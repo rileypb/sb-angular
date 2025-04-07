@@ -29,9 +29,10 @@ export class AcceptanceCriterionEntryComponent extends Base implements OnInit {
   }
 
   toggleCompleted(criterion:any) {
+    console.log("toggleCompleted", criterion);
     // criterion.completed = !criterion.completed;
     callWithSnackBar(this.snackBar,
-                     this.issuesService.setACCompleted(this.issue.id, criterion.id, !criterion.completed),
+                     this.issuesService.setACCompleted(this.issue.id, criterion.id, criterion.completed),
                      ["Updating acceptance criterion...", "Acceptance criterion updated", "Error updating acceptance criterion"]);
   }
 
