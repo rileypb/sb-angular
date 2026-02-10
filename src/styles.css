@@ -172,6 +172,14 @@ h2 {
 	background-color: var(--go-button-background);
 }
 
+.mat-mdc-button-persistent-ripple {
+	background-color: var(--go-button-background);
+}
+
+.mdc-button__label {
+	color: var(--on-go-button-background);
+}
+
 .save-button {
 	font-family: var(--menu-font);
 	background-color: var(--go-button-background);
