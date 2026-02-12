@@ -172,12 +172,38 @@ h2 {
 	background-color: var(--go-button-background);
 }
 
-.mat-mdc-button-persistent-ripple {
+button > mat-mdc-button-persistent-ripple {
 	background-color: var(--go-button-background);
 }
+	
 
 .mdc-button__label {
 	color: var(--on-go-button-background);
+} 
+
+.add-project-button > .mat-mdc-button-persistent-ripple {
+	font-family: var(--menu-font);
+	background-color: var(--go-button-background);
+	background: var(--go-button-background);
+	color: var(--on-go-button-background) !important;
+	box-shadow: 2px 2px var(--button-shadow);
+	border-radius: 1px !important;
+}
+
+.mdc-button.mat-mdc-button.mat-unthemed.mat-mdc-button-base {
+	background-color: var(--go-button-background);
+	background: var(--go-button-background);
+	color: var(--on-go-button-background) !important;
+}
+
+.warning.mdc-button.mdc-button--raised.mat-mdc-raised-button.mat-unthemed.mat-mdc-button-base {
+	background-color: var(--go-button-background);
+	background: var(--go-button-background);
+	color: var(--on-go-button-background) !important;
+}
+
+.mat-mdc-card.mdc-card {
+	padding: 10px;
 }
 
 .save-button {
