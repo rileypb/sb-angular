@@ -3,7 +3,7 @@ import { User } from './user';
 import { Api } from './api';
 import { Observable, ReplaySubject } from 'rxjs';
 import { first, map } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
 import { AuthService } from '@auth0/auth0-angular';

@@ -142,6 +142,7 @@ import { TaskCompareComponent } from './task-compare/task-compare.component';
 import { ComparisonComponent } from './comparison/comparison.component';
 import { AcceptanceCriteriaCompareListComponent } from './acceptance-criteria-compare-list/acceptance-criteria-compare-list.component';
 import { TeacherReportComponent } from './teacher-report/teacher-report.component';
+import { QuillModule } from 'ngx-quill';
 
 
 @NgModule({ declarations: [
@@ -249,7 +250,8 @@ import { TeacherReportComponent } from './teacher-report/teacher-report.componen
     bootstrap: [RootComponent],
     exports: [MaterialModule,
         MatFormFieldModule,
-        MatInputModule], imports: [BrowserModule,
+        MatInputModule], 
+    imports: [BrowserModule,
         CookieModule.forRoot(),
         AppRoutingModule,
         FormsModule,
@@ -280,7 +282,10 @@ import { TeacherReportComponent } from './teacher-report/teacher-report.componen
         ThemeModule.forRoot({
             themes: [lightTheme, jmuTheme, darkBWTheme, testTheme, uChicagoTheme, darkTheme],
             active: 'jmu' //'dark-bw'
-        })], providers: [
+        }),
+        QuillModule.forRoot()
+     ], 
+    providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthHttpInterceptor,
