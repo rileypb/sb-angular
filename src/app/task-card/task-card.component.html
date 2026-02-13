@@ -1,28 +1,40 @@
-<ng-template #progressSpinner><mat-spinner style="min-height: 32px; position: relative; left: 16px" diameter="32"></mat-spinner></ng-template>
 
-          <div *ngIf="task; else progressSpinner" class="pr-3">
-            <div class="mt-2 ml-1 row">
-              <span class="col-2 banner-text">
-                <mat-icon *ngIf="task.state != 'complete'" fontIcon="fa-hammer" fontSet="fas"></mat-icon>
-                <mat-icon *ngIf="task.state == 'complete'" fontIcon="fa-check" fontSet="fas"></mat-icon>
-                #{{task.id}}
-              </span>
-              <a class="col-7 task-link text-wrap banner-text" matTooltip="Edit Task" [class.disabled]="!permission(task, 'update') ? true : null" (click)="editTask(task, $event)">{{task.title}}</a>
-              <span class="col-3 user-text">
-                <a *ngIf="permission(task, 'update')" class="task-link estimate-link" matTooltip="Edit Estimate" [hidden]="isEditingEstimate()" [disabled]="!permission(task, 'update') ? true : null" (click)="startEditingEstimate()">{{task.estimate}} hours</a>
-                <span *ngIf="!permission(task, 'update')">{{task.estimate}} hours</span>
-                <input [hidden]="!isEditingEstimate()" type="text" #estimateEditor [(ngModel)]="estimate" (blur)="stopEditingEstimate(false)" (keydown)="processKeyPress($event)">
-              </span>
-            </div>
 
-            <div class="mt-1 ml-3 text-wrap base-text">{{task.description}}</div>
-            <div class="mt-2 ml-3"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>State: {{ task.state || 'Open' }}</div>
-
-            <div class="ml-1 row">
-              <span class="col-11">
-                <div *ngIf="team | async">
-                  <sb-user-selector [team]="(team | async)?.team" [assignee]="task.assignee" (userSelected)="assignTask($event)" [disabled]="!permission(task, 'update') || !editable"></sb-user-selector>
-                </div>
-              </span>
-            </div>
+@if (task) {
+  <div class="pr-3">
+    <div class="mt-2 ml-1 row">
+      <span class="col-2 banner-text">
+        @if (task.state != 'complete') {
+          <mat-icon fontIcon="fa-hammer" fontSet="fas"></mat-icon>
+        }
+        @if (task.state == 'complete') {
+          <mat-icon fontIcon="fa-check" fontSet="fas"></mat-icon>
+        }
+        #{{task.id}}
+      </span>
+      <a class="col-7 task-link text-wrap banner-text" matTooltip="Edit Task" [class.disabled]="!permission(task, 'update') ? true : null" (click)="editTask(task, $event)">{{task.title}}</a>
+      <span class="col-3 user-text">
+        @if (permission(task, 'update')) {
+          <a class="task-link estimate-link" matTooltip="Edit Estimate" [hidden]="isEditingEstimate()" [disabled]="!permission(task, 'update') ? true : null" (click)="startEditingEstimate()">{{task.estimate}} hours</a>
+        }
+        @if (!permission(task, 'update')) {
+          <span>{{task.estimate}} hours</span>
+        }
+        <input [hidden]="!isEditingEstimate()" type="text" #estimateEditor [(ngModel)]="estimate" (blur)="stopEditingEstimate(false)" (keydown)="processKeyPress($event)">
+      </span>
+    </div>
+    <div class="mt-1 ml-3 text-wrap base-text">{{task.description}}</div>
+    <div class="mt-2 ml-3"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon>State: {{ task.state || 'Open' }}</div>
+    <div class="ml-1 row">
+      <span class="col-11">
+        @if (team | async) {
+          <div>
+            <sb-user-selector [team]="(team | async)?.team" [assignee]="task.assignee" (userSelected)="assignTask($event)" [disabled]="!permission(task, 'update') || !editable"></sb-user-selector>
           </div>
+        }
+      </span>
+    </div>
+  </div>
+} @else {
+  <mat-spinner style="min-height: 32px; position: relative; left: 16px" diameter="32"></mat-spinner>
+}

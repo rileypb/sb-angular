@@ -1,13 +1,17 @@
 
 <form [formGroup]="editTaskForm">
-  <h3 class="banner-text" *ngIf="newTaskMode">New Task</h3>
-  <h3 class="banner-text" *ngIf="!newTaskMode">Edit Task</h3>
+  @if (newTaskMode) {
+    <h3 class="banner-text">New Task</h3>
+  }
+  @if (!newTaskMode) {
+    <h3 class="banner-text">Edit Task</h3>
+  }
   <div fxLayout="row">
-  	<mat-form-field style="width:100%" appearance="fill">
-  		<mat-label>Task Title</mat-label>
-  		<input matInput formControlName="title">
+    <mat-form-field style="width:100%" appearance="fill">
+      <mat-label>Task Title</mat-label>
+      <input matInput formControlName="title">
       <mat-error>Title can't be blank</mat-error>
-  	</mat-form-field>
+    </mat-form-field>
   </div>
   <div fxLayout="row">
     <mat-form-field style="min-width: 100%;" appearance="fill">
@@ -16,23 +20,29 @@
     </mat-form-field>
   </div>
   <mat-form-field appearance="fill">
-  	<mat-label>Estimate (in hours)</mat-label>
-  	<input type="number" formControlName="estimate" matInput>
+    <mat-label>Estimate (in hours)</mat-label>
+    <input type="number" formControlName="estimate" matInput>
   </mat-form-field>
 
-  <div *ngIf="infoMode">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        State: {{ task.state || "incomplete" }}
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div *ngIf="task.state == 'complete'">Completed at: {{ task.completed_at | date:'short' }}</div>
+  @if (infoMode) {
+    <div>
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          State: {{ task.state || "incomplete" }}
+        </div>
+        <div class="col-xs-12 col-md-6">
+          @if (task.state == 'complete') {
+            <div>Completed at: {{ task.completed_at | date:'short' }}</div>
+          }
+        </div>
       </div>
     </div>
-  </div>
+  }
 
   <div mat-dialog-actions>
-    <button class="delete-button mr-2" mat-button type="button" *ngIf="!newTaskMode && permission(task.issue, 'delete-task')" (click)="confirmDelete()"><mat-icon class="not-if-small">delete</mat-icon>Delete</button>
+    @if (!newTaskMode && permission(task.issue, 'delete-task')) {
+      <button class="delete-button mr-2" mat-button type="button" (click)="confirmDelete()"><mat-icon class="not-if-small">delete</mat-icon>Delete</button>
+    }
     <button class="cancel-button mr-2" mat-button type="button" (click)="cancelEdit()"><mat-icon class="not-if-small">close</mat-icon>Cancel</button>
     <button class="save-button" mat-button type="submit" [disabled]="!editTaskForm.valid" (click)="confirmEdit()"><mat-icon class="not-if-small">save</mat-icon>Save</button>
   </div>

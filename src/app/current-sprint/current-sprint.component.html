@@ -1,1 +1,1 @@
-<div *ngIf="currentSprint | async">#{{ (currentSprint | async).id }} - {{ (currentSprint | async).title }}</div>
+@if (currentSprint | async) {<div>#{{ (currentSprint | async).id }} - {{ (currentSprint | async).title }}</div>}

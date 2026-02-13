@@ -1,78 +1,97 @@
-<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+
 <div>
-	<div *ngIf="issue; else progressSpinner">
-		<div class="row" [ngStyle]="{'background-color': adaptiveBackgroundColor(issue.epic?.color), 'color': adaptiveFontColor(issue.epic?.color)}">
-			<div class="banner-text p-2 issue-banner" [ngClass]="{'col-8' : issue.closable, 'col-10' : !issue.closable}">
-				<span class="issue-number">#{{issue.id}} </span><span class="issue-title">{{issue.title}}</span>
-			</div>
-			<div *ngIf="issue.state != 'Closed'" class="p-2" [ngClass]="{'col-4' : issue.closable, 'col-2' : !issue.closable}">
-				<button mat-icon-button matTooltip="Edit Issue" (click)="onEditIssue()"><mat-icon class="sb-icon">edit</mat-icon></button>
-				<!-- <button mat-icon-button *ngIf="issue.closable" matTooltip="Complete Issue" (click)="onComplete()"><mat-icon class="sb-icon">check_circle</mat-icon></button> -->
-			</div>
-		</div>
-		<p class="issue-description p-2" [innerHtml]="issue.description">
-		<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon> Estimate: <span class="base-text">{{issue.estimate}}</span></p>
-		<p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon> State: <span class="base-text">{{issue.state}}</span></p>
-
-		<div class="menu-text">Epic 
-			<button mat-icon-button type="button" (click)="jumpToEpic()" [matTooltip]="issue.epic ? 'Jump to Epic' : 'Jump to Epics List'">
-				<mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
-			</button>
-		</div>
-		<div #epicSelector>
-			<mat-form-field class="form-field">
-				<mat-select [disabled]="issue.state == 'Closed' || issue.sprint?.completed " class="epic-selector mat-color-font base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
-					<mat-option [value]="-1">No Epic</mat-option>
-					<mat-option *ngFor="let epic of epics" [value]="epic.id"
-							[ngStyle]="{'background-color': (epic.color ? epic.color : '#FFFFFF'), 'color': fontColor(epic.color)}">
-						{{epic.title}}
-					</mat-option>
-				</mat-select>
-			</mat-form-field>
-		</div>
-
-		<div class="menu-text mt-2">Sprint 
-			<button mat-icon-button type="button" (click)="jumpToSprint()" [matTooltip]="issue.sprint ? 'Jump to Sprint' : 'Jump to Sprints List'">
-				<mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
-			</button>
-		</div>
-		<mat-form-field class="form-field">
-			<mat-select [disabled]="issue.state == 'Closed' || issue.sprint?.completed" class="sprint-selector base-text" [(value)]="sprintId" (selectionChange)="onChangeSprintSelection($event)">
-				<mat-option [value]="-1">No Sprint</mat-option>
-				<mat-option *ngFor="let sprint of sprints" [value]="sprint.id">
-					{{sprint.title}}
-				</mat-option>
-			</mat-select>
-		</mat-form-field>
-
-		<mat-card class="mt-4 issue-card" *ngIf="showAcceptanceCriteria"> 
-			<div class="menu-text">Acceptance Criteria</div>
-			<div>
-				<div *ngFor="let criterion of issue.acceptance_criteria">
-					<div class="mb-2">
-						<sb-acceptance-criterion-entry [criterion]="criterion" [issue]="issue" [showCompletionCheckboxes]="showCompletionCheckboxes" [editable]="editable && issue.state != 'Closed'" (deleteAC)="deleteAC($event)"></sb-acceptance-criterion-entry>
-					</div>
-				</div>
-				<div *ngIf="editable && permission(issue,'update') && issue.state != 'Closed'">
-					<div class="row add-ac-wrapper">
-						<button class="col-1" *ngIf="permission(issue, 'update')" mat-icon-button matTooltip="New Acceptance Criterion" (click)="createAC(newCriterion.value)" [disabled]="newCriterion.value.trim() == ''"><mat-icon class="add-ac sb-icon" >add_circle</mat-icon></button>
-						<textarea class="col-10 user-text issue-card" #newCriterion></textarea>
-					</div>
-				</div>
-			</div>
-		</mat-card>
-		
-		<div class="mt-4 menu-text">Tasks <button style="position: relative; top: -4px" *ngIf="editable && permission(issue, 'create-task') && issue.state != 'Closed'" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon class="sb-icon">add_circle</mat-icon></button></div>
-
-		<ng-template #notasks><span class="base-text">No Tasks</span></ng-template>
-		<div *ngIf="issue.tasks && issue.tasks.length > 0; else notasks">
-			<app-tasks [editable]="issue.state != 'Closed'" [issue]="issue"></app-tasks>
-		</div>
-
-		<div class="mt-3">
-			<div class="menu-text">Comments</div>
-			<div class="comments-display-box mb-1"><sb-comment-display *ngFor="let comment of issue.comments" [comment]="comment"></sb-comment-display></div>
-			<sb-comment-entry [issueId]="issue.id"></sb-comment-entry>
-		</div>
-	</div>
-</div>
+  @if (issue) {
+    <div>
+      <div class="row" [ngStyle]="{'background-color': adaptiveBackgroundColor(issue.epic?.color), 'color': adaptiveFontColor(issue.epic?.color)}">
+        <div class="banner-text p-2 issue-banner" [ngClass]="{'col-8' : issue.closable, 'col-10' : !issue.closable}">
+          <span class="issue-number">#{{issue.id}} </span><span class="issue-title">{{issue.title}}</span>
+        </div>
+        @if (issue.state != 'Closed') {
+          <div class="p-2" [ngClass]="{'col-4' : issue.closable, 'col-2' : !issue.closable}">
+            <button mat-icon-button matTooltip="Edit Issue" (click)="onEditIssue()"><mat-icon class="sb-icon">edit</mat-icon></button>
+            <!-- <button mat-icon-button *ngIf="issue.closable" matTooltip="Complete Issue" (click)="onComplete()"><mat-icon class="sb-icon">check_circle</mat-icon></button> -->
+          </div>
+        }
+      </div>
+      <p class="issue-description p-2" [innerHtml]="issue.description">
+        <p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-ruler"></mat-icon> Estimate: <span class="base-text">{{issue.estimate}}</span></p>
+        <p class="menu-text"><mat-icon fontSet="fas" fontIcon="fa-clipboard-list"></mat-icon> State: <span class="base-text">{{issue.state}}</span></p>
+        <div class="menu-text">Epic
+          <button mat-icon-button type="button" (click)="jumpToEpic()" [matTooltip]="issue.epic ? 'Jump to Epic' : 'Jump to Epics List'">
+            <mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
+          </button>
+        </div>
+        <div #epicSelector>
+          <mat-form-field class="form-field">
+            <mat-select [disabled]="issue.state == 'Closed' || issue.sprint?.completed " class="epic-selector mat-color-font base-text" [(value)]="epicId" (selectionChange)="onChangeSelection($event)" [ngStyle]="{'background-color': (issue.epic?.color ? issue.epic?.color : 'white')}">
+              <mat-option [value]="-1">No Epic</mat-option>
+              @for (epic of epics; track epic) {
+                <mat-option [value]="epic.id"
+                  [ngStyle]="{'background-color': (epic.color ? epic.color : '#FFFFFF'), 'color': fontColor(epic.color)}">
+                  {{epic.title}}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="menu-text mt-2">Sprint
+          <button mat-icon-button type="button" (click)="jumpToSprint()" [matTooltip]="issue.sprint ? 'Jump to Sprint' : 'Jump to Sprints List'">
+            <mat-icon fontSet="fas" fontIcon="fa-eye"></mat-icon>
+          </button>
+        </div>
+        <mat-form-field class="form-field">
+          <mat-select [disabled]="issue.state == 'Closed' || issue.sprint?.completed" class="sprint-selector base-text" [(value)]="sprintId" (selectionChange)="onChangeSprintSelection($event)">
+            <mat-option [value]="-1">No Sprint</mat-option>
+            @for (sprint of sprints; track sprint) {
+              <mat-option [value]="sprint.id">
+                {{sprint.title}}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        @if (showAcceptanceCriteria) {
+          <mat-card class="mt-4 issue-card">
+            <div class="menu-text">Acceptance Criteria</div>
+            <div>
+              @for (criterion of issue.acceptance_criteria; track criterion) {
+                <div>
+                  <div class="mb-2">
+                    <sb-acceptance-criterion-entry [criterion]="criterion" [issue]="issue" [showCompletionCheckboxes]="showCompletionCheckboxes" [editable]="editable && issue.state != 'Closed'" (deleteAC)="deleteAC($event)"></sb-acceptance-criterion-entry>
+                  </div>
+                </div>
+              }
+              @if (editable && permission(issue,'update') && issue.state != 'Closed') {
+                <div>
+                  <div class="row add-ac-wrapper">
+                    @if (permission(issue, 'update')) {
+                      <button class="col-1" mat-icon-button matTooltip="New Acceptance Criterion" (click)="createAC(newCriterion.value)" [disabled]="newCriterion.value.trim() == ''"><mat-icon class="add-ac sb-icon" >add_circle</mat-icon></button>
+                    }
+                    <textarea class="col-10 user-text issue-card" #newCriterion></textarea>
+                  </div>
+                </div>
+              }
+            </div>
+          </mat-card>
+        }
+        <div class="mt-4 menu-text">Tasks @if (editable && permission(issue, 'create-task') && issue.state != 'Closed') {
+          <button style="position: relative; top: -4px" mat-icon-button color="primary" matTooltip="New Task" (click)="createTask()"><mat-icon class="sb-icon">add_circle</mat-icon></button>
+        }</div>
+        @if (issue.tasks && issue.tasks.length > 0) {
+          <div>
+            <app-tasks [editable]="issue.state != 'Closed'" [issue]="issue"></app-tasks>
+          </div>
+        } @else {
+          <span class="base-text">No Tasks</span>
+        }
+        <div class="mt-3">
+          <div class="menu-text">Comments</div>
+          <div class="comments-display-box mb-1">@for (comment of issue.comments; track comment) {
+            <sb-comment-display [comment]="comment"></sb-comment-display>
+          }</div>
+          <sb-comment-entry [issueId]="issue.id"></sb-comment-entry>
+        </div>
+      </div>
+    } @else {
+      <mat-spinner></mat-spinner>
+    }
+  </div>

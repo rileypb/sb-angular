@@ -1,25 +1,38 @@
 <ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
 <div>
-	<div *ngFor="let issue of issues">
-		<div class="issue-list-entry">
-			<div class="issue-title banner-text" [ngClass]="{ 'not-accepted': !isAccepted(issue) }">#{{issue.id}} - {{ issue.title }}</div> 
-			<div class="menu-text">Estimate: <span class="base-text">{{ issue.estimate || 0 }}</span></div>
-			<div class="menu-text">Completed: <span class="base-text" [ngClass]="{'closed-yes': issue.completed, 'closed-no': !issue.completed}">{{ issue.completed ? "Yes" : "No" }}</span></div>
-			<div class="description base-text" *ngIf="issue.description">{{issue.description}}</div>
-
-			<ng-template #asdf ><span class="menu-text">ACCEPTED</span></ng-template>
-			<span class="menu-text" *ngIf="!isAccepted(issue); else asdf" class="not-accepted menu-text">NOT ACCEPTED</span>
-
-			<div class="ml-3">
-				<span class="banner-text">Tasks</span>
-				<div class="menu-text" *ngFor="let task of issue.tasks">
-					<span class="banner-text">#{{task.id}} - {{task.title}}</span> ({{task.estimate}} hrs), assigned to {{task.assignee_name}}, 
-					<span *ngIf="task.state == 'complete'">Completed at {{task.completed_at | date:'short'}}</span>
-					<span *ngIf="task.state != 'complete'">Incomplete</span>
-					<div class="description base-text" *ngIf="task.description">{{task.description}}</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  @for (issue of issues; track issue) {
+    <div>
+      <div class="issue-list-entry">
+        <div class="issue-title banner-text" [ngClass]="{ 'not-accepted': !isAccepted(issue) }">#{{issue.id}} - {{ issue.title }}</div>
+        <div class="menu-text">Estimate: <span class="base-text">{{ issue.estimate || 0 }}</span></div>
+        <div class="menu-text">Completed: <span class="base-text" [ngClass]="{'closed-yes': issue.completed, 'closed-no': !issue.completed}">{{ issue.completed ? "Yes" : "No" }}</span></div>
+        @if (issue.description) {
+          <div class="description base-text">{{issue.description}}</div>
+        }
+        @if (!isAccepted(issue)) {
+          <span class="menu-text" class="not-accepted menu-text">NOT ACCEPTED</span>
+        } @else {
+          <span class="menu-text">ACCEPTED</span>
+        }
+        <div class="ml-3">
+          <span class="banner-text">Tasks</span>
+          @for (task of issue.tasks; track task) {
+            <div class="menu-text">
+              <span class="banner-text">#{{task.id}} - {{task.title}}</span> ({{task.estimate}} hrs), assigned to {{task.assignee_name}},
+              @if (task.state == 'complete') {
+                <span>Completed at {{task.completed_at | date:'short'}}</span>
+              }
+              @if (task.state != 'complete') {
+                <span>Incomplete</span>
+              }
+              @if (task.description) {
+                <div class="description base-text">{{task.description}}</div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
 </div>

@@ -1,2 +1,6 @@
-<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
-<app-issue-detail *ngIf="issue | async; else progressSpinner" [issue]="issue | async"></app-issue-detail>
+
+@if (issue | async) {
+  <app-issue-detail [issue]="issue | async"></app-issue-detail>
+} @else {
+  <mat-spinner></mat-spinner>
+}

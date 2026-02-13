@@ -1,43 +1,55 @@
 <footer class="footer row">
 
-	<div class="col-3 text-center">	
-		<button *ngIf="(login.status | async) == 'logged_in'" class="logout-button" (click)="logout()" aria-label="Logout">
-			<mat-icon>logout</mat-icon>
-		</button>
-	</div>
+  <div class="col-3 text-center">
+    @if ((login.status | async) == 'logged_in') {
+      <button class="logout-button" (click)="logout()" aria-label="Logout">
+        <mat-icon>logout</mat-icon>
+      </button>
+    }
+  </div>
 
-	<div class="col-3 text-center">
-		<button *ngIf="currentUser" class="settings-button" (click)="editSettings()" aria-label="user settings">
-			<mat-icon class="material-icons-outlined">settings</mat-icon>
-		</button>
-	</div>
+  <div class="col-3 text-center">
+    @if (currentUser) {
+      <button class="settings-button" (click)="editSettings()" aria-label="user settings">
+        <mat-icon class="material-icons-outlined">settings</mat-icon>
+      </button>
+    }
+  </div>
 
-	<div class="col-3 text-center">
-		<button *ngIf="(login.status | async) == 'logged_in'" class="news-button" [matBadge]="news?.unseen_count" [matBadgeHidden]="news?.unseen_count == 0" (click)="showNews()" #newsTrigger aria-label="news feed">
-			<mat-icon class="material-icons-outlined">feed</mat-icon>
-		</button>
-	</div>
+  <div class="col-3 text-center">
+    @if ((login.status | async) == 'logged_in') {
+      <button class="news-button" [matBadge]="news?.unseen_count" [matBadgeHidden]="news?.unseen_count == 0" (click)="showNews()" #newsTrigger aria-label="news feed">
+        <mat-icon class="material-icons-outlined">feed</mat-icon>
+      </button>
+    }
+  </div>
 
-	<div class="col-3 text-center">		
-		<button *ngIf="dataService.users" class="active-users-button" [matMenuTriggerFor]="activeUsersMenu" aria-label="active users">
-			<mat-icon class="logout button-icon">people</mat-icon>
-			<span class="button-icon">{{dataService.users.length}}</span>
-		</button>
-	</div>
+  <div class="col-3 text-center">
+    @if (dataService.users) {
+      <button class="active-users-button" [matMenuTriggerFor]="activeUsersMenu" aria-label="active users">
+        <mat-icon class="logout button-icon">people</mat-icon>
+        <span class="button-icon">{{dataService.users.length}}</span>
+      </button>
+    }
+  </div>
 </footer>
 
 <mat-menu #activeUsersMenu backdropClass="active-users-color">
-	<div *ngIf="dataService.users" class="active-users text-truncate base-text">
-		Active users:
-		<div *ngFor="let user of dataService.users" class="text-truncate">
-		   	<img [src]="user.picture"
-		         [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
-		         [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
-		         class="nav-user-profile user-picture mb-1"
-		         style="width: 32px;"/>
-		         {{user.displayName || (user.first_name + ' ' + user.last_name)}}
-		</div>
-	</div>
+  @if (dataService.users) {
+    <div class="active-users text-truncate base-text">
+      Active users:
+      @for (user of dataService.users; track user) {
+        <div class="text-truncate">
+          <img [src]="user.picture"
+            [alt]="user.displayName || (user.first_name + ' ' + user.last_name)"
+            [matTooltip]="user.displayName || (user.first_name + ' ' + user.last_name)"
+            class="nav-user-profile user-picture mb-1"
+            style="width: 32px;"/>
+          {{user.displayName || (user.first_name + ' ' + user.last_name)}}
+        </div>
+      }
+    </div>
+  }
 </mat-menu>
 
 <ng-template #newsFeed>

@@ -1,14 +1,22 @@
 <div class="ml-4">
-	<div *ngIf="teacherReport?.incompleteIssues">
-		<div class="row title">Incomplete Issues:</div>
-		<div *ngFor="let issue of teacherReport?.incompleteIssues">
-			#{{issue.id}} - Title: {{issue.title}}
-		</div>
-	</div>
-	<div *ngIf="teacherReport?.incompleteTasks">
-		<div class="row title">Incomplete Tasks:</div>
-		<div *ngFor="let task of teacherReport?.incompleteTasks">
-			#{{task.id}} - Title: {{task.title}}
-		</div>
-	</div>
+  @if (teacherReport?.incompleteIssues) {
+    <div>
+      <div class="row title">Incomplete Issues:</div>
+      @for (issue of teacherReport?.incompleteIssues; track issue) {
+        <div>
+          #{{issue.id}} - Title: {{issue.title}}
+        </div>
+      }
+    </div>
+  }
+  @if (teacherReport?.incompleteTasks) {
+    <div>
+      <div class="row title">Incomplete Tasks:</div>
+      @for (task of teacherReport?.incompleteTasks; track task) {
+        <div>
+          #{{task.id}} - Title: {{task.title}}
+        </div>
+      }
+    </div>
+  }
 </div>

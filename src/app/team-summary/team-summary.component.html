@@ -1,51 +1,75 @@
-<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
+
 
 <div>
-		<div class="banner-text p-2 col-10 sprint-banner">
-			<span class="sprint-number">#{{sprint.id}} </span><span class="sprint-title">{{sprint.title}}</span>
-		</div>	
-		<div class="col-12 text-right p-0">
-			<button mat-button class="done-button icon-button" (click)="okay()">Done</button>
-		</div>
-		<div *ngIf="project && project.team && (teamSummary | async); else progressSpinner">
-			<div class="total-unassigned-work">
-				Total Unassigned Work: {{ (teamSummary | async).team.unassignedWork.total_work }} hours
-			</div>
-			<div class="user-summary-card mb-3" *ngFor="let user of (teamSummary | async).team.members">
-				<div><img *ngIf="user.picture" class="user-picture" alt="user" [src]="user.picture"> {{ user.displayName || (user.first_name + " " + user.last_name) }} </div>
-				<div class="work-estimate">Total estimated work: {{user.work.work}} hours</div>
-				<div *ngIf="user.work.assigned_issues.length > 0">
-					<div>Assigned Work:</div>
-					<ul>
-						<li *ngFor="let issue of user.work.assigned_issues">Issue #{{issue.id}} - {{issue.title}}
-							<ul class="row" *ngFor="let task of issue.assigned_tasks">
-								<li>
-									<button *ngIf="editable && permission(task, 'update')" class="sb-button small-button" (click)="unassignTask(task)">
-										<mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-times-circle" matTooltip="Unassign"></mat-icon>
-									</button>
-									Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="unassigned-work-card" *ngIf="(teamSummary | async).team.unassignedWork.unassigned_issues.length > 0">
-				<span class="unassigned-work-title">Unassigned Work:</span>
-				<ul>
-					<li *ngFor="let issue of (teamSummary | async).team.unassignedWork.unassigned_issues">
-						Issue #{{issue.id}} - {{issue.title}}
-						<ul>
-							<li *ngFor="let task of issue.unassigned_tasks">
-								<span class="col-4">Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours</span>
-								<sb-user-selector *ngIf="editable && permission(task, 'update')" class="col-8" [team]="(teamSummary | async)?.team.members" [assignee]="task.assignee" (userSelected)="assignTask(task, $event)"></sb-user-selector> 
-								<!-- <button mat-icon-button color="primary" (click)="assign_task(task)">
-									<mat-icon style="font-size: 16px;" matTooltip="Assign">add_circle</mat-icon>
-								</button> -->
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
+  <div class="banner-text p-2 col-10 sprint-banner">
+    <span class="sprint-number">#{{sprint.id}} </span><span class="sprint-title">{{sprint.title}}</span>
+  </div>
+  <div class="col-12 text-right p-0">
+    <button mat-button class="done-button icon-button" (click)="okay()">Done</button>
+  </div>
+  @if (project && project.team && (teamSummary | async)) {
+    <div>
+      <div class="total-unassigned-work">
+        Total Unassigned Work: {{ (teamSummary | async).team.unassignedWork.total_work }} hours
+      </div>
+      @for (user of (teamSummary | async).team.members; track user) {
+        <div class="user-summary-card mb-3">
+          <div>@if (user.picture) {
+            <img class="user-picture" alt="user" [src]="user.picture">
+          } {{ user.displayName || (user.first_name + " " + user.last_name) }} </div>
+          <div class="work-estimate">Total estimated work: {{user.work.work}} hours</div>
+          @if (user.work.assigned_issues.length > 0) {
+            <div>
+              <div>Assigned Work:</div>
+              <ul>
+                @for (issue of user.work.assigned_issues; track issue) {
+                  <li>Issue #{{issue.id}} - {{issue.title}}
+                    @for (task of issue.assigned_tasks; track task) {
+                      <ul class="row">
+                        <li>
+                          @if (editable && permission(task, 'update')) {
+                            <button class="sb-button small-button" (click)="unassignTask(task)">
+                              <mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-times-circle" matTooltip="Unassign"></mat-icon>
+                            </button>
+                          }
+                          Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours
+                        </li>
+                      </ul>
+                    }
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      }
+      @if ((teamSummary | async).team.unassignedWork.unassigned_issues.length > 0) {
+        <div class="unassigned-work-card">
+          <span class="unassigned-work-title">Unassigned Work:</span>
+          <ul>
+            @for (issue of (teamSummary | async).team.unassignedWork.unassigned_issues; track issue) {
+              <li>
+                Issue #{{issue.id}} - {{issue.title}}
+                <ul>
+                  @for (task of issue.unassigned_tasks; track task) {
+                    <li>
+                      <span class="col-4">Task #{{task.id}} - {{task.title}} - {{task.estimate}} hours</span>
+                      @if (editable && permission(task, 'update')) {
+                        <sb-user-selector class="col-8" [team]="(teamSummary | async)?.team.members" [assignee]="task.assignee" (userSelected)="assignTask(task, $event)"></sb-user-selector>
+                      }
+                      <!-- <button mat-icon-button color="primary" (click)="assign_task(task)">
+                      <mat-icon style="font-size: 16px;" matTooltip="Assign">add_circle</mat-icon>
+                    </button> -->
+                  </li>
+                }
+              </ul>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+} @else {
+  <mat-spinner></mat-spinner>
+}
 </div>

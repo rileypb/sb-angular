@@ -1,25 +1,34 @@
-<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<app-project-frame *ngIf="project; else progressSpinner" [project]="project"> 
 
-			<div class="row">
-				<div class="col-md-6 no-print">
-					<mat-card class="inner-detail-card">
-						<div style="height:100%;">
-					  		<div class="banner-text">Completed Sprints</div>
-		 			    	<sb-sprint-list [project]="project" [completedOnly]="true" (selected)="selectSprint($event)" (loaded)="selectSprint($event)" [showStartButton]="false" [editable]="false" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
-						</div>
-					</mat-card>
-				</div>
-				<div class="col-md-6 print-expand" *ngIf="!selectedIssueId">
-					<sb-sprint-retrospective-report *ngIf="selectedSprint" [sprintId]="selectedSprint.id"></sb-sprint-retrospective-report>
-				</div>
-				<div class="col-md-6" *ngIf="selectedIssueId">
-					<sb-issue-loader [issueId]="selectedIssueId">
-						<app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="true" [editable]="false" (completeIssue)="onCompleteIssue($event)" [epics]="(epics$ | async).epics?.list"
-						[sprints]="(sprints$ | async).sprints?.list.concat((oldSprints$ | async).sprints?.list)" #issueView></app-issue-detail>
-					</sb-issue-loader>
-				</div>
-			</div>
-</app-project-frame>
+@if (project) {
+  <app-project-frame [project]="project">
+    <div class="row">
+      <div class="col-md-6 no-print">
+        <mat-card class="inner-detail-card">
+          <div style="height:100%;">
+            <div class="banner-text">Completed Sprints</div>
+            <sb-sprint-list [project]="project" [completedOnly]="true" (selected)="selectSprint($event)" (loaded)="selectSprint($event)" [showStartButton]="false" [editable]="false" (issueSelected)="onIssueSelected($event)"></sb-sprint-list>
+          </div>
+        </mat-card>
+      </div>
+      @if (!selectedIssueId) {
+        <div class="col-md-6 print-expand">
+          @if (selectedSprint) {
+            <sb-sprint-retrospective-report [sprintId]="selectedSprint.id"></sb-sprint-retrospective-report>
+          }
+        </div>
+      }
+      @if (selectedIssueId) {
+        <div class="col-md-6">
+          <sb-issue-loader [issueId]="selectedIssueId">
+            <app-issue-detail [showAcceptanceCriteria]="project.setting_use_acceptance_criteria" [showCompletionCheckboxes]="true" [editable]="false" (completeIssue)="onCompleteIssue($event)" [epics]="(epics$ | async).epics?.list"
+            [sprints]="(sprints$ | async).sprints?.list.concat((oldSprints$ | async).sprints?.list)" #issueView></app-issue-detail>
+          </sb-issue-loader>
+        </div>
+      }
+    </div>
+  </app-project-frame>
+} @else {
+  <mat-spinner></mat-spinner>
+}
 

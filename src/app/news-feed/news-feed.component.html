@@ -1,13 +1,27 @@
-<div class="news-feed-container" *ngIf="news" > 
-	<div *ngIf="news.length == 0">
-		Your news feed is empty.
-	</div>
-	<div *ngFor="let newsItem of news">
-		Comment on 
-		<app-issue-number-link *ngIf="newsItem.comment.issue" [issue]="newsItem.comment.issue" (navigate)="close()"> - {{newsItem.comment.issue.title}}</app-issue-number-link> 
-		<sb-epic-number-link *ngIf="newsItem.comment.epic" [epic]="newsItem.comment.epic" (navigate)="close()"> - {{newsItem.comment.epic.title}}</sb-epic-number-link>
-		<app-sprint-number-link *ngIf="newsItem.comment.sprint" [sprint]="newsItem.comment.sprint" (navigate)="close()"> - {{newsItem.comment.sprint.title}}</app-sprint-number-link>
-		<span *ngIf="newsItem.comment.project">Project # {{newsItem.comment.project.id}}</span>
-		<sb-comment-display [comment]="newsItem.comment"></sb-comment-display>
-	</div>
-</div>
+@if (news) {
+  <div class="news-feed-container" >
+    @if (news.length == 0) {
+      <div>
+        Your news feed is empty.
+      </div>
+    }
+    @for (newsItem of news; track newsItem) {
+      <div>
+        Comment on
+        @if (newsItem.comment.issue) {
+          <app-issue-number-link [issue]="newsItem.comment.issue" (navigate)="close()"> - {{newsItem.comment.issue.title}}</app-issue-number-link>
+        }
+        @if (newsItem.comment.epic) {
+          <sb-epic-number-link [epic]="newsItem.comment.epic" (navigate)="close()"> - {{newsItem.comment.epic.title}}</sb-epic-number-link>
+        }
+        @if (newsItem.comment.sprint) {
+          <app-sprint-number-link [sprint]="newsItem.comment.sprint" (navigate)="close()"> - {{newsItem.comment.sprint.title}}</app-sprint-number-link>
+        }
+        @if (newsItem.comment.project) {
+          <span>Project # {{newsItem.comment.project.id}}</span>
+        }
+        <sb-comment-display [comment]="newsItem.comment"></sb-comment-display>
+      </div>
+    }
+  </div>
+}

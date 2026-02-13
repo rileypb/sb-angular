@@ -1,31 +1,37 @@
-<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<sb-sprint-frame *ngIf="sprint; else progressSpinner" [sprint]="sprint" [showSuspendButton]="true" [showFinishButton]="true" (suspend)="onSuspendSprint($event)" (finish)="onFinishSprint($event)">
-	<div class="large-only mt-3">
-		<div class="row" cdkDropListGroup>
-			<div class="col-4 issue-status-column">
-				<h4 class="menu-text">Open</h4>
-				<sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="Open" (transfer)="setState($event, 'Open')" (viewIssue)="onViewIssue($event)">
-				</sb-sprint-issue-state-list>
-			</div>
-			<div class="col-4 issue-status-column">
-				<h4 class="menu-text">In Progress<mat-icon class="sb-icon ml-2" fontSet="fas" fontIcon="fa-running" matTooltip="In Progress"></mat-icon></h4>
-				<sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="In Progress" (transfer)="setState($event, 'In Progress')" (viewIssue)="onViewIssue($event)">
-				</sb-sprint-issue-state-list>
-			</div>
-			<div class="col-4 issue-status-column">
-				<h4 class="menu-text">Closed<mat-icon class="sb-icon ml-2" fontSet="fas" fontIcon="fa-check" matTooltip="Closed"></mat-icon></h4>
-				<sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="Closed" (transfer)="setState($event, 'Closed')" (viewIssue)="onViewIssue($event)">
-				</sb-sprint-issue-state-list>
-			</div>
-		</div> 
-	</div>
-	<div class="small-only" cdkDropListGroup>
-		<mat-accordion class="row">
-			<div class="small-issue-entry col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let issue of (issues | async)?.issues.list || []">
-				<sb-expandable-issue [issue]="issue"></sb-expandable-issue>
-			</div>
-		</mat-accordion>
-	</div>
-</sb-sprint-frame>
+
+@if (sprint) {
+  <sb-sprint-frame [sprint]="sprint" [showSuspendButton]="true" [showFinishButton]="true" (suspend)="onSuspendSprint($event)" (finish)="onFinishSprint($event)">
+    <div class="large-only mt-3">
+      <div class="row" cdkDropListGroup>
+        <div class="col-4 issue-status-column">
+          <h4 class="menu-text">Open</h4>
+          <sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="Open" (transfer)="setState($event, 'Open')" (viewIssue)="onViewIssue($event)">
+          </sb-sprint-issue-state-list>
+        </div>
+        <div class="col-4 issue-status-column">
+          <h4 class="menu-text">In Progress<mat-icon class="sb-icon ml-2" fontSet="fas" fontIcon="fa-running" matTooltip="In Progress"></mat-icon></h4>
+          <sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="In Progress" (transfer)="setState($event, 'In Progress')" (viewIssue)="onViewIssue($event)">
+          </sb-sprint-issue-state-list>
+        </div>
+        <div class="col-4 issue-status-column">
+          <h4 class="menu-text">Closed<mat-icon class="sb-icon ml-2" fontSet="fas" fontIcon="fa-check" matTooltip="Closed"></mat-icon></h4>
+          <sb-sprint-issue-state-list [issues]="(issues | async)?.issues.list || []" state="Closed" (transfer)="setState($event, 'Closed')" (viewIssue)="onViewIssue($event)">
+          </sb-sprint-issue-state-list>
+        </div>
+      </div>
+    </div>
+    <div class="small-only" cdkDropListGroup>
+      <mat-accordion class="row">
+        @for (issue of (issues | async)?.issues.list || []; track issue) {
+          <div class="small-issue-entry col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <sb-expandable-issue [issue]="issue"></sb-expandable-issue>
+          </div>
+        }
+      </mat-accordion>
+    </div>
+  </sb-sprint-frame>
+} @else {
+  <mat-spinner></mat-spinner>
+}
 

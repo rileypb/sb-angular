@@ -1,33 +1,36 @@
-<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<div class="list-container tasks" *ngIf="tasks | async; else progressSpinner">
-  <div class="task-container column-container">
-  	<div *ngIf="editable; else staticList" class="list tasks" 
-  	     cdkDropList 
-  	     #taskList="cdkDropList" 
-  	     [cdkDropListData]="{ tasks: (tasks | async), issue: issue }"
-  	     (cdkDropListDropped)="onDrop($event)">
 
-      <div>
-        <div class="task-card text-truncate" *ngFor="let task of (tasks | async).tasks.list; let i = index" cdkDrag>
-          
-          <div class="drag-placeholder" *cdkDragPlaceholder></div>
-          <sb-task-card [task]="task" [editCoordinator]="editCoordinator"></sb-task-card>
-        </div>
-      </div>
-
-  	</div>
-
-    <ng-template #staticList>
-      <div class="list tasks">
-
-        <div>
-          <div class="task-card text-truncate" *ngFor="let task of (tasks | async).tasks.list; let i = index">
-            <sb-task-card [task]="task" [editable]="false"></sb-task-card>
+@if (tasks | async) {
+  <div class="list-container tasks">
+    <div class="task-container column-container">
+      @if (editable) {
+        <div class="list tasks"
+          cdkDropList
+          #taskList="cdkDropList"
+          [cdkDropListData]="{ tasks: (tasks | async), issue: issue }"
+          (cdkDropListDropped)="onDrop($event)">
+          <div>
+            @for (task of (tasks | async).tasks.list; track task; let i = $index) {
+              <div class="task-card text-truncate" cdkDrag>
+                <div class="drag-placeholder" *cdkDragPlaceholder></div>
+                <sb-task-card [task]="task" [editCoordinator]="editCoordinator"></sb-task-card>
+              </div>
+            }
           </div>
         </div>
-
-      </div>
-    </ng-template>
+      } @else {
+        <div class="list tasks">
+          <div>
+            @for (task of (tasks | async).tasks.list; track task; let i = $index) {
+              <div class="task-card text-truncate">
+                <sb-task-card [task]="task" [editable]="false"></sb-task-card>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
   </div>
-</div>
+} @else {
+  <mat-spinner></mat-spinner>
+}

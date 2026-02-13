@@ -1,25 +1,41 @@
 <div class="project-frame-card">
-	<h1 class="banner-text card-title">
-		<mat-icon class="sb-icon mr-1" *ngIf="!project.picture" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
-		<img class="project-picture" *ngIf="project.picture" [src]="project.picture" (click)="showContent()">
-		 
-		<span class="navigation-segment" *ngIf="navigationService.segment">{{project.name}} : {{navigationService.segment}}</span>
-		<span class="navigation-segment" *ngIf="!navigationService.segment">{{project.name}}</span>
+  <h1 class="banner-text card-title">
+    @if (!project.picture) {
+      <mat-icon class="sb-icon mr-1" fontSet="fas" fontIcon="fa-shapes" (click)="showContent()"></mat-icon>
+    }
+    @if (project.picture) {
+      <img class="project-picture" [src]="project.picture" (click)="showContent()">
+    }
 
-		<mat-icon class="sb-icon ml-4" *ngIf="permission(project, 'configure')" fontSet="fas" fontIcon="fa-sliders-h" (click)="editSettings()"></mat-icon>
-	</h1>
-	<div [ngSwitch]="mode" class="card-contents">
-		<ng-content *ngSwitchCase="'showingContent'"></ng-content>
-		<div *ngSwitchCase="'editingProject'">EDITING</div>
-		
-		<div *ngSwitchCase="'editingSettings'">
-			<p>Picture URL: <input class="picture-input" [(ngModel)]="project.picture"></p>
-			<p>Auto-close Issues: <input type="checkbox" [(ngModel)]="project.setting_auto_close_issues"></p>
-			<p>Use Acceptance Criteria: <input type="checkbox" [(ngModel)]="project.setting_use_acceptance_criteria"></p>
-			<p>Allow Completing Issue Without Sprint: <input type="checkbox" [(ngModel)]="project.allow_issue_completion_without_sprint"></p>
-			<p>Hidden: <input type="checkbox" [(ngModel)]="project.hidden"></p>
-			<button (click)="saveSettings()">Save</button>
-		</div>
-	
-	</div>
+    @if (navigationService.segment) {
+      <span class="navigation-segment">{{project.name}} : {{navigationService.segment}}</span>
+    }
+    @if (!navigationService.segment) {
+      <span class="navigation-segment">{{project.name}}</span>
+    }
+
+    @if (permission(project, 'configure')) {
+      <mat-icon class="sb-icon ml-4" fontSet="fas" fontIcon="fa-sliders-h" (click)="editSettings()"></mat-icon>
+    }
+  </h1>
+  <div class="card-contents">
+    @switch (mode) {
+      @case ('showingContent') {
+        <ng-content></ng-content>
+      }
+      @case ('editingProject') {
+        <div>EDITING</div>
+      }
+      @case ('editingSettings') {
+        <div>
+          <p>Picture URL: <input class="picture-input" [(ngModel)]="project.picture"></p>
+          <p>Auto-close Issues: <input type="checkbox" [(ngModel)]="project.setting_auto_close_issues"></p>
+          <p>Use Acceptance Criteria: <input type="checkbox" [(ngModel)]="project.setting_use_acceptance_criteria"></p>
+          <p>Allow Completing Issue Without Sprint: <input type="checkbox" [(ngModel)]="project.allow_issue_completion_without_sprint"></p>
+          <p>Hidden: <input type="checkbox" [(ngModel)]="project.hidden"></p>
+          <button (click)="saveSettings()">Save</button>
+        </div>
+      }
+    }
+  </div>
 </div>

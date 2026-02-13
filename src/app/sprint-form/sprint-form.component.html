@@ -1,11 +1,11 @@
 
 <form [formGroup]="editSprintForm">
   <div fxLayout="row">
-  	<mat-form-field style="width:100%" appearance="fill">
-  		<mat-label>Sprint Title</mat-label>
-  		<input matInput formControlName="title" (keydown)="keyDown($event)" #titleInput>
+    <mat-form-field style="width:100%" appearance="fill">
+      <mat-label>Sprint Title</mat-label>
+      <input matInput formControlName="title" (keydown)="keyDown($event)" #titleInput>
       <mat-error>Title can't be blank</mat-error>
-  	</mat-form-field>
+    </mat-form-field>
   </div>
   <div fxLayout="row">
     <mat-form-field style="width:100%" appearance="fill">
@@ -20,9 +20,11 @@
     </mat-form-field>
   </div>
 
-<div mat-dialog-actions>
-  <button mat-button class="delete-button mr-2" *ngIf="mode == 'edit' && permission(sprint, 'delete')" type="button" (click)="confirmDelete()"><mat-icon>delete</mat-icon>Delete</button>
-  <button type="reset" mat-button class="cancel-button mr-2" type="button" (click)="cancelEdit()"><mat-icon>close</mat-icon>Cancel</button>
-  <button mat-button type="submit" class="save-button" [disabled]="!editSprintForm.valid" (click)="confirmEdit()"><mat-icon>save</mat-icon>Save</button>
-</div>
+  <div mat-dialog-actions>
+    @if (mode == 'edit' && permission(sprint, 'delete')) {
+      <button mat-button class="delete-button mr-2" type="button" (click)="confirmDelete()"><mat-icon>delete</mat-icon>Delete</button>
+    }
+    <button type="reset" mat-button class="cancel-button mr-2" type="button" (click)="cancelEdit()"><mat-icon>close</mat-icon>Cancel</button>
+    <button mat-button type="submit" class="save-button" [disabled]="!editSprintForm.valid" (click)="confirmEdit()"><mat-icon>save</mat-icon>Save</button>
+  </div>
 

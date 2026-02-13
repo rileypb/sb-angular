@@ -1,64 +1,79 @@
-<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
-<app-project-frame *ngIf="project; else progressSpinner" [project]="project" [showTeamButton]="false">
-	<div class="row">
-		<div class="col-md-6">
-			<mat-card class="project-info-card">
-				<h2 class="banner-text"><mat-icon class="mr-2 sb-icon" fontSet="fas" fontIcon="fa-info-circle"></mat-icon>Info</h2>
-				<mat-card-content>
-					<app-project-card [project]="project"></app-project-card>
-				</mat-card-content>
-			</mat-card>
 
-			<mat-card class="project-info-card">
-				<h2 class="banner-text">
-					<mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-heartbeat"></mat-icon>
-					Recent Activity
-				</h2>
-				<mat-card-content class="base-text">
-					<sb-project-activity-list [project]="project"></sb-project-activity-list>
-				</mat-card-content>
-			</mat-card>
-
-			<mat-card class="project-info-card">
-				<h2 class="banner-text">
-					<mat-icon class="sb-icon" style="position: relative; top: 3px;">people</mat-icon>
-					Team
-					<button class="icon-button" style="position: relative; top: -4px" *ngIf="permission(project, 'configure')" mat-icon-button color="primary" matTooltip="Add Member" (click)="addMember()"><mat-icon class="sb-icon">add_circle</mat-icon></button>
-				</h2>
-				<mat-card-content class="base-text">
-					<div *ngFor="let user of project.team">
-						<button style="position: relative; top: -4px" *ngIf="permission(project, 'configure') && (project.owner.id != user.id)" mat-icon-button color="primary" matTooltip="Remove Member" (click)="removeMember(user)"><mat-icon class="sb-icon-warn">cancel</mat-icon></button>
-						<img *ngIf="user.picture" class="user-picture" [src]="user.picture" alt="user"> {{ user.displayName || (user.first_name + " " + user.last_name) }}
-					</div>
-				</mat-card-content>
-			</mat-card>
-		</div>
-
-		<div class="col-md-6">
-			<mat-card class="project-info-card">
-				<h2 class="banner-text">
-					<mat-icon class="sb-icon">directions_run</mat-icon>
-					Current Sprint
-				</h2>
-				<mat-card-content>
-					<div *ngIf="project.currentSprint">
-						<a [routerLink]="['/','projects',project.id,'execution']">{{project.currentSprint.id}} - {{project.currentSprint.title}}</a>
-						<div>Goal: {{ project.currentSprint.goal }}</div>
-					</div> 
-					<div class="base-text" *ngIf="!project.currentSprint">None</div>
-				</mat-card-content>
-			</mat-card>
-			<mat-card class="project-info-card">
-				<h2 class="banner-text">
-					<mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-burn"></mat-icon>
-					Burndown
-				</h2>
-				<mat-card-content>
-					<div *ngIf="project.currentSprint">
-						<app-burndown [sprintId]="project.currentSprint.id"></app-burndown>
-					</div>
-				</mat-card-content>
-			</mat-card>
-		</div>
-	</div>
-</app-project-frame>
+@if (project) {
+  <app-project-frame [project]="project" [showTeamButton]="false">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-card class="project-info-card">
+          <h2 class="banner-text"><mat-icon class="mr-2 sb-icon" fontSet="fas" fontIcon="fa-info-circle"></mat-icon>Info</h2>
+          <mat-card-content>
+            <app-project-card [project]="project"></app-project-card>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="project-info-card">
+          <h2 class="banner-text">
+            <mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-heartbeat"></mat-icon>
+            Recent Activity
+          </h2>
+          <mat-card-content class="base-text">
+            <sb-project-activity-list [project]="project"></sb-project-activity-list>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="project-info-card">
+          <h2 class="banner-text">
+            <mat-icon class="sb-icon" style="position: relative; top: 3px;">people</mat-icon>
+            Team
+            @if (permission(project, 'configure')) {
+              <button class="icon-button" style="position: relative; top: -4px" mat-icon-button color="primary" matTooltip="Add Member" (click)="addMember()"><mat-icon class="sb-icon">add_circle</mat-icon></button>
+            }
+          </h2>
+          <mat-card-content class="base-text">
+            @for (user of project.team; track user) {
+              <div>
+                @if (permission(project, 'configure') && (project.owner.id != user.id)) {
+                  <button style="position: relative; top: -4px" mat-icon-button color="primary" matTooltip="Remove Member" (click)="removeMember(user)"><mat-icon class="sb-icon-warn">cancel</mat-icon></button>
+                }
+                @if (user.picture) {
+                  <img class="user-picture" [src]="user.picture" alt="user">
+                  } {{ user.displayName || (user.first_name + " " + user.last_name) }}
+                </div>
+              }
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-6">
+          <mat-card class="project-info-card">
+            <h2 class="banner-text">
+              <mat-icon class="sb-icon">directions_run</mat-icon>
+              Current Sprint
+            </h2>
+            <mat-card-content>
+              @if (project.currentSprint) {
+                <div>
+                  <a [routerLink]="['/','projects',project.id,'execution']">{{project.currentSprint.id}} - {{project.currentSprint.title}}</a>
+                  <div>Goal: {{ project.currentSprint.goal }}</div>
+                </div>
+              }
+              @if (!project.currentSprint) {
+                <div class="base-text">None</div>
+              }
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="project-info-card">
+            <h2 class="banner-text">
+              <mat-icon class="sb-icon" fontSet="fas" fontIcon="fa-burn"></mat-icon>
+              Burndown
+            </h2>
+            <mat-card-content>
+              @if (project.currentSprint) {
+                <div>
+                  <app-burndown [sprintId]="project.currentSprint.id"></app-burndown>
+                </div>
+              }
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </app-project-frame>
+  } @else {
+    <mat-spinner></mat-spinner>
+  }

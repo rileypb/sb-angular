@@ -1,13 +1,18 @@
-<ng-template #progressSpinner><mat-spinner></mat-spinner></ng-template>
 
-<div class="projects" *ngIf="projects | async; else progressSpinner">
-  <div class="card-title">
-    <mat-icon class="mr-3 sb-icon" fontSet="fas" fontIcon="fa-shapes" style="font-size: larger; overflow: visible;"></mat-icon> Your Projects
-  </div>
 
-  <div class="text-left project-container">
-    <div class="project-list col-12" *ngFor="let project of (projects | async).projects.list">
-      <span class="project-entry"><a class="select-link" [class.disabled]="!permission(project, 'read') ? true : null" [routerLink]="['/projects', project.id, 'dashboard']">{{project.name}}</a></span>
+@if (projects | async) {
+  <div class="projects">
+    <div class="card-title">
+      <mat-icon class="mr-3 sb-icon" fontSet="fas" fontIcon="fa-shapes" style="font-size: larger; overflow: visible;"></mat-icon> Your Projects
+    </div>
+    <div class="text-left project-container">
+      @for (project of (projects | async).projects.list; track project) {
+        <div class="project-list col-12">
+          <span class="project-entry"><a class="select-link" [class.disabled]="!permission(project, 'read') ? true : null" [routerLink]="['/projects', project.id, 'dashboard']">{{project.name}}</a></span>
+        </div>
+      }
     </div>
   </div>
-</div>
+} @else {
+  <mat-spinner></mat-spinner>
+}

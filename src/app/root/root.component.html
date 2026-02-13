@@ -1,42 +1,47 @@
 <div theme class="sbroot">
-	<sb-header class="no-print header"></sb-header>
-	
-	<nav class="no-print nav nav-menu">
-		<div class="nav-wrapper">
-			<sb-nav-menu></sb-nav-menu>
-		</div>
-	</nav>
-	
-	<div *ngIf="(dataService.isConnected | async) && !dataService.resetting; else connecting" class="main-content">
-		<router-outlet ></router-outlet>
-	</div>
+  <sb-header class="no-print header"></sb-header>
 
-	<sb-footer class="no-print footer" [news]="news$ | async" [currentUser]="user$ | async"></sb-footer>
+  <nav class="no-print nav nav-menu">
+    <div class="nav-wrapper">
+      <sb-nav-menu></sb-nav-menu>
+    </div>
+  </nav>
+
+  @if ((dataService.isConnected | async) && !dataService.resetting) {
+    <div class="main-content">
+      <router-outlet ></router-outlet>
+    </div>
+  } @else {
+    <div style="position: fixed; top: 2rem;">Connecting...</div>
+  }
+
+  <sb-footer class="no-print footer" [news]="news$ | async" [currentUser]="user$ | async"></sb-footer>
 
 
-	<ng-template #connecting>
-		<div style="position: fixed; top: 2rem;">Connecting...</div>
-	</ng-template>
 
-	<div *ngIf="(loginService.status | async) != 'logged_in'" class="login-overlay">
-		<div class="col-12 text-center">
-			<div>Please log in.</div>
-			<button (click)="login()">Log in</button>
-		</div>
-	</div>
+  @if ((loginService.status | async) != 'logged_in') {
+    <div class="login-overlay">
+      <div class="col-12 text-center">
+        <div>Please log in.</div>
+        <button (click)="login()">Log in</button>
+      </div>
+    </div>
+  }
 
-	<div *ngIf="dataService.users" class="no-print active-users text-truncate banner-text">
-		Active users:
-		<div *ngFor="let user of dataService.users" class="text-truncate base-text">
-			<sb-user-picture #userPicture
-							 [userId]="user.id"
-							 [src]="user.picture"
-							 [username]="user.displayName || (user.first_name + ' ' + user.last_name)">
-			</sb-user-picture>
-
-		</div>
-	</div>
+  @if (dataService.users) {
+    <div class="no-print active-users text-truncate banner-text">
+      Active users:
+      @for (user of dataService.users; track user) {
+        <div class="text-truncate base-text">
+          <sb-user-picture #userPicture
+            [userId]="user.id"
+            [src]="user.picture"
+            [username]="user.displayName || (user.first_name + ' ' + user.last_name)">
+          </sb-user-picture>
+        </div>
+      }
+    </div>
+  }
 </div>
 
 <div class="backdrop"></div>
- 

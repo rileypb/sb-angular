@@ -1,64 +1,88 @@
-<ng-template #progressSpinner><div class="d-flex justify-content-center"><mat-spinner></mat-spinner></div></ng-template>
+
 
 <div class="list-container issues">
   <div class="issue-container column-container">
-  	<div class="list issues" 
-  		 *ngIf="!fixed"
-  	     cdkDropList 
-  	     #issueList="cdkDropList" 
-  	     [cdkDropListData]="{ issues: (filteredIssues | async), container: container }"
-  	     (cdkDropListDropped)="onDrop($event)">
-      
-      <div *ngIf="issues; else progressSpinner">
-        <div class="drag-placeholder menu-text" *ngIf="showEmptyListSpace && (filteredIssues | async)?.length == 0">Drag and drop issues here</div>
-        <div class="issue-card text-truncate pl-2" 
-             (click)="clickIssue(issue)"
-             [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index" cdkDrag>
-          
-          <div class="drag-placeholder" *cdkDragPlaceholder></div>
-          <div class="row align-items-center banner-text">
-            <button style="position: relative; left: 8px" mat-icon-button *ngIf="showViewIcon" (click)="onViewIssue(issue)">
-              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
-            </button>
-            <div class="col-10 text-truncate">
-              <span [ngClass]="{ 'completed-title': issue.completed }">#{{issue.id}} - {{issue.title}}</span> <mat-icon *ngIf="issue.completed" class="checkmark ml-3" fontSet="fas" fontIcon="fa-check-circle"></mat-icon>
+    @if (!fixed) {
+      <div class="list issues"
+        cdkDropList
+        #issueList="cdkDropList"
+        [cdkDropListData]="{ issues: (filteredIssues | async), container: container }"
+        (cdkDropListDropped)="onDrop($event)">
+        @if (issues) {
+          <div>
+            @if (showEmptyListSpace && (filteredIssues | async)?.length == 0) {
+              <div class="drag-placeholder menu-text">Drag and drop issues here</div>
+            }
+            @for (issue of (filteredIssues | async); track issue; let i = $index) {
+              <div class="issue-card text-truncate pl-2"
+                (click)="clickIssue(issue)"
+                [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" cdkDrag>
+                <div class="drag-placeholder" *cdkDragPlaceholder></div>
+                <div class="row align-items-center banner-text">
+                  @if (showViewIcon) {
+                    <button style="position: relative; left: 8px" mat-icon-button (click)="onViewIssue(issue)">
+                      <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-eye"></mat-icon>
+                    </button>
+                  }
+                  <div class="col-10 text-truncate">
+                    <span [ngClass]="{ 'completed-title': issue.completed }">#{{issue.id}} - {{issue.title}}</span> @if (issue.completed) {
+                    <mat-icon class="checkmark ml-3" fontSet="fas" fontIcon="fa-check-circle"></mat-icon>
+                  }
+                </div>
+                @if (allowRemove && !issue.completed) {
+                  <button mat-icon-button (click)="removeIssue($event, issue)">
+                    <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-times-circle"></mat-icon>
+                  </button>
+                }
+              </div>
             </div>
-            <button mat-icon-button *ngIf="allowRemove && !issue.completed" (click)="removeIssue($event, issue)">
-              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-times-circle"></mat-icon>
-            </button>
-          </div>
+          }
         </div>
-      </div>
+      } @else {
+        <div class="d-flex justify-content-center"><mat-spinner></mat-spinner></div>
+      }
+    </div>
+  }
 
-  	</div>
-
-  	<div class="list issues" 
-  	     *ngIf="fixed">
-
-      <div *ngIf="issues; else progressSpinner">
-        <div class="fixed-issue-card text-truncate pl-2" 
-             (click)="clickIssue(issue)"
-             [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" *ngFor="let issue of (filteredIssues | async); let i = index">
-          <div class="row align-items-center">
-            <div class="col-10 text-truncate banner-text">
-              <span [ngClass]="{ 'completed-title': issue.completed }">#{{issue.id}} - {{issue.title}}</span> <mat-icon *ngIf="issue.completed" class="ml-3 checkmark" fontSet="fas" fontIcon="fa-check-circle"></mat-icon>
+  @if (fixed) {
+    <div class="list issues"
+      >
+      @if (issues) {
+        <div>
+          @for (issue of (filteredIssues | async); track issue; let i = $index) {
+            <div class="fixed-issue-card text-truncate pl-2"
+              (click)="clickIssue(issue)"
+              [ngStyle]="{'background-color': ((issue.epic && issue.epic.color) ? issue.epic.color : '#FFFFFF'), 'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}">
+              <div class="row align-items-center">
+                <div class="col-10 text-truncate banner-text">
+                  <span [ngClass]="{ 'completed-title': issue.completed }">#{{issue.id}} - {{issue.title}}</span> @if (issue.completed) {
+                  <mat-icon class="ml-3 checkmark" fontSet="fas" fontIcon="fa-check-circle"></mat-icon>
+                }
+              </div>
+              @if (allowRemove) {
+                <button mat-icon-button (click)="removeIssue(issue)">
+                  <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-times-circle"></mat-icon>
+                </button>
+              }
+              @if (!issue.completed && issue?.sprint?.completed) {
+                <button mat-icon-button>
+                  <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" [matMenuTriggerFor]="issueMenu">more_horiz</mat-icon>
+                </button>
+              }
+              <mat-menu #issueMenu="matMenu">
+                <button class="menu-option menu-text" mat-menu-item (click)="markCompleted(issue)">Mark Completed</button>
+                <button class="menu-option menu-text" mat-menu-item (click)="moveToBacklog(issue)">Move to Product Backlog</button>
+              </mat-menu>
             </div>
-            <button mat-icon-button *ngIf="allowRemove" (click)="removeIssue(issue)">
-              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" fontSet="fas" fontIcon="fa-times-circle"></mat-icon>
-            </button>
-            <button mat-icon-button *ngIf="!issue.completed && issue?.sprint?.completed">
-              <mat-icon [ngStyle]="{'color': fontColor(issue.epic ? issue.epic.color : '#FFFFFF')}" [matMenuTriggerFor]="issueMenu">more_horiz</mat-icon>
-            </button>
-            <mat-menu #issueMenu="matMenu">
-              <button class="menu-option menu-text" mat-menu-item (click)="markCompleted(issue)">Mark Completed</button>
-              <button class="menu-option menu-text" mat-menu-item (click)="moveToBacklog(issue)">Move to Product Backlog</button>
-            </mat-menu>
           </div>
-        </div>
+        }
       </div>
-
-  	</div>
+    } @else {
+      <div class="d-flex justify-content-center"><mat-spinner></mat-spinner></div>
+    }
   </div>
+}
+</div>
 </div>
 
 
