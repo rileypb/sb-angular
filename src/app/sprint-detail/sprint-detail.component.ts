@@ -14,9 +14,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { StartSprintComponent } from '../start-sprint/start-sprint.component';
 
 @Component({
-  selector: 'sb-sprint-detail',
-  templateUrl: './sprint-detail.component.html',
-  styleUrls: ['./sprint-detail.component.css']
+    selector: 'sb-sprint-detail',
+    templateUrl: './sprint-detail.component.html',
+    styleUrls: ['./sprint-detail.component.css'],
+    standalone: false
 })
 export class SprintDetailComponent extends Base implements OnInit {
   @Output() editSprint:EventEmitter<Sprint> = new EventEmitter<Sprint>();

@@ -12,9 +12,10 @@ import { Issue } from '../issue';
 import { Base } from '../base';
 
 @Component({
-  selector: 'sb-sprint-issue-list',
-  templateUrl: './sprint-issue-list.component.html',
-  styleUrls: ['./sprint-issue-list.component.css']
+    selector: 'sb-sprint-issue-list',
+    templateUrl: './sprint-issue-list.component.html',
+    styleUrls: ['./sprint-issue-list.component.css'],
+    standalone: false
 })
 export class SprintIssueListComponent extends Base implements OnInit {
 

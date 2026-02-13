@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { UiStateService } from '../ui-state.service';
 
 @Component({
-  selector: 'app-issue-number-link',
-  templateUrl: './issue-number-link.component.html',
-  styleUrls: ['./issue-number-link.component.css']
+    selector: 'app-issue-number-link',
+    templateUrl: './issue-number-link.component.html',
+    styleUrls: ['./issue-number-link.component.css'],
+    standalone: false
 })
 export class IssueNumberLinkComponent implements OnInit {
   @Input() issue:Issue;

@@ -5,9 +5,10 @@ import { callWithSnackBar } from '../util';
 import { Base } from '../base';
 
 @Component({
-  selector: 'sb-sprint-retrospective-report-inner',
-  templateUrl: './sprint-retrospective-report-inner.component.html',
-  styleUrls: ['./sprint-retrospective-report-inner.component.css']
+    selector: 'sb-sprint-retrospective-report-inner',
+    templateUrl: './sprint-retrospective-report-inner.component.html',
+    styleUrls: ['./sprint-retrospective-report-inner.component.css'],
+    standalone: false
 })
 export class SprintRetrospectiveReportInnerComponent extends Base implements OnInit {
   @Input() report:any;

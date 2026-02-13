@@ -4,9 +4,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 
 @Component({
-  selector: 'sb-comment-entry',
-  templateUrl: './comment-entry.component.html',
-  styleUrls: ['./comment-entry.component.css']
+    selector: 'sb-comment-entry',
+    templateUrl: './comment-entry.component.html',
+    styleUrls: ['./comment-entry.component.css'],
+    standalone: false
 })
 export class CommentEntryComponent implements OnInit {
   @Input() issueId:number;

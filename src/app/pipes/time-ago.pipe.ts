@@ -3,8 +3,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 // taken from https://findandsolve.com/articles/date-time-ago-using-angular-pipe-time-ago-using-angular
 
 @Pipe({
-  name: 'timeAgo',
-  pure: false
+    name: 'timeAgo',
+    pure: false,
+    standalone: false
 })
 export class TimeAgoPipe implements PipeTransform {
 

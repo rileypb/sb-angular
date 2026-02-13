@@ -8,9 +8,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-epics',
-  templateUrl: './epics.component.html',
-  styleUrls: ['./epics.component.css']
+    selector: 'app-epics',
+    templateUrl: './epics.component.html',
+    styleUrls: ['./epics.component.css'],
+    standalone: false
 })
 export class EpicsComponent extends Base implements OnInit {
 

@@ -8,9 +8,10 @@ import { callWithSnackBar } from '../util';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'sb-sprint-form',
-  templateUrl: './sprint-form.component.html',
-  styleUrls: ['./sprint-form.component.css']
+    selector: 'sb-sprint-form',
+    templateUrl: './sprint-form.component.html',
+    styleUrls: ['./sprint-form.component.css'],
+    standalone: false
 })
 export class SprintFormComponent extends Base implements OnInit {
   @ViewChild("titleInput") titleInput:ElementRef;

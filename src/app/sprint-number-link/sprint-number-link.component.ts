@@ -3,9 +3,10 @@ import { Sprint } from '../sprint';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sprint-number-link',
-  templateUrl: './sprint-number-link.component.html',
-  styleUrls: ['./sprint-number-link.component.css']
+    selector: 'app-sprint-number-link',
+    templateUrl: './sprint-number-link.component.html',
+    styleUrls: ['./sprint-number-link.component.css'],
+    standalone: false
 })
 export class SprintNumberLinkComponent implements OnInit {
   @Input() sprint:Sprint;

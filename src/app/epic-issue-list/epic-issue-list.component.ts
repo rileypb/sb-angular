@@ -11,9 +11,10 @@ import { Subscription, BehaviorSubject } from 'rxjs';
 import { moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 
 @Component({
-  selector: 'sb-epic-issue-list',
-  templateUrl: './epic-issue-list.component.html',
-  styleUrls: ['./epic-issue-list.component.css']
+    selector: 'sb-epic-issue-list',
+    templateUrl: './epic-issue-list.component.html',
+    styleUrls: ['./epic-issue-list.component.css'],
+    standalone: false
 })
 export class EpicIssueListComponent implements OnInit {
 

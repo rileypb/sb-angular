@@ -3,9 +3,10 @@ import { Epic } from '../epic';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'sb-epic-number-link',
-  templateUrl: './epic-number-link.component.html',
-  styleUrls: ['./epic-number-link.component.css']
+    selector: 'sb-epic-number-link',
+    templateUrl: './epic-number-link.component.html',
+    styleUrls: ['./epic-number-link.component.css'],
+    standalone: false
 })
 export class EpicNumberLinkComponent implements OnInit {
   @Input() epic:Epic;

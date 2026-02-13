@@ -9,9 +9,10 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 
 @Component({
-  selector: 'sb-checkable-task-entry',
-  templateUrl: './checkable-task-entry.component.html',
-  styleUrls: ['./checkable-task-entry.component.css']
+    selector: 'sb-checkable-task-entry',
+    templateUrl: './checkable-task-entry.component.html',
+    styleUrls: ['./checkable-task-entry.component.css'],
+    standalone: false
 })
 export class CheckableTaskEntryComponent extends Base implements OnInit {
   @Input() task:Task;

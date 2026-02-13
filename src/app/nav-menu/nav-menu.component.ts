@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../navigation.service';
 
 @Component({
-  selector: 'sb-nav-menu',
-  templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+    selector: 'sb-nav-menu',
+    templateUrl: './nav-menu.component.html',
+    styleUrls: ['./nav-menu.component.css'],
+    standalone: false
 })
 export class NavMenuComponent implements OnInit {
 

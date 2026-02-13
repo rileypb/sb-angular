@@ -4,9 +4,10 @@ import { DataService } from '../data.service';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-burndown',
-  templateUrl: './burndown.component.html',
-  styleUrls: ['./burndown.component.css']
+    selector: 'app-burndown',
+    templateUrl: './burndown.component.html',
+    styleUrls: ['./burndown.component.css'],
+    standalone: false
 })
 export class BurndownComponent implements OnInit {
   options: any;

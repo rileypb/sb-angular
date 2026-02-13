@@ -13,14 +13,15 @@ import {Subject} from 'rxjs';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 
 @Component({
-  selector: 'sb-color-picker',
-  templateUrl: './color-picker-form-control.component.html',
-  styleUrls: ['./color-picker-form-control.component.css'],
-  providers: [{ provide: MatFormFieldControl, useExisting: ColorPickerFormControlComponent }],
-  host: {
-    '[class.example-floating]': 'shouldLabelFloat',
-    '[id]': 'id',
-  }
+    selector: 'sb-color-picker',
+    templateUrl: './color-picker-form-control.component.html',
+    styleUrls: ['./color-picker-form-control.component.css'],
+    providers: [{ provide: MatFormFieldControl, useExisting: ColorPickerFormControlComponent }],
+    host: {
+        '[class.example-floating]': 'shouldLabelFloat',
+        '[id]': 'id',
+    },
+    standalone: false
 })
 export class ColorPickerFormControlComponent implements OnInit, ControlValueAccessor, MatFormFieldControl<string> {
   static nextId = 0;

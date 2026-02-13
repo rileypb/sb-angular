@@ -11,9 +11,10 @@ import { DataService } from '../data.service';
 import { Sprint } from '../sprint';
 
 @Component({
-  selector: 'app-sprint-retrospective',
-  templateUrl: './sprint-retrospective.component.html',
-  styleUrls: ['./sprint-retrospective.component.css']
+    selector: 'app-sprint-retrospective',
+    templateUrl: './sprint-retrospective.component.html',
+    styleUrls: ['./sprint-retrospective.component.css'],
+    standalone: false
 })
 export class SprintRetrospectiveComponent extends Base implements OnInit {
   epics$:Observable<Epic>;

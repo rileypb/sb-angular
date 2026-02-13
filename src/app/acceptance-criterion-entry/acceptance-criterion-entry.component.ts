@@ -5,9 +5,10 @@ import { IssuesService } from '../issues.service';
 import { Base } from '../base';
 
 @Component({
-  selector: 'sb-acceptance-criterion-entry',
-  templateUrl: './acceptance-criterion-entry.component.html',
-  styleUrls: ['./acceptance-criterion-entry.component.css']
+    selector: 'sb-acceptance-criterion-entry',
+    templateUrl: './acceptance-criterion-entry.component.html',
+    styleUrls: ['./acceptance-criterion-entry.component.css'],
+    standalone: false
 })
 export class AcceptanceCriterionEntryComponent extends Base implements OnInit {
   @ViewChild("criterionEditor") editor:ElementRef;

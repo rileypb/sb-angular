@@ -15,9 +15,10 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'sb-issues-view-inner',
-  templateUrl: './issues-view-inner.component.html',
-  styleUrls: ['./issues-view-inner.component.css']
+    selector: 'sb-issues-view-inner',
+    templateUrl: './issues-view-inner.component.html',
+    styleUrls: ['./issues-view-inner.component.css'],
+    standalone: false
 })
 export class IssuesViewInnerComponent extends Base implements OnInit {
   @ViewChildren("createIssue") createIssueComponent:QueryList<IssueFormComponent>;

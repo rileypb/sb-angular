@@ -16,9 +16,10 @@ import { DataService } from '../data.service';
 
 
 @Component({
-  selector: 'app-sprint-card',
-  templateUrl: './sprint-card.component.html',
-  styleUrls: ['./sprint-card.component.css']
+    selector: 'app-sprint-card',
+    templateUrl: './sprint-card.component.html',
+    styleUrls: ['./sprint-card.component.css'],
+    standalone: false
 })
 export class SprintCardComponent extends Base implements OnInit {
   @Input() project: Project;

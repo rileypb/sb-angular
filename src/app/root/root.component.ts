@@ -14,9 +14,10 @@ import { ThemeService } from '../theme/theme.service';
 import { UserPictureComponent } from '../user-picture/user-picture.component';
 
 @Component({
-  selector: 'sb-root',
-  templateUrl: './root.component.html',
-  styleUrls: ['./root.component.css'],
+    selector: 'sb-root',
+    templateUrl: './root.component.html',
+    styleUrls: ['./root.component.css'],
+    standalone: false
 })
 export class RootComponent implements OnInit {
   @ViewChild("newsFeed") newsFeed:TemplateRef<any>;

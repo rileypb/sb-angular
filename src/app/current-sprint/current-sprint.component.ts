@@ -4,9 +4,10 @@ import { Sprint } from '../sprint';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-current-sprint',
-  templateUrl: './current-sprint.component.html',
-  styleUrls: ['./current-sprint.component.css']
+    selector: 'sb-current-sprint',
+    templateUrl: './current-sprint.component.html',
+    styleUrls: ['./current-sprint.component.css'],
+    standalone: false
 })
 export class CurrentSprintComponent implements OnInit {
   @Input() currentSprintId;

@@ -16,9 +16,10 @@ function isSprint(obj: Project | Sprint): obj is Sprint {
 }
 
 @Component({
-  selector: 'sb-sprint-planning',
-  templateUrl: './sprint-planning.component.html',
-  styleUrls: ['./sprint-planning.component.css']
+    selector: 'sb-sprint-planning',
+    templateUrl: './sprint-planning.component.html',
+    styleUrls: ['./sprint-planning.component.css'],
+    standalone: false
 })
 export class SprintPlanningComponent extends Base implements OnInit {
 

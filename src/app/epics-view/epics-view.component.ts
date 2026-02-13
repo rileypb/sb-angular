@@ -6,9 +6,10 @@ import { Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'sb-epics-view',
-  templateUrl: './epics-view.component.html',
-  styleUrls: ['./epics-view.component.css']
+    selector: 'sb-epics-view',
+    templateUrl: './epics-view.component.html',
+    styleUrls: ['./epics-view.component.css'],
+    standalone: false
 })
 export class EpicsViewComponent implements OnInit {
   project$:Observable<any>;

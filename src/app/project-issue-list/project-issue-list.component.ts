@@ -12,9 +12,10 @@ import { moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 
 
 @Component({
-  selector: 'sb-project-issue-list',
-  templateUrl: './project-issue-list.component.html',
-  styleUrls: ['./project-issue-list.component.css']
+    selector: 'sb-project-issue-list',
+    templateUrl: './project-issue-list.component.html',
+    styleUrls: ['./project-issue-list.component.css'],
+    standalone: false
 })
 export class ProjectIssueListComponent implements OnInit {
 

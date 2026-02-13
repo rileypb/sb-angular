@@ -12,9 +12,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
-  selector: 'app-epic-list',
-  templateUrl: './epic-list.component.html',
-  styleUrls: ['./epic-list.component.css']
+    selector: 'app-epic-list',
+    templateUrl: './epic-list.component.html',
+    styleUrls: ['./epic-list.component.css'],
+    standalone: false
 })
 export class EpicListComponent extends Base implements OnInit {
   @Input() fixed:boolean;

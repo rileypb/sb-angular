@@ -5,9 +5,10 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'sb-sprint-retrospective-top-level',
-  templateUrl: './sprint-retrospective-top-level.component.html',
-  styleUrls: ['./sprint-retrospective-top-level.component.css']
+    selector: 'sb-sprint-retrospective-top-level',
+    templateUrl: './sprint-retrospective-top-level.component.html',
+    styleUrls: ['./sprint-retrospective-top-level.component.css'],
+    standalone: false
 })
 export class SprintRetrospectiveTopLevelComponent implements OnInit {
   project:Observable<any>;

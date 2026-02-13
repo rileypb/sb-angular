@@ -21,9 +21,10 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-issue-detail',
-  templateUrl: './issue-detail.component.html',
-  styleUrls: ['./issue-detail.component.css']
+    selector: 'app-issue-detail',
+    templateUrl: './issue-detail.component.html',
+    styleUrls: ['./issue-detail.component.css'],
+    standalone: false
 })
 export class IssueDetailComponent extends Base implements OnInit {
   @ViewChild('newCriterion') newCriterion:ElementRef;

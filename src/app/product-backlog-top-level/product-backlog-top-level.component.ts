@@ -9,9 +9,10 @@ import { callWithSnackBar } from '../util';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'sb-product-backlog-top-level',
-  templateUrl: './product-backlog-top-level.component.html',
-  styleUrls: ['./product-backlog-top-level.component.css']
+    selector: 'sb-product-backlog-top-level',
+    templateUrl: './product-backlog-top-level.component.html',
+    styleUrls: ['./product-backlog-top-level.component.css'],
+    standalone: false
 })
 export class ProductBacklogTopLevelComponent implements OnInit {
 

@@ -9,9 +9,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 
 @Component({
-  selector: 'sb-issue-list',
-  templateUrl: './issue-list.component.html',
-  styleUrls: ['./issue-list.component.css']
+    selector: 'sb-issue-list',
+    templateUrl: './issue-list.component.html',
+    styleUrls: ['./issue-list.component.css'],
+    standalone: false
 })
 export class IssueListComponent implements OnInit {
   

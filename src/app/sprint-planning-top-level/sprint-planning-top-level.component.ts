@@ -6,9 +6,10 @@ import { Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'sb-sprint-planning-top-level',
-  templateUrl: './sprint-planning-top-level.component.html',
-  styleUrls: ['./sprint-planning-top-level.component.css']
+    selector: 'sb-sprint-planning-top-level',
+    templateUrl: './sprint-planning-top-level.component.html',
+    styleUrls: ['./sprint-planning-top-level.component.css'],
+    standalone: false
 })
 export class SprintPlanningTopLevelComponent implements OnInit {
   project:Observable<any>;

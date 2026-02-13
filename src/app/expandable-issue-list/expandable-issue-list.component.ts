@@ -6,9 +6,10 @@ import { Observable, Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'sb-expandable-issue-list',
-  templateUrl: './expandable-issue-list.component.html',
-  styleUrls: ['./expandable-issue-list.component.css']
+    selector: 'sb-expandable-issue-list',
+    templateUrl: './expandable-issue-list.component.html',
+    styleUrls: ['./expandable-issue-list.component.css'],
+    standalone: false
 })
 export class ExpandableIssueListComponent implements OnInit {
   

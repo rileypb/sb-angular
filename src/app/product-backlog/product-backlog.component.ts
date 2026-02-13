@@ -9,9 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-product-backlog',
-  templateUrl: './product-backlog.component.html',
-  styleUrls: ['./product-backlog.component.css']
+    selector: 'app-product-backlog',
+    templateUrl: './product-backlog.component.html',
+    styleUrls: ['./product-backlog.component.css'],
+    standalone: false
 })
 export class ProductBacklogComponent extends Base implements OnInit {
 

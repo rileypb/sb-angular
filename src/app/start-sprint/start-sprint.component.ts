@@ -16,9 +16,10 @@ const dateValidator: ValidatorFn = (fg: FormGroup) => {
 };
 
 @Component({
-  selector: 'sb-start-sprint',
-  templateUrl: './start-sprint.component.html',
-  styleUrls: ['./start-sprint.component.css']
+    selector: 'sb-start-sprint',
+    templateUrl: './start-sprint.component.html',
+    styleUrls: ['./start-sprint.component.css'],
+    standalone: false
 })
 export class StartSprintComponent implements OnInit {
 

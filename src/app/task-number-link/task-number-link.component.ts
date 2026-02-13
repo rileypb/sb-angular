@@ -3,9 +3,10 @@ import { Task } from '../task';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-task-number-link',
-  templateUrl: './task-number-link.component.html',
-  styleUrls: ['./task-number-link.component.css']
+    selector: 'app-task-number-link',
+    templateUrl: './task-number-link.component.html',
+    styleUrls: ['./task-number-link.component.css'],
+    standalone: false
 })
 export class TaskNumberLinkComponent implements OnInit {
   @Input() task:Task;

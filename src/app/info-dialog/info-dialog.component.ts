@@ -7,9 +7,10 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'sb-info-dialog',
-  templateUrl: './info-dialog.component.html',
-  styleUrls: ['./info-dialog.component.css']
+    selector: 'sb-info-dialog',
+    templateUrl: './info-dialog.component.html',
+    styleUrls: ['./info-dialog.component.css'],
+    standalone: false
 })
 export class InfoDialogComponent implements OnInit {
 

@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'sb-teacher-report',
-  templateUrl: './teacher-report.component.html',
-  styleUrls: ['./teacher-report.component.css']
+    selector: 'sb-teacher-report',
+    templateUrl: './teacher-report.component.html',
+    styleUrls: ['./teacher-report.component.css'],
+    standalone: false
 })
 export class TeacherReportComponent implements OnInit {
   @Input() teacherReport:any;

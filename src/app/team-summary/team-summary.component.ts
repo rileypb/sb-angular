@@ -10,9 +10,10 @@ import { User } from '../user';
 import { Base } from '../base';
 
 @Component({
-  selector: 'sb-team-summary',
-  templateUrl: './team-summary.component.html',
-  styleUrls: ['./team-summary.component.css']
+    selector: 'sb-team-summary',
+    templateUrl: './team-summary.component.html',
+    styleUrls: ['./team-summary.component.css'],
+    standalone: false
 })
 export class TeamSummaryComponent extends Base implements OnInit {
   @Input() project:Project;

@@ -12,9 +12,10 @@ import { Observable } from 'rxjs';
 import { User } from '../user';
 
 @Component({
-  selector: 'sb-task-card',
-  templateUrl: './task-card.component.html',
-  styleUrls: ['./task-card.component.css']
+    selector: 'sb-task-card',
+    templateUrl: './task-card.component.html',
+    styleUrls: ['./task-card.component.css'],
+    standalone: false
 })
 export class TaskCardComponent extends Base implements OnInit {
   @ViewChild("estimateEditor") estimateEditor: ElementRef;

@@ -16,9 +16,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { IssueFormDialogComponent } from '../issue-form-dialog/issue-form-dialog.component';
 
 @Component({
-  selector: 'app-epic-detail',
-  templateUrl: './epic-detail.component.html',
-  styleUrls: ['./epic-detail.component.css']
+    selector: 'app-epic-detail',
+    templateUrl: './epic-detail.component.html',
+    styleUrls: ['./epic-detail.component.css'],
+    standalone: false
 })
 export class EpicDetailComponent extends Base implements OnInit {
   @ViewChild('issueInput') issueInput:ElementRef;

@@ -11,9 +11,10 @@ import { callWithSnackBar } from '../util';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
-  selector: 'sb-dashboard-content',
-  templateUrl: './dashboard-content.component.html',
-  styleUrls: ['./dashboard-content.component.css']
+    selector: 'sb-dashboard-content',
+    templateUrl: './dashboard-content.component.html',
+    styleUrls: ['./dashboard-content.component.css'],
+    standalone: false
 })
 export class DashboardContentComponent extends Base implements OnInit {
   @Input() project:Project;

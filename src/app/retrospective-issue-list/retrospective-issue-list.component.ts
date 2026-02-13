@@ -3,9 +3,10 @@ import { Sprint } from '../sprint';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-retrospective-issue-list',
-  templateUrl: './retrospective-issue-list.component.html',
-  styleUrls: ['./retrospective-issue-list.component.css']
+    selector: 'sb-retrospective-issue-list',
+    templateUrl: './retrospective-issue-list.component.html',
+    styleUrls: ['./retrospective-issue-list.component.css'],
+    standalone: false
 })
 export class RetrospectiveIssueListComponent implements OnInit {
   @Input() issues:any;

@@ -3,9 +3,10 @@ import { Sprint } from '../sprint';
 import { Base } from '../base';
 
 @Component({
-  selector: 'sb-sprint-frame',
-  templateUrl: './sprint-frame.component.html',
-  styleUrls: ['./sprint-frame.component.css']
+    selector: 'sb-sprint-frame',
+    templateUrl: './sprint-frame.component.html',
+    styleUrls: ['./sprint-frame.component.css'],
+    standalone: false
 })
 export class SprintFrameComponent extends Base implements OnInit {
   @Input() sprint:Sprint;

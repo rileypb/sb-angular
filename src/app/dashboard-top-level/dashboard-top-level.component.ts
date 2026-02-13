@@ -6,9 +6,10 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'sb-dashboard-top-level',
-  templateUrl: './dashboard-top-level.component.html',
-  styleUrls: ['./dashboard-top-level.component.css']
+    selector: 'sb-dashboard-top-level',
+    templateUrl: './dashboard-top-level.component.html',
+    styleUrls: ['./dashboard-top-level.component.css'],
+    standalone: false
 })
 export class DashboardTopLevelComponent implements OnInit {
   project:Observable<any>;

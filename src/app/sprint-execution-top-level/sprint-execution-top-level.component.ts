@@ -5,9 +5,10 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'sb-sprint-execution-top-level',
-  templateUrl: './sprint-execution-top-level.component.html',
-  styleUrls: ['./sprint-execution-top-level.component.css']
+    selector: 'sb-sprint-execution-top-level',
+    templateUrl: './sprint-execution-top-level.component.html',
+    styleUrls: ['./sprint-execution-top-level.component.css'],
+    standalone: false
 })
 export class SprintExecutionTopLevelComponent implements OnInit {
   project:Observable<any>;

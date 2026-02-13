@@ -10,9 +10,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {InputDialogComponent} from '../input-dialog/input-dialog.component';
 
 @Component({
-  selector: 'sb-edit-settings-dialog',
-  templateUrl: './edit-settings-dialog.component.html',
-  styleUrls: ['./edit-settings-dialog.component.css']
+    selector: 'sb-edit-settings-dialog',
+    templateUrl: './edit-settings-dialog.component.html',
+    styleUrls: ['./edit-settings-dialog.component.css'],
+    standalone: false
 })
 export class EditSettingsDialogComponent implements OnInit {
   @ViewChild("displayName") displayNameEditor:ElementRef;

@@ -6,9 +6,10 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
-  selector: 'sb-issue-form',
-  templateUrl: './issue-form.component.html',
-  styleUrls: ['./issue-form.component.css']
+    selector: 'sb-issue-form',
+    templateUrl: './issue-form.component.html',
+    styleUrls: ['./issue-form.component.css'],
+    standalone: false
 })
 export class IssueFormComponent extends Base implements OnInit {
   @Input() mode:string;

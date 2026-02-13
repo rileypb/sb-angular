@@ -4,9 +4,10 @@ import { Sprint } from '../sprint';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-sprint-execution',
-  templateUrl: './sprint-execution.component.html',
-  styleUrls: ['./sprint-execution.component.css']
+    selector: 'sb-sprint-execution',
+    templateUrl: './sprint-execution.component.html',
+    styleUrls: ['./sprint-execution.component.css'],
+    standalone: false
 })
 export class SprintExecutionComponent implements OnInit {
 

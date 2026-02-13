@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'sb-news-feed',
-  templateUrl: './news-feed.component.html',
-  styleUrls: ['./news-feed.component.css']
+    selector: 'sb-news-feed',
+    templateUrl: './news-feed.component.html',
+    styleUrls: ['./news-feed.component.css'],
+    standalone: false
 })
 export class NewsFeedComponent implements OnInit {
   @Input() news:any;

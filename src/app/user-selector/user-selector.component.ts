@@ -2,9 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../user';
 
 @Component({
-  selector: 'sb-user-selector',
-  templateUrl: './user-selector.component.html',
-  styleUrls: ['./user-selector.component.css']
+    selector: 'sb-user-selector',
+    templateUrl: './user-selector.component.html',
+    styleUrls: ['./user-selector.component.css'],
+    standalone: false
 })
 export class UserSelectorComponent implements OnInit {
   @Input() disabled:boolean;

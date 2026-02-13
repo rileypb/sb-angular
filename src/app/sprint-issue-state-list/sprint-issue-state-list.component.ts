@@ -3,9 +3,10 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/dr
 import { Issue } from '../issue';
 
 @Component({
-  selector: 'sb-sprint-issue-state-list',
-  templateUrl: './sprint-issue-state-list.component.html',
-  styleUrls: ['./sprint-issue-state-list.component.css']
+    selector: 'sb-sprint-issue-state-list',
+    templateUrl: './sprint-issue-state-list.component.html',
+    styleUrls: ['./sprint-issue-state-list.component.css'],
+    standalone: false
 })
 export class SprintIssueStateListComponent implements OnInit {
   @Input() issues;

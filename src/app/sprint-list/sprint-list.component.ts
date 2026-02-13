@@ -8,9 +8,10 @@ import { Issue } from '../issue';
 import { Base } from '../base';
 
 @Component({
-  selector: 'sb-sprint-list',
-  templateUrl: './sprint-list.component.html',
-  styleUrls: ['./sprint-list.component.css']
+    selector: 'sb-sprint-list',
+    templateUrl: './sprint-list.component.html',
+    styleUrls: ['./sprint-list.component.css'],
+    standalone: false
 })
 export class SprintListComponent extends Base implements OnInit {
   @Input() project:Project;

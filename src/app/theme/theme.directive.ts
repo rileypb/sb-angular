@@ -6,7 +6,8 @@ import { Theme } from './symbols';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
-  selector: '[theme]'
+    selector: '[theme]',
+    standalone: false
 })
 export class ThemeDirective implements OnInit, OnDestroy {
 

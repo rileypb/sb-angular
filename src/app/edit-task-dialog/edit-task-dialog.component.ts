@@ -8,9 +8,10 @@ import { TasksService } from '../tasks.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-edit-task-dialog',
-  templateUrl: './edit-task-dialog.component.html',
-  styleUrls: ['./edit-task-dialog.component.css']
+    selector: 'app-edit-task-dialog',
+    templateUrl: './edit-task-dialog.component.html',
+    styleUrls: ['./edit-task-dialog.component.css'],
+    standalone: false
 })
 export class EditTaskDialogComponent extends Base implements OnInit {
   public newTaskMode: boolean;

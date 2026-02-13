@@ -6,9 +6,10 @@ import { callWithSnackBar } from '../util';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'sb-user-profile-form',
-  templateUrl: './user-profile-form.component.html',
-  styleUrls: ['./user-profile-form.component.css']
+    selector: 'sb-user-profile-form',
+    templateUrl: './user-profile-form.component.html',
+    styleUrls: ['./user-profile-form.component.css'],
+    standalone: false
 })
 export class UserProfileFormComponent implements OnInit {
   @Input() user:User;

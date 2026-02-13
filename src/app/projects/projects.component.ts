@@ -9,9 +9,10 @@ import { Base } from '../base';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+    selector: 'app-projects',
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.css'],
+    standalone: false
 })
 export class ProjectsComponent extends Base implements OnInit {
   projects: Observable<any>;

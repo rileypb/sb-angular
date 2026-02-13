@@ -8,9 +8,10 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'sb-issue-form-dialog',
-  templateUrl: './issue-form-dialog.component.html',
-  styleUrls: ['./issue-form-dialog.component.css']
+    selector: 'sb-issue-form-dialog',
+    templateUrl: './issue-form-dialog.component.html',
+    styleUrls: ['./issue-form-dialog.component.css'],
+    standalone: false
 })
 export class IssueFormDialogComponent implements OnInit {
   epic:Epic;

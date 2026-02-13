@@ -6,9 +6,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 
 @Component({
-  selector: 'sb-expandable-issue',
-  templateUrl: './expandable-issue.component.html',
-  styleUrls: ['./expandable-issue.component.css']
+    selector: 'sb-expandable-issue',
+    templateUrl: './expandable-issue.component.html',
+    styleUrls: ['./expandable-issue.component.css'],
+    standalone: false
 })
 export class ExpandableIssueComponent implements OnInit {
   @Input() issue:Issue;

@@ -3,9 +3,10 @@ import { Project } from '../project';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-project-activity-list',
-  templateUrl: './project-activity-list.component.html',
-  styleUrls: ['./project-activity-list.component.css']
+    selector: 'sb-project-activity-list',
+    templateUrl: './project-activity-list.component.html',
+    styleUrls: ['./project-activity-list.component.css'],
+    standalone: false
 })
 export class ProjectActivityListComponent implements OnInit {
   @Input() project:Project;

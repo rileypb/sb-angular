@@ -5,9 +5,10 @@ import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-checkable-task-list',
-  templateUrl: './checkable-task-list.component.html',
-  styleUrls: ['./checkable-task-list.component.css']
+    selector: 'sb-checkable-task-list',
+    templateUrl: './checkable-task-list.component.html',
+    styleUrls: ['./checkable-task-list.component.css'],
+    standalone: false
 })
 export class CheckableTaskListComponent extends Base implements OnInit {
   @ViewChild("checkbox") checkbox:ElementRef;

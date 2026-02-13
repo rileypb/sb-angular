@@ -3,9 +3,10 @@ import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-sprint-loader',
-  templateUrl: './sprint-loader.component.html',
-  styleUrls: ['./sprint-loader.component.css']
+    selector: 'sb-sprint-loader',
+    templateUrl: './sprint-loader.component.html',
+    styleUrls: ['./sprint-loader.component.css'],
+    standalone: false
 })
 export class SprintLoaderComponent implements OnInit {
   @ContentChildren("sprintView") components: QueryList<Component>;

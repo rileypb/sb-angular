@@ -7,9 +7,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
-  selector: 'sb-epic-form',
-  templateUrl: './epic-form.component.html',
-  styleUrls: ['./epic-form.component.css']
+    selector: 'sb-epic-form',
+    templateUrl: './epic-form.component.html',
+    styleUrls: ['./epic-form.component.css'],
+    standalone: false
 })
 export class EpicFormComponent extends Base implements OnInit {
   @Input() mode:string;

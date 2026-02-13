@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-rich-date',
-  templateUrl: './rich-date.component.html',
-  styleUrls: ['./rich-date.component.css']
+    selector: 'app-rich-date',
+    templateUrl: './rich-date.component.html',
+    styleUrls: ['./rich-date.component.css'],
+    standalone: false
 })
 export class RichDateComponent implements OnInit {
   @Input() date: string;

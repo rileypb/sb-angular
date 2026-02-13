@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'sb-comment-display',
-  templateUrl: './comment-display.component.html',
-  styleUrls: ['./comment-display.component.css']
+    selector: 'sb-comment-display',
+    templateUrl: './comment-display.component.html',
+    styleUrls: ['./comment-display.component.css'],
+    standalone: false
 })
 export class CommentDisplayComponent implements OnInit {
   @Input() comment:any;

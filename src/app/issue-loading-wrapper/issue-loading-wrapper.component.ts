@@ -4,9 +4,10 @@ import { DataService } from '../data.service';
 import { Issue } from '../issue';
 
 @Component({
-  selector: 'sb-issue-loading-wrapper',
-  templateUrl: './issue-loading-wrapper.component.html',
-  styleUrls: ['./issue-loading-wrapper.component.css']
+    selector: 'sb-issue-loading-wrapper',
+    templateUrl: './issue-loading-wrapper.component.html',
+    styleUrls: ['./issue-loading-wrapper.component.css'],
+    standalone: false
 })
 export class IssueLoadingWrapperComponent implements OnInit {
   issue:Observable<Issue>

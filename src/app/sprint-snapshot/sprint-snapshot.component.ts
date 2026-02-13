@@ -10,9 +10,10 @@ import { User } from '../user';
 import { Base } from '../base';
 
 @Component({
-  selector: 'sb-sprint-snapshot',
-  templateUrl: './sprint-snapshot.component.html',
-  styleUrls: ['./sprint-snapshot.component.css']
+    selector: 'sb-sprint-snapshot',
+    templateUrl: './sprint-snapshot.component.html',
+    styleUrls: ['./sprint-snapshot.component.css'],
+    standalone: false
 })
 export class SprintSnapshotComponent extends Base implements OnInit {
   @Input() project:Project;

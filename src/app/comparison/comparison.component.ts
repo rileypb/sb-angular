@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'sb-comparison',
-  templateUrl: './comparison.component.html',
-  styleUrls: ['./comparison.component.css']
+    selector: 'sb-comparison',
+    templateUrl: './comparison.component.html',
+    styleUrls: ['./comparison.component.css'],
+    standalone: false
 })
 export class ComparisonComponent implements OnInit {
   @Input() label:string;

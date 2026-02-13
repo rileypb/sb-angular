@@ -3,9 +3,10 @@ import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-issue-loader',
-  templateUrl: './issue-loader.component.html',
-  styleUrls: ['./issue-loader.component.css']
+    selector: 'sb-issue-loader',
+    templateUrl: './issue-loader.component.html',
+    styleUrls: ['./issue-loader.component.css'],
+    standalone: false
 })
 export class IssueLoaderComponent implements OnInit {
   @ContentChildren("issueView") components: QueryList<Component>;

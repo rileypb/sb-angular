@@ -3,9 +3,10 @@ import { Activity } from '../activity';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-activity-entry',
-  templateUrl: './activity-entry.component.html',
-  styleUrls: ['./activity-entry.component.css']
+    selector: 'app-activity-entry',
+    templateUrl: './activity-entry.component.html',
+    styleUrls: ['./activity-entry.component.css'],
+    standalone: false
 })
 export class ActivityEntryComponent implements OnInit {
   @Input() activity:Activity;

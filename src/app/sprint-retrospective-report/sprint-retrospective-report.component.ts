@@ -4,9 +4,10 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'sb-sprint-retrospective-report',
-  templateUrl: './sprint-retrospective-report.component.html',
-  styleUrls: ['./sprint-retrospective-report.component.css']
+    selector: 'sb-sprint-retrospective-report',
+    templateUrl: './sprint-retrospective-report.component.html',
+    styleUrls: ['./sprint-retrospective-report.component.css'],
+    standalone: false
 })
 export class SprintRetrospectiveReportComponent implements OnInit {
 

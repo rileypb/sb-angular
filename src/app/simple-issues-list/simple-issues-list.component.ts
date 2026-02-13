@@ -8,9 +8,10 @@ import { callWithSnackBar } from '../util';
 import { ProjectService } from '../project.service';
 
 @Component({
-  selector: 'sb-simple-issues-list',
-  templateUrl: './simple-issues-list.component.html',
-  styleUrls: ['./simple-issues-list.component.css']
+    selector: 'sb-simple-issues-list',
+    templateUrl: './simple-issues-list.component.html',
+    styleUrls: ['./simple-issues-list.component.css'],
+    standalone: false
 })
 export class SimpleIssuesListComponent implements OnInit {
   @Input() container:any;

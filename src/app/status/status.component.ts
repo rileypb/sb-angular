@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-status',
-  templateUrl: './status.component.html',
-  styleUrls: ['./status.component.css']
+    selector: 'sb-status',
+    templateUrl: './status.component.html',
+    styleUrls: ['./status.component.css'],
+    standalone: false
 })
 export class StatusComponent implements OnInit {
 

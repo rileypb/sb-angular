@@ -3,9 +3,10 @@ import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'sb-epic-loader',
-  templateUrl: './epic-loader.component.html',
-  styleUrls: ['./epic-loader.component.css']
+    selector: 'sb-epic-loader',
+    templateUrl: './epic-loader.component.html',
+    styleUrls: ['./epic-loader.component.css'],
+    standalone: false
 })
 export class EpicLoaderComponent implements OnInit {
   @ContentChildren("epicView") components: QueryList<Component>;

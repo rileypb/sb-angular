@@ -3,9 +3,10 @@ import { timer } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 @Component({
-  selector: 'sb-user-picture',
-  templateUrl: './user-picture.component.html',
-  styleUrls: ['./user-picture.component.css']
+    selector: 'sb-user-picture',
+    templateUrl: './user-picture.component.html',
+    styleUrls: ['./user-picture.component.css'],
+    standalone: false
 })
 export class UserPictureComponent implements OnInit {
   @Input() userId:number;

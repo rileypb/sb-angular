@@ -6,9 +6,10 @@ import { Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'sb-issues-view',
-  templateUrl: './issues-view.component.html',
-  styleUrls: ['./issues-view.component.css']
+    selector: 'sb-issues-view',
+    templateUrl: './issues-view.component.html',
+    styleUrls: ['./issues-view.component.css'],
+    standalone: false
 })
 export class IssuesViewComponent implements OnInit {
   project$:Observable<any>;

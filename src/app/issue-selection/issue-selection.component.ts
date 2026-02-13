@@ -7,9 +7,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { callWithSnackBar } from '../util';
 
 @Component({
-  selector: 'sb-issue-selection',
-  templateUrl: './issue-selection.component.html',
-  styleUrls: ['./issue-selection.component.css']
+    selector: 'sb-issue-selection',
+    templateUrl: './issue-selection.component.html',
+    styleUrls: ['./issue-selection.component.css'],
+    standalone: false
 })
 export class IssueSelectionComponent implements OnInit {
   @Input() sprint:Sprint;

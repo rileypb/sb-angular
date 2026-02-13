@@ -3,9 +3,10 @@ import { UserInfoService } from '../user-info.service';
 import { LoginService } from '../login.service';
 
 @Component({
-  selector: 'sb-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+    selector: 'sb-user',
+    templateUrl: './user.component.html',
+    styleUrls: ['./user.component.css'],
+    standalone: false
 })
 export class UserComponent implements OnInit {
 

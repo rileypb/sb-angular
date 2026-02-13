@@ -8,9 +8,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { Base } from '../base';
 
 @Component({
-  selector: 'app-edit-issue-dialog',
-  templateUrl: './edit-issue-dialog.component.html',
-  styleUrls: ['./edit-issue-dialog.component.css']
+    selector: 'app-edit-issue-dialog',
+    templateUrl: './edit-issue-dialog.component.html',
+    styleUrls: ['./edit-issue-dialog.component.css'],
+    standalone: false
 })
 export class EditIssueDialogComponent extends Base implements OnInit {
   private fb:FormBuilder = new FormBuilder();

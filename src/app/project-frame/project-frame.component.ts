@@ -7,9 +7,10 @@ import { callWithSnackBar } from '../util';
 import { NavigationService } from '../navigation.service';
 
 @Component({
-  selector: 'app-project-frame',
-  templateUrl: './project-frame.component.html',
-  styleUrls: ['./project-frame.component.css']
+    selector: 'app-project-frame',
+    templateUrl: './project-frame.component.html',
+    styleUrls: ['./project-frame.component.css'],
+    standalone: false
 })
 export class ProjectFrameComponent extends Base implements OnInit {
   @Input() project:Project;

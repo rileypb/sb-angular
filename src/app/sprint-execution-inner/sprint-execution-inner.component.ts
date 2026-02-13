@@ -12,9 +12,10 @@ import { SprintsService } from '../sprints.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
-  selector: 'sb-sprint-execution-inner',
-  templateUrl: './sprint-execution-inner.component.html',
-  styleUrls: ['./sprint-execution-inner.component.css']
+    selector: 'sb-sprint-execution-inner',
+    templateUrl: './sprint-execution-inner.component.html',
+    styleUrls: ['./sprint-execution-inner.component.css'],
+    standalone: false
 })
 export class SprintExecutionInnerComponent implements OnInit {
   issues:Observable<any>;

@@ -12,9 +12,10 @@ import { ProjectService } from '../project.service';
 import { Color } from '../color';
 
 @Component({
-  selector: 'sb-epics-view-inner',
-  templateUrl: './epics-view-inner.component.html',
-  styleUrls: ['./epics-view-inner.component.css']
+    selector: 'sb-epics-view-inner',
+    templateUrl: './epics-view-inner.component.html',
+    styleUrls: ['./epics-view-inner.component.css'],
+    standalone: false
 })
 export class EpicsViewInnerComponent extends Base implements OnInit {
   @ViewChildren("createEpic") createEpicComponent:QueryList<EpicFormComponent>;

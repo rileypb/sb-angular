@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'sb-acceptance-criteria-compare-list',
-  templateUrl: './acceptance-criteria-compare-list.component.html',
-  styleUrls: ['./acceptance-criteria-compare-list.component.css']
+    selector: 'sb-acceptance-criteria-compare-list',
+    templateUrl: './acceptance-criteria-compare-list.component.html',
+    styleUrls: ['./acceptance-criteria-compare-list.component.css'],
+    standalone: false
 })
 export class AcceptanceCriteriaCompareListComponent implements OnInit {
   @Input() acceptanceCriteria:any;

@@ -9,9 +9,10 @@ import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.co
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-issue-card',
-  templateUrl: './issue-card.component.html',
-  styleUrls: ['./issue-card.component.css']
+    selector: 'app-issue-card',
+    templateUrl: './issue-card.component.html',
+    styleUrls: ['./issue-card.component.css'],
+    standalone: false
 })
 export class IssueCardComponent extends Base implements OnInit {
   @Input() issue:Issue;
