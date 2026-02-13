@@ -8,7 +8,8 @@ import { ProjectService } from '../project.service';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { CableService } from '../cable.service';
 import { ActionCableService } from 'angular2-actioncable';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
@@ -17,10 +18,10 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProjectsComponent ],
-      imports: [ AppRoutingModule, HttpClientTestingModule ],
-      providers: [ SyncService, CableService, ActionCableService, LoginService ]
-    })
+    declarations: [ProjectsComponent],
+    imports: [AppRoutingModule],
+    providers: [SyncService, CableService, ActionCableService, LoginService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
   }));
 

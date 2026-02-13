@@ -1,20 +1,21 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { SyncService } from './sync.service';
 import { CableService } from './cable.service';
 import { ActionCableService } from 'angular2-actioncable';
 
 import { IssuesService } from './issues.service';
 import { Issue } from './issue';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('IssuesService', () => {
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-  	TestBed.configureTestingModule({ 
-	  imports: [HttpClientTestingModule],
-      providers: [SyncService, CableService, ActionCableService]
-    });
+  	TestBed.configureTestingModule({
+    imports: [],
+    providers: [SyncService, CableService, ActionCableService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
   	httpTestingController = TestBed.get(HttpTestingController);
   });

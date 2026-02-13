@@ -1,17 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { ProjectService } from './project.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('ProjectService', () => {
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
   	TestBed.configureTestingModule({
-  		imports: [HttpClientTestingModule],
-  		providers: [ProjectService]
-  	});
+    imports: [],
+    providers: [ProjectService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
   	httpTestingController = TestBed.get(HttpTestingController);
   });

@@ -2,18 +2,19 @@ import { TestBed } from '@angular/core/testing';
 
 import { LoginService } from './login.service';
 import { CableService } from './cable.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ActionCableService } from 'angular2-actioncable';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('LoginService', () => {
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
   	TestBed.configureTestingModule({
-	  	imports: [HttpClientTestingModule, AppRoutingModule],
-	  	providers: [CableService, LoginService, ActionCableService]
-  	});
+    imports: [AppRoutingModule],
+    providers: [CableService, LoginService, ActionCableService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
   	httpTestingController = TestBed.get(HttpTestingController);
   });

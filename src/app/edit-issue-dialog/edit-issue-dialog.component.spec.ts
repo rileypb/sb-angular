@@ -6,7 +6,7 @@ import { MaterialModule } from "../../shared/material.module";
 import { Issue } from '../issue';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IssuesService } from '../issues.service';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('EditIssueDialogComponent', () => {
   let component: EditIssueDialogComponent;
@@ -15,13 +15,11 @@ describe('EditIssueDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditIssueDialogComponent ],
-      imports: [ MaterialModule, BrowserAnimationsModule, HttpClientModule ],
-      providers: [ { provide: MatDialogRef, useValue: {}}, { provide: MAT_DIALOG_DATA, useValue: issue},
-        IssuesService,
-
-      ]
-    })
+    declarations: [EditIssueDialogComponent],
+    imports: [MaterialModule, BrowserAnimationsModule],
+    providers: [{ provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: issue },
+        IssuesService, provideHttpClient(withInterceptorsFromDi()),]
+})
     .compileComponents();
   });
 
