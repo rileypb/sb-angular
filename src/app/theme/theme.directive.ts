@@ -1,4 +1,5 @@
-import { Directive, OnInit, OnDestroy, ElementRef, Inject, Input, DOCUMENT } from '@angular/core';
+import { Directive, OnInit, OnDestroy, ElementRef, Inject, Input } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { ThemeService } from './theme.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

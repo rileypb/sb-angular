@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxEchartsModule } from 'ngx-echarts';
+import { echarts } from './echarts.custom';
 import { ColorPickerModule } from 'ngx-color-picker';
 
 import { ProjectsComponent } from './projects/projects.component';
@@ -29,7 +30,7 @@ import { LocationService } from './location.service';
 import { UiStateService } from './ui-state.service';
 import { DataService } from './data.service';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ErrorComponent } from './error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "../shared/material.module";
@@ -253,15 +254,15 @@ import { TeacherReportComponent } from './teacher-report/teacher-report.componen
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        FontAwesomeModule,
+        // FontAwesomeModule,
         BrowserAnimationsModule,
         MaterialModule,
         DragDropModule,
         MatFormFieldModule,
         MatInputModule,
-        NgxEchartsModule.forRoot({
-            echarts: () => import('echarts')
-        }),
+        NgxEchartsModule.forRoot(
+            {echarts}
+        ),
         ColorPickerModule,
         AuthModule.forRoot({
             ...environment.auth,

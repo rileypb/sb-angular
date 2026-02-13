@@ -49,7 +49,7 @@
     "hammerjs": "^2.0.8",
     "ngx-color-picker": "^17.0.0",
     "ngx-cookie": "^6.0.1",
-    "ngx-echarts": "15.0.0",
+    "ngx-echarts": "^19",
     "quill": "^1.3.7",
     "rxjs": "6.6.2",
     "rxjs-compat": "^6.6.2",
