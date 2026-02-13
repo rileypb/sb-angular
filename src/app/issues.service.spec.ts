@@ -17,7 +17,7 @@ describe('IssuesService', () => {
     providers: [SyncService, CableService, ActionCableService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 });
 
-  	httpTestingController = TestBed.get(HttpTestingController);
+  	httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
@@ -25,13 +25,13 @@ describe('IssuesService', () => {
   });
 
   it('should be created', () => {
-    const service: IssuesService = TestBed.get(IssuesService);
+    const service: IssuesService = TestBed.inject(IssuesService);
     expect(service).toBeTruthy();
   });
 
   describe('#deleteIssue', () => {
 	  it('should make DELETE request', () => {
-	    const service: IssuesService = TestBed.get(IssuesService);
+	    const service: IssuesService = TestBed.inject(IssuesService);
 	    service.deleteIssue(123).subscribe();
 
 	    const req = httpTestingController.expectOne('api/issues/123');
@@ -44,7 +44,7 @@ describe('IssuesService', () => {
   describe("#createIssue", () => {
   	it('should make POST request', () => {
   		const issue:Issue = {id: -1, title: 'title', description: '', estimate: 1, state: 'Open', project: { id:1234, name: 'p1' }};
-	    const service: IssuesService = TestBed.get(IssuesService);
+	    const service: IssuesService = TestBed.inject(IssuesService);
 	    service.createIssue(issue).subscribe();
 
 	    const req = httpTestingController.expectOne('api/projects/1234/issues');
@@ -58,7 +58,7 @@ describe('IssuesService', () => {
   describe("#save", () => {
   	it('should make PATCH request', () => {
   		const issue:Issue = {id: 231, title: 'title', description: '', estimate: 1, state: 'Open', project: { id:1234, name: 'p1' }};
-	    const service: IssuesService = TestBed.get(IssuesService);
+	    const service: IssuesService = TestBed.inject(IssuesService);
 	    service.save(issue).subscribe();
 
 	    const req = httpTestingController.expectOne('api/issues/231');
@@ -71,7 +71,7 @@ describe('IssuesService', () => {
 
   describe("#transfer", () => {
   	it('should make PATCH request', () => {
-	    const service: IssuesService = TestBed.get(IssuesService);
+	    const service: IssuesService = TestBed.inject(IssuesService);
 	    service.transfer(1,2,'3,4',5,6,'7,8,9');
 
 	    const req = httpTestingController.expectOne('api/transfer');
@@ -84,7 +84,7 @@ describe('IssuesService', () => {
 
   describe("#reorder", () => {
   	it('should make PATCH request with null sprint', () => {
-	    const service: IssuesService = TestBed.get(IssuesService);
+	    const service: IssuesService = TestBed.inject(IssuesService);
 	    service.reorder(1, null, '3,4,5');
 
 	    const req = httpTestingController.expectOne('api/projects/1');
@@ -95,7 +95,7 @@ describe('IssuesService', () => {
   	});
 
   	it('should make PATCH request with non-null sprint', () => {
-	    const service: IssuesService = TestBed.get(IssuesService);
+	    const service: IssuesService = TestBed.inject(IssuesService);
 	    service.reorder(1, 2, '3,4,5');
 
 	    const req = httpTestingController.expectOne('api/projects/1/sprints/2');

@@ -14,17 +14,17 @@ describe('ProjectService', () => {
     providers: [ProjectService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 });
 
-  	httpTestingController = TestBed.get(HttpTestingController);
+  	httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
-    const service: ProjectService = TestBed.get(ProjectService);
+    const service: ProjectService = TestBed.inject(ProjectService);
     expect(service).toBeTruthy();
   });
 
   describe('#refresh', () => {
   	it ('should make API call', () => {
-    	const service: ProjectService = TestBed.get(ProjectService);
+    	const service: ProjectService = TestBed.inject(ProjectService);
   		service.refresh().subscribe();
 
   		const req = httpTestingController.expectOne('api/projects');
@@ -36,7 +36,7 @@ describe('ProjectService', () => {
 
   describe('#getProject', () => {
   	it ('should make API call', () => {
-    	const service: ProjectService = TestBed.get(ProjectService);
+    	const service: ProjectService = TestBed.inject(ProjectService);
   		service.getProject(654).subscribe();
 
   		const req = httpTestingController.expectOne('api/projects/654');
@@ -48,7 +48,7 @@ describe('ProjectService', () => {
 
   describe('#getProjectIssues', () => {
   	it ('should make API call', () => {
-    	const service: ProjectService = TestBed.get(ProjectService);
+    	const service: ProjectService = TestBed.inject(ProjectService);
   		service.getProjectIssues(234).subscribe();
 
   		const req = httpTestingController.expectOne('api/projects/234/issues');

@@ -16,17 +16,17 @@ describe('LoginService', () => {
     providers: [CableService, LoginService, ActionCableService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 });
 
-  	httpTestingController = TestBed.get(HttpTestingController);
+  	httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
-    const service: LoginService = TestBed.get(LoginService);
+    const service: LoginService = TestBed.inject(LoginService);
     expect(service).toBeTruthy();
   });
 
   describe('#init', () => {
   	it('should call api', () => {
-      const service: LoginService = TestBed.get(LoginService);
+      const service: LoginService = TestBed.inject(LoginService);
       service.init().subscribe();
 
       const req = httpTestingController.expectOne('api/me');
@@ -35,7 +35,7 @@ describe('LoginService', () => {
   	});
 
   	it('should report login', () => {
-      const service: LoginService = TestBed.get(LoginService);
+      const service: LoginService = TestBed.inject(LoginService);
       let result = null;
       service.init().subscribe(succ => result = succ);
 
@@ -48,7 +48,7 @@ describe('LoginService', () => {
   	});
 
   	it('should report logout', () => {
-      const service: LoginService = TestBed.get(LoginService);
+      const service: LoginService = TestBed.inject(LoginService);
       let result = null;
       service.init().subscribe(succ => result = succ);
 
@@ -61,7 +61,7 @@ describe('LoginService', () => {
   	});
 
   	it('should report error', () => {
-      const service: LoginService = TestBed.get(LoginService);
+      const service: LoginService = TestBed.inject(LoginService);
       let result = null;
       service.init().subscribe(succ => result = succ);
 
@@ -75,7 +75,7 @@ describe('LoginService', () => {
   	});
 
   	it('should clear error on successful operation', () => {
-      const service: LoginService = TestBed.get(LoginService);
+      const service: LoginService = TestBed.inject(LoginService);
       let result = null;
       service.init().subscribe(succ => result = succ);
 
