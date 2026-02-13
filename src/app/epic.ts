@@ -4,7 +4,7 @@ import { Issue } from './issue';
 export interface Epic {
 	id:number;
 	title:string;
-	description:string;
+	description:string | any; // Can be string (legacy) or Delta object
 	size:number;
 	color?:string;
 

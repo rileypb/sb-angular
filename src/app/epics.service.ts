@@ -19,11 +19,16 @@ export class EpicsService {
 
 
   save(epic: Epic) : Observable<any> {
+  	// Convert Delta object to JSON string if it's a Delta, otherwise keep as string
+  	const description = typeof epic.description === 'object' && epic.description.ops 
+  	  ? JSON.stringify(epic.description) 
+  	  : epic.description;
+  	  
   	return this.api.patch(`api/epics/${epic.id}`, { epic: {
       id: epic.id,
       project_id: epic.project.id,
       title: epic.title,
-      description: epic.description,
+      description: description,
       size: epic.size,
       color: epic.color
     } });

@@ -21,6 +21,15 @@ export class EpicFormComponent extends Base implements OnInit {
   @Output() confirmEdit:EventEmitter<Epic> = new EventEmitter<Epic>();
   @Output() deleteEpic:EventEmitter<Epic> = new EventEmitter<Epic>();
 
+  public quillModules = {
+    toolbar: [
+      ['bold', 'italic', 'underline'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link'],
+      ['clean']
+    ]
+  };
+
   constructor(public dialog: MatDialog, private _snackBar : MatSnackBar) {
   	super();
   }
@@ -29,12 +38,41 @@ export class EpicFormComponent extends Base implements OnInit {
   }
 
   init():void {
+  	const parsedDescription = this.parseDescription(this.epic.description);
   	this.epicForm = this.fb.group({
   		title: new FormControl(this.epic.title, Validators.compose([Validators.pattern(".*[^\\s]+.*"), Validators.required])),
-  		description: new FormControl(this.epic.description),
+  		description: new FormControl(parsedDescription),
   		size: new FormControl(String(this.epic.size)),
   		color: new FormControl(this.epic.color),
   	});
+  }
+
+  private parseDescription(description: any): any {
+    // If description is already a Delta object, return as is
+    if (description && typeof description === 'object' && description.ops) {
+      return description;
+    }
+    
+    // If description is a JSON string containing Delta, parse it
+    if (typeof description === 'string' && description.trim().startsWith('{')) {
+      try {
+        const parsed = JSON.parse(description);
+        if (parsed.ops) {
+          return parsed;
+        }
+      } catch (e) {
+        // Not valid JSON, treat as plain text
+      }
+    }
+    
+    // If description is HTML/plain text string, convert to Delta
+    if (typeof description === 'string' && description.trim()) {
+      // Create a simple Delta with just text
+      return { ops: [{ insert: description + '\n' }] };
+    }
+    
+    // Return empty Delta for null/undefined/empty
+    return { ops: [{ insert: '\n' }] };
   }
 
   @Input() set epic(value:Epic) {

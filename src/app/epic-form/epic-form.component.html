@@ -9,10 +9,15 @@
         </mat-form-field>
       </div>
       <div class="row">
-        <mat-form-field class="col-12" appearance="fill">
-          <mat-label>Description</mat-label>
-          <textarea formControlName="description" rows="4" matInput></textarea>
-        </mat-form-field>
+        <div class="col-12">
+          <label class="menu-text">Description</label>
+          <quill-editor formControlName="description"
+                        [style]="{'height': '200px'}"
+                        [modules]="quillModules"
+                        format="object"
+                        placeholder="Enter epic description...">
+          </quill-editor>
+        </div>
       </div>
       <div class="row">
         <mat-form-field class="col-6 base-text" appearance="fill">
