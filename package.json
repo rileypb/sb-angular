@@ -36,6 +36,7 @@
     "@ckeditor/ckeditor5-angular": "^1.2.3",
     "@ckeditor/ckeditor5-build-classic": "^21.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/fontawesome": "^4.0.0",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@rails/actioncable": "^7.0.0",
