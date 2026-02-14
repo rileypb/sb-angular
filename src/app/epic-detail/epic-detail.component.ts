@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectorRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Epic } from '../epic';
 import { Base } from '../base';
 import { DataService } from '../data.service';
@@ -21,8 +21,9 @@ import { IssueFormDialogComponent } from '../issue-form-dialog/issue-form-dialog
     styleUrls: ['./epic-detail.component.css'],
     standalone: false
 })
-export class EpicDetailComponent extends Base implements OnInit {
+export class EpicDetailComponent extends Base implements OnInit, AfterViewInit {
   @ViewChild('issueInput') issueInput:ElementRef;
+  @ViewChild('descriptionEditor') descriptionEditor: any;
 
   issueControl:FormControl = new FormControl();
 
@@ -43,6 +44,12 @@ export class EpicDetailComponent extends Base implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+    // if (this.epic) {
+    //   this.setDescriptionContent();
+    // }
+  }
+
   @Input() set epic(value:Epic) {
     if (this._epic) {
       this.dataService.unload(`epics/${this._epic.id}/issues`, [`epics/${this._epic.id}/issues`, `epics/${this._epic.id}/issues/*`]);
@@ -50,11 +57,51 @@ export class EpicDetailComponent extends Base implements OnInit {
     this._epic = value;
     this.dataService.load(`epics/${this._epic.id}/issues`, [`epics/${this._epic.id}/issues`, `epics/${this._epic.id}/issues/*`]);
     this.epicIssues = this.dataService.values[`epics/${this._epic.id}/issues`];
+    
+    // Set description content if editor is ready
+    if (this.descriptionEditor) {
+      this.setDescriptionContent();
+    }
   }
   get epic():Epic {
     return this._epic;
   }
   private _epic:Epic;
+
+  private setDescriptionContent(): void {
+    console.log('Setting description content:', this.epic.description);
+
+    if (!this.descriptionEditor || !this.epic.description) {
+      return;
+    }
+
+    console.log('Description editor:', this.descriptionEditor);
+
+    let content = this.epic.description;
+
+    console.log('Original content:', content);
+    
+    // If description is a JSON string, parse it
+    if (typeof content === 'string' && content.trim().startsWith('{')) {
+      console.log('Parsing description as JSON');
+      try {
+        content = JSON.parse(content);
+        console.log('Parsed content:', content);
+      } catch (e) {
+        // If parsing fails, treat as plain text
+        content = { ops: [{ insert: content + '\n' }] };
+        console.log('Failed to parse JSON, treating as plain text:', content);
+      }
+    } else if (typeof content === 'string') {
+      // Convert plain text to Delta format
+      content = { ops: [{ insert: content + '\n' }] };
+      console.log('Converted plain text to Delta format:', content);
+    }
+
+    // Set the content using Quill's setContents method
+    this.descriptionEditor.quillEditor.setContents(content);
+    console.log('Final editor content:', this.descriptionEditor.quillEditor.getContents());
+  }
 
 
   ngOnDestroy() {
